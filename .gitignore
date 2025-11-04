@@ -12,3 +12,6 @@ dist/
 # OS-specific
 .DS_Store
 Thumbs.db
+
+# ADR and reporting
+_ADR

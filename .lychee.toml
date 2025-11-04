@@ -1,0 +1,69 @@
+# Link Checker Configuration for Lychee
+# Documentation: https://lychee.cli.rs
+
+# Exclude patterns - skip internal/example URLs
+exclude = [
+  'https://example-internal.*',
+  'https://.*\\.internal\\..*',
+  'https://intra.*',
+  'https://corp.*',
+  'http://localhost.*',
+  'http://127\\.0\\.0\\.1.*',
+  'YOUR_TOKEN.*',
+  'REPLACE_ME.*'
+]
+
+# Exclude specific domains that commonly block automated checkers
+exclude_domains = []
+
+# Accept status codes (200-299 and some 400s that are acceptable)
+accept = [200, 204, 206, 301, 302, 307, 308, 429]
+
+# Retry configuration
+max_retries = 3
+retry_wait_time = 2
+
+# Timeout in seconds
+timeout = 15
+
+# Maximum number of concurrent requests
+max_concurrency = 10
+
+# User agent string
+user_agent = "Mozilla/5.0 (compatible; LinkChecker/1.0; +https://github.com/lop-Louis/go-to-docs)"
+
+# Check links in these file types
+include_verbatim = true
+
+# Follow redirects
+max_redirects = 5
+
+# Cache results to speed up repeated checks
+cache = true
+
+# Exclude mail addresses
+exclude_mail = true
+
+# Check local file references
+include_fragments = true
+
+# Skip checking SSL certificates (use cautiously)
+insecure = false
+
+# Exclude specific link patterns by regex
+exclude_link_patterns = [
+  # Skip mailto links
+  '^mailto:',
+  # Skip telephone links
+  '^tel:',
+  # Skip data URIs
+  '^data:',
+  # Skip javascript URIs
+  '^javascript:',
+]
+
+# Treat warnings as errors
+fail_on_warnings = false
+
+# Verbose output
+verbose = false

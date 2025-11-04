@@ -1,0 +1,5 @@
+# GitleaksIgnore configuration
+# Lines in this file are treated as exceptions for secret scanning
+
+# Example patterns to ignore (customize as needed)
+# YOUR_TOKEN_REPLACE_ME - placeholder in config files

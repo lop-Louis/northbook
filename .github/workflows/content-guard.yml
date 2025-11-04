@@ -1,0 +1,168 @@
+name: Content Guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['docs/**', 'scripts/**', '.github/**']
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+
+jobs:
+  guard:
+    name: Run Content Checks
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run content guard
+        id: guard
+        run: |
+          echo "Running content guard checks..."
+          npm run guard 2>&1 | tee guard-output.txt
+          echo "guard_exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Link checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: '--config .lychee.toml --verbose docs'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Secret scan
+        id: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Build test
+        id: build
+        run: npm run docs:build
+        continue-on-error: true
+
+      - name: Determine status
+        id: status
+        run: |
+          GUARD_EXIT=${{ steps.guard.outcome }}
+          LYCHEE_EXIT=${{ steps.lychee.outcome }}
+          GITLEAKS_EXIT=${{ steps.gitleaks.outcome }}
+          BUILD_EXIT=${{ steps.build.outcome }}
+          
+          if [[ "$GUARD_EXIT" == "failure" ]] || [[ "$GITLEAKS_EXIT" == "failure" ]] || [[ "$BUILD_EXIT" == "failure" ]]; then
+            echo "status=red" >> $GITHUB_OUTPUT
+            echo "label=red" >> $GITHUB_OUTPUT
+          elif [[ "$LYCHEE_EXIT" == "failure" ]] || grep -q "YELLOW" guard-output.txt; then
+            echo "status=yellow" >> $GITHUB_OUTPUT
+            echo "label=yellow" >> $GITHUB_OUTPUT
+          else
+            echo "status=green" >> $GITHUB_OUTPUT
+            echo "label=green" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const status = '${{ steps.status.outputs.status }}';
+            const guardResult = '${{ steps.guard.outcome }}';
+            const lycheeResult = '${{ steps.lychee.outcome }}';
+            const gitleaksResult = '${{ steps.gitleaks.outcome }}';
+            const buildResult = '${{ steps.build.outcome }}';
+            
+            const emoji = {
+              'green': '✅',
+              'yellow': '⚠️',
+              'red': '❌'
+            }[status] || '❓';
+            
+            const message = `## ${emoji} Content Guard Report
+            
+            **Overall Status: ${status.toUpperCase()}**
+            
+            | Check | Result |
+            |-------|--------|
+            | Band A Compliance | ${guardResult === 'success' ? '✅' : '❌'} |
+            | Link Validation | ${lycheeResult === 'success' ? '✅' : '⚠️'} |
+            | Secret Scan | ${gitleaksResult === 'success' ? '✅' : '❌'} |
+            | Build Test | ${buildResult === 'success' ? '✅' : '❌'} |
+            
+            ${status === 'green' ? '🎉 All checks passed! This PR is ready to merge.' : ''}
+            ${status === 'yellow' ? '⚠️ Some warnings detected. Manual review recommended.' : ''}
+            ${status === 'red' ? '🛑 Blocking issues found. Please fix before merging.' : ''}
+            
+            See workflow run for details.`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
+
+      - name: Label PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const label = '${{ steps.status.outputs.label }}';
+            const labels = ['green', 'yellow', 'red'];
+            
+            // Remove other status labels
+            for (const l of labels) {
+              if (l !== label) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    name: l
+                  });
+                } catch (e) {
+                  // Label might not exist, ignore
+                }
+              }
+            }
+            
+            // Add current status label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: [label]
+            });
+
+      - name: Enable auto-merge for green PRs
+        if: steps.status.outputs.status == 'green'
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: squash
+
+      - name: Fail if red
+        if: steps.status.outputs.status == 'red'
+        run: |
+          echo "❌ Content guard failed with red status"
+          exit 1

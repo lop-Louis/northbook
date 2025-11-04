@@ -1,0 +1,24 @@
+# Code Owners
+# These users will be automatically requested as reviewers when someone opens a PR
+
+# Documentation content
+/docs/**  @lop-Louis
+
+# VitePress configuration
+/docs/.vitepress/**  @lop-Louis
+
+# Scripts and automation
+/scripts/**  @lop-Louis
+
+# GitHub workflows and CI
+/.github/**  @lop-Louis
+
+# Governance and policy
+/GOVERNANCE.md  @lop-Louis
+/CODEOWNERS  @lop-Louis
+
+# README and package management
+/README.md  @lop-Louis
+/package.json  @lop-Louis
+/package-lock.json  @lop-Louis
+/pnpm-lock.yaml  @lop-Louis
