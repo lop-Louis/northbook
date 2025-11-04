@@ -99,7 +99,7 @@ describe('Documentation - Frontmatter Validation', () => {
       // Check required fields
       assert.match(content, /title:/i, 'Should have title')
       assert.match(content, /band:\s*A/i, 'Should have band: A')
-      assert.match(content, /owner:\s*@/i, 'Should have owner')
+      assert.match(content, /owner:\s*['"]?@/i, 'Should have owner')
       assert.match(content, /refresh_after_days:/i, 'Should have refresh_after_days')
       assert.match(content, /change_type:/i, 'Should have change_type')
       assert.match(content, /status:/i, 'Should have status')

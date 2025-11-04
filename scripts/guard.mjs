@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
 
-const DOCS = 'docs'
+const DOCS = process.env.DOCS || 'docs'
 
 // Forbidden patterns that indicate internal/sensitive content
 const forbidden = [

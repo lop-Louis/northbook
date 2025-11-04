@@ -72,7 +72,8 @@ function scan(dir = 'docs') {
 // Main execution
 console.log('🔍 Scanning for stale pages...\n')
 
-scan()
+const DOCS = process.env.DOCS || 'docs'
+scan(DOCS)
 
 console.log(`📊 Scanned ${fileCount} files\n`)
 

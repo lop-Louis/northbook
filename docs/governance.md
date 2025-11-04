@@ -152,17 +152,6 @@ Every quarter (Q1, Q2, Q3, Q4), conduct systematic review:
 2. **Week 2-3:** Page owners review and update their assigned pages
 3. **Week 4:** Consolidate updates, merge PRs, update `last_reviewed` dates
 
-### Review Checklist
-
-For each page:
-
-- [ ] Content still accurate and relevant
-- [ ] No new internal references crept in
-- [ ] Links still valid (internal and external)
-- [ ] Examples still demonstrate current best practices
-- [ ] Frontmatter fields up to date
-- [ ] No accumulated technical debt (outdated code samples, deprecated APIs)
-
 ### Quarterly Metrics to Track
 
 - **Stale page count:** Pages exceeding refresh window
@@ -254,6 +243,33 @@ Use relative links without `.md` extension for published pages:
 2. Add first line notice: "ARCHIVED – Kept for historical reference; no longer maintained."
 3. Remove cross-links from other live pages.
 
+## Accessibility Standards
+
+All interactive components must meet WCAG AA compliance:
+
+### Keyboard Navigation
+
+- All interactive elements (buttons, links, forms) reachable via Tab/Shift+Tab
+- Visible focus indicators (2px outline, high contrast)
+- No keyboard traps (users can navigate away)
+- Enter/Space activate buttons and links
+
+### ARIA Attributes
+
+- Descriptive `aria-label` on buttons without visible text
+- `role="region"` with `aria-label` for landmarks
+- `aria-hidden="true"` on decorative icons (emojis, SVGs)
+- `aria-live="polite"` for dynamic status messages
+
+### Semantic HTML
+
+- Use `<button>` for actions, not `<div onclick>`
+- Use `<a>` for navigation, not `<button>`
+- Proper heading hierarchy (h1 → h2 → h3, no skipping)
+- `<label>` elements associated with form inputs
+
+See [Accessibility Quick Wins](./accessibility-quick-wins) for implementation patterns.
+
 ## Self-check Before PR
 
 Run these locally:
@@ -261,15 +277,17 @@ Run these locally:
 ```bash
 pnpm run guard
 pnpm run docs:build
+pnpm test
 ```
 
-Ensure no Red failures and build success.
+Ensure no Red failures, build success, and all tests passing.
 
 ## Future Enhancements (Non-binding)
 
 - Add optional view analytics for drift heuristics
 - Introduce coverage-like score for link freshness
 - Expand guard rules for inclusive language patterns
+- Add automated accessibility testing in CI (axe-core)
 
 ---
 

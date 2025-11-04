@@ -11,7 +11,13 @@ const GUARD_SCRIPT = 'scripts/guard.mjs'
 function createTestFile(filename, frontmatter, content) {
   const filePath = path.join(TEST_DIR, filename)
   const fm = Object.entries(frontmatter)
-    .map(([k, v]) => `${k}: ${JSON.stringify(v).replace(/"/g, '')}`)
+    .map(([k, v]) => {
+      // Quote values that start with @ (YAML special character)
+      if (typeof v === 'string' && v.startsWith('@')) {
+        return `${k}: '${v}'`
+      }
+      return `${k}: ${JSON.stringify(v).replace(/"/g, '')}`
+    })
     .join('\n')
   const fullContent = `---\n${fm}\n---\n\n${content}`
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
