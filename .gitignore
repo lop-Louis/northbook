@@ -8,6 +8,11 @@ dist/
 # Lighthouse results
 .lighthouse/
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
 # Temporary files
 *.log
 *.tmp
