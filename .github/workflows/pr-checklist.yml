@@ -35,8 +35,15 @@ jobs:
       - name: Run automated checks
         id: checks
         run: |
-          echo "## 🤖 Automated PR Checklist Results" > report.md
+          echo "## 📊 Comprehensive PR Summary" > report.md
           echo "" >> report.md
+          echo "_Automated analysis of all workflow checks and quality gates_" >> report.md
+          echo "" >> report.md
+
+          # Initialize status tracking
+          RED_COUNT=0
+          YELLOW_COUNT=0
+          GREEN_COUNT=0
 
           # Frontmatter validation
           echo "### 📋 Frontmatter Validation" >> report.md
@@ -44,8 +51,10 @@ jobs:
           if grep -q "Missing required frontmatter" guard-output.txt; then
             echo "❌ **FAILED** - Missing required frontmatter fields" >> report.md
             grep "Missing required frontmatter" guard-output.txt | sed 's/^/  - /' >> report.md
+            RED_COUNT=$((RED_COUNT + 1))
           else
             echo "✅ **PASSED** - All files have required frontmatter" >> report.md
+            GREEN_COUNT=$((GREEN_COUNT + 1))
           fi
           echo "" >> report.md
 
@@ -82,15 +91,18 @@ jobs:
           echo "" >> report.md
 
           # Content guard results
-          echo "### 🛡️ Content Guard Results" >> report.md
+          echo "### 🛡️ Content Guard (Band A Compliance)" >> report.md
           if grep -q "RED FAILURES" guard-output.txt; then
             echo "❌ **BLOCKED** - Red failures detected:" >> report.md
             grep -A 10 "RED FAILURES" guard-output.txt | tail -n +2 | grep -E '^\s+-' | sed 's/^/  /' >> report.md
+            RED_COUNT=$((RED_COUNT + 1))
           elif grep -q "YELLOW WARNINGS" guard-output.txt; then
             echo "⚠️ **REVIEW NEEDED** - Yellow warnings detected:" >> report.md
             grep -A 10 "YELLOW WARNINGS" guard-output.txt | tail -n +2 | grep -E '^\s+-' | sed 's/^/  /' >> report.md
+            YELLOW_COUNT=$((YELLOW_COUNT + 1))
           else
             echo "✅ **PASSED** - No guard violations" >> report.md
+            GREEN_COUNT=$((GREEN_COUNT + 1))
           fi
           echo "" >> report.md
 
@@ -100,13 +112,16 @@ jobs:
           if grep -q "Broken Internal Links" links-output.txt; then
             echo "❌ **FAILED** - Broken internal links detected" >> report.md
             grep -A 20 "Broken Internal Links" links-output.txt | tail -n +2 | sed 's/^/  /' >> report.md
+            RED_COUNT=$((RED_COUNT + 1))
           else
             echo "✅ **PASSED** - All internal links valid" >> report.md
+            GREEN_COUNT=$((GREEN_COUNT + 1))
           fi
 
           if grep -q "External Link Issues" links-output.txt; then
             echo "⚠️ **WARNING** - External link issues detected" >> report.md
             grep -A 20 "External Link Issues" links-output.txt | tail -n +2 | sed 's/^/  /' >> report.md
+            YELLOW_COUNT=$((YELLOW_COUNT + 1))
           fi
           echo "" >> report.md
 
@@ -114,10 +129,39 @@ jobs:
           echo "### 🏗️ Build Test" >> report.md
           if pnpm run docs:build > build-output.txt 2>&1; then
             echo "✅ **PASSED** - Documentation builds successfully" >> report.md
+            GREEN_COUNT=$((GREEN_COUNT + 1))
           else
             echo "❌ **FAILED** - Build errors detected" >> report.md
             tail -20 build-output.txt | sed 's/^/  /' >> report.md
+            RED_COUNT=$((RED_COUNT + 1))
           fi
+          echo "" >> report.md
+
+          # Component tests
+          echo "### 🧪 Component Tests" >> report.md
+          if pnpm test > test-output.txt 2>&1; then
+            TEST_RESULTS=$(grep -E "Test Files|Tests" test-output.txt | head -1 || echo "Tests passed")
+            echo "✅ **PASSED** - $TEST_RESULTS" >> report.md
+            GREEN_COUNT=$((GREEN_COUNT + 1))
+          else
+            echo "❌ **FAILED** - Test failures detected" >> report.md
+            grep -A 10 "FAIL" test-output.txt | sed 's/^/  /' >> report.md
+            RED_COUNT=$((RED_COUNT + 1))
+          fi
+          echo "" >> report.md
+
+          # Lighthouse CI (reference to separate workflow)
+          echo "### 🚦 Lighthouse CI (Performance Audit)" >> report.md
+          echo "ℹ️ **RUNNING** - Performance audit running in separate workflow" >> report.md
+          echo "  - Check \`lighthouse\` workflow for detailed results" >> report.md
+          echo "  - Metrics: Performance, Accessibility, Best Practices, SEO" >> report.md
+          echo "" >> report.md
+
+          # Secret scan (reference to content-guard workflow)
+          echo "### 🔐 Secret Scan" >> report.md
+          echo "ℹ️ **RUNNING** - Secret scan running in \`content-guard\` workflow" >> report.md
+          echo "  - GitLeaks scanning for exposed secrets" >> report.md
+          echo "  - Check \`guard\` workflow for results" >> report.md
           echo "" >> report.md
 
           # Public safety checks
@@ -134,20 +178,50 @@ jobs:
           echo "- [ ] No calendar dates used (prefer relative time)" >> report.md
           echo "- [ ] Code samples are original or properly attributed" >> report.md
           echo "- [ ] Previewed locally with \`pnpm run docs:dev\`" >> report.md
+          echo "- [ ] Screenshots match current UI (if applicable)" >> report.md
+          echo "" >> report.md
+
+          # Summary stats
+          echo "---" >> report.md
+          echo "## 📈 Check Summary" >> report.md
+          echo "" >> report.md
+          echo "| Status | Count |" >> report.md
+          echo "|--------|-------|" >> report.md
+          echo "| ✅ Passed | $GREEN_COUNT |" >> report.md
+          echo "| ⚠️ Warnings | $YELLOW_COUNT |" >> report.md
+          echo "| ❌ Failed | $RED_COUNT |" >> report.md
           echo "" >> report.md
 
           # Final verdict
           echo "---" >> report.md
-          if grep -q "RED FAILURES" guard-output.txt || grep -q "Broken Internal Links" links-output.txt || ! pnpm run docs:build > /dev/null 2>&1; then
+          if [ "$RED_COUNT" -gt 0 ]; then
             echo "## 🔴 Overall Status: BLOCKED" >> report.md
-            echo "This PR cannot be merged until blocking issues are resolved." >> report.md
-          elif grep -q "YELLOW WARNINGS" guard-output.txt; then
+            echo "This PR cannot be merged until **$RED_COUNT blocking issue(s)** are resolved." >> report.md
+            echo "" >> report.md
+            echo "**Action Required:** Fix all ❌ failures above before requesting review." >> report.md
+          elif [ "$YELLOW_COUNT" -gt 0 ]; then
             echo "## 🟡 Overall Status: REVIEW NEEDED" >> report.md
-            echo "This PR has warnings that require human review before merging." >> report.md
+            echo "This PR has **$YELLOW_COUNT warning(s)** that require human review before merging." >> report.md
+            echo "" >> report.md
+            echo "**Reviewer Note:** Please verify warnings are acceptable before approving." >> report.md
           else
             echo "## 🟢 Overall Status: READY" >> report.md
-            echo "All automated checks passed! This PR is ready for auto-merge." >> report.md
+            echo "All automated checks passed! (**$GREEN_COUNT/$GREEN_COUNT**)" >> report.md
+            echo "" >> report.md
+            echo "✨ This PR is ready for auto-merge pending manual checklist completion." >> report.md
           fi
+
+          # Additional workflow references
+          echo "" >> report.md
+          echo "---" >> report.md
+          echo "### 🔄 Related Workflows" >> report.md
+          echo "" >> report.md
+          echo "Check these workflows for additional validations:" >> report.md
+          echo "- **Content Guard** (\`guard\`) - Band A compliance, secret scan, auto-merge" >> report.md
+          echo "- **Lighthouse CI** (\`lighthouse\`) - Performance, accessibility, SEO audits" >> report.md
+          echo "- **Stale Pages** (\`stale-pages\`) - Content drift detection (weekly)" >> report.md
+          echo "" >> report.md
+          echo "_💡 Tip: All workflows must pass before merge. Check the 'Checks' tab for status._" >> report.md
 
       - name: Comment PR
         uses: actions/github-script@v7
@@ -165,7 +239,7 @@ jobs:
 
             const botComment = comments.find(c =>
               c.user.type === 'Bot' &&
-              c.body.includes('🤖 Automated PR Checklist Results')
+              c.body.includes('📊 Comprehensive PR Summary')
             );
 
             if (botComment) {
