@@ -34,6 +34,8 @@ jobs:
 
       - name: Run automated checks
         id: checks
+        env:
+          VITE_GA_ID: ${{ secrets.GA_ID }}
         run: |
           echo "## � Documentation Quality & Governance Report" > report.md
           echo "" >> report.md

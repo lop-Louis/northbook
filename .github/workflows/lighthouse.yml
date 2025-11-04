@@ -33,6 +33,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build site
+        env:
+          VITE_GA_ID: ${{ secrets.GA_ID }}
         run: pnpm run docs:build
 
       - name: Install Playwright browsers

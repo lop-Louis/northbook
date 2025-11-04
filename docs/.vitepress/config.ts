@@ -1,19 +1,32 @@
 import { defineConfig } from 'vitepress'
 
+// Google Analytics 4 Measurement ID
+const GA_ID = process.env.VITE_GA_ID
+
 export default defineConfig({
-  title: 'Knowledge Go-To and Governance Playbook',
+  title: 'Knowledge Go-To Docs',
   description: 'Reusable practices, sanitized for public use.',
   base: '/go-to-docs/',
   lastUpdated: true,
   head: [
-    // Cloudflare minimal analytics, cookie free (replace YOUR_TOKEN with actual token)
     [
       'script',
       {
-        defer: '',
-        src: 'https://static.cloudflareinsights.com/beacon.min.js',
-        'data-cf-beacon': '{"token":"YOUR_TOKEN_REPLACE_ME"}'
+        async: '',
+        src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
       }
+    ],
+    [
+      'script',
+      {},
+      `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}', {
+  page_path: window.location.pathname
+});
+  `
     ]
   ],
   themeConfig: {
