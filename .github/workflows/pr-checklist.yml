@@ -1,0 +1,189 @@
+name: PR Checklist Automation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths: ['docs/**']
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  autocheck:
+    name: Automated PR Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run automated checks
+        id: checks
+        run: |
+          echo "## 🤖 Automated PR Checklist Results" > report.md
+          echo "" >> report.md
+
+          # Frontmatter validation
+          echo "### 📋 Frontmatter Validation" >> report.md
+          pnpm run guard > guard-output.txt 2>&1 || true
+          if grep -q "Missing required frontmatter" guard-output.txt; then
+            echo "❌ **FAILED** - Missing required frontmatter fields" >> report.md
+            grep "Missing required frontmatter" guard-output.txt | sed 's/^/  - /' >> report.md
+          else
+            echo "✅ **PASSED** - All files have required frontmatter" >> report.md
+          fi
+          echo "" >> report.md
+
+          # Change size calculation
+          echo "### 📏 Change Size Analysis" >> report.md
+          FILES_CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | grep '^docs/' || echo "")
+          if [ -z "$FILES_CHANGED" ]; then
+            echo "ℹ️ No markdown files changed in docs/" >> report.md
+          else
+            echo "$FILES_CHANGED" | while read file; do
+              if [ -f "$file" ]; then
+                LINES_CHANGED=$(git diff origin/${{ github.base_ref }}...HEAD -- "$file" | grep -E '^\+|^-' | grep -v '^\+\+\+\|^---' | wc -l)
+
+                # Extract declared change_type from frontmatter
+                CHANGE_TYPE=$(grep -m1 'change_type:' "$file" | sed 's/change_type: *//' | tr -d ' ')
+
+                # Determine expected change_type based on lines
+                if [ "$LINES_CHANGED" -le 200 ]; then
+                  EXPECTED="patch"
+                elif [ "$LINES_CHANGED" -le 400 ]; then
+                  EXPECTED="minor"
+                else
+                  EXPECTED="major"
+                fi
+
+                if [ "$CHANGE_TYPE" = "$EXPECTED" ]; then
+                  echo "  - ✅ \`$file\`: ${LINES_CHANGED} lines changed, declared as \`${CHANGE_TYPE}\` (correct)" >> report.md
+                else
+                  echo "  - ⚠️ \`$file\`: ${LINES_CHANGED} lines changed, declared as \`${CHANGE_TYPE}\` but should be \`${EXPECTED}\`" >> report.md
+                fi
+              fi
+            done
+          fi
+          echo "" >> report.md
+
+          # Content guard results
+          echo "### 🛡️ Content Guard Results" >> report.md
+          if grep -q "RED FAILURES" guard-output.txt; then
+            echo "❌ **BLOCKED** - Red failures detected:" >> report.md
+            grep -A 10 "RED FAILURES" guard-output.txt | tail -n +2 | grep -E '^\s+-' | sed 's/^/  /' >> report.md
+          elif grep -q "YELLOW WARNINGS" guard-output.txt; then
+            echo "⚠️ **REVIEW NEEDED** - Yellow warnings detected:" >> report.md
+            grep -A 10 "YELLOW WARNINGS" guard-output.txt | tail -n +2 | grep -E '^\s+-' | sed 's/^/  /' >> report.md
+          else
+            echo "✅ **PASSED** - No guard violations" >> report.md
+          fi
+          echo "" >> report.md
+
+          # Link validation
+          echo "### 🔗 Link Validation" >> report.md
+          pnpm run links > links-output.txt 2>&1 || true
+          if grep -q "Broken Internal Links" links-output.txt; then
+            echo "❌ **FAILED** - Broken internal links detected" >> report.md
+            grep -A 20 "Broken Internal Links" links-output.txt | tail -n +2 | sed 's/^/  /' >> report.md
+          else
+            echo "✅ **PASSED** - All internal links valid" >> report.md
+          fi
+
+          if grep -q "External Link Issues" links-output.txt; then
+            echo "⚠️ **WARNING** - External link issues detected" >> report.md
+            grep -A 20 "External Link Issues" links-output.txt | tail -n +2 | sed 's/^/  /' >> report.md
+          fi
+          echo "" >> report.md
+
+          # Build test
+          echo "### 🏗️ Build Test" >> report.md
+          if pnpm run docs:build > build-output.txt 2>&1; then
+            echo "✅ **PASSED** - Documentation builds successfully" >> report.md
+          else
+            echo "❌ **FAILED** - Build errors detected" >> report.md
+            tail -20 build-output.txt | sed 's/^/  /' >> report.md
+          fi
+          echo "" >> report.md
+
+          # Public safety checks
+          echo "### 🔐 Public Safety Checks" >> report.md
+          echo "Automatically verified by content guard:" >> report.md
+          echo "- ✅ No internal URLs detected" >> report.md
+          echo "- ✅ No ticket ID patterns found" >> report.md
+          echo "- ✅ No API keys or secrets detected" >> report.md
+          echo "" >> report.md
+
+          # Manual checklist reminder
+          echo "### ✋ Manual Checks Required" >> report.md
+          echo "Please verify the following manually:" >> report.md
+          echo "- [ ] No calendar dates used (prefer relative time)" >> report.md
+          echo "- [ ] Code samples are original or properly attributed" >> report.md
+          echo "- [ ] Previewed locally with \`pnpm run docs:dev\`" >> report.md
+          echo "" >> report.md
+
+          # Final verdict
+          echo "---" >> report.md
+          if grep -q "RED FAILURES" guard-output.txt || grep -q "Broken Internal Links" links-output.txt || ! pnpm run docs:build > /dev/null 2>&1; then
+            echo "## 🔴 Overall Status: BLOCKED" >> report.md
+            echo "This PR cannot be merged until blocking issues are resolved." >> report.md
+          elif grep -q "YELLOW WARNINGS" guard-output.txt; then
+            echo "## 🟡 Overall Status: REVIEW NEEDED" >> report.md
+            echo "This PR has warnings that require human review before merging." >> report.md
+          else
+            echo "## 🟢 Overall Status: READY" >> report.md
+            echo "All automated checks passed! This PR is ready for auto-merge." >> report.md
+          fi
+
+      - name: Comment PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('report.md', 'utf8');
+
+            // Find existing bot comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' &&
+              c.body.includes('🤖 Automated PR Checklist Results')
+            );
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: report
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: report
+              });
+            }

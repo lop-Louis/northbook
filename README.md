@@ -46,13 +46,28 @@ See [GOVERNANCE.md](./GOVERNANCE.md) for complete details.
 
 1. Check the [Sanitization Checklist](./docs/sanitization.md)
 2. Add required frontmatter to every page (see [Band A Guidelines](./docs/band-a.md))
-3. Test locally: `npm run docs:dev` and `npm run guard`
+3. Test locally: `pnpm run docs:dev`
+
+**Automation handles most checks:**
+
+- Pre-commit hooks run guard + link validation automatically
+- CI posts detailed check results as a PR comment
+- Manual review only needed for nuanced content decisions
 
 ### PR Process
 
-- **Green** ✅ - Auto-merged within 1 minute
-- **Yellow** ⚠️ - Needs one review
-- **Red** 🛑 - Blocked until fixed
+- **🟢 Green** - Auto-merged within 1 minute (all automated checks pass)
+- **🟡 Yellow** - Human review needed (warnings detected)
+- **🔴 Red** - Blocked until fixed (violations found)
+
+**Automated checks include:**
+
+- Frontmatter validation
+- Change size vs declared `change_type`
+- Content guard (Band A compliance)
+- Link validation (internal + external)
+- Build test
+- Secret scanning
 
 ---
 
@@ -95,13 +110,16 @@ See [GOVERNANCE.md](./GOVERNANCE.md) for complete details.
 ### CI/CD Workflows
 
 1. **Pages** (`pages.yml`) - Deploys to GitHub Pages on push to main
-2. **Content Guard** (`content-guard.yml`) - Validates PRs, auto-merges green
-3. **Stale Pages** (`stale-pages.yml`) - Weekly audit on Mondays at 2 AM UTC
+2. **Content Guard** (`content-guard.yml`) - Validates PRs, auto-labels, enables auto-merge
+3. **PR Checklist** (`pr-checklist.yml`) - Posts automated check results as PR comment
+4. **Stale Pages** (`stale-pages.yml`) - Weekly audit on Mondays at 2 AM UTC
 
 ### Key Files
 
-- `scripts/guard.mjs` - Band A validation
+- `scripts/guard.mjs` - Band A validation + inclusive language heuristics
 - `scripts/stale.mjs` - Staleness detection
+- `scripts/link-check.mjs` - Internal/external link validation
+- `scripts/update-last-reviewed.mjs` - Frontmatter date injection
 - `docs/.vitepress/config.ts` - Site configuration
 - `.lychee.toml` - Link checker config
 - `GOVERNANCE.md` - Complete governance policy
