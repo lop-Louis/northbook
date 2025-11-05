@@ -18,7 +18,7 @@ hero:
   actions:
     - theme: brand
       text: Start here
-      link: /principles
+      link: /band-a
     - theme: alt
       text: Ask a question
       link: https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH

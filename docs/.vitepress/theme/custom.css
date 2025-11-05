@@ -144,6 +144,12 @@
   white-space: nowrap;
 }
 
+.VPNavBarTitle .logo img {
+  height: 32px;
+  max-height: 32px;
+  width: auto;
+}
+
 @media (max-width: 768px) {
   .VPNavBarTitle .title {
     max-width: 140px;
@@ -177,6 +183,16 @@
    📖 Public Knowledge - General documentation for all users
    👥 Contributor Resources - Guides for contributors and maintainers
 */
+
+.VPDocFooter .pager .pager-link {
+  border-color: rgba(245, 158, 11, 0.38);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.VPDocFooter .pager .pager-link:hover {
+  border-color: rgba(245, 158, 11, 0.65);
+  background-color: rgba(245, 158, 11, 0.12);
+}
 
 /* ===================================
  * Print styles

@@ -127,7 +127,6 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
         text: 'Start here',
         collapsed: false,
         items: [
-          { text: 'Northbook Principles', link: '/principles' },
           { text: 'What is Band A', link: '/band-a' },
           { text: 'FAQ for New Joiners', link: '/faq-new-joiners' },
           { text: 'Monthly Release Rhythm', link: '/monthly-release' }
