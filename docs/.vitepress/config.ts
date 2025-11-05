@@ -119,7 +119,7 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
       { text: 'Start', link: '/band-a' },
       {
         text: 'Ask a question',
-        link: 'https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH'
+        link: 'https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH'
       }
     ],
     sidebar: [
@@ -156,12 +156,12 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
     footer: {
       message: 'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.'
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/lop-louis/Northbook' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/lop-louis/northbook' }],
     search: {
       provider: 'local'
     },
     editLink: {
-      pattern: 'https://github.com/lop-louis/Northbook/edit/main/docs/:path',
+      pattern: 'https://github.com/lop-louis/northbook/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     }
   }

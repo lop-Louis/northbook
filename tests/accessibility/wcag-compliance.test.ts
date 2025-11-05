@@ -11,7 +11,7 @@ vi.mock('vitepress', () => ({
   useData: () => ({
     site: {
       value: {
-        base: '/Northbook/'
+        base: '/northbook/'
       }
     },
     page: {

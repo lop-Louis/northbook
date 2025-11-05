@@ -21,7 +21,7 @@ hero:
       link: /band-a
     - theme: alt
       text: Ask a question
-      link: https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH
+      link: https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
 
 features:
   - title: Decide faster
