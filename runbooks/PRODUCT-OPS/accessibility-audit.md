@@ -19,8 +19,8 @@ Quarterly accessibility sweep for public Northbook pages. Logs reside in repo hi
 3. In a second terminal, run Lighthouse against key pages:
 
 ```bash
-npx lighthouse http://<preview-host>/Northbook/decision-spine --view
-npx lighthouse http://<preview-host>/Northbook/accessibility-quick-wins --view
+npx lighthouse http://<preview-host>/northbook/decision-spine --view
+npx lighthouse http://<preview-host>/northbook/accessibility-quick-wins --view
 ```
 
 4. Verify semantic headings, keyboard navigation, and color/contrast. Tick findings in internal tracker.

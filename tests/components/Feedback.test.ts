@@ -55,7 +55,7 @@ describe('Feedback.vue', () => {
     const helpful = wrapper.findAll('a')[0]
     const href = helpful.attributes('href')
 
-    expect(href).toContain('github.com/lop-louis/Northbook/issues/new')
+    expect(href).toContain('github.com/lop-louis/northbook/issues/new')
     expect(href).toContain('labels=feedback,kl,helpful')
     expect(href).toContain('%5BHelpful%5D')
   })

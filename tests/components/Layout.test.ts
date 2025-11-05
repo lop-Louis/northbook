@@ -12,7 +12,7 @@ describe('Layout.vue', () => {
   })
 
   it('links to GitHub issues with stale label filter', () => {
-    expect(layoutContent).toContain('github.com/lop-louis/Northbook/issues')
+    expect(layoutContent).toContain('github.com/lop-louis/northbook/issues')
     expect(layoutContent).toContain('label%3Astale')
   })
 

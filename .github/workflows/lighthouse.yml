@@ -28,17 +28,50 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build site
-        env:
-          VITE_GA_ID: ${{ secrets.GA_ID }}
-        run: pnpm run docs:build
+      - name: Determine Playwright version
+        id: playwright-version
+        run: |
+          PLAYWRIGHT_VERSION=$(node -p "require('playwright/package.json').version")
+          echo "version=${PLAYWRIGHT_VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure Playwright cache path
+        id: playwright-path
+        run: |
+          PLAYWRIGHT_CACHE="$HOME/.cache/ms-playwright"
+          mkdir -p "$PLAYWRIGHT_CACHE"
+          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_CACHE" >> "$GITHUB_ENV"
+          echo "path=$PLAYWRIGHT_CACHE" >> "$GITHUB_OUTPUT"
+
+      - name: Restore Playwright browsers
+        id: playwright-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ steps.playwright-path.outputs.path }}
+          key: playwright-browsers-${{ runner.os }}-${{ runner.arch }}-${{ steps.playwright-version.outputs.version }}
+          restore-keys: |
+            playwright-browsers-${{ runner.os }}-${{ runner.arch }}-
+            playwright-browsers-${{ runner.os }}-
 
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
+
+      - name: Save Playwright browsers cache
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ steps.playwright-path.outputs.path }}
+          key: playwright-browsers-${{ runner.os }}-${{ runner.arch }}-${{ steps.playwright-version.outputs.version }}
+
+      - name: Build site
+        env:
+          VITE_GA_ID: ${{ secrets.GA_ID || 'G-511628512' }}
+        run: pnpm run docs:build
 
       - name: Run Lighthouse CI with Playwright
         id: lighthouse

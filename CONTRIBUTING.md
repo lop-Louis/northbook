@@ -19,7 +19,7 @@ Thank you for contributing to Northbook. Guidance over to-do. Northbook = guidan
 
 ```bash
 # Clone repo (after rename)
-git clone https://github.com/lop-louis/Northbook.git
+git clone https://github.com/lop-louis/northbook.git
 cd Northbook
 
 # Install dependencies

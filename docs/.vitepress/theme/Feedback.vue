@@ -3,7 +3,7 @@ import { useRoute, useData } from 'vitepress'
 
 const route = useRoute()
 const { page } = useData()
-const repo = 'lop-louis/Northbook'
+const repo = 'lop-louis/northbook'
 
 function mk(label: 'helpful' | 'not-helpful' | 'question', prefix: string) {
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
