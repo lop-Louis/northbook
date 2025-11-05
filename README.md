@@ -93,12 +93,4 @@ Automation catches most issues; reviewers focus on judgment calls.
 
 ---
 
-## Acceptance Checklist (Product Ops)
-
-- [ ] Repo renamed to `Northbook`.
-- [x] Docs reinforce “Guidance over to-do.”
-- [x] `/runbooks` holds checklists; site links stay principle-first.
-- [ ] GA4 measurement ID updated (`G-XXXX` placeholder replaced in config).
-- [ ] Branch protection rule requires Guard + Deploy VitePress checks.
-
 Keep this list handy as you finish the remaining setup steps.
