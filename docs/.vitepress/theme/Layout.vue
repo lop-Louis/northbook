@@ -33,7 +33,7 @@ const { page } = useData()
       >
         ⚠️ This page is due for review. Content may be outdated.
         <a
-          href="https://github.com/lop-Louis/go-to-docs/issues?q=label%3Astale"
+          href="https://github.com/lop-louis/Northbook/issues?q=label%3Astale"
           target="_blank"
           rel="noopener"
         >

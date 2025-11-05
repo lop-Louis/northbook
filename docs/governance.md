@@ -55,7 +55,7 @@ Based on usage patterns, watch for:
    - "15 team members" → "~15 members" or "mid-sized team"
 
 3. **Temporal Specificity:**
-   - "Launched on Q2 2024" → "Launched recently" or "within the past year"
+   - "Launched in a named quarter" → "Launched recently" or "within the past year"
    - "Meeting every Tuesday" → "Weekly meetings" or "regular cadence"
    - "Deploy by March 15" → "Deploy within 2 weeks" or "upcoming sprint"
 
@@ -66,16 +66,16 @@ Based on usage patterns, watch for:
 
 ### Good vs. Bad Examples
 
-| ❌ Avoid                           | ✅ Prefer                        |
-| ---------------------------------- | -------------------------------- |
-| "Our Acme CRM system handles..."   | "The CRM system handles..."      |
-| "Contact Jane at jane@company.com" | "Contact the team owner"         |
-| "JIRA-1234 tracks this issue"      | "TICKET-ID tracks this pattern"  |
-| "Deployed on Jan 15, 2024"         | "Deployed in early 2024"         |
-| "Exactly 127 users affected"       | "~125 users" or "over 100 users" |
-| "http://internal.corp/wiki"        | "Internal documentation"         |
-| "The Phoenix project cost $2.3M"   | "The project" (omit cost)        |
-| "Our 23-person team in building 7" | "A mid-sized team"               |
+| ❌ Avoid                               | ✅ Prefer                        |
+| -------------------------------------- | -------------------------------- |
+| "Our Acme CRM system handles..."       | "The CRM system handles..."      |
+| "Contact Jane at NAME@PRIVATE-EMAIL"   | "Contact the team owner"         |
+| "JIRA-123X tracks this issue"          | "TICKET-ID tracks this pattern"  |
+| "Deployed on a specific calendar date" | "Deployed in early 2024"         |
+| "Exactly 127 users affected"           | "~125 users" or "over 100 users" |
+| "https://INTERNAL-URL/wiki"            | "Internal documentation"         |
+| "The Phoenix project cost $2.3M"       | "The project" (omit cost)        |
+| "Our 23-person team in building 7"     | "A mid-sized team"               |
 
 ## Lifecycle States
 
@@ -152,17 +152,6 @@ Every quarter (Q1, Q2, Q3, Q4), conduct systematic review:
 2. **Week 2-3:** Page owners review and update their assigned pages
 3. **Week 4:** Consolidate updates, merge PRs, update `last_reviewed` dates
 
-### Review Checklist
-
-For each page:
-
-- [ ] Content still accurate and relevant
-- [ ] No new internal references crept in
-- [ ] Links still valid (internal and external)
-- [ ] Examples still demonstrate current best practices
-- [ ] Frontmatter fields up to date
-- [ ] No accumulated technical debt (outdated code samples, deprecated APIs)
-
 ### Quarterly Metrics to Track
 
 - **Stale page count:** Pages exceeding refresh window
@@ -170,7 +159,7 @@ For each page:
 - **Guard violations:** Red/Yellow trends over time
 - **Link health:** Broken link count and resolution time
 
-**Q1 2026 Review Target:** < 5 stale pages, < 3 open stale issues
+**Next Quarter Review Target:** < 5 stale pages, < 3 open stale issues
 
 ## Monthly Release Tagging
 
@@ -254,6 +243,33 @@ Use relative links without `.md` extension for published pages:
 2. Add first line notice: "ARCHIVED – Kept for historical reference; no longer maintained."
 3. Remove cross-links from other live pages.
 
+## Accessibility Standards
+
+All interactive components must meet WCAG AA compliance:
+
+### Keyboard Navigation
+
+- All interactive elements (buttons, links, forms) reachable via Tab/Shift+Tab
+- Visible focus indicators (2px outline, high contrast)
+- No keyboard traps (users can navigate away)
+- Enter/Space activate buttons and links
+
+### ARIA Attributes
+
+- Descriptive `aria-label` on buttons without visible text
+- `role="region"` with `aria-label` for landmarks
+- `aria-hidden="true"` on decorative icons (emojis, SVGs)
+- `aria-live="polite"` for dynamic status messages
+
+### Semantic HTML
+
+- Use `<button>` for actions, not `<div onclick>`
+- Use `<a>` for navigation, not `<button>`
+- Proper heading hierarchy (h1 → h2 → h3, no skipping)
+- `<label>` elements associated with form inputs
+
+See [Accessibility Quick Wins](./accessibility-quick-wins) for implementation patterns.
+
 ## Self-check Before PR
 
 Run these locally:
@@ -261,15 +277,17 @@ Run these locally:
 ```bash
 pnpm run guard
 pnpm run docs:build
+pnpm test
 ```
 
-Ensure no Red failures and build success.
+Ensure no Red failures, build success, and all tests passing.
 
 ## Future Enhancements (Non-binding)
 
 - Add optional view analytics for drift heuristics
 - Introduce coverage-like score for link freshness
 - Expand guard rules for inclusive language patterns
+- Add automated accessibility testing in CI (axe-core)
 
 ---
 

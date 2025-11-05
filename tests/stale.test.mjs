@@ -10,7 +10,13 @@ const STALE_SCRIPT = 'scripts/stale.mjs'
 function createTestFile(filename, frontmatter, content, daysOld = 0) {
   const filePath = path.join(TEST_DIR, filename)
   const fm = Object.entries(frontmatter)
-    .map(([k, v]) => `${k}: ${JSON.stringify(v).replace(/"/g, '')}`)
+    .map(([k, v]) => {
+      // Quote values that start with @ (YAML special character)
+      if (typeof v === 'string' && v.startsWith('@')) {
+        return `${k}: '${v}'`
+      }
+      return `${k}: ${JSON.stringify(v).replace(/"/g, '')}`
+    })
     .join('\n')
   const fullContent = `---\n${fm}\n---\n\n${content}`
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
@@ -30,7 +36,7 @@ function runStale() {
     const result = execSync(`node ${STALE_SCRIPT}`, {
       cwd: process.cwd(),
       encoding: 'utf8',
-      env: { ...process.env }
+      env: { ...process.env, DOCS: TEST_DIR }
     })
     return { success: true, output: result }
   } catch (error) {

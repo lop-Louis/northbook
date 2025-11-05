@@ -2,13 +2,36 @@ import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
 
-const DOCS = 'docs'
+const DOCS = process.env.DOCS || 'docs'
+const RUNBOOKS = process.env.RUNBOOKS || 'runbooks'
+const JSON_MODE = process.env.GUARD_FORMAT === 'json'
+
+// Test fixtures under docs-stale-debug are ignored (used for stale tests only)
+const pathLower = DOCS.toLowerCase()
+if (pathLower.includes('docs-stale-debug')) {
+  if (JSON_MODE) {
+    console.log(
+      JSON.stringify({
+        status: 'skipped',
+        reason: 'docs-stale-debug',
+        fileCount: 0,
+        checkCount: 0,
+        red: [],
+        yellow: []
+      })
+    )
+  } else {
+    console.log('Doc Guard: skipping stale fixture directory', DOCS)
+  }
+  process.exit(0)
+}
 
 // Forbidden patterns that indicate internal/sensitive content
 const forbidden = [
   /\bhttps?:\/\/(intra|internal|corp)[^\s)]+/i,
   /\bJIRA-\d+\b/i,
   /\b[A-Z]{2,}-\d+\b/, // Generic ticket patterns
+  /\biWow\b/i, // Internal system name (keep out of public docs)
   /\bTopdanmark\b/i,
   /\bIf Insurance\b/i,
   /\b(localhost|127\.0\.0\.1|internal\.)[^\s)]+/i,
@@ -59,7 +82,7 @@ let yellow = []
 let fileCount = 0
 let checkCount = 0
 
-function checkFile(p) {
+function checkFile(p, withinDocs = false) {
   fileCount++
   const raw = fs.readFileSync(p, 'utf8')
   const { data, content } = matter(raw)
@@ -157,6 +180,11 @@ function checkFile(p) {
     checkCount++
   }
 
+  if (withinDocs && /\/runbooks\//i.test(content)) {
+    red.push(`${p}: guidance must not link directly to /runbooks`)
+    checkCount++
+  }
+
   // Change size vs declared change_type
   const lines = raw.split('\n').length
   if (data.change_type && CHANGE_LIMITS[data.change_type] !== Infinity) {
@@ -179,15 +207,17 @@ function checkFile(p) {
   }
 }
 
-function walk(dir) {
+function walk(dir, withinDocs = false) {
   try {
     for (const f of fs.readdirSync(dir)) {
       const p = path.join(dir, f)
       const s = fs.statSync(p)
       if (s.isDirectory() && f !== 'node_modules' && f !== '.git') {
-        walk(p)
+        const nextWithinDocs = withinDocs || path.resolve(p).startsWith(path.resolve(DOCS))
+        walk(p, nextWithinDocs)
       } else if (p.endsWith('.md')) {
-        checkFile(p)
+        const enforceDocs = withinDocs || path.resolve(p).startsWith(path.resolve(DOCS))
+        checkFile(p, enforceDocs)
       }
     }
   } catch (err) {
@@ -198,41 +228,71 @@ function walk(dir) {
 }
 
 // Main execution
-console.log('🔍 Running content guard checks...\n')
+if (!JSON_MODE) {
+  console.log('🔍 Running content guard checks...\n')
+}
 
 if (!fs.existsSync(DOCS)) {
-  console.error(`❌ Error: docs directory not found at ${DOCS}`)
+  if (JSON_MODE) {
+    console.log(
+      JSON.stringify({
+        status: 'error',
+        error: `docs directory not found at ${DOCS}`,
+        fileCount: 0,
+        checkCount: 0,
+        red: [],
+        yellow: []
+      })
+    )
+  } else {
+    console.error(`❌ Error: docs directory not found at ${DOCS}`)
+  }
   process.exit(1)
 }
 
-walk(DOCS)
-
-console.log(`📊 Checked ${fileCount} files with ${checkCount} checks performed\n`)
-
-if (red.length) {
-  console.error('🔴 RED FAILURES (blocking):')
-  red.forEach(x => console.error(`  - ${x}`))
-  console.error('')
+walk(DOCS, true)
+if (fs.existsSync(RUNBOOKS)) {
+  walk(RUNBOOKS, false)
 }
 
-if (yellow.length) {
-  console.log('🟡 YELLOW WARNINGS (review recommended):')
-  yellow.forEach(x => console.log(`  - ${x}`))
-  console.log('')
+const status = red.length ? 'red' : yellow.length ? 'yellow' : 'green'
+const payload = {
+  status,
+  fileCount,
+  checkCount,
+  red,
+  yellow
 }
 
-if (!red.length && !yellow.length) {
-  console.log('✅ All checks passed! Content is Band A compliant.')
-  process.exit(0)
+if (JSON_MODE) {
+  console.log(JSON.stringify(payload))
+} else {
+  console.log(`📊 Checked ${fileCount} files with ${checkCount} checks performed\n`)
+
+  if (red.length) {
+    console.error('🔴 RED FAILURES (blocking):')
+    red.forEach(x => console.error(`  - ${x}`))
+    console.error('')
+  }
+
+  if (yellow.length) {
+    console.log('🟡 YELLOW WARNINGS (review recommended):')
+    yellow.forEach(x => console.log(`  - ${x}`))
+    console.log('')
+  }
+
+  if (!red.length && !yellow.length) {
+    console.log('✅ All checks passed! Content is Band A compliant.')
+  } else if (red.length) {
+    console.error('❌ Guard check FAILED - please fix red issues before merging')
+  } else if (yellow.length) {
+    console.log('⚠️  Guard check passed with warnings - review recommended')
+    console.log('::warning::Yellow flags detected, manual review recommended')
+  }
 }
 
-if (red.length) {
-  console.error('❌ Guard check FAILED - please fix red issues before merging')
+if (status === 'red') {
   process.exit(1)
 }
 
-if (yellow.length) {
-  console.log('⚠️  Guard check passed with warnings - review recommended')
-  console.log('::warning::Yellow flags detected, manual review recommended')
-  process.exit(0)
-}
+process.exit(0)

@@ -23,7 +23,7 @@ const BASE_URL = `http://localhost:${PORT}`
 const TIMEOUT = 60000 // 60 seconds
 
 // Pages to audit
-const PAGES = ['/go-to-docs/', '/go-to-docs/band-a', '/go-to-docs/governance']
+const PAGES = ['/Northbook/', '/Northbook/band-a', '/Northbook/governance']
 
 let serverProcess = null
 let browser = null
@@ -78,7 +78,7 @@ async function waitForServer(maxAttempts = 30) {
 
   for (let i = 0; i < maxAttempts; i++) {
     try {
-      const response = await page.goto(`${BASE_URL}/go-to-docs/`, {
+      const response = await page.goto(`${BASE_URL}/Northbook/`, {
         timeout: 2000,
         waitUntil: 'domcontentloaded'
       })

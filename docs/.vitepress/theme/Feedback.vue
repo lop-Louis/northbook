@@ -1,86 +1,74 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 
 const route = useRoute()
-const repo = 'lop-Louis/go-to-docs'
+const { page } = useData()
+const repo = 'lop-louis/Northbook'
 
-const mk = (label: string, prefix: string) => {
+function mk(label: 'helpful' | 'not-helpful' | 'question', prefix: string) {
+  const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const title = encodeURIComponent(`[${prefix}] ${route.path}`)
-  const body = encodeURIComponent(
-    `Page: ${typeof window !== 'undefined' ? window.location.origin : ''}${route.path}\nVersion: v1\n\nWhat happened:`
-  )
-  return `https://github.com/${repo}/issues/new?labels=feedback,${label},kl&title=${title}&body=${body}`
+  const body = encodeURIComponent(`Page: ${origin}${route.path}\nVersion: v1\n\nWhat happened:`)
+
+  const base = label === 'question' ? ['question', 'kl'] : ['feedback', 'kl', label]
+  const extra = Array.isArray(page.value.frontmatter?.labels) ? page.value.frontmatter.labels : []
+  const labels = [...new Set([...base, ...extra])].join(',')
+
+  return `https://github.com/${repo}/issues/new?labels=${labels}&title=${title}&body=${body}`
+}
+
+function track(kind: 'helpful' | 'not-helpful' | 'question') {
+  if (typeof window === 'undefined' || !('gtag' in window)) return
+
+  const version = location.pathname.startsWith('/v2/') ? 'v2' : 'v1'
+  window.gtag('event', 'feedback_click', {
+    feedback_type: kind,
+    page_path: location.pathname,
+    site_version: version
+  })
 }
 </script>
 
 <template>
-  <div class="vp-feedback">
-    <div class="vp-feedback__title">Was this page helpful?</div>
+  <div
+    class="vp-feedback"
+    role="region"
+    aria-label="Page feedback"
+    style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--vp-c-divider)"
+  >
+    <div class="vp-feedback__title" style="font-size: 0.9rem; opacity: 0.85; margin-bottom: 0.5rem">
+      Was this page helpful
+    </div>
     <div class="vp-feedback__row">
-      <a class="vp-button" :href="mk('helpful', 'Helpful')" target="_blank" rel="noopener">
+      <a
+        class="vp-button"
+        :href="mk('helpful', 'Helpful')"
+        target="_blank"
+        rel="noopener"
+        @click="track('helpful')"
+      >
         👍 Yes
       </a>
-      <a class="vp-button" :href="mk('not-helpful', 'Not Helpful')" target="_blank" rel="noopener">
+      <a
+        class="vp-button"
+        :href="mk('not-helpful', 'Not Helpful')"
+        target="_blank"
+        rel="noopener"
+        style="margin-left: 0.5rem"
+        @click="track('not-helpful')"
+      >
         👎 No
       </a>
-      <a class="vp-button" :href="mk('question', 'Question')" target="_blank" rel="noopener">
+      <a
+        class="vp-button"
+        :href="mk('question', 'Question')"
+        target="_blank"
+        rel="noopener"
+        style="margin-left: 0.5rem"
+        @click="track('question')"
+      >
         ❓ Ask KL
       </a>
     </div>
   </div>
 </template>
-
-<style scoped>
-.vp-feedback {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--vp-c-divider);
-}
-
-.vp-feedback__title {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin-bottom: 0.5rem;
-}
-
-.vp-feedback__row {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.vp-feedback__row .vp-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.5;
-  text-align: center;
-  white-space: nowrap;
-  border: 1px solid var(--vp-button-alt-border);
-  border-radius: 8px;
-  background-color: var(--vp-button-alt-bg);
-  color: var(--vp-button-alt-text);
-  transition:
-    border-color 0.25s,
-    background-color 0.25s,
-    color 0.25s;
-  text-decoration: none;
-}
-
-.vp-feedback__row .vp-button:hover {
-  border-color: var(--vp-button-alt-hover-border);
-  background-color: var(--vp-button-alt-hover-bg);
-  color: var(--vp-button-alt-hover-text);
-}
-
-@media (max-width: 640px) {
-  .vp-feedback__row {
-    flex-direction: column;
-  }
-
-  .vp-feedback__row .vp-button {
-    width: 100%;
-  }
-}
-</style>

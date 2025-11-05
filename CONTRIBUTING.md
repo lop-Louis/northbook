@@ -2,7 +2,7 @@
 
 ## Welcome!
 
-Thank you for contributing to Go-To Docs. This guide helps you get started.
+Thank you for contributing to Northbook. Guidance over to-do. Northbook = guidance, not chores. This guide keeps principles and patterns in the open while chore-like runbooks stay elsewhere.
 
 ---
 
@@ -18,15 +18,15 @@ Thank you for contributing to Go-To Docs. This guide helps you get started.
 ## Local Development
 
 ```bash
-# Clone repo
-git clone https://github.com/lop-Louis/go-to-docs.git
-cd go-to-docs
+# Clone repo (after rename)
+git clone https://github.com/lop-louis/Northbook.git
+cd Northbook
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start dev server
-npm run docs:dev
+pnpm run docs:dev
 ```
 
 Visit http://localhost:5173
@@ -55,8 +55,8 @@ status: live
 4. Test locally:
 
 ```bash
-npm run guard        # Check compliance
-npm run docs:dev     # Preview
+pnpm run guard        # Check compliance
+pnpm run docs:dev     # Preview
 ```
 
 ---
@@ -84,19 +84,9 @@ npm run docs:dev     # Preview
 
 4. **Wait for automated checks:**
 
-   The PR will receive a comprehensive automated summary covering:
-   - ✅ Frontmatter validation
-   - ✅ Band A compliance (Content Guard)
-   - ✅ Link validation (internal + external)
-   - ✅ Build test
-   - ✅ Component tests
-   - ✅ Performance audit (Lighthouse CI)
-   - ✅ Secret scan
+   The `Guard` workflow runs on every PR and will fail fast if Band A rules or anti-drift checks trip. Fix anything flagged in the job logs before requesting review.
 
-5. **Check PR status:**
-   - 🟢 **Green:** All checks passed, ready for auto-merge
-   - 🟡 **Yellow:** Warnings detected, needs human review
-   - � **Red:** Blocking issues, must fix before merge
+5. **Check PR status:** Guard must be green before maintainers review. Branch protection requires at least one approval before merge.
 
 6. **Choose appropriate change_type:**
    - `patch`: < 50 lines, typos/clarifications

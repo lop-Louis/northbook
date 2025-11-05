@@ -1,7 +1,7 @@
 {
-  "name": "go-to-docs",
+  "name": "northbook",
   "version": "1.0.0",
-  "description": "A centralized resource for reusable practices, team knowledge, and decision-making frameworks.",
+  "description": "Northbook — public-safe guidance, principles, and patterns.",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
@@ -36,6 +36,9 @@
     ],
     "docs/**/*.md": [
       "node scripts/guard.mjs"
+    ],
+    "runbooks/**/*.md": [
+      "node scripts/guard.mjs"
     ]
   },
   "keywords": [
@@ -48,12 +51,12 @@
   "license": "SEE LICENSE FILES",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lop-Louis/go-to-docs.git"
+    "url": "https://github.com/lop-louis/Northbook.git"
   },
   "bugs": {
-    "url": "https://github.com/lop-Louis/go-to-docs/issues"
+    "url": "https://github.com/lop-louis/Northbook/issues"
   },
-  "homepage": "https://lop-Louis.github.io/go-to-docs",
+  "homepage": "https://lop-louis.github.io/Northbook",
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
