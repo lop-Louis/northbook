@@ -1,36 +1,46 @@
 ---
-title: Sanitization Checklist
+title: Sanitization Guidance
 band: A
 owner: '@lop'
 refresh_after_days: 60
-change_type: patch
+change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 ---
 
-# Sanitization Checklist
+# Sanitization Guidance
 
-Use this checklist before submitting any PR to ensure content is public-safe.
+Northbook only publishes guidance that the public can quote without a second thought. Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
 
-## Pre-flight checks
+## What Sanitization Protects
 
-- [ ] **No internal names**: Replace company, product, or vendor names with generic terms
-- [ ] **No URLs**: Remove links to internal systems (intranet, internal tools, corp domains)
-- [ ] **No screenshots**: If needed, redact or recreate with dummy data
-- [ ] **No ticket IDs**: Strip patterns like `JIRA-####`, `ABC-####` (replace with `TICKET-ID` if educational)
-- [ ] **No exact numbers**: Convert to ranges ("10-20 users") or percentages ("~15% increase")
-- [ ] **No calendar dates**: Use relative time ("next quarter" → "within 3 months")
-- [ ] **No personal data**: Remove names, emails, phone numbers, or identifying details
+- **People** — strip personal data, names, emails, or avatars that could identify someone.
+- **Systems** — remove URLs, ticket IDs, and architecture breadcrumbs tied to internal tools.
+- **Signals** — convert precise numbers or dates into ranges and relative time so nothing leaks velocity or runway.
+- **Brand** — recreate screenshots with dummy data instead of redacting; avoid dragging internal UI chrome into public view.
 
-## Code samples
+If a fact is safe enough for a press release, it is safe enough for Northbook.
 
-- [ ] **Original work**: Code you wrote or public examples
-- [ ] **License noted**: If adapted, include attribution in comments
-- [ ] **No secrets**: No API keys, tokens, passwords, or connection strings
+## Rewrite Instead of Redact
 
-## Frontmatter required
+| Risky detail                               | Public-safe rewrite                                               |
+| ------------------------------------------ | ----------------------------------------------------------------- |
+| `Ticket like JIRA-#### blocked our deploy` | `TICKET-ID blocked the deploy`                                    |
+| `Shipped 17 dashboards on March 12`        | `Shipped the dashboards mid-March`                                |
+| `Internal billing URL: https://billing`    | `INTERNAL-URL` or describe the action (“Open the billing portal”) |
+| `Contact Alice for access`                 | `Contact @handle for access`                                      |
 
-Every page must have:
+This table is not exhaustive—sanitization is a judgment call. When in doubt, swap in a placeholder or cut the detail entirely.
+
+## Code and Content Requirements
+
+- Use original or permissively licensed snippets; cite the source inline when you adapt code.
+- Never ship tokens, secrets, or environment values. Obvious, but easy to miss—run the guard script if you touched config.
+- Prefer intent-focused prose (“Explain why the guard exists”) over step-by-step chores.
+
+## Frontmatter Contract
+
+Every guidance page must open with Band A frontmatter so automation can track ownership and freshness:
 
 ```yaml
 ---
@@ -43,44 +53,39 @@ status: live | stale | archived | draft
 ---
 ```
 
-## Change size guidelines
+## Sizing Your Edit
 
-| Declared | Suggested Scope                    | Typical Line Delta | Examples                    |
-| -------- | ---------------------------------- | ------------------ | --------------------------- |
-| patch    | Minor clarity, typo, 1–2 sentences | ≤ 50               | Fix wording, add link       |
-| minor    | New subsection, moderate rewrite   | ≤ 250              | Add facilitation pattern    |
-| major    | New page or large restructure      | > 250              | Introduce new practice page |
+| Declared | Suggested scope                     | Typical delta | Example                               |
+| -------- | ----------------------------------- | ------------- | ------------------------------------- |
+| patch    | Nudge clarity, swap a sentence      | ≤ 50 lines    | Tighten wording, add a public link    |
+| minor    | New subsection or sustained rewrite | ≤ 250 lines   | Extend a pattern, update the guard    |
+| major    | New page or large restructure       | > 250 lines   | Introduce a practice or retire legacy |
 
-## Testing locally
+Declare the change size honestly—automation will catch suspicious diffs.
 
-Run before submitting:
+## Local Ritual Before You Open a PR
 
 ```bash
-npm run docs:dev      # Preview site locally
-npm run guard         # Static hygiene / Band A checks
-npm run docs:build    # Ensure production build succeeds
+pnpm run docs:dev   # Preview the story you're telling
+pnpm run guard      # Band A and sanitization rules
+pnpm run docs:build # Ensure production build is happy
 ```
 
-## What happens next
+- Grep for lingering sensitive words: `rg -i "(secret|password|internal)" docs/`.
+- Keep frontmatter accurate; stale metadata gets flagged by the guard script.
+- Large link sweeps? Run `pnpm run links` to avoid noisy follow-up PRs.
 
-1. CI runs content guard, link checker, and secret scanner
-2. **Green**: Auto-merged within 1 minute
-3. **Yellow**: Review recommended (non-blocking warnings)
-4. **Red**: Blocked until fixed (policy / leak risk)
+## After You Push
 
-See [Governance Policy](./governance) for policy, stop rules, and SLOs.
+1. CI re-runs guard, link check, and secret scan.
+2. Green pipelines auto-merge; yellow warnings need a human glance.
+3. Red blocks ship until you resolve the breach.
 
-## Final Self-check Before PR
+Policy, stop rules, and SLOs live in [Governance Policy](./governance).
 
-- Grep for sensitive words you removed: `grep -Ei "(secret|password|internal)" -R docs/` → should return nothing relevant
-- Run guard: `npm run guard` → no red failures
-- Build passes: `npm run docs:build`
-- Frontmatter fields complete and accurate
-- Optional: run link check locally if you changed many URLs
+## Educational Placeholders
 
-## Educational Placeholder Conventions
-
-Use the following placeholders when teaching patterns:
+Use consistent stand-ins whenever you need to demonstrate a redaction pattern:
 
 | Placeholder    | Meaning                                |
 | -------------- | -------------------------------------- |
@@ -88,3 +93,5 @@ Use the following placeholders when teaching patterns:
 | `INTERNAL-URL` | Non-public link removed                |
 | `REDACTED`     | Sensitive detail intentionally removed |
 | `@handle`      | Any valid GitHub username              |
+
+If you need deeper task choreography, hand it off to the relevant `/runbooks` entry so the guidance stays lightweight.

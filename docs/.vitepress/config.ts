@@ -1,14 +1,92 @@
 import { defineConfig } from 'vitepress'
 
-// Google Analytics 4 Measurement ID
-const GA_ID = process.env.VITE_GA_ID || 'G-FZ8N89SQKN'
+const GA_ID = process.env.VITE_GA_ID || 'G-XXXX'
+const SITE_BASE = '/Northbook'
 
 export default defineConfig({
-  title: 'Go-To Docs & Governance',
-  description: 'Reusable practices, sanitized for public use.',
-  base: '/go-to-docs/',
+  title: 'Northbook',
+  description: 'Guidance over to-do.',
+  base: `${SITE_BASE}/`,
   lastUpdated: true,
   head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: `${SITE_BASE}/favicon-32x32.png`
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: `${SITE_BASE}/favicon-16x16.png`
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        href: `${SITE_BASE}/android-chrome-192x192.png`
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        href: `${SITE_BASE}/android-chrome-512x512.png`
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        href: `${SITE_BASE}/apple-touch-icon.png`
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'manifest',
+        href: `${SITE_BASE}/site.webmanifest`
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:title',
+        content: 'Northbook'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:description',
+        content: 'Guidance, not chores. Principles and patterns you can link.'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image',
+        content: `${SITE_BASE}/og-image.png`
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      }
+    ],
     [
       'script',
       {
@@ -23,12 +101,7 @@ export default defineConfig({
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_ID}', {
-  page_path: window.location.pathname,
-  anonymize_ip: true
-});
-
-// Version signal for v1/v2 adoption tracking
+gtag('config', '${GA_ID}', { anonymize_ip: true });
 (function(){
   var v = location.pathname.startsWith('/v2/') ? 'v2' : 'v1';
   gtag('event', 'page_view', { site_version: v });
@@ -37,11 +110,16 @@ gtag('config', '${GA_ID}', {
     ]
   ],
   themeConfig: {
+    siteTitle: false,
+    logo: {
+      light: '/logo-lockup-light.png',
+      dark: '/logo-lockup-dark.png'
+    },
     nav: [
       { text: 'Start', link: '/' },
       {
         text: 'Ask a question',
-        link: 'https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,question&title=[Question]%20'
+        link: 'https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH'
       }
     ],
     sidebar: [
@@ -49,13 +127,14 @@ gtag('config', '${GA_ID}', {
         text: 'Start here',
         collapsed: false,
         items: [
+          { text: 'Northbook Principles', link: '/principles' },
           { text: 'What is Band A', link: '/band-a' },
           { text: 'FAQ for New Joiners', link: '/faq-new-joiners' },
           { text: 'Monthly Release Rhythm', link: '/monthly-release' }
         ]
       },
       {
-        text: 'Public Guides',
+        text: 'Guides',
         collapsed: false,
         items: [
           { text: 'Decision Spine', link: '/decision-spine' },
@@ -70,25 +149,20 @@ gtag('config', '${GA_ID}', {
         items: [
           { text: 'Sanitization Checklist', link: '/sanitization' },
           { text: 'Answer Ledger Pattern', link: '/answer-ledger' },
-          { text: 'API Guidelines', link: '/api-guidelines' }
+          { text: 'Governance', link: '/governance' }
         ]
-      },
-      {
-        text: 'Moderator Ops',
-        collapsed: false,
-        items: [{ text: 'Governance Policy', link: '/governance' }]
       }
     ],
     outline: [2, 3],
     footer: {
       message: 'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.'
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/lop-Louis/go-to-docs' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/lop-louis/Northbook' }],
     search: {
       provider: 'local'
     },
     editLink: {
-      pattern: 'https://github.com/lop-Louis/go-to-docs/edit/main/docs/:path',
+      pattern: 'https://github.com/lop-louis/Northbook/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     }
   }

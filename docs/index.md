@@ -1,37 +1,40 @@
 ---
-title: Go-To Docs
+title: Northbook
 layout: home
 band: A
-owner: '@lop'
-refresh_after_days: 90
-change_type: minor
+owner: '@louis'
+refresh_after_days: 120
+change_type: patch
 status: live
-last_reviewed: '2025-11-04'
+last_reviewed: '2025-01-15'
 
 hero:
-  name: Go-To Docs
-  text: Answers you can link. Patterns you can trust.
-  tagline: Public-safe playbook for decisions, facilitation, and quick wins.
+  name: Northbook
+  text: Guidance over to-do.
+  image:
+    src: /logo-symbol.png
+    alt: Northbook logo
+  tagline: Principles and patterns you can link. Checklists live in /runbooks.
   actions:
     - theme: brand
       text: Start here
-      link: /band-a
+      link: /principles
     - theme: alt
       text: Ask a question
-      link: https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,question&title=[Question]%20
+      link: https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH
 
 features:
-  - title: Make decisions faster
-    details: Use the Decision Spine and stop relitigating. → /decision-spine
-  - title: Run better meetings
-    details: Copy-paste facilitation prompts that work. → /facilitation
-  - title: Ship accessible UI
-    details: Quick checks that catch 80% of issues. → /accessibility-quick-wins
+  - title: Decide faster
+    details: Use the Decision Spine to cut rework.
+  - title: Facilitate better
+    details: Copy-paste prompts that keep meetings on track.
+  - title: Ship accessibly
+    details: Quick checks that catch 80% of issues.
 ---
 
 ---
 
-- Monthly release captures meaningful changes in `CHANGELOG.md`
+- Monthly release captures meaningful changes in `CHANGELOG.md`.
 
 ## Governance & Safety
 

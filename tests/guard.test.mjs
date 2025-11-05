@@ -28,13 +28,28 @@ function createTestFile(filename, frontmatter, content) {
 function runGuard() {
   try {
     // Temporarily override DOCS directory for testing
-    const result = execSync(`node ${GUARD_SCRIPT}`, {
-      env: { ...process.env, DOCS: TEST_DIR },
+    const stdout = execSync(`node ${GUARD_SCRIPT}`, {
+      env: { ...process.env, DOCS: TEST_DIR, GUARD_FORMAT: 'json' },
       encoding: 'utf8'
     })
-    return { success: true, output: result }
+    const parsed = stdout ? JSON.parse(stdout) : {}
+    return { success: true, output: stdout, data: parsed }
   } catch (error) {
-    return { success: false, output: error.stdout + error.stderr, code: error.status }
+    const combined = `${error.stdout || ''}${error.stderr || ''}`.trim()
+    let parsed = null
+    if (combined) {
+      try {
+        parsed = JSON.parse(combined)
+      } catch (err) {
+        // ignore parse errors, keep raw output
+      }
+    }
+    return {
+      success: false,
+      output: combined,
+      data: parsed,
+      code: error.status
+    }
   }
 }
 
@@ -68,6 +83,7 @@ describe('Content Guard - Frontmatter Validation', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, true, 'Guard should pass for valid content')
+    assert.strictEqual(result.data?.status, 'green')
   })
 
   it('should fail when band is not A', () => {
@@ -89,7 +105,11 @@ describe('Content Guard - Frontmatter Validation', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, false, 'Guard should fail for non-A band')
-    assert.match(result.output, /band=B not allowed/, 'Should report band violation')
+    const messages = result.data?.red || []
+    assert.ok(
+      messages.some(msg => msg.includes('band=B not allowed')),
+      'Should report band violation'
+    )
   })
 
   it('should fail when required fields are missing', () => {
@@ -107,7 +127,11 @@ describe('Content Guard - Frontmatter Validation', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, false, 'Guard should fail for missing fields')
-    assert.match(result.output, /missing/i, 'Should report missing fields')
+    const messages = result.data?.red || []
+    assert.ok(
+      messages.some(msg => /missing/i.test(msg)),
+      'Should report missing fields'
+    )
   })
 
   it('should fail for invalid change_type', () => {
@@ -129,6 +153,11 @@ describe('Content Guard - Frontmatter Validation', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, false, 'Guard should fail for invalid change_type')
+    const messages = result.data?.red || []
+    assert.ok(
+      messages.some(msg => msg.includes("Invalid change_type='huge'")),
+      'Should indicate invalid change_type'
+    )
   })
 
   it('should fail for invalid status', () => {
@@ -150,6 +179,11 @@ describe('Content Guard - Frontmatter Validation', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, false, 'Guard should fail for invalid status')
+    const messages = result.data?.red || []
+    assert.ok(
+      messages.some(msg => msg.includes("Invalid status='deleted'")),
+      'Should indicate invalid status'
+    )
   })
 })
 
@@ -182,7 +216,11 @@ describe('Content Guard - Forbidden Patterns', () => {
     )
 
     const result = runGuard()
-    assert.match(result.output, /internal/i, 'Should detect internal URLs')
+    const messages = result.data?.yellow || []
+    assert.ok(
+      messages.some(msg => /internal/i.test(msg)),
+      'Should detect internal URLs'
+    )
   })
 
   it('should warn about ticket IDs', () => {
@@ -203,7 +241,11 @@ describe('Content Guard - Forbidden Patterns', () => {
     )
 
     const result = runGuard()
-    assert.match(result.output, /internal/i, 'Should detect ticket IDs')
+    const messages = result.data?.yellow || []
+    assert.ok(
+      messages.some(msg => /ticket/i.test(msg)),
+      'Should detect ticket IDs'
+    )
   })
 
   it('should fail for placeholder tokens', () => {
@@ -225,6 +267,11 @@ describe('Content Guard - Forbidden Patterns', () => {
 
     const result = runGuard()
     assert.strictEqual(result.success, false, 'Should fail for placeholder tokens')
+    const messages = result.data?.red || []
+    assert.ok(
+      messages.some(msg => /placeholder/i.test(msg)),
+      'Should report placeholder use'
+    )
   })
 })
 
@@ -259,7 +306,11 @@ describe('Content Guard - Change Size Validation', () => {
     )
 
     const result = runGuard()
-    assert.match(result.output, /exceeds.*patch/i, 'Should warn about large patch')
+    const messages = result.data?.yellow || []
+    assert.ok(
+      messages.some(msg => /exceeds.*patch/i.test(msg)),
+      'Should warn about large patch'
+    )
   })
 
   it('should allow major changes with large content', () => {
@@ -283,7 +334,9 @@ describe('Content Guard - Change Size Validation', () => {
 
     const result = runGuard()
     // Should not have size warnings for major changes
-    assert.ok(!result.output.includes('exceeds') || result.success, 'Major changes can be large')
+    const warnings = result.data?.yellow || []
+    assert.strictEqual(warnings.length, 0, 'Major changes can be large without warnings')
+    assert.strictEqual(result.success, true)
   })
 })
 
