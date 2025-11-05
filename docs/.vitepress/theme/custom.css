@@ -92,6 +92,10 @@
   padding: 0.25rem 0.375rem;
   border-radius: 4px;
   font-size: 0.875em;
+  color: var(--vp-code-color);
+}
+.vp-doc [class*='language-'] code {
+  background: inherit;
 }
 
 /* Skip to content link for screen readers */
@@ -186,7 +190,9 @@
 
 .VPDocFooter .pager .pager-link {
   border-color: rgba(245, 158, 11, 0.38);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .VPDocFooter .pager .pager-link:hover {
@@ -255,6 +261,7 @@
 
 .dark .vp-doc code {
   background-color: var(--vp-c-bg-soft);
+  color: var(--vp-code-color);
 }
 
 .dark .vp-doc table {

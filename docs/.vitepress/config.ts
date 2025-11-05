@@ -116,7 +116,7 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
       dark: '/logo-lockup-dark.png'
     },
     nav: [
-      { text: 'Start', link: '/' },
+      { text: 'Start', link: '/band-a' },
       {
         text: 'Ask a question',
         link: 'https://github.com/lop-louis/Northbook/issues/new?labels=kl,question&title=[Question]%20PATH'

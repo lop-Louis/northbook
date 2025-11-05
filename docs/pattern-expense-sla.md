@@ -39,7 +39,7 @@ This pattern turns a policy reminder into action with three lines:
 
 ## Publish checklist
 
-- [x] No internal system names or screenshots
-- [x] SLA expressed as a range or day count (no calendar dates)
-- [x] Generic consequence that reflects policy intent without quoting it
-- [x] Link from onboarding/FAQ so people can find the pattern quickly
+- ✔️ No internal system names or screenshots
+- ✔️ SLA expressed as a range or day count (no calendar dates)
+- ✔️ Generic consequence that reflects policy intent without quoting it
+- ✔️ Link from onboarding/FAQ so people can find the pattern quickly
