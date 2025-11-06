@@ -1,4 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Manrope';
+  src:
+    url('/northbook/fonts/Manrope/Manrope-VariableFont_wght.woff2') format('truetype'),
+    url('/fonts/Manrope/Manrope-VariableFont_wght.woff2') format('truetype');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('/northbook/fonts/Inter/Inter-VariableFont_opsz,wght.woff2') format('truetype'),
+    url('/fonts/Inter/Inter-VariableFont_opsz,wght.woff2') format('truetype');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('/northbook/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2') format('truetype'),
+    url('/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2') format('truetype');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   --nb-color-navy: #0f172a;
@@ -8,11 +36,13 @@
   --nb-color-code-light: #1f3a8a;
   --nb-color-code-dark: #93c5fd;
 
-  --vp-font-family-base: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --vp-font-family-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --vp-font-family-mono:
     'JetBrains Mono', 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
+  --nb-font-heading-weight: 600;
+  --nb-font-body-weight: 400;
 
   --vp-c-brand-1: var(--nb-color-gold);
   --vp-c-brand-2: var(--nb-color-gold-dark);
@@ -82,6 +112,7 @@
   --vp-button-alt-text: #f8fafc;
   --vp-button-alt-hover-border: #facc15;
   --vp-button-alt-hover-text: #facc15;
+  --nb-font-body-weight: 300;
 }
 
 body,
@@ -90,6 +121,25 @@ input,
 textarea {
   font-family: var(--vp-font-family-base);
   color: var(--vp-c-text-1);
+  font-weight: var(--nb-font-body-weight);
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1;
+  text-rendering: optimizeLegibility;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6,
+.VPHomeHero .name,
+.VPHomeHero .text,
+.VPNavBarTitle .title {
+  font-family: var(--vp-font-family-heading);
+  font-weight: var(--nb-font-heading-weight);
+  letter-spacing: -0.01em;
 }
 
 .VPHomeHero .name,
@@ -106,6 +156,8 @@ textarea {
 
 .VPHomeFeatures .item .title {
   color: var(--nb-color-navy);
+  font-family: var(--vp-font-family-heading);
+  font-weight: var(--nb-font-heading-weight);
 }
 
 .dark .VPHomeFeatures .item .title {
