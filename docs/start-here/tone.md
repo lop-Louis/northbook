@@ -5,6 +5,10 @@ owner: '@lop'
 refresh_after_days: 120
 change_type: minor
 status: live
+audience: Anyone writing or editing Northbook content
+tone: Plainspoken, candid, energetic
+narrative_goal: Define how our voice should sound across channels
+primary_action: Apply the pillars and scenario guidance before publishing
 ---
 
 # Voice & Tone Guide
@@ -41,12 +45,5 @@ When: Use this before writing net-new content or auditing drafts from others.
 - Emojis in docs (save them for async chatter).
 - Hyped adjectives ("amazing", "incredible")—state proof instead.
 - Passive constructions that hide ownership.
-
-## Consistency Checklist
-
-- [ ] One-line "Why" up top.
-- [ ] First paragraph under 40 words.
-- [ ] Exit metric or success signal named explicitly.
-- [ ] Links use descriptive labels, no raw URLs.
 
 Pair this with [Sanitization](../sanitization) and [Decision Spine](../decision-spine) to keep content actionable.

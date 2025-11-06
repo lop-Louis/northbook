@@ -6,6 +6,10 @@ refresh_after_days: 120
 change_type: minor
 status: live
 last_reviewed: '2025-11-04'
+audience: Engineers designing and reviewing HTTP APIs
+tone: Plainspoken, candid, energetic
+narrative_goal: Capture the baseline rules for Northbook APIs until the full guide ships
+primary_action: Apply these defaults when drafting or reviewing API changes
 ---
 
 # API Guidelines (Stub)

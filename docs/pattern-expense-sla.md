@@ -7,6 +7,10 @@ change_type: patch
 status: live
 labels:
   - finance
+audience: People converting finance policies into public-safe actions
+tone: Plainspoken, candid, energetic
+narrative_goal: Show how to translate expense policy into fast, safe guidance
+primary_action: Use the three-line pattern when reminding teams about expenses
 ---
 
 # Policy → Action Pattern (Expenses)

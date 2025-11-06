@@ -6,6 +6,10 @@ refresh_after_days: 60
 change_type: minor
 status: live
 last_reviewed: '2025-11-04'
+audience: Contributors preparing public-safe guidance
+tone: Plainspoken, candid, energetic
+narrative_goal: Show how to strip risk while keeping guidance useful
+primary_action: Run these sanitization checks before shipping or reviewing a page
 ---
 
 # Sanitization Guidance

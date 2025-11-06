@@ -6,6 +6,10 @@ refresh_after_days: 90
 change_type: patch
 status: live
 last_reviewed: '2025-11-04'
+audience: Designers and engineers shipping customer-facing UI
+tone: Plainspoken, candid, energetic
+narrative_goal: Give the fastest accessibility fixes that raise baseline quality
+primary_action: Run these quick checks before approving UI work
 ---
 
 # Accessibility Quick Wins

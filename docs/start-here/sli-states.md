@@ -5,6 +5,10 @@ band: A
 owner: '@lop'
 refresh_after_days: 60
 status: 'draft'
+audience: Stream and seam leads tracking work health
+tone: Plainspoken, candid, energetic
+narrative_goal: Show how work flows across states and which metrics to watch
+primary_action: Map your current initiative to these states and monitor the SLIs
 ---
 
 # SLI States

@@ -6,6 +6,10 @@ refresh_after_days: 90
 change_type: patch
 status: live
 last_reviewed: '2025-11-04'
+audience: Facilitators and team leads running collaborative sessions
+tone: Plainspoken, candid, energetic
+narrative_goal: Equip meetings with repeatable structures that keep outcomes sharp
+primary_action: Pick one technique and run it in your next collaborative session
 ---
 
 # Facilitation Techniques

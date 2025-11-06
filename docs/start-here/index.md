@@ -5,6 +5,10 @@ owner: '@lop'
 refresh_after_days: 90
 change_type: minor
 status: live
+audience: Anyone kicking off work and needing the latest guardrails
+tone: Plainspoken, candid, energetic
+narrative_goal: Point readers to the foundational guides before they build
+primary_action: Follow the essentials links to align voice, UI, and flow
 ---
 
 # Start Here

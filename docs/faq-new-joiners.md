@@ -6,6 +6,10 @@ refresh_after_days: 60
 change_type: patch
 status: live
 last_reviewed: '2025-11-04'
+audience: Engineers and collaborators onboarding to Northbook habits
+tone: Plainspoken, candid, energetic
+narrative_goal: Answer recurring new-joiner questions with actionable next steps
+primary_action: Scan the FAQs and follow the linked deeper dives as needed
 ---
 
 # FAQ for New Joiners

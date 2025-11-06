@@ -5,6 +5,10 @@ band: A
 owner: '@lop'
 refresh_after_days: 60
 status: 'draft'
+audience: Maintainers looking for operational to-do checklists
+tone: Plainspoken, candid, energetic
+narrative_goal: Point to the tactical runbooks kept out of guidance sections
+primary_action: Pick the runbook that matches your scenario and execute it
 ---
 
 # Runbooks

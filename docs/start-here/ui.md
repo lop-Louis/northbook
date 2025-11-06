@@ -5,6 +5,10 @@ owner: '@lop'
 refresh_after_days: 120
 change_type: minor
 status: live
+audience: Designers and engineers building shared UI
+tone: Plainspoken, candid, energetic
+narrative_goal: Lock in the visual system so product surfaces feel unified
+primary_action: Apply these tokens and specs before shipping UI work
 ---
 
 # UI Baseline

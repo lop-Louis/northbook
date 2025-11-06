@@ -6,6 +6,10 @@ refresh_after_days: 90
 change_type: patch
 status: live
 last_reviewed: '2025-11-04'
+audience: Team leads and knowledge stewards who maintain shared answers
+tone: Plainspoken, candid, energetic
+narrative_goal: Show how to capture recurring questions into a searchable ledger
+primary_action: Stand up or update your answer ledger using this pattern
 ---
 
 # Answer Ledger Pattern
