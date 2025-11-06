@@ -1,16 +1,52 @@
 #!/usr/bin/env node
 
-import { chromium } from 'playwright'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath, pathToFileURL } from 'node:url'
+import { fileURLToPath } from 'node:url'
+import { Window } from 'happy-dom'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const repoRoot = path.resolve(__dirname, '..')
 const distDir = path.join(repoRoot, 'docs/.vitepress/dist')
 const configPath = path.join(repoRoot, 'docs/.vitepress/config.ts')
+
+const CTA_DISTANCE_LIMIT = Number(process.env.PRIMARY_ACTION_MAX_DISTANCE_PX ?? 600)
+const CHAR_TO_PX = Number(process.env.PRIMARY_ACTION_CHAR_TO_PX ?? 0.35)
+const BLOCK_BASE_PX = Number(process.env.PRIMARY_ACTION_BLOCK_BASE_PX ?? 24)
+
+const BLOCK_TAGS = new Set([
+  'P',
+  'DIV',
+  'SECTION',
+  'ARTICLE',
+  'UL',
+  'OL',
+  'LI',
+  'PRE',
+  'TABLE',
+  'BLOCKQUOTE',
+  'FIGURE',
+  'H1',
+  'H2',
+  'H3',
+  'H4',
+  'H5',
+  'H6'
+])
+
+const BONUS_PX = {
+  IMG: 160,
+  PICTURE: 160,
+  VIDEO: 200,
+  CANVAS: 200,
+  SVG: 120,
+  PRE: 160,
+  CODE: 120,
+  TABLE: 180,
+  HR: 24
+}
 
 /**
  * Extract the internal links listed under the "Guides" sidebar group.
@@ -113,42 +149,12 @@ async function main() {
     return
   }
 
-  const browser = await chromium.launch()
-  const context = await browser.newContext({ viewport: { width: 1280, height: 720 } })
-  const page = await context.newPage()
-
   const failures = []
 
   for (const htmlPath of htmlFiles) {
-    const fileUrl = pathToFileURL(htmlPath).href
+    const { hasAnchor, distance } = await analyzeHtmlFile(htmlPath)
 
-    await page.goto(fileUrl)
-
-    const { hasAnchor, distance } = await page.evaluate(() => {
-      const doc = globalThis.document
-      if (!doc) return { hasAnchor: false, distance: null }
-
-      const contentRoot =
-        doc.querySelector('#VPContent') ||
-        doc.querySelector('.VPDoc') ||
-        doc.querySelector('main') ||
-        doc.body
-
-      if (!contentRoot) return { hasAnchor: false, distance: null }
-
-      const anchor = contentRoot.querySelector('[data-primary-action]')
-      if (!anchor) return { hasAnchor: false, distance: null }
-
-      const rootRect = contentRoot.getBoundingClientRect()
-      const anchorRect = anchor.getBoundingClientRect()
-
-      return {
-        hasAnchor: true,
-        distance: anchorRect.top - rootRect.top
-      }
-    })
-
-    if (!hasAnchor || distance == null || distance > 600) {
+    if (!hasAnchor || distance == null || distance > CTA_DISTANCE_LIMIT) {
       const relative =
         '/' +
         path
@@ -165,8 +171,6 @@ async function main() {
     }
   }
 
-  await browser.close()
-
   if (failures.length === 0) {
     console.log('[verify-primary-actions] All Playbook and Guide pages include a primary action.')
     return
@@ -175,7 +179,7 @@ async function main() {
   console.error('\nPrimary action CTA check failed on these pages:\n')
   for (const { page, hasAnchor, distance } of failures) {
     const detail = hasAnchor
-      ? `CTA appears ~${Math.round(Number(distance))}px from start of content`
+      ? `CTA appears in estimated ~${distance}px from start of content`
       : 'CTA not found in content'
 
     console.error(
@@ -192,3 +196,106 @@ main().catch(error => {
   console.error(error)
   process.exitCode = 1
 })
+
+async function analyzeHtmlFile(htmlPath) {
+  const html = await fs.readFile(htmlPath, 'utf8')
+  const window = new Window()
+  window.document.write(html)
+
+  const doc = window.document
+  const contentRoot =
+    doc.querySelector('#VPContent') ||
+    doc.querySelector('.VPDoc') ||
+    doc.querySelector('main') ||
+    doc.body
+
+  if (!contentRoot) {
+    return { hasAnchor: false, distance: null }
+  }
+
+  const anchor = contentRoot.querySelector('[data-primary-action]')
+  if (!anchor) {
+    return { hasAnchor: false, distance: null }
+  }
+
+  const { chars, blocks, bonus } = accumulateBeforeAnchor(contentRoot, anchor)
+  const estimatedDistance = Math.round(blocks * BLOCK_BASE_PX + chars * CHAR_TO_PX + bonus)
+
+  return {
+    hasAnchor: true,
+    distance: estimatedDistance
+  }
+}
+
+function accumulateBeforeAnchor(root, anchor) {
+  let totalChars = 0
+  let totalBlocks = 0
+  let totalBonus = 0
+
+  for (const child of root.childNodes) {
+    const result = gatherNodeStats(child, anchor)
+    totalChars += result.chars
+    totalBlocks += result.blocks
+    totalBonus += result.bonus
+    if (result.found) break
+  }
+
+  return {
+    chars: totalChars,
+    blocks: totalBlocks,
+    bonus: totalBonus
+  }
+}
+
+function gatherNodeStats(node, anchor) {
+  if (node === anchor) {
+    return { chars: 0, blocks: 0, bonus: 0, found: true }
+  }
+
+  const ELEMENT_NODE = 1
+  const TEXT_NODE = 3
+
+  if (node.nodeType === TEXT_NODE) {
+    return {
+      chars: normalizeText(node.textContent).length,
+      blocks: 0,
+      bonus: 0,
+      found: false
+    }
+  }
+
+  if (node.nodeType !== ELEMENT_NODE) {
+    return { chars: 0, blocks: 0, bonus: 0, found: false }
+  }
+
+  const element = node
+  let chars = 0
+  let blocks = 0
+  let bonus = 0
+
+  if (BLOCK_TAGS.has(element.tagName)) {
+    blocks += 1
+  }
+
+  if (BONUS_PX[element.tagName]) {
+    bonus += BONUS_PX[element.tagName]
+  }
+
+  for (const child of element.childNodes) {
+    const childStats = gatherNodeStats(child, anchor)
+    chars += childStats.chars
+    blocks += childStats.blocks
+    bonus += childStats.bonus
+    if (childStats.found) {
+      return { chars, blocks, bonus, found: true }
+    }
+  }
+
+  return { chars, blocks, bonus, found: false }
+}
+
+function normalizeText(text) {
+  return String(text || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}

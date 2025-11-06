@@ -82,7 +82,7 @@ let yellow = []
 let fileCount = 0
 let checkCount = 0
 
-function checkFile(p, withinDocs = false) {
+function checkFile(p) {
   fileCount++
   const raw = fs.readFileSync(p, 'utf8')
   const { data, content } = matter(raw)
