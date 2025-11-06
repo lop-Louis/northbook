@@ -6,6 +6,10 @@ status: live
 refresh_after_days: 90
 change_type: minor
 last_reviewed: '2025-01-15'
+audience: Product ops and accessibility leads running the quarterly sweep
+tone: Plainspoken, candid, energetic
+narrative_goal: Outline the repeatable tasks for verifying accessibility health
+primary_action: Execute these steps during the quarterly audit and log findings
 ---
 
 ## Purpose

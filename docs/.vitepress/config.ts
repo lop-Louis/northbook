@@ -21,6 +21,26 @@ export default defineConfig({
     [
       'link',
       {
+        rel: 'preload',
+        href: `${SITE_BASE}/fonts/Inter/Inter-VariableFont_opsz,wght.woff2`,
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: ''
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'preload',
+        href: `${SITE_BASE}/fonts/Manrope/Manrope-VariableFont_wght.woff2`,
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: ''
+      }
+    ],
+    [
+      'link',
+      {
         rel: 'icon',
         type: 'image/png',
         sizes: '16x16',

@@ -6,6 +6,10 @@ refresh_after_days: 90
 change_type: patch
 status: live
 last_reviewed: '2025-11-04'
+audience: Deciders and collaborators tackling multi-team technical choices
+tone: Plainspoken, candid, energetic
+narrative_goal: Give a reusable structure for framing, deciding, and reviewing work
+primary_action: Run your next decision through the four-stage spine
 ---
 
 # Decision Spine
@@ -77,3 +81,5 @@ Combine with:
 
 - [Answer Ledger](./answer-ledger) for recurring questions
 - [Facilitation](./facilitation) techniques for group decisions
+
+See [Governance](./governance) for change types and monthly [release cadence](./release).

@@ -7,6 +7,10 @@ refresh_after_days: 120
 change_type: patch
 status: live
 last_reviewed: '2025-01-15'
+audience: Anyone looking for Northbook guidance and entry points
+tone: Plainspoken, candid, energetic
+narrative_goal: Orient newcomers to the core pillars and where to start
+primary_action: Follow the highlighted starting links to continue the journey
 
 hero:
   name: Northbook
@@ -14,7 +18,7 @@ hero:
   image:
     src: /logo-symbol.png
     alt: Northbook logo
-  tagline: Principles and patterns you can link. Checklists live in /runbooks.
+  tagline: Guidance you can ship today. Grab checklists from the runbooks.
   actions:
     - theme: brand
       text: Start here
@@ -35,6 +39,10 @@ features:
 ---
 
 - Monthly release captures meaningful changes in `CHANGELOG.md`.
+
+## Runbooks
+
+Guidance stays light on chores. When you need the step-by-step checklist, jump to [/runbooks/](/runbooks/).
 
 ## Governance & Safety
 

@@ -6,6 +6,10 @@ refresh_after_days: 120
 change_type: minor
 status: live
 last_reviewed: '2025-11-04'
+audience: Maintainers and contributors who publish or review Northbook content
+tone: Plainspoken, candid, energetic
+narrative_goal: Define the guardrails that keep public docs safe and trustworthy
+primary_action: Apply these rules when editing or approving any page
 ---
 
 # Governance Policy

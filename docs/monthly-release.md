@@ -6,6 +6,10 @@ refresh_after_days: 120
 change_type: minor
 status: live
 last_reviewed: '2025-11-04'
+audience: Maintainers planning and shipping the monthly docs release
+tone: Plainspoken, candid, energetic
+narrative_goal: Explain how the monthly tagging cadence keeps the site current
+primary_action: Follow the prep checklist and tag the monthly release
 ---
 
 # Monthly Release Rhythm
