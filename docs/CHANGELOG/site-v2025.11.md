@@ -20,39 +20,21 @@ Back to [Releases](../release.md)
 
 ## Added
 
-- “Was this helpful?” control on Playbook pages with GA4 events (`doc_helped` Yes/No).
-- CI: Markdown link checker with allowlist (`.github/workflows/linkcheck.yml`).
-- CI: PR required-fields enforcer for Why, Exit metric, Stream/Seam ID, Exception (`.github/workflows/pr-fields.yml`).
-- CI: Homepage ↔ Runbooks assertion to prevent false promises (`.github/workflows/homepage-runbooks-assert.yml`).
-- Frontmatter presence linter requirement (policy): every Playbook/Guide page must include  
-  `audience`, `tone`, `narrative_goal`, `primary_action`.  
-  _(Implementation note: enforcement starts next train if not merged in this one.)_
+- “Was this helpful?” control wired to GA4 on updated pages.
+- CI: Markdown link checker.
+- CI: PR required-fields enforcer (Why, Exit metric, Stream/Seam ID, Exception).
+- CI: Homepage↔Runbooks assertion.
 
 ## Updated
 
-- **Homepage:** removed “Runbooks live here” claim until the `/runbooks/` index ships in _Playbook v0.1_.
-- **Decision primitives:** added Governance cross-links to **Decision Spine** and **Answer Ledger**.
-- **PR template:** now includes
-  - Why (one line)
-  - Exit metric (baseline → target + review date)
-  - Stream/Seam ID
-  - Exception (reason · owner · date)
+- Homepage: removed “Runbooks live here” claim until `/runbooks/` ships.
+- Decision Spine, Answer Ledger: added Governance cross-links.
 
 ## Fixed
 
-- Broken/stale internal links identified by linkcheck in `docs/**`.
-- Prevented future 404s caused by a missing `/runbooks/` index via CI assertion.
-- Homepage tagline now links directly to `/runbooks/` to keep the promise honest.
+- Broken internal links caught by linkcheck.
 
----
+### Governance receipts
 
-### Governance & acceptance receipts
-
-- Build passes with zero 404s.
-- At least one updated page emits `doc_helped` GA4 events.
-- Any edited Playbook/Guide page now contains the required frontmatter keys.
-- `PR` template fields verified by CI on a sample pull request.
-
-### Notes
-
-- The `/runbooks/` link and index will be introduced in **Playbook v0.1** and re-enabled on the homepage in that train.
+- Zero 404s at build.
+- At least one page emitted `doc_helped` events.

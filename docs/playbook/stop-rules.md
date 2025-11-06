@@ -15,6 +15,8 @@ primary_action: Capture your top stop conditions using the format provided
 
 Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
 
+<a href="#format" data-primary-action>Capture your stop rules with this format</a>
+
 ## When to write a stop rule
 
 - The plan hinges on a guardrail metric staying green.

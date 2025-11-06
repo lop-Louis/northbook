@@ -15,6 +15,8 @@ primary_action: Outline your baseline, target, and review date using this patter
 
 Scoreboards make a shared outcome visible so every stream knows if the work is moving the needle. Use them when multiple teams touch the same metric and you need one place to track momentum.
 
+<a href="#example-layout" data-primary-action>Outline your scoreboard with this example</a>
+
 ## Anatomy of a scoreboard
 
 | Piece              | Guidance                                                       | Example                                                 |

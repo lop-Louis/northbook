@@ -18,7 +18,7 @@ hero:
   image:
     src: /logo-symbol.png
     alt: Northbook logo
-  tagline: Guidance you can ship today. Grab checklists from the runbooks.
+  tagline: Teams move faster when the edges are obvious and overridable.
   actions:
     - theme: brand
       text: Start here
@@ -36,13 +36,7 @@ features:
     details: Quick checks that catch 80% of issues.
 ---
 
----
-
-- Monthly release captures meaningful changes in `CHANGELOG.md`.
-
-## Runbooks
-
-Guidance stays light on chores. When you need the step-by-step checklist, jump to [/runbooks/](/runbooks/).
+Guidance stays light on chores. When you need the step-by-step checklist, jump to [runbooks](/runbooks/) (Coming soon).
 
 ## Governance & Safety
 
@@ -64,6 +58,8 @@ Before submitting:
 - Keep scope aligned with declared `change_type`
 
 ## Future (Non-binding)
+
+Monthly release captures meaningful changes in [releases](./release.md).
 
 - Optional analytics for drift scoring
 - Inclusive language heuristics
