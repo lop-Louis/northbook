@@ -2,7 +2,7 @@
 
 ## Added
 
--
+- governance(automation): add link check workflow and update exclusion patterns
 
 ## Updated
 

@@ -9,6 +9,8 @@ exclude = [
   'https://corp.*',
   'http://localhost.*',
   'http://127\\.0\\.0\\.1.*',
+  # Release assets hosted on GitHub are frequently private or transient
+  'https://github\\.com/.*/releases/download/.*',
   'YOUR_TOKEN.*',
   'REPLACE_ME.*'
 ]
@@ -60,6 +62,8 @@ exclude_link_patterns = [
   '^data:',
   # Skip javascript URIs
   '^javascript:',
+  # Skip streaming media playlists
+  '\\.m3u8($|\\?)',
 ]
 
 # Treat warnings as errors

@@ -291,6 +291,37 @@ Before ANY commit to main:
 
 ---
 
+## Measurement Policy
+
+- North star: helpfulness ≥ 60% Yes over ≥ 100 views/month per page.
+- Sanity: time to first answer, search-refine rate, dead-end exits.
+- Action rule: any page under threshold gets needs-revision and an issue titled “Revise narrative: <page>” in the next train. Dead-end > 25% adds a top-of-page CTA before rewriting.
+
+---
+
+## Voice and Tone Guidelines
+
+Every Playbook/Guide/Runbook page must include:
+
+```yml
+title: …
+change_type: minor
+band: A
+audience: squad|leads|exec
+tone: practical|coaching|policy
+narrative_goal: resolve|decide|teach
+primary_action: /runbooks/handover-20-min
+review_after_days: 90
+owner_role: chapter-lead
+```
+
+### CI enforcement:
+
+- Presence (Milestone A).
+- Allowed values + primary_action is an internal link (Milestone B).
+
+---
+
 **Last Reviewed:** 2024-11-04  
 **Next Review:** 2025-02-04 (90 days)  
 **Owner:** @lop  
