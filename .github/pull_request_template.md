@@ -38,6 +38,13 @@ Before submitting, verify these items (not fully automatable):
 
 <!-- Why is this change needed? How does it help? -->
 
+### Decision Snapshot
+
+- **Why (one line):** <!-- State the single-sentence intent -->
+- **Exit metric:** <!-- baseline → target · review date (YYYY-MM-DD) -->
+- **Stream/Seam ID:** <!-- e.g., Stream-07 or Seam-B -->
+- **Exception (reason · owner · date):** <!-- e.g., Skipped retro · @handle · 2025-01-15; if none, type N/A -->
+
 ---
 
 **Automated CI will:**
