@@ -82,4 +82,4 @@ Combine with:
 - [Answer Ledger](./answer-ledger) for recurring questions
 - [Facilitation](./facilitation) techniques for group decisions
 
-See [Governance](./governance) for change types and monthly [release cadence](./release).
+See [Governance](./governance) for change types and the monthly release cadence.
