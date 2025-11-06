@@ -1,19 +1,24 @@
-        ---
-        title: Handshake Contracts
-        change_type: minor
-        band: A
-        ---
+---
+title: Handshake Contracts
+change_type: minor
+band: A
+owner: '@lop'
+refresh_after_days: 60
+status: 'draft'
+---
 
-        # Handshake Contracts
+# Handshake Contracts
 
-        > Stub. Replace with content and one worked example.
+> Stub. Replace with content and one worked example.
 
-        ### Approvals
+### Approvals
+
 SLA: 48h. Backup owner provided. Decisions logged.
 
 ### Escalation
+
 Path: Owner → Backup → Sponsor. Response within 24h at each hop.
 
 ### Cadence
-Weekly 15m state review; monthly tag.
 
+Weekly 15m state review; monthly tag.
