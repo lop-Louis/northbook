@@ -15,6 +15,8 @@ primary_action: Use the table to classify your own practices before sharing them
 
 Guides suggest a preferred path. Rules mandate a specific behavior. Mixing them creates frustration and erodes trust. Use this page when you document a practice so readers immediately know how much freedom they have.
 
+<a href="#spot-the-difference" data-primary-action>Classify your practice with the guide vs rule table</a>
+
 ## Spot the difference
 
 | Signal         | Guide                                                    | Rule                                        |

@@ -15,6 +15,8 @@ primary_action: Fill out the template with roles for each seam
 
 Map the work around seams instead of teams so responsibility stays clear when streams shift. Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
 
+<a href="#template" data-primary-action>Fill out the seam RACI template</a>
+
 ## Why seams, not teams
 
 - Teams reorganize; seams persist where work hands off.

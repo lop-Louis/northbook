@@ -17,6 +17,8 @@ primary_action: Use the three-line pattern when reminding teams about expenses
 
 > Public-safe guidance for helping people move from policy words to action.
 
+<a href="#public-safe-example" data-primary-action>Draft your expense reminder with the three-line pattern</a>
+
 This pattern turns a policy reminder into action with three lines:
 
 1. **SLA** (the time rule)

@@ -14,6 +14,8 @@ primary_action: Run your next decision through the four-stage spine
 
 # Decision Spine
 
+<a href="#example-template" data-primary-action>Copy the template and run your next decision</a>
+
 What: Lightweight framework for making and documenting technical decisions in a repeatable, linkable way.
 Why: Prevents re-litigation, makes tradeoffs explicit early, and leaves a durable paper trail for future teams.
 When: Use for multi‑stakeholder choices, anything with meaningful tradeoffs, or answers you expect to paste more than twice.

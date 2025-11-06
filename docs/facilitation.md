@@ -14,6 +14,8 @@ primary_action: Pick one technique and run it in your next collaborative session
 
 # Facilitation Techniques
 
+<a href="#silent-brainstorming" data-primary-action>Pick a facilitation pattern and run it in your next session</a>
+
 What: Small, plug‑and‑play patterns for focused, inclusive sessions and faster group decisions.
 Why: Prevents drift, balances voices, and converts meetings into clear outcomes instead of vague discussion.
 When: Kickoffs, retros, prioritization, brainstorming, or anytime alignment feels slow or uneven.

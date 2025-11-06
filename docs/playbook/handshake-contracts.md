@@ -15,6 +15,8 @@ primary_action: Draft your contract using the approval, escalation, and cadence 
 
 Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
 
+<a href="#example-outline" data-primary-action>Draft your handshake contract with the outline</a>
+
 ## When to draft one
 
 - A stream depends on another team to hit a shared milestone.

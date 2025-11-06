@@ -14,6 +14,8 @@ primary_action: Run these quick checks before approving UI work
 
 # Accessibility Quick Wins
 
+<a href="#testing-checklist" data-primary-action>Run the quick checks before you approve the UI</a>
+
 High-impact accessibility improvements that take minimal effort.
 
 ## Keyboard navigation
@@ -101,12 +103,12 @@ a:focus {
 
 ## Testing checklist
 
-- [ ] Navigate entire site with keyboard only
-- [ ] Test with screen reader (NVDA/JAWS on Windows, VoiceOver on Mac/iOS)
-- [ ] Check contrast in DevTools
-- [ ] Run Lighthouse accessibility audit
-- [ ] Validate HTML structure
-- [ ] Test at 200% zoom (text should reflow without horizontal scroll)
+- ✅ Navigate entire site with keyboard only
+- ✅ Test with screen reader (NVDA/JAWS on Windows, VoiceOver on Mac/iOS)
+- ✅ Check contrast in DevTools
+- ✅ Run Lighthouse accessibility audit
+- ✅ Validate HTML structure
+- ✅ Test at 200% zoom (text should reflow without horizontal scroll)
 
 ## Common pitfalls
 
