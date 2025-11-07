@@ -6,10 +6,13 @@ import { nextTick } from 'vue'
 import Feedback from '@theme/Feedback.vue'
 
 let mockFrontmatterLabels: unknown
+let mockRoutePath = '/playbook/test'
 
 vi.mock('vitepress', () => ({
   useRoute: () => ({
-    path: '/test-page'
+    get path() {
+      return mockRoutePath
+    }
   }),
   useData: () => ({
     page: {
@@ -27,6 +30,7 @@ vi.mock('vitepress', () => ({
 describe('Feedback.vue', () => {
   beforeEach(() => {
     mockFrontmatterLabels = undefined
+    mockRoutePath = '/playbook/test'
     vi.restoreAllMocks()
   })
 
@@ -41,13 +45,18 @@ describe('Feedback.vue', () => {
     return { wrapper, gtagSpy }
   }
 
-  it('renders prompt and three actions', async () => {
+  it('renders prompt and three actions for playbooks', async () => {
     const { wrapper } = await mountComponent()
     const links = wrapper.findAll('a')
 
-    expect(wrapper.text()).toContain('Was this page helpful')
+    expect(wrapper.text()).toContain('Was this helpful?')
     expect(links).toHaveLength(3)
     expect(links.map(link => link.text().trim())).toEqual(['👍 Yes', '👎 No', '❓ Ask KL'])
+  })
+  it('hides feedback outside playbooks', async () => {
+    mockRoutePath = '/docs/other'
+    const { wrapper } = await mountComponent()
+    expect(wrapper.find('.vp-feedback').exists()).toBe(false)
   })
 
   it('builds helpful URL with feedback labels', async () => {
