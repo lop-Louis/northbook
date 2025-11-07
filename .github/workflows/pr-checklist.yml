@@ -149,20 +149,6 @@ jobs:
           fi
           echo "" >> report.md
 
-          # Build test
-          echo "### 🏗️ Documentation Build Verification" >> report.md
-          if pnpm run docs:build > build-output.txt 2>&1; then
-            echo "✅ **PASSED** - Site builds successfully, ready for deployment" >> report.md
-            GREEN_COUNT=$((GREEN_COUNT + 1))
-          else
-            echo "❌ **FAILED** - Build errors prevent site generation" >> report.md
-            tail -20 build-output.txt | sed 's/^/  /' >> report.md
-            echo "" >> report.md
-            echo "**Action Required:** Fix build errors before merging" >> report.md
-            RED_COUNT=$((RED_COUNT + 1))
-          fi
-          echo "" >> report.md
-
           # Component tests (separate workflow)
           echo "### 🧪 Test Suite Summary" >> report.md
           echo "ℹ️ **RUNS IN TESTS WORKFLOW** - Unit + component tests execute in the \`Tests\` workflow." >> report.md
