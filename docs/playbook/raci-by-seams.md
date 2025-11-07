@@ -29,7 +29,7 @@ Map the work around seams instead of teams so responsibility stays clear when st
 2. **Assign roles, not people.** Roles survive reorgs; handles change.
 3. **Keep it lean.** One R, one A. Add C/I only if they act on the seam.
 4. **Validate with the seam owners.** Walk the table together and confirm nothing overlaps.
-5. **Link to supporting docs.** Decisions go to the spine; policies go to the Answer Ledger.
+5. **Link to supporting docs.** Decisions go to the <u>[Decision Spine](../decision-spine.md)</u>; policies go to the <u>[Answer Ledger](../answer-ledger.md)</u>.
 
 ## Template
 
