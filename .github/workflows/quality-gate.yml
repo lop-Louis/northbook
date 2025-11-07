@@ -1,0 +1,137 @@
+name: Unified Quality Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['docs/**', 'runbooks/**', 'scripts/**', '.github/**', '**.vue', '**.ts']
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  quality_gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # BLOCKERS (must pass)
+      - name: 🔴 Link validation
+        id: links
+        run: pnpm run links
+
+      - name: 🔴 Frontmatter schema
+        id: frontmatter
+        run: pnpm run frontmatter:lint
+
+      - name: 🔴 Primary actions
+        id: primary_actions
+        run: |
+          SKIP_DOCS_GUARD=1 pnpm run docs:build
+          node scripts/verify-primary-actions.mjs
+
+      # WARNERS (continue on error)
+      - name: 🟡 Content guard
+        id: content_guard
+        run: pnpm run guard
+        continue-on-error: true
+
+      - name: 🟡 UX scan
+        id: ux_scan
+        run: pnpm run ux:scan
+        continue-on-error: true
+
+      - name: 🟡 Drift detection
+        id: drift
+        run: pnpm run drift
+        continue-on-error: true
+
+      - name: 🟡 Stale pages
+        id: stale
+        run: pnpm run stale
+        continue-on-error: true
+
+      - name: 🟡 Accessibility
+        id: accessibility
+        run: pnpm test tests/accessibility/wcag-compliance.test.ts
+        continue-on-error: true
+
+      - name: 🟡 Unit tests
+        id: unit_tests
+        run: pnpm test tests/*.test.mjs
+        continue-on-error: true
+
+      - name: 🟡 Component tests
+        id: component_tests
+        run: pnpm test tests/components/*.test.ts
+        continue-on-error: true
+
+      # SUMMARY REPORT
+      - name: Generate summary
+        if: always()
+        run: |
+          echo "# Quality Gate Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Blockers section
+          echo "## 🔴 Critical (Must Pass)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.links.outcome }}" == "success" ]; then
+            echo "✅ Link validation" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Link validation failed** - Fix broken links" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.frontmatter.outcome }}" == "success" ]; then
+            echo "✅ Frontmatter schema" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Frontmatter schema failed** - Add missing required fields" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.primary_actions.outcome }}" == "success" ]; then
+            echo "✅ Primary actions" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Primary actions failed** - Add CTA pairs" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Warners section
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🟡 Advisory (Non-Blocking)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          [ "${{ steps.content_guard.outcome }}" == "success" ] && echo "✅ Content guard" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Content guard - Review warnings" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.ux_scan.outcome }}" == "success" ] && echo "✅ UX scan" >> $GITHUB_STEP_SUMMARY || echo "⚠️ UX scan - Check narrative alignment" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.drift.outcome }}" == "success" ] && echo "✅ Drift detection" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Drift detected" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.stale.outcome }}" == "success" ] && echo "✅ Stale pages" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Stale pages need review" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.accessibility.outcome }}" == "success" ] && echo "✅ Accessibility" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Accessibility warnings" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.unit_tests.outcome }}" == "success" ] && echo "✅ Unit tests" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Unit test failures" >> $GITHUB_STEP_SUMMARY
+          [ "${{ steps.component_tests.outcome }}" == "success" ] && echo "✅ Component tests" >> $GITHUB_STEP_SUMMARY || echo "⚠️ Component test failures" >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+
+          # Final verdict
+          if [ "${{ steps.links.outcome }}" == "success" ] && [ "${{ steps.frontmatter.outcome }}" == "success" ] && [ "${{ steps.primary_actions.outcome }}" == "success" ]; then
+            echo "✨ **All critical checks passed** - Ready to merge" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "🚫 **Critical checks failed** - Fix blockers above before merging" >> $GITHUB_STEP_SUMMARY
+          fi
