@@ -5,7 +5,6 @@ import matter from 'gray-matter'
 const repoRoot = process.cwd()
 const roots = [path.join(repoRoot, 'docs'), path.join(repoRoot, 'runbooks')]
 const excludedDirs = new Set(['.git', 'node_modules', 'public', '.vitepress'])
-const MAX_PRIMARY_ACTION_LENGTH = Number(process.env.PRIMARY_ACTION_MAX_CHARS ?? 140)
 
 function collectMarkdownFiles() {
   const files = []
@@ -38,85 +37,53 @@ function walk(dir, bucket) {
   }
 }
 
-function checkPrimaryAction(data) {
-  const issues = []
-  const value = typeof data.primary_action === 'string' ? data.primary_action.trim() : ''
-
-  if (!value) return issues
-
-  if (value.length > MAX_PRIMARY_ACTION_LENGTH) {
-    issues.push(`Primary action exceeds ${MAX_PRIMARY_ACTION_LENGTH} characters`)
-  }
-
-  if (/primary action/i.test(value)) {
-    issues.push('Primary action copy should not reference “Primary action” (keep it user-facing)')
-  }
-
-  if (!/^[A-Z]/.test(value)) {
-    issues.push('Primary action should start with a capitalized verb (e.g., "Use", "Apply")')
-  }
-
-  return issues
+function extractIntro(content) {
+  const markerIndex = content.indexOf('\n## ')
+  return markerIndex === -1 ? content : content.slice(0, markerIndex)
 }
 
-function checkHeadingRhythm(content) {
-  const issues = []
-  const headingRegex = /^#{1,6}\s+/gm
-  let prevLevel = null
-
-  for (const match of content.matchAll(headingRegex)) {
-    const level = match[0].trim().split(' ')[0].length
-    if (level === 1) {
-      prevLevel = 1
-      continue
-    }
-
-    if (prevLevel !== null && level > prevLevel + 1) {
-      issues.push(`Heading level jumps from H${prevLevel} to H${level}`)
-    }
-
-    prevLevel = level
-  }
-
-  return issues
+function hasCTA(intro, attr) {
+  const regex = new RegExp(`data-${attr}`)
+  return regex.test(intro)
 }
 
 function runScan() {
   const files = collectMarkdownFiles()
-  const problems = []
+  const issues = []
   let inspected = 0
 
   for (const filePath of files) {
     const raw = fs.readFileSync(filePath, 'utf8')
     const { data, content } = matter(raw)
-    const relativePath = path.relative(repoRoot, filePath)
-    const fileIssues = []
+    const relative = path.relative(repoRoot, filePath)
 
-    if (data && data.primary_action) {
+    // Skip layout: home pages
+    if (data && data.layout === 'home') continue
+
+    const intro = extractIntro(content)
+    const primary = hasCTA(intro, 'primary-action')
+    const secondary = hasCTA(intro, 'secondary-action')
+
+    if (!primary || !secondary) {
+      const missing = [!primary ? 'primary action' : null, !secondary ? 'secondary action' : null]
+        .filter(Boolean)
+        .join(' & ')
+      issues.push(`${relative}: Missing ${missing} CTA before the first section heading`)
+    } else {
       inspected++
-      fileIssues.push(...checkPrimaryAction(data))
-    }
-
-    fileIssues.push(...checkHeadingRhythm(content))
-
-    if (fileIssues.length) {
-      problems.push({ file: relativePath, issues: fileIssues })
     }
   }
 
-  if (problems.length) {
+  if (issues.length) {
     console.log('UX scan found issues:')
-    for (const problem of problems) {
-      console.log(`- ${problem.file}`)
-      for (const issue of problem.issues) {
-        console.log(`  • ${issue}`)
-      }
+    for (const issue of issues) {
+      console.log(`- ${issue}`)
     }
     process.exitCode = 1
     return
   }
 
-  console.log(`UX scan passed across ${inspected} markdown files with primary_action frontmatter.`)
+  console.log(`UX scan passed across ${inspected} markdown files with CTA pairs.`)
 }
 
 runScan()

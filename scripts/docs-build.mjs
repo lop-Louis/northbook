@@ -24,9 +24,9 @@ async function main() {
   const skipGuard = process.env.SKIP_DOCS_GUARD === '1'
 
   if (skipGuard) {
-    console.log('Skipping guard because SKIP_DOCS_GUARD=1')
+    console.log('Skipping docs:guard because SKIP_DOCS_GUARD=1')
   } else {
-    await run('pnpm', ['run', 'guard'])
+    await run('pnpm', ['run', 'docs:guard'])
   }
 
   await run('pnpm', ['exec', 'vitepress', 'build', 'docs'])
