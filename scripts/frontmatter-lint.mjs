@@ -5,6 +5,9 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
 import Ajv from 'ajv/dist/2020.js'
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+const draft7Meta = require('ajv/dist/refs/json-schema-draft-07.json')
 
 const DOCS = process.env.DOCS || 'docs'
 const RUNBOOKS = process.env.RUNBOOKS || 'runbooks'
@@ -16,6 +19,7 @@ const schemaPath = path.resolve(__dirname, '../schemas/frontmatter.schema.json')
 const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'))
 
 const ajv = new Ajv({ allErrors: true, strict: false })
+ajv.addMetaSchema(draft7Meta)
 const validate = ajv.compile(schema)
 
 const violations = []
