@@ -30,7 +30,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run drift scan
-        run: DRIFT_FORMAT=json pnpm run drift > drift-output.json
+        run: DRIFT_FORMAT=json node scripts/drift.mjs > drift-output.json
 
       - name: Summarize results
         run: |
