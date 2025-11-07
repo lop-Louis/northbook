@@ -1,0 +1,150 @@
+name: Unified Guard (Blocker + Warners)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['docs/**', 'runbooks/**', 'scripts/**', '.github/**']
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  guard_blocker:
+    name: Critical Checks (Blockers)
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false && vars.NORTHBOOK_STRICT != 'false'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Link validation (404s block)
+        id: links
+        run: pnpm run links
+
+      - name: Frontmatter schema (required fields)
+        id: frontmatter
+        run: pnpm run frontmatter:lint
+
+      - name: Primary action validation
+        id: primary_action
+        run: |
+          # Build docs first (verify-primary-actions needs the dist/)
+          SKIP_DOCS_GUARD=1 pnpm run docs:build
+          node scripts/verify-primary-actions.mjs
+
+      - name: Generate blocker summary
+        if: always()
+        run: |
+          echo "## 🔴 Critical Checks (Blockers)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "These checks must pass for merge approval." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Link Validation**: No 404s detected" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Frontmatter Schema**: All required fields present" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Primary Actions**: CTA pairs validated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "_All critical checks passed! ✨_" >> $GITHUB_STEP_SUMMARY
+
+  guard_warners:
+    name: Soft Checks (Warn Only)
+    runs-on: ubuntu-latest
+    needs: guard_blocker
+    continue-on-error: true
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Content guard (internal content scan)
+        id: content_guard
+        run: pnpm run guard
+        continue-on-error: true
+
+      - name: UX scan (narrative alignment)
+        id: ux_scan
+        run: pnpm run ux:scan
+        continue-on-error: true
+
+      - name: Drift detection
+        id: drift
+        run: pnpm run drift
+        continue-on-error: true
+
+      - name: Stale page check
+        id: stale
+        run: pnpm run stale
+        continue-on-error: true
+
+      - name: Generate warner summary
+        if: always()
+        run: |
+          echo "## 🟡 Soft Checks Report (Non-Blocking)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "These checks provide guidance but won't block your merge." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Content Guard
+          if [ "${{ steps.content_guard.outcome }}" == "success" ]; then
+            echo "✅ **Content Guard**: No sensitive content detected" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Content Guard**: Warnings found - review for internal/sensitive content" >> $GITHUB_STEP_SUMMARY
+            echo "::warning title=Content Guard::Sensitive content patterns detected. Review guard output."
+          fi
+
+          # UX Scan
+          if [ "${{ steps.ux_scan.outcome }}" == "success" ]; then
+            echo "✅ **UX Scan**: Narrative alignment verified" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **UX Scan**: Alignment warnings - check narrative_goal consistency" >> $GITHUB_STEP_SUMMARY
+            echo "::warning title=UX Scan::Narrative alignment issues detected."
+          fi
+
+          # Drift Detection
+          if [ "${{ steps.drift.outcome }}" == "success" ]; then
+            echo "✅ **Drift Detection**: No drift warnings" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Drift Detection**: Potential drift detected" >> $GITHUB_STEP_SUMMARY
+            echo "::warning title=Drift Check::Content drift detected. Review changes."
+          fi
+
+          # Stale Check
+          if [ "${{ steps.stale.outcome }}" == "success" ]; then
+            echo "✅ **Stale Check**: All pages within review window" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Stale Check**: Pages need review - check next_review dates" >> $GITHUB_STEP_SUMMARY
+            echo "::warning title=Stale Pages::Some pages are overdue for review."
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "_💡 These warnings are advisory. Your PR can merge._" >> $GITHUB_STEP_SUMMARY
