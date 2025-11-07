@@ -282,7 +282,7 @@
  * ================================== */
 
 .dark .vp-doc code {
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--nb-code-bg);
   color: var(--vp-code-color);
 }
 
