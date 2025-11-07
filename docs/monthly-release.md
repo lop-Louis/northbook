@@ -65,6 +65,7 @@ Example: `site-v2025.11`
 - Pages viewed: ~X
 - Feedback issues opened: X helpful / X not-helpful
 - Stale pages at tag time: X
+- Shared metric snapshot: see [shared metric visibility runbook](./runbooks/shared-metric-visibility.md)
 
 ### Policy / Governance
 
@@ -96,6 +97,7 @@ git push origin site-v2025.11
 - Page views: (Analytics dashboard if configured)
 - Feedback: GitHub issues with `feedback` label
 - Stale count: Weekly stale report issue data
+- Shared metric: Update via the [shared metric visibility](./runbooks/shared-metric-visibility.md) template before tagging
 
 ## Governance Review
 
