@@ -87,7 +87,7 @@ pnpm run docs:build # Ensure production build is happy
 2. Green pipelines auto-merge; yellow warnings need a human glance.
 3. Red blocks ship until you resolve the breach.
 
-Policy, stop rules, and SLOs live in [Governance Policy](./governance).
+Policy, stop rules, and SLOs live in [Anti-drift Content Governance](./governance); automation/RACI details continue in the root [`GOVERNANCE.md`](../GOVERNANCE.md).
 
 ## Educational Placeholders
 

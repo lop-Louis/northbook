@@ -85,4 +85,4 @@ Combine with:
 - [Facilitation](./facilitation) techniques for group decisions
 - [Decision tripwires](./decision-tripwires) to enforce timely follow-up
 
-See [Governance](./governance) for change types and the monthly release cadence.
+See [Anti-drift Content Governance](./governance) for change types and the monthly release cadence.

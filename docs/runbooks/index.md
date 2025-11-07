@@ -15,7 +15,7 @@ primary_action: Use this index to pick the runbook that fits your scenario.
 
 <a href="#top" data-primary-action>Use this index to pick the runbook that fits your scenario.</a>
 
-All runbooks follow the [Governance Policy](../governance.md); keep identifiers sanitized when you adapt them.
+All runbooks follow the [Anti-drift Content Governance](../governance.md) rules; keep identifiers sanitized when you adapt them.
 
 - [20-minute handover drill](./handover-20-min.md)
 - [Community meeting pack](./community-pack.md)

@@ -1,5 +1,5 @@
 ---
-title: Governance Policy
+title: Anti-drift Content Governance
 band: A
 owner: '@lop'
 refresh_after_days: 120
@@ -12,13 +12,20 @@ narrative_goal: Define the guardrails that keep public docs safe and trustworthy
 primary_action: Use these rules when you edit or approve any page.
 ---
 
-# Governance Policy
+# Anti-drift Content Governance
 
 <a href="#scope" data-primary-action>Use these rules when you edit or approve any page.</a>
 
-> Public-safe content only. Internal specifics live elsewhere.
+> Public-safe content only. Internal specifics live elsewhere. This page is the Anti-drift content governance playbook; project-level governance (RACI, automation owners, SLOs) lives in [`/GOVERNANCE.md`](../GOVERNANCE.md).
 
 Content governance ensures public documentation stays small, safe, and current.
+
+## How this differs from project governance
+
+- **Anti-drift content governance (this page):** Defines Band A scope, sanitization rules, review cadence, and anti-drift triggers for anything published under `docs/`.
+- **Project governance (`/GOVERNANCE.md`):** Tracks who owns the automation, how RACI works, what the SLOs and stop rules are, and when workflows change.
+
+Update them together: policy/tone changes go here; ownership/process changes go in the root file with a cross-link back to this guide.
 
 ## Scope
 
@@ -211,7 +218,7 @@ When updating a page, choose `change_type` based on:
 
 ### Updates
 
-- **Governance Policy** (minor) - Enhanced Band A examples and quarterly review process
+- **Anti-drift Content Governance** (minor) - Enhanced Band A examples and quarterly review process
 - **Band A Guide** (patch) - Fixed typo in sanitization checklist
 
 ### Infrastructure

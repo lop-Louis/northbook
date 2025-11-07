@@ -1,4 +1,4 @@
-# Governance and Drift Prevention
+# Project Governance (Automation & Drift Prevention)
 
 ## Purpose
 
@@ -10,7 +10,7 @@ Keep public documentation useful, safe, and small. Bots chase compliance; humans
 
 ## Content Bands & Lifecycle
 
-The public policy for Band A scope, lifecycle states, and frontmatter validation now lives in `docs/governance.md` (and the published site). Instead of duplicating the rules here, treat that doc as the single source. This file simply adds operational context:
+The public policy for Band A scope, lifecycle states, and frontmatter validation now lives in `docs/governance.md` (and the published site) under the **Anti-drift Content Governance** name. Instead of duplicating the rules here, treat that doc as the single source. This file simply adds operational context:
 
 - **Band A:** Follow the public-facing [Band A reference](docs/band-a.md). Anything forbidden there is also forbidden here.
 - **Lifecycle:** Apply the Draft→Review→Live→Watch→Stale→Archive model from `docs/governance.md`. This internal file only tracks the automation owners for each state.

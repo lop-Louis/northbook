@@ -90,4 +90,4 @@ Track:
 - Time to onboard new team members (should decrease)
 - Link-back rate (ledger links shared in conversations)
 
-See [Governance](./governance) for change types and the monthly release cadence.
+See [Anti-drift Content Governance](./governance) for change types and the monthly release cadence.

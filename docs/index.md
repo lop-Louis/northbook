@@ -40,7 +40,7 @@ Guidance stays light on chores. When you need the step-by-step checklist, jump t
 
 ## Governance & Safety
 
-Automation enforces: frontmatter completeness, sanctioned band, sanitization rules, secret scan, build integrity. See [Governance Policy](./governance) for lifecycle and gate details.
+Automation enforces: frontmatter completeness, sanctioned band, sanitization rules, secret scan, build integrity. See [Anti-drift Content Governance](./governance) for lifecycle and gate details.
 
 ## FAQ Highlights
 

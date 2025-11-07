@@ -16,7 +16,7 @@ primary_action: Use this template and example to publish a handover RACI.
 <a href="#how-to-use-it" data-primary-action>Use this template and example to publish a handover RACI.</a>
 
 Use this page when you need to broadcast handover roles without exposing internal specifics.
-The structure below stays inside the [Governance Policy](../governance.md) guardrails and keeps RACI labels uncluttered.
+The structure below stays inside the [Anti-drift Content Governance](../governance.md) guardrails and keeps RACI labels uncluttered.
 
 ## How to use it
 
