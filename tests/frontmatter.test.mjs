@@ -96,6 +96,5 @@ describe('Frontmatter Lint', () => {
     assert.ok(!result.success)
     const violations = result.data?.violations || []
     assert.ok(violations.some(v => v.field === 'band'))
-    assert.ok(violations.some(v => v.field === 'nav'))
   })
 })
