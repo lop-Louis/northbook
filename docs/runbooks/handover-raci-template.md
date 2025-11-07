@@ -6,17 +6,16 @@ owner: '@lop'
 refresh_after_days: 120
 status: live
 audience: Stream leads packaging a handover
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Offer a public-safe RACI matrix teams can copy fast
-primary_action: Use this template and example to publish a handover RACI.
+nav:
+  - none
 ---
 
 # Handover RACI template
 
-<a href="#how-to-use-it" data-primary-action>Use this template and example to publish a handover RACI.</a>
-
-Use this page when you need to broadcast handover roles without exposing internal specifics.
-The structure below stays inside the [Governance Policy](../governance.md) guardrails and keeps RACI labels uncluttered.
+Use this template when you need to broadcast handover roles without exposing internal specifics. <a href="#how-to-use-it" data-primary-action>Copy the RACI template</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
+The structure below stays inside the [Anti-drift Content Governance](../governance.md) guardrails and keeps RACI labels uncluttered.
 
 ## How to use it
 
@@ -30,21 +29,5 @@ The structure below stays inside the [Governance Policy](../governance.md) guard
 
 > Tip: keep one row per decision or activity so the RACI stays readable.
 
-| Activity / Decision | Responsible (R)        | Accountable (A)         | Consulted (C)         | Informed (I)            | Notes                           |
-| ------------------- | ---------------------- | ----------------------- | --------------------- | ----------------------- | ------------------------------- |
-| e.g. Placeholder    | Role handling the work | Role owning the outcome | Roles providing input | Roles receiving updates | Dependencies, tools, or cadence |
-
-Copy the header row and add as many rows as you need. Delete the example row after you add your content.
-
-## KL-safe example
-
-The example below mirrors a typical release-to-support handover while keeping identifiers neutral.
-
-| Activity / Decision             | Responsible (R)      | Accountable (A)  | Consulted (C)                          | Informed (I)                        | Notes                                                |
-| ------------------------------- | -------------------- | ---------------- | -------------------------------------- | ----------------------------------- | ---------------------------------------------------- |
-| Finalize release notes          | Delivery facilitator | Stream owner     | Quality reviewer, feature engineer     | Partner success lead, support inbox | Uses sanitized release summary, no ticket IDs        |
-| Confirm on-call coverage window | Support coordinator  | Stream owner     | Delivery facilitator                   | Engineering guild, incident channel | Reference public on-call rota overview               |
-| Schedule watch-window check-in  | Delivery facilitator | Stream owner     | Support coordinator, analytics partner | Wider product crew                  | 15-minute sync within first 48 hours post-launch     |
-| Archive temporary access grants | Operations steward   | Security steward | Delivery facilitator                   | Stream owner, compliance recorder   | Remove access within 24 hours; log in access tracker |
-
-Keep rows action-oriented. If you need deeper playbooks for any row, link to the relevant runbook alongside the note column.
+| Activity / Decision | Responsible (R) | Accountable (A) | Consulted (C) | Informed (I) | Notes |
+|

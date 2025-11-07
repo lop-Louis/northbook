@@ -99,6 +99,7 @@ jobs:
           GITLEAKS_EXIT=${{ steps.gitleaks.outcome }}
           BUILD_EXIT=${{ steps.build.outcome }}
           GUARD_STATUS='${{ steps.guard.outputs.status }}'
+          FRONTMATTER_EXIT=${{ steps.frontmatter.outcome }}
 
           if [[ "$GUARD_EXIT" == "failure" ]] || [[ "$GITLEAKS_EXIT" == "failure" ]] || [[ "$BUILD_EXIT" == "failure" ]]; then
             echo "status=red" >> $GITHUB_OUTPUT
@@ -117,6 +118,9 @@ jobs:
         with:
           script: |
             const status = '${{ steps.status.outputs.status }}';
+            const frontmatterResult = '${{ steps.frontmatter.outcome }}';
+            const frontmatterStatus = '${{ steps.frontmatter.outputs.status }}';
+            const frontmatterViolations = '${{ steps.frontmatter.outputs.violations }}';
             const guardResult = '${{ steps.guard.outcome }}';
             const guardStatus = '${{ steps.guard.outputs.status }}';
             const linksResult = '${{ steps.links.outcome }}';
@@ -159,8 +163,10 @@ jobs:
             ---
 
             **What these checks mean:**
+            - **Frontmatter Schema:** JSON Schema lint that enforces required Band A metadata (owner, change_type, status, refresh window)
             - **Band A Compliance:** Verifies content follows public-safe sanitization rules (no internal URLs, ticket IDs, calendar dates, secrets, personal data)
             - **Link Integrity:** Validates all internal documentation links work correctly
+            - **Drift Audit:** Highlights storytelling metadata and inclusive-language gaps (non-blocking hygiene)
             - **UX Scan:** Ensures primary action callouts are present before the first section for pages that declare one
             - **Sensitive Data Scan:** Ensures no API keys, tokens, or credentials are exposed
             - **Documentation Build:** Confirms the site builds successfully with your changes

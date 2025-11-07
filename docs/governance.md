@@ -1,5 +1,5 @@
 ---
-title: Governance Policy
+title: Anti-drift Content Governance
 band: A
 owner: '@lop'
 refresh_after_days: 120
@@ -7,23 +7,87 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Maintainers and contributors who publish or review Northbook content
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Define the guardrails that keep public docs safe and trustworthy
-primary_action: Use these rules when you edit or approve any page.
+nav_group: Contributor Kit
+nav_order: 30
+nav:
+  - sidebar
 ---
 
-# Governance Policy
+# Anti-drift Content Governance
 
-<a href="#scope" data-primary-action>Use these rules when you edit or approve any page.</a>
+Keep public docs anti-drift by following this policy. <a href="#scope" data-primary-action>Apply the rules</a> or <a href="./runbooks/index" data-secondary-action>Jump to the runbooks index</a>.
 
-> Public-safe content only. Internal specifics live elsewhere.
+> Public-safe content only. Internal specifics live elsewhere. This page is the Anti-drift content governance playbook; project-level governance (RACI, automation owners, SLOs) lives in [`GOVERNANCE.md`](https://github.com/lop-Louis/go-to-docs/blob/main/GOVERNANCE.md).
 
 Content governance ensures public documentation stays small, safe, and current.
+
+## How this differs from project governance
+
+- **Anti-drift content governance (this page):** Defines Band A scope, sanitization rules, review cadence, and anti-drift triggers for anything published under `docs/`.
+- **Project governance ([`GOVERNANCE.md`](https://github.com/lop-Louis/go-to-docs/blob/main/GOVERNANCE.md))**: Tracks who owns the automation, how RACI works, what the SLOs and stop rules are, and when workflows change.
+
+Update them together: policy/tone changes go here; ownership/process changes go in the root file with a cross-link back to this guide.
 
 ## Scope
 
 This policy applies to all pages under `docs/` published to the public site.
 Internal planning, decision records, and handover artifacts remain in `_ADR/` and are not part of the public build.
+
+## CTA + feedback contract
+
+Anti-drift governance treats the CTA pair as part of the narrative, not an afterthought:
+
+1. **Plainspoken opener:** Start each page with one crisp sentence that states the value or outcome in the page’s declared tone.
+2. **Inline CTA pair:** Immediately follow that sentence with a single clause that contains _both_ actions, e.g.\
+   `Intro sentence. <a … data-primary-action>Run the prep</a> or <a … data-secondary-action>Give feedback</a>.`
+3. **Primary CTA:** Short verb phrase (≤ ~8 words) that points to the default action on the page. No trailing period inside the link text.
+4. **Secondary CTA:** Offer a real alternative (runbooks index, related guide, deeper policy). When no obvious action exists, point to the GitHub feedback flow used by [`Feedback.vue`](https://github.com/lop-Louis/go-to-docs/blob/main/docs/.vitepress/theme/Feedback.vue):\
+   `https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,feedback&title=[Feedback]%20TITLE&body=Page:%20URL`
+5. **Placement:** The CTA sentence must appear before the first `##` heading. Drift checks fail if either action is missing or if the primary action renders more than ~600 px below the H1.
+
+> Automation: `pnpm run ux:scan` enforces that every page opens with a plain sentence followed by both `data-primary-action` and `data-secondary-action` anchors before the first section.
+
+## Frontmatter contract
+
+Every markdown page still needs ownership and review metadata:
+
+```yaml
+---
+title: Page Title
+band: A
+owner: '@handle'
+refresh_after_days: 60
+change_type: patch | minor | major
+status: live | stale | archived | draft
+---
+```
+
+> CTA text now lives in the body, so you **do not** need a `primary_action` field in frontmatter. Drift prevention scripts enforce the action pair directly in the rendered content.
+
+Frontmatter is linted via `pnpm run frontmatter:lint`, which loads `schemas/frontmatter.schema.json` to keep Band A metadata (owner handle, change type, status, refresh window) consistent before a PR can merge.
+
+## Automation surfaces
+
+- **Guard (PR-only):** `pnpm run guard` executes the Band A checks inside the PR workflow and posts the JSON summary as a PR comment (not the CI job summary). Guard tasks must be **read-only**; do not bundle file-mutation or nav-generation scripts in the same command. Treat red output as blocking; yellow requires reviewer judgment.
+- **Anti-drift (working branch push):** `pnpm run drift` runs whenever you push to a non-default working branch. The warnings land in that workflow’s job summary (no PR comment spam) so you can clean drift before opening a PR.
+- **Lighthouse (post-deploy):** Performance and accessibility checks run _after_ deployment against <https://northbook.guide>. The report lives in the Lighthouse workflow summary; PRs do not need to attach the artifact.
+- **Navigation sync:** `pnpm run nav:sync` regenerates `.vitepress/navigation.generated.ts` from frontmatter before `docs:build`. Treat the docs themselves as the source of truth; never hand-edit the generated nav.
+
+## Navigation & sidebar verification
+
+Every change that adds, removes, or renames a page must keep the navigation experiences honest:
+
+- Declare nav placement in frontmatter using the `nav` array (`main`, `sidebar`, `external`, `none`). This metadata is the source of truth; config generation scripts read it directly.
+- Update `.vitepress/config.ts` (or regenerate `navigation.generated.ts` if you’re using auto-generation) so the top navigation and sidebar still point only to Band A pages that exist.
+- If you touch a Playbook/Runbook title or path, make sure the sidebar emoji + ordering remain intentional and update cross-links in the documents themselves.
+- Run `pnpm run docs:build` locally; the build fails if nav links are dead. Do not rely on reviewers to chase missing nav updates.
+- If you cannot add a permanent nav slot yet, prefer inline links from related docs rather than leaving a dangling placeholder in the config.
+- Set `nav` in frontmatter to `main`, `sidebar`, or `none` (plus optional `nav_label`, `nav_group`, `nav_order`). `pnpm run nav:sync` regenerates `.vitepress/navigation.generated.ts` from those values before CI runs.
+- Automation regenerates `.vitepress/navigation.generated.ts` during `pnpm run nav:sync` (part of `docs:guard` and `docs:build`), so the nav config always mirrors the frontmatter.
+
+This keeps the published sidebar aligned with the actual docs tree and prevents “secret” pages that drift outside the discoverable structure.
 
 ## Allowed Content (Band A)
 
@@ -72,229 +136,5 @@ Based on usage patterns, watch for:
 
 ### Good vs. Bad Examples
 
-| ❌ Avoid                               | ✅ Prefer                        |
-| -------------------------------------- | -------------------------------- |
-| "Our Acme CRM system handles..."       | "The CRM system handles..."      |
-| "Contact Jane at NAME@PRIVATE-EMAIL"   | "Contact the team owner"         |
-| "JIRA-123X tracks this issue"          | "TICKET-ID tracks this pattern"  |
-| "Deployed on a specific calendar date" | "Deployed in early 2024"         |
-| "Exactly 127 users affected"           | "~125 users" or "over 100 users" |
-| "https://INTERNAL-URL/wiki"            | "Internal documentation"         |
-| "The Phoenix project cost $2.3M"       | "The project" (omit cost)        |
-| "Our 23-person team in building 7"     | "A mid-sized team"               |
-
-## Lifecycle States
-
-```
-Draft → Review → Live → Watch → Stale → Archive
-```
-
-- Draft: Under construction (may omit completeness)
-- Review: In a pull request with sanitization checks running
-- Live: Published and within `refresh_after_days`
-- Watch: Approaching staleness threshold (< 15% of window left)
-- Stale: Exceeded window — must be reviewed or archived
-- Archive: Preserved for historical reference; not maintained
-
-## Required Frontmatter
-
-Each page must include:
-
-```yaml
----
-title: Page Title
-band: A
-owner: '@handle'
-refresh_after_days: 60
-change_type: patch | minor | major
-status: live | stale | archived | draft
----
-```
-
-## Change Size Guidance
-
-| change_type | Typical Impact                          | Approx Content Delta |
-| ----------- | --------------------------------------- | -------------------- |
-| patch       | Typos, phrasing, 1–2 sentences          | ≤ 50 lines           |
-| minor       | New subsection, small structural tweaks | ≤ 250 lines          |
-| major       | New page or large restructure           | > 250 lines          |
-
-## Automated Gates
-
-Color statuses applied by `content-guard` workflow:
-
-- Red (blocking): missing frontmatter, disallowed patterns, build failure, secret leakage
-- Yellow (review): heuristic warnings (possible internal reference, large change vs declared type)
-- Green (auto-merge): no warnings, all checks pass
-
-Auto-merge only occurs for Green PRs; Yellow requires human review; Red requires fixes.
-
-## Weekly Drift Audit
-
-A scheduled workflow (`stale-pages.yml`) scans for:
-
-- Pages past `refresh_after_days`
-- Heavily outdated reference patterns
-- Accumulated warnings across multiple PRs
-
-A stale report issue is created or updated when drift exists.
-
-**Monitoring Expectations:**
-
-- **Page Owners:** Respond to stale notifications within 2 weeks
-- **Content Editors:** Review stale issues monthly, escalate blockers
-- **Contributors:** Use `refresh_after_days` appropriately:
-  - Fast-changing practices: 30-60 days
-  - Stable frameworks: 90-120 days
-  - Foundational patterns: 120-180 days
-
-## Quarterly Content Review Cycle
-
-Every quarter (Q1, Q2, Q3, Q4), conduct systematic review:
-
-### Review Process
-
-1. **Week 1:** Content Editors identify high-traffic or critical pages needing refresh
-2. **Week 2-3:** Page owners review and update their assigned pages
-3. **Week 4:** Consolidate updates, merge PRs, update `last_reviewed` dates
-
-### Quarterly Metrics to Track
-
-- **Stale page count:** Pages exceeding refresh window
-- **Content velocity:** PRs merged per month
-- **Guard violations:** Red/Yellow trends over time
-- **Link health:** Broken link count and resolution time
-
-**Next Quarter Review Target:** < 5 stale pages, < 3 open stale issues
-
-## Monthly Release Tagging
-
-Release cadence uses tags `site-vYYYY.MM`:
-
-- First business day if there were meaningful changes
-- Skip if only trivial (patch) hygiene tweaks
-- Changelog generated via `changelog` scripts
-
-**Release Process:**
-
-1. **Automated:** `release.yml` workflow runs 1st of each month at 6 AM UTC
-2. **Aggregation:** Collects all merged PRs with change_type metadata
-3. **Tagging:** Creates `site-vYYYY.MM` git tag
-4. **CHANGELOG.md:** Auto-updates with monthly summary
-
-**Versioning Guidance:**
-
-Content changes follow semantic versioning principles:
-
-| Version Component        | Trigger                              | Examples                             |
-| ------------------------ | ------------------------------------ | ------------------------------------ |
-| **Major** (YYYY.MM)      | Month boundary                       | Monthly release tags                 |
-| **Minor** (within month) | New pages, significant restructuring | New guide added, section reorganized |
-| **Patch** (within month) | Typos, clarifications, small fixes   | Grammar fixes, link updates          |
-
-**Change Type Selection:**
-
-When updating a page, choose `change_type` based on:
-
-- **patch:** < 50 lines changed, no structural changes, fixes/clarifications
-- **minor:** 50-250 lines, new subsections, moderate restructuring
-- **major:** > 250 lines, new pages, complete rewrites, major structural changes
-
-**Example Changelog Entry:**
-
-```markdown
-## site-v2025.11
-
-### New Pages
-
-- **API Guidelines** (minor) - Added REST API design principles
-
-### Updates
-
-- **Governance Policy** (minor) - Enhanced Band A examples and quarterly review process
-- **Band A Guide** (patch) - Fixed typo in sanitization checklist
-
-### Infrastructure
-
-- **PR Checklist** (major) - Comprehensive workflow summary replacing Content Guard-only report
-```
-
-**Release Verification:**
-
-Check these after each release:
-
-- Tag created in repository
-- CHANGELOG.md updated
-- GitHub Release created (manual, optional)
-- No stale pages introduced by updates
-
-## Responsibilities
-
-| Role               | Responsibility                                |
-| ------------------ | --------------------------------------------- |
-| Content Editor     | Curate narrative, clarity, cross-link hygiene |
-| Compliance Officer | Ensure sanitization and policy adherence      |
-| DevOps             | Maintain automation (guard, stale, release)   |
-| Maintainers        | Review Yellow PRs, fix Red failures           |
-
-## Cross-Link Conventions
-
-Use relative links without `.md` extension for published pages:
-`[Decision Spine](./decision-spine)` ✅
-`[Decision Spine](./decision-spine.md)` ❌ (avoid extension; future site flexibility)
-
-## Decommissioning Pages
-
-1. Set `status: archived`
-2. Add first line notice: "ARCHIVED – Kept for historical reference; no longer maintained."
-3. Remove cross-links from other live pages.
-
-## Accessibility Standards
-
-All interactive components must meet WCAG AA compliance:
-
-### Keyboard Navigation
-
-- All interactive elements (buttons, links, forms) reachable via Tab/Shift+Tab
-- Visible focus indicators (2px outline, high contrast)
-- No keyboard traps (users can navigate away)
-- Enter/Space activate buttons and links
-
-### ARIA Attributes
-
-- Descriptive `aria-label` on buttons without visible text
-- `role="region"` with `aria-label` for landmarks
-- `aria-hidden="true"` on decorative icons (emojis, SVGs)
-- `aria-live="polite"` for dynamic status messages
-
-### Semantic HTML
-
-- Use `<button>` for actions, not `<div onclick>`
-- Use `<a>` for navigation, not `<button>`
-- Proper heading hierarchy (h1 → h2 → h3, no skipping)
-- `<label>` elements associated with form inputs
-
-See [Accessibility Quick Wins](./accessibility-quick-wins) for implementation patterns.
-
-## Self-check Before PR
-
-Run these locally:
-
-```bash
-pnpm run guard
-pnpm run docs:build
-pnpm test
-```
-
-Ensure no Red failures, build success, and all tests passing.
-
-## Future Enhancements (Non-binding)
-
-- Add optional view analytics for drift heuristics
-- Introduce coverage-like score for link freshness
-- Expand guard rules for inclusive language patterns
-- Add automated accessibility testing in CI (axe-core)
-
----
-
-Last reviewed: see git history (quarterly review cadence).
+| ❌ Avoid | ✅ Prefer |
+|

@@ -6,21 +6,15 @@ owner: '@lop'
 refresh_after_days: 60
 status: draft
 audience: Stream and seam leads tracking work health
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Show how work flows across states and which metrics to watch
-primary_action: Use the state map to place your initiative and track its SLIs.
+nav:
+  - none
 ---
 
 # SLI States
 
-<a href="#top" data-primary-action>Use the state map to place your initiative and track its SLIs.</a>
+This map keeps every initiative’s SLI state and guardrails obvious. <a href="#top" data-primary-action>Place your initiative</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
-| State        | Entry                        | Exit                  | SLI                      |
-| ------------ | ---------------------------- | --------------------- | ------------------------ |
-| 0. Idle      | No owner                     | Owner set             | Time in idle             |
-| 1. Framing   | One-line why                 | Exit metric agreed    | Decision latency         |
-| 2. Ready     | Scope/tests/contracts listed | First PR merged       | Lead time to first value |
-| 3. In flight | Active PRs > 0               | Guardrails green      | Guardrail pass rate      |
-| 4. Review    | Merged, awaiting verify      | Metric moves/rollback | Verification time        |
-| 5. Done      | Metric sustained 14d         | —                     | Rework rate              |
-| 9. Drift     | Violation/missing why        | Back to Framing       | Drift incidents          |
+| State | Entry | Exit | SLI |
+|

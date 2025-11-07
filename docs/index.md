@@ -8,9 +8,8 @@ change_type: patch
 status: live
 last_reviewed: '2025-01-15'
 audience: Anyone looking for Northbook guidance and entry points
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Orient newcomers to the core pillars and where to start
-primary_action: 'Use these starting links to keep guidance, tone, and UI aligned.'
 hero:
   name: Northbook
   text: Guidance over to-do.
@@ -24,8 +23,7 @@ hero:
       link: /band-a
     - theme: alt
       text: Ask a question
-      link: >-
-        https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
+      link: https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
 features:
   - title: Decide faster
     details: Use the Decision Spine to cut rework.
@@ -33,14 +31,15 @@ features:
     details: Copy-paste prompts that keep meetings on track.
   - title: Ship accessibly
     details: Quick checks that catch 80% of issues.
+nav:
+  - none
 ---
 
-<a href="#governance-safety" data-primary-action>Use these starting links to keep guidance, tone, and UI aligned.</a>
-Guidance stays light on chores. When you need the step-by-step checklist, jump to [runbooks](/runbooks/) (Coming soon).
+Guidance stays light on chores; runbooks carry the detailed checklists. <a href="#governance-safety" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Governance & Safety
 
-Automation enforces: frontmatter completeness, sanctioned band, sanitization rules, secret scan, build integrity. See [Governance Policy](./governance) for lifecycle and gate details.
+Automation enforces: frontmatter completeness, sanctioned band, sanitization rules, secret scan, build integrity. See [Anti-drift Content Governance](./governance) for lifecycle and gate details.
 
 ## FAQ Highlights
 
@@ -64,7 +63,3 @@ Monthly release captures meaningful changes in [releases](./release.md).
 - Optional analytics for drift scoring
 - Inclusive language heuristics
 - Link freshness scoring
-
----
-
-_Last reviewed: see git history (quarterly review cadence)._

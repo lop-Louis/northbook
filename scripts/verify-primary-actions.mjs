@@ -116,14 +116,14 @@ function collectDocRoutes() {
         const fullPath = path.join(currentDir, entry.name)
         const relPath = path.relative(docsDir, fullPath)
         const route = normalizeRoute(relPath)
-        let requiresCTA = false
+        let requiresCTA = true
 
         try {
           const raw = fsSync.readFileSync(fullPath, 'utf8')
           const { data } = matter(raw)
-          if (data && data.primary_action && data.layout !== 'home') {
-            requiresCTA = true
-          }
+          const layout = data?.layout
+          const skip = data?.skip_cta === true
+          if (layout === 'home' || skip) requiresCTA = false
         } catch (error) {
           console.warn(
             `[verify-primary-actions] Unable to read frontmatter for ${relPath}: ${error.message}`
@@ -189,27 +189,41 @@ async function main() {
   for (const target of htmlTargets) {
     if (!target.requiresCTA) continue
 
-    const { hasAnchor, distance } = await analyzeHtmlFile(target.htmlPath)
+    const { primary, secondary } = await analyzeHtmlFile(target.htmlPath)
 
-    if (!hasAnchor || distance == null || distance > CTA_DISTANCE_LIMIT) {
+    if (
+      !primary.has ||
+      primary.distance == null ||
+      primary.distance > CTA_DISTANCE_LIMIT ||
+      !secondary.has
+    ) {
       failures.push({
         page: target.route,
-        hasAnchor,
-        distance
+        primary,
+        secondary
       })
     }
   }
 
   if (failures.length === 0) {
-    console.log('[verify-primary-actions] All Playbook and Guide pages include a primary action.')
+    console.log('[verify-primary-actions] All required pages include CTA pairs within the fold.')
     return
   }
 
   console.error('\nPrimary action CTA check failed on these pages:\n')
-  for (const { page, hasAnchor, distance } of failures) {
-    const detail = hasAnchor
-      ? `CTA appears in estimated ~${distance}px from start of content`
-      : 'CTA not found in content'
+  for (const { page, primary, secondary } of failures) {
+    let detail
+    if (!primary.has) {
+      detail = 'Primary action not found in content'
+    } else if (primary.distance == null) {
+      detail = 'Primary action distance could not be measured'
+    } else if (primary.distance > CTA_DISTANCE_LIMIT) {
+      detail = `Primary action appears in estimated ~${primary.distance}px from start of content`
+    } else if (!secondary.has) {
+      detail = 'Secondary action not found in content'
+    } else {
+      detail = 'CTA pair failed validation'
+    }
 
     console.error(
       ` - ${page || '/'} (${detail}). Add <a href="/runbooks/handover-20-min" data-primary-action>Do this next</a>`
@@ -239,20 +253,26 @@ async function analyzeHtmlFile(htmlPath) {
     doc.body
 
   if (!contentRoot) {
-    return { hasAnchor: false, distance: null }
+    return { primary: { has: false, distance: null }, secondary: { has: false } }
   }
 
-  const anchor = contentRoot.querySelector('[data-primary-action]')
-  if (!anchor) {
-    return { hasAnchor: false, distance: null }
-  }
+  const primaryAnchor = contentRoot.querySelector('[data-primary-action]')
+  const secondaryAnchor = contentRoot.querySelector('[data-secondary-action]')
 
-  const { chars, blocks, bonus } = accumulateBeforeAnchor(contentRoot, anchor)
-  const estimatedDistance = Math.round(blocks * BLOCK_BASE_PX + chars * CHAR_TO_PX + bonus)
+  let primaryDistance = null
+  if (primaryAnchor) {
+    const { chars, blocks, bonus } = accumulateBeforeAnchor(contentRoot, primaryAnchor)
+    primaryDistance = Math.round(blocks * BLOCK_BASE_PX + chars * CHAR_TO_PX + bonus)
+  }
 
   return {
-    hasAnchor: true,
-    distance: estimatedDistance
+    primary: {
+      has: Boolean(primaryAnchor),
+      distance: primaryDistance
+    },
+    secondary: {
+      has: Boolean(secondaryAnchor)
+    }
   }
 }
 

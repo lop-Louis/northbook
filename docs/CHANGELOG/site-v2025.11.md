@@ -7,38 +7,39 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-06'
 audience: Readers tracking what changed in the v2025.11 release
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: 'Summarize the notable additions, updates, and fixes in this tag'
-primary_action: Use this changelog to understand what shipped in the tag.
+tone: Plainspoken, candid, energetic
+narrative_goal: Summarize the notable additions, updates, and fixes in this tag
+nav:
+  - none
 ---
 
 Back to [Releases](../release.md)
 
 # site-v2025.11 · Patch hygiene
 
-<a href="#added" data-primary-action>Use this changelog to understand what shipped in the tag.</a>
+This changelog captures the mid-November hygiene release so you can skim what shipped. <a href="#added" data-primary-action>Scan the changes</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 **Tag date:** Mid-November release window
 
 ## Added
 
 - **Decision Tripwires** page: three condition → action prompts for missing owner/date, SLA breaches, and metric regression.
-- **Runbooks:** Handover RACI template, Transition operating promises, Shared metric visibility, and State visibility map now live with sanitized examples.
-- **UX + UI Standard:** Playbook entry codifying layout width, typography scale, link styling, color rules, a11y guardrails, allowed components, and media requirements.
-- **Tooling:** `scripts/ux-scan.mjs` enforces primary-action tone plus heading rhythm; CTA verifier now scans every published route.
+- **Runbooks:** Handover RACI template, Transition operating promises, Shared metric visibility, State visibility map, and Accessibility Audit runbook now live with sanitized examples.
+- **CTA policy:** Anti-drift governance now requires inline primary + secondary CTA pairs per page; frontmatter `primary_action` removed in favor of body-level actions and Feedback.vue fallbacks.
+- **Tooling:** `scripts/nav-guard.mjs`, `scripts/frontmatter-lint.mjs` (with nav support), and `scripts/sync-navigation.mjs` shipped to keep frontmatter `nav` metadata, generated nav, and `.vitepress/config.ts` aligned.
 
 ## Updated
 
-- Governance policy now references the internal `GOVERNANCE.md` for automation/RACI, removing redundant Band A copy.
-- Every doc with `primary_action` exposes it above the fold via a `data-primary-action` anchor; legacy runbooks cleaned up to match.
-- Runbooks index, Decision Spine, Handshake Contracts, RACI by Seams, Stop Rules, Scoreboard, and other Playbook pages now link to the new templates and use underlined cross-links per the UX standard.
-- Homepage CTA clarified (“Use these starting links…”), and multiple guidance pages (Band A, FAQ, Sanitization, Start Here, etc.) refreshed to the new tone.
+- Governance policy references the internal `GOVERNANCE.md` for automation/RACI, documents nav metadata as the source of truth, and clarifies guard/drift/Lighthouse/nav routing.
+- All guidance pages now open with a single sentence plus inline CTA pair, refreshed copy, and secondary actions pointing to runbooks or the feedback helper.
+- README aligns with governance (nav metadata, helpful scripts), and runbook pages now include identical CTA contracts.
+- Top-level docs (Band A, FAQ, Sanitization, Start Here, Runbooks index, etc.) all got tone-aligned intros plus CTA pairs, making the UX consistent.
 
 ## Fixed
 
-- Removed duplicate CTA callouts and ensured CTA placement ignores the home layout to prevent false positives.
+- Removed duplicate CTA callouts, ensured `nav` metadata is present across all frontmatter, and added a nav guard so `.vitepress/navigation.generated.ts` matches the docs.
 - Styled global link underline in the VitePress theme so anchors stay accessible without wrapping everything in `<u>`.
-- Changelog page itself now carries a `data-primary-action` and the release flow documents the shared metric snapshot link.
+- Changelog/Releases pages now use the inline CTA/summary pattern.
 
 ### Governance receipts
 

@@ -1,5 +1,5 @@
 ---
-title: Policy → Action Pattern (Expenses)
+title: "Policy \u2192 Action Pattern (Expenses)"
 band: A
 owner: '@lop-Louis'
 refresh_after_days: 180
@@ -8,16 +8,17 @@ status: live
 labels:
   - finance
 audience: People converting finance policies into public-safe actions
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: 'Show how to translate expense policy into fast, safe guidance'
-primary_action: Use the three-line pattern to remind teams about expense expectations.
+tone: Plainspoken, candid, energetic
+narrative_goal: Show how to translate expense policy into fast, safe guidance
+nav_group: Guides
+nav_order: 40
+nav:
+  - sidebar
 ---
 
 # Policy → Action Pattern (Expenses)
 
-<a href="#public-safe-example" data-primary-action>Use the three-line pattern to remind teams about expense expectations.</a>
-
-> Public-safe guidance for helping people move from policy words to action.
+This three-line pattern turns finance policy into action without leaking specifics. <a href="#public-safe-example" data-primary-action>Apply the expense pattern</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 This pattern turns a policy reminder into action with three lines:
 

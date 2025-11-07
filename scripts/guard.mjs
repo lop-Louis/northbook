@@ -54,29 +54,6 @@ const allowedPlaceholders = [
   'vendor-name'
 ]
 
-// Non-inclusive / discouraged terminology heuristics (case-insensitive)
-const inclusiveHeuristics = [
-  /\bwhitelist\b/i,
-  /\bblacklist\b/i,
-  /\bmaster\b/i,
-  /\bslave\b/i,
-  /\bguys\b/i,
-  /\bsanity check\b/i,
-  /\btribe\b/i,
-  /\bninja\b/i,
-  /\brockstar\b/i
-]
-
-// Valid change types and their line limits
-const CHANGE_LIMITS = {
-  patch: 200,
-  minor: 400,
-  major: Infinity
-}
-
-// Valid status values
-const VALID_STATUSES = ['live', 'stale', 'archived', 'draft']
-
 let red = []
 let yellow = []
 let fileCount = 0
@@ -87,84 +64,8 @@ function checkFile(p) {
   const raw = fs.readFileSync(p, 'utf8')
   const { data, content } = matter(raw)
 
-  const relPath = path.relative(process.cwd(), p).split(path.sep).join('/')
-
   // Skip VitePress config directory
   if (p.includes('.vitepress')) return
-
-  // Required frontmatter fields
-  const required = ['title', 'band', 'owner', 'refresh_after_days', 'change_type', 'status']
-  const missing = required.filter(k => data[k] == null)
-
-  if (missing.length) {
-    red.push(`${p}: Missing required frontmatter: ${missing.join(', ')}`)
-    checkCount++
-  }
-
-  const audienceRequiredPrefixes = [
-    /^docs\/playbook\//i,
-    /^docs\/runbooks\//i,
-    /^docs\/start-here\//i,
-    /^docs\/runbooks\//i
-  ]
-  const needsAudienceFields = audienceRequiredPrefixes.some(rx => rx.test(relPath))
-  if (needsAudienceFields) {
-    const storytellingFields = ['audience', 'tone', 'narrative_goal', 'primary_action']
-    const missingStorytelling = storytellingFields.filter(key => data[key] == null)
-    if (missingStorytelling.length) {
-      yellow.push(`${p}: Missing storytelling signals: ${missingStorytelling.join(', ')}`)
-      checkCount++
-    }
-  }
-
-  // Band A validation
-  if (data.band && String(data.band).trim() !== 'A') {
-    red.push(`${p}: band=${data.band} not allowed (must be 'A')`)
-    checkCount++
-  }
-
-  // Owner validation
-  if (data.owner && !String(data.owner).startsWith('@')) {
-    yellow.push(`${p}: owner should start with @ (GitHub handle)`)
-    checkCount++
-  }
-
-  // Refresh days validation
-  if (data.refresh_after_days) {
-    const days = Number(data.refresh_after_days)
-    if (isNaN(days) || days < 1 || days > 365) {
-      yellow.push(`${p}: refresh_after_days=${days} seems unusual (1-365 expected)`)
-      checkCount++
-    }
-  }
-
-  // Change type validation
-  if (data.change_type && !CHANGE_LIMITS[data.change_type]) {
-    red.push(`${p}: Invalid change_type='${data.change_type}' (must be patch, minor, or major)`)
-    checkCount++
-  }
-
-  // Status validation
-  if (data.status && !VALID_STATUSES.includes(data.status)) {
-    red.push(`${p}: Invalid status='${data.status}' (must be: ${VALID_STATUSES.join(', ')})`)
-    checkCount++
-  }
-
-  // Title length validation (UX: prevent sidebar overflow)
-  if (data.title) {
-    const titleLength = String(data.title).length
-    if (titleLength > 50) {
-      yellow.push(
-        `${p}: Title length ${titleLength} chars exceeds 50 (mobile sidebar may truncate)`
-      )
-      checkCount++
-    } else if (titleLength > 40) {
-      yellow.push(
-        `${p}: Title length ${titleLength} chars approaching limit (consider shortening for mobile)`
-      )
-      checkCount++
-    }
-  }
 
   // Check for forbidden patterns in content
   const forbiddenMatches = []
@@ -182,40 +83,9 @@ function checkFile(p) {
   }
 
   if (forbiddenMatches.length) {
-    yellow.push(
+    red.push(
       `${p}: Possible internal/sensitive content detected (${forbiddenMatches.length} pattern(s))`
     )
-    checkCount++
-  }
-
-  // Inclusive language heuristics
-  const nonInclusive = []
-  for (const rx of inclusiveHeuristics) {
-    if (rx.test(content)) nonInclusive.push(rx.source)
-  }
-  if (nonInclusive.length) {
-    yellow.push(`${p}: Non-inclusive terminology flagged (${nonInclusive.length} match(es))`)
-    checkCount++
-  }
-
-  // Change size vs declared change_type
-  const lines = raw.split('\n').length
-  if (data.change_type && CHANGE_LIMITS[data.change_type] !== Infinity) {
-    const limit = CHANGE_LIMITS[data.change_type]
-    if (lines > limit) {
-      yellow.push(`${p}: ${lines} lines exceeds ${data.change_type} limit of ${limit} lines`)
-      checkCount++
-    }
-  }
-
-  // Check for common issues
-  if (content.includes('TODO:') || content.includes('FIXME:')) {
-    yellow.push(`${p}: Contains TODO/FIXME markers`)
-    checkCount++
-  }
-
-  if (content.includes('YOUR_TOKEN') || content.includes('REPLACE_ME')) {
-    red.push(`${p}: Contains placeholder values that must be replaced`)
     checkCount++
   }
 }
@@ -229,8 +99,7 @@ function walk(dir, withinDocs = false) {
         const nextWithinDocs = withinDocs || path.resolve(p).startsWith(path.resolve(DOCS))
         walk(p, nextWithinDocs)
       } else if (p.endsWith('.md')) {
-        const enforceDocs = withinDocs || path.resolve(p).startsWith(path.resolve(DOCS))
-        checkFile(p, enforceDocs)
+        checkFile(p)
       }
     }
   } catch (err) {

@@ -6,14 +6,15 @@ owner: '@lop'
 refresh_after_days: 60
 status: draft
 audience: Stream leads executing a rapid handover
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Lay out the steps that move work from Framing to Ready fast
-primary_action: Use this drill to move a stream from Framing to Ready.
+nav:
+  - none
 ---
 
 # 20-minute handover drill
 
-<a href="#top" data-primary-action>Use this drill to move a stream from Framing to Ready.</a>
+Force clarity fast: this drill moves a stream from Framing to Ready in 20 minutes. <a href="#top" data-primary-action>Run the drill</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
 
 **Goal:** move a stream from Framing to Ready.
 

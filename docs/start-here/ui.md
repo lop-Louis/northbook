@@ -6,14 +6,15 @@ refresh_after_days: 120
 change_type: minor
 status: live
 audience: Designers and engineers building shared UI
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Lock in the visual system so product surfaces feel unified
-primary_action: Use these tokens and specs whenever you ship UI work.
+nav:
+  - none
 ---
 
 # UI Baseline
 
-<a href="#layout-rules" data-primary-action>Use these tokens and specs whenever you ship UI work.</a>
+Consistent UI happens when every team uses the same tokens and states. <a href="#layout-rules" data-primary-action>Apply the specs</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 What: Canonical specs for spacing, typography, and states across product surfaces.
 Why: Prevents drift between teams and keeps polished UI without pixel-policing.

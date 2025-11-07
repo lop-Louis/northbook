@@ -1,4 +1,4 @@
-# Governance and Drift Prevention
+# Project Governance (Automation & Drift Prevention)
 
 ## Purpose
 
@@ -10,11 +10,11 @@ Keep public documentation useful, safe, and small. Bots chase compliance; humans
 
 ## Content Bands & Lifecycle
 
-The public policy for Band A scope, lifecycle states, and frontmatter validation now lives in `docs/governance.md` (and the published site). Instead of duplicating the rules here, treat that doc as the single source. This file simply adds operational context:
+The public policy for Band A scope, lifecycle states, and frontmatter validation now lives in `docs/governance.md` (and the published site) under the **Anti-drift Content Governance** name. Instead of duplicating the rules here, treat that doc as the single source. This file simply adds operational context:
 
 - **Band A:** Follow the public-facing [Band A reference](docs/band-a.md). Anything forbidden there is also forbidden here.
 - **Lifecycle:** Apply the Draft→Review→Live→Watch→Stale→Archive model from `docs/governance.md`. This internal file only tracks the automation owners for each state.
-- **Frontmatter:** Use the required fields documented in `docs/governance.md`. Automation enforces the same schema.
+- **Frontmatter + CTAs:** Use the required fields documented in `docs/governance.md`; CTA text now lives in the body via `data-primary-action` + `data-secondary-action` pairs, which drift prevention enforces. Frontmatter is validated by `schemas/frontmatter.schema.json` through the `pnpm run frontmatter:lint` script in CI.
 
 Whenever you update those rules, update `docs/governance.md` first, then link back here if new context is needed.
 
@@ -26,10 +26,8 @@ All pull requests undergo these automated checks:
 
 ### 🔴 Red (Blocking)
 
-- Missing required frontmatter fields
-- `band` set to anything other than 'A'
+- Frontmatter schema violations (missing metadata, band≠A, invalid change_type/status/refresh windows)
 - Forbidden patterns detected (internal URLs, ticket IDs, secrets)
-- Invalid `change_type` or `status` values
 - Secret scan fails (gitleaks)
 - Build fails
 
@@ -37,13 +35,11 @@ All pull requests undergo these automated checks:
 
 ### 🟡 Yellow (Warning)
 
-- File size exceeds `change_type` limit
-- Broken external links detected
-- TODO/FIXME markers in content
-- Possible internal references flagged
-- Owner format unusual (missing @)
+- Link validation failures
+- UX scan misses (missing CTA pair before the first heading)
+- Drift audit warnings (storytelling metadata gaps, change-size heuristics, inclusive-language nudge)
 
-**Action:** Requires one reviewer approval before merge
+**Action:** Requires one reviewer approval before merge. Drift alerts never block the workflow but surface inside the CI comment for visibility.
 
 ### 🟢 Green (Auto-merge)
 
@@ -52,6 +48,13 @@ All pull requests undergo these automated checks:
 - Sanitization checklist complete
 
 **Action:** Auto-merged within 1 minute via squash merge
+
+### Automation routing
+
+- **Guard:** Runs only on PRs (`pnpm run guard`). Its JSON output is posted as a PR comment so reviewers see red/yellow context without combing through CI logs. Guard checks must be read-only; generation/mutation scripts belong in separate steps. The CI job summary just links to the comment.
+- **Anti-drift:** Runs on every push to non-default working branches (`pnpm run drift`). Results stay inside the job summary; PRs do not repeat the drift report.
+- **Lighthouse:** Executes after deployment against <https://northbook.guide>. The Lighthouse workflow records its scores in the job summary; PRs do not need to attach or comment the report.
+- **Navigation sync:** Frontmatter owns nav placement (`nav` plus optional `nav_label`, `nav_group`, `nav_order`). Run `pnpm run nav:sync` to regenerate `.vitepress/navigation.generated.ts`, and rerun `pnpm run docs:build`. The build fails on dead links; reviewers should bounce PRs that skip the nav update.
 
 ---
 

@@ -7,16 +7,17 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Engineers and collaborators onboarding to Northbook habits
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Answer recurring new-joiner questions with actionable next steps
-primary_action: Use this FAQ to self-serve common onboarding questions.
+nav_group: Start here
+nav_order: 20
+nav:
+  - sidebar
 ---
 
 # FAQ for New Joiners
 
-<a href="#process-culture" data-primary-action>Use this FAQ to self-serve common onboarding questions.</a>
-
-Common questions from engineers joining the team, with quick answers.
+New joiners can self-serve most answers without waiting for a reply. <a href="#process-culture" data-primary-action>Scan the FAQ</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Process & Culture
 
@@ -113,10 +114,3 @@ Need more detail? Read the public-safe pattern: [Expenses: Policy → Action](./
 - DM your manager
 
 **Remember**: There are no dumb questions in your first 90 days (or ever).
-
----
-
-See also:
-
-- [Decision Spine](./decision-spine) - how we make technical decisions
-- [Sanitization Checklist](./sanitization) - for contributing to this site

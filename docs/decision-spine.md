@@ -7,18 +7,20 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Deciders and collaborators tackling multi-team technical choices
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: 'Give a reusable structure for framing, deciding, and reviewing work'
-primary_action: Use the four-stage spine to structure your next decision.
+tone: Plainspoken, candid, energetic
+narrative_goal: Give a reusable structure for framing, deciding, and reviewing work
+nav_group: Guides
+nav_order: 10
+nav:
+  - sidebar
 ---
 
 # Decision Spine
 
-<a href="#four-stages" data-primary-action>Use the four-stage spine to structure your next decision.</a>
+This lightweight spine keeps framing, options, the call, and the review aligned across teams. <a href="#four-stages" data-primary-action>Run your next decision through the spine</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
-What: Lightweight framework for making and documenting technical decisions in a repeatable, linkable way.
-Why: Prevents re-litigation, makes tradeoffs explicit early, and leaves a durable paper trail for future teams.
-When: Use for multi‑stakeholder choices, anything with meaningful tradeoffs, or answers you expect to paste more than twice.
+- **Why**: Prevents re-litigation, makes tradeoffs explicit early, and leaves a durable paper trail for future teams.
+- **When**: Use for multi‑stakeholder choices, anything with meaningful tradeoffs, or answers you expect to paste more than twice.
 
 ## Four stages
 
@@ -85,4 +87,4 @@ Combine with:
 - [Facilitation](./facilitation) techniques for group decisions
 - [Decision tripwires](./decision-tripwires) to enforce timely follow-up
 
-See [Governance](./governance) for change types and the monthly release cadence.
+See [Anti-drift Content Governance](./governance) for change types and the monthly release cadence.

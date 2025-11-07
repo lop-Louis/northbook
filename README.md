@@ -8,11 +8,11 @@ Guidance over to-do. Northbook is a public VitePress site for Band A principles,
 
 ## What’s in the repo?
 
-- **Guidance (`/docs`)** — VitePress content for principles, patterns, and decision aids.
-- **Runbooks (`/runbooks`)** — Operational checklists and task sequences that stay off the site.
+- **Guidance (`/docs`)** — VitePress content for principles, patterns, and decision aids. Subfolders track how automation scopes linting (e.g., `start-here/`, `playbook/`, `runbooks/`).
+- **Runbooks (`/runbooks`)** — Legacy home for operational checklists; new runbooks live under `docs/runbooks/` so they render on the public site.
 - **Guardrails (`/scripts`)** — Automation that stops drift, broken links, and unsanitized content.
 
-Task checklists belong under `/runbooks`, not in the published site.
+Every published page declares its navigation placement via the `nav` array in frontmatter (e.g., `['main','sidebar']` for top nav and sidebar entries, `['none']` for hidden pages). `.vitepress/navigation.generated.ts` is generated from that metadata via `pnpm run nav:sync`, so the docs themselves stay the source of truth.
 
 ---
 
@@ -58,13 +58,24 @@ See `docs/principles.md` and [GOVERNANCE](./GOVERNANCE.md) for fuller details.
 
 ### Helpful Scripts
 
-| Command               | Purpose                                         |
-| --------------------- | ----------------------------------------------- |
-| `pnpm run guard`      | Band A compliance + anti-drift rules            |
-| `pnpm run links`      | Internal and external link validation           |
-| `pnpm run stale`      | Generates stale pages report                    |
-| `pnpm run validate`   | Lint + type check + guard + build + links combo |
-| `pnpm run docs:build` | Production build                                |
+<!-- scripts:start -->
+
+| Command                     | Purpose                                                                  |
+| --------------------------- | ------------------------------------------------------------------------ |
+| `pnpm run docs:dev`         | Start the VitePress dev server                                           |
+| `pnpm run docs:build`       | Build the production site and verify CTA placement                       |
+| `pnpm run docs:preview`     | Preview the production build locally                                     |
+| `pnpm run docs:guard`       | Run frontmatter lint, guard, drift, and UX scans                         |
+| `pnpm run nav:sync`         | Regenerate nav + sidebar from frontmatter metadata                       |
+| `pnpm run frontmatter:lint` | Validate Band A frontmatter against the JSON schema                      |
+| `pnpm run guard`            | Band A forbidden pattern scan                                            |
+| `pnpm run drift`            | Advisory drift audit (storytelling, inclusive language, etc.)            |
+| `pnpm run ux:scan`          | Verify CTA intro sentence includes both actions before the first section |
+| `pnpm run links`            | Check internal and external links                                        |
+| `pnpm run stale`            | Generate stale page report                                               |
+| `pnpm run test`             | Run Node tests and component suite                                       |
+
+<!-- scripts:end -->
 
 Automation catches most issues; reviewers focus on judgment calls.
 
@@ -84,10 +95,13 @@ Automation catches most issues; reviewers focus on judgment calls.
 
 ## Key Files
 
-- `docs/.vitepress/config.ts` — VitePress config + GA tag.
+- `docs/.vitepress/config.ts` — VitePress config + GA tag; imports the generated nav/sidebar.
+- `docs/.vitepress/navigation.generated.ts` — Auto-generated from frontmatter `nav` metadata.
 - `docs/index.md` — Homepage hero that sells “Guidance over to-do.”
-- `docs/principles.md` — Canonical principles and brand micro-rules.
-- `scripts/guard.mjs` — Band A and anti-drift guard.
+- `docs/governance.md` — Anti-drift rules for public content.
+- `scripts/guard.mjs` — Band A and anti-drift guard (read-only).
+- `scripts/nav-guard.mjs` — Verifies frontmatter nav metadata matches generated nav/sidebar.
+- `scripts/sync-navigation.mjs` — Generates the nav/sidebar file from frontmatter.
 - `.github/workflows/pages.yml` — Deploys the site.
 - `.github/workflows/guard.yml` — Runs guard on PRs.
 

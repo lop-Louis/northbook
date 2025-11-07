@@ -10,7 +10,7 @@ Thank you for contributing to Northbook. Guidance over to-do. Northbook = guidan
 
 1. Read [Band A Guidelines](./docs/band-a.md)
 2. Review [Sanitization Checklist](./docs/sanitization.md)
-3. Check [Governance Policy](./docs/governance.md) for policies
+3. Check [Anti-drift Content Governance](./docs/governance.md) for policies
 4. Understand [common pitfalls](#common-band-a-pitfalls) below
 
 ---
@@ -342,7 +342,7 @@ Every quarter, page owners should:
 **Q3 Target (Jul-Sep):** Review pages with accumulated warnings  
 **Q4 Target (Oct-Dec):** Year-end comprehensive audit
 
-See [Governance Policy](./docs/governance.md) for detailed quarterly review process.
+See [Anti-drift Content Governance](./docs/governance.md) for detailed quarterly review process.
 
 ---
 

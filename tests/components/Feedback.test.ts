@@ -6,10 +6,15 @@ import { nextTick } from 'vue'
 import Feedback from '@theme/Feedback.vue'
 
 let mockFrontmatterLabels: unknown
+let mockSkipFeedback = false
+let mockFrontmatterLayout: string | undefined
+let mockRoutePath = '/playbook/test'
 
 vi.mock('vitepress', () => ({
   useRoute: () => ({
-    path: '/test-page'
+    get path() {
+      return mockRoutePath
+    }
   }),
   useData: () => ({
     page: {
@@ -17,6 +22,12 @@ vi.mock('vitepress', () => ({
         frontmatter: {
           get labels() {
             return mockFrontmatterLabels
+          },
+          get skip_feedback() {
+            return mockSkipFeedback
+          },
+          get layout() {
+            return mockFrontmatterLayout
           }
         }
       }
@@ -27,6 +38,9 @@ vi.mock('vitepress', () => ({
 describe('Feedback.vue', () => {
   beforeEach(() => {
     mockFrontmatterLabels = undefined
+    mockSkipFeedback = false
+    mockFrontmatterLayout = undefined
+    mockRoutePath = '/playbook/test'
     vi.restoreAllMocks()
   })
 
@@ -41,13 +55,23 @@ describe('Feedback.vue', () => {
     return { wrapper, gtagSpy }
   }
 
-  it('renders prompt and three actions', async () => {
+  it('renders prompt and three actions for playbooks', async () => {
     const { wrapper } = await mountComponent()
     const links = wrapper.findAll('a')
 
-    expect(wrapper.text()).toContain('Was this page helpful')
+    expect(wrapper.text()).toContain('Was this helpful?')
     expect(links).toHaveLength(3)
     expect(links.map(link => link.text().trim())).toEqual(['👍 Yes', '👎 No', '❓ Ask KL'])
+  })
+  it('hides feedback when skip_feedback is true', async () => {
+    mockSkipFeedback = true
+    const { wrapper } = await mountComponent()
+    expect(wrapper.find('.vp-feedback').exists()).toBe(false)
+  })
+  it('hides feedback on Home layout pages', async () => {
+    mockFrontmatterLayout = 'home'
+    const { wrapper } = await mountComponent()
+    expect(wrapper.find('.vp-feedback').exists()).toBe(false)
   })
 
   it('builds helpful URL with feedback labels', async () => {
