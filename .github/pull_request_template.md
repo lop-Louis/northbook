@@ -1,15 +1,17 @@
 ## 🤖 Automated Checks
 
-The following checks run automatically on every PR:
+Per [Anti-drift Content Governance](../docs/governance.md), every PR runs:
 
-- ✅ **Frontmatter validation** - Required fields presence
-- ✅ **Change size analysis** - Matches declared `change_type`
-- ✅ **Content guard** - Band A compliance, no internal/sensitive data
-- ✅ **Link validation** - Internal and external links working
-- ✅ **Build test** - VitePress builds successfully
-- ✅ **Secret scan** - No API keys, tokens, or credentials
+- `pnpm run frontmatter:lint` — validates Band A metadata and `nav` schema
+- `pnpm run guard` — Band A forbidden patterns + change-size sanity
+- `pnpm run drift` — storytelling, inclusive language, and change-size advisories
+- `pnpm run ux:scan` — intro sentence + paired CTA check
+- Nav consistency check — generated nav/sidebar matches frontmatter `nav`
+- `pnpm run links` — internal/external link validation
+- `pnpm run docs:build` — production build with CTA enforcement
+- Secret scan (`gitleaks`)
 
-**Check results will be posted as a comment on this PR automatically.**
+Results post automatically as a PR comment; review that report for red/yellow findings.
 
 ---
 
@@ -17,41 +19,33 @@ The following checks run automatically on every PR:
 
 ### Public Safety ✅
 
-Before submitting, verify these items (not fully automatable):
-
-- [ ] No calendar dates (use relative: "within 3 months" vs "Q2 2024")
-- [ ] Code samples are original or properly attributed
-- [ ] Screenshots use dummy data (if applicable)
-- [ ] Exact numbers replaced with ranges ("10-20" vs "15")
+- [ ] Sanitized per the [checklist](../docs/sanitization.md) (relative dates, dummy data, licensed code, ranges)
+- [ ] Opening paragraph follows the CTA contract: one plainspoken sentence + inline primary & secondary actions ([policy](../docs/governance.md#cta--feedback-contract))
+- [ ] Frontmatter `nav` array (`main`, `sidebar`, `external`, `none`) reflects where the page should appear. If you changed it, regenerate `.vitepress/navigation.generated.ts` in this PR.
 
 ### Testing 🧪
 
 - [ ] Previewed locally: `pnpm run docs:dev`
 
-**Note:** Guard, lint, and link checks run automatically in pre-commit hooks and CI.
+**Note:** Guard, drift, UX, and link checks run automatically in pre-commit hooks and CI.
+
+---
 
 ## What's Changed
 
-<!-- Brief description of your changes -->
+- [ ] Add changes into `docs/CHANGELOG/site-vYYYY.MM.md` if applicable
 
 ## Context
 
-<!-- Why is this change needed? How does it help? -->
-
-### Decision Snapshot
-
-- **Why (one line):** <!-- State the single-sentence intent -->
-- **Exit metric:** <!-- baseline → target · review date (YYYY-MM-DD) -->
-- **Stream/Seam ID:** <!-- e.g., Stream-07 or Seam-B -->
-- **Exception (reason · owner · date):** <!-- e.g., Skipped retro · @handle · 2025-01-15; if none, type N/A -->
+- [ ] Link to relevant issues, PRs, or decision records
 
 ---
 
 **Automated CI will:**
 
-- 🤖 **Post detailed check results** as a comment on this PR
-- 🟢 **Auto-merge** if all checks pass (green status)
-- 🟡 **Request review** for warnings (yellow status)
-- 🔴 **Block merge** until issues fixed (red status)
+- 🤖 Post detailed check results on the PR
+- 🟢 Auto-merge if everything is green
+- 🟡 Request review for warnings
+- 🔴 Block merges until red issues are fixed
 
-See [Sanitization Checklist](../docs/sanitization.md) for detailed guidance.
+See [Anti-drift Content Governance](../docs/governance.md) and the [Sanitization Checklist](../docs/sanitization.md) for the complete rules.
