@@ -24,3 +24,4 @@ All runbooks follow the [Anti-drift Content Governance](../governance.md) rules;
 - [Transition operating promises](./transition-operating-promises.md)
 - [Shared metric visibility](./shared-metric-visibility.md)
 - [State visibility map](./state-visibility.md)
+- [Accessibility audit runbook](./accessibility-audit.md)

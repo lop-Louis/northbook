@@ -1,19 +1,20 @@
 ---
-title: Accessibility Audit Runbook
+title: Accessibility audit runbook
+change_type: minor
 band: A
 owner: '@louis'
-status: live
 refresh_after_days: 90
-change_type: minor
-last_reviewed: '2025-01-15'
+status: live
 audience: Product ops and accessibility leads running the quarterly sweep
 tone: Plainspoken, candid, energetic
 narrative_goal: Outline the repeatable tasks for verifying accessibility health
 ---
 
-<p data-primary-action>Use this runbook to execute the quarterly accessibility audit and log findings.</p>
+# Accessibility audit runbook
 
-<a href="../../docs/runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+<a href="#purpose" data-primary-action>Use this runbook to execute the quarterly accessibility audit and log findings.</a>
+
+<a href="./index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 ## Purpose
 
