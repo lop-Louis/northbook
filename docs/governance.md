@@ -13,9 +13,7 @@ narrative_goal: Define the guardrails that keep public docs safe and trustworthy
 
 # Anti-drift Content Governance
 
-<a href="#scope" data-primary-action>Use these rules when you edit or approve any page.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+Keep public docs anti-drift by following this policy. <a href="#scope" data-primary-action>Apply the rules</a> or <a href="./runbooks/index" data-secondary-action>Jump to the runbooks index</a>.
 
 > Public-safe content only. Internal specifics live elsewhere. This page is the Anti-drift content governance playbook; project-level governance (RACI, automation owners, SLOs) lives in [`GOVERNANCE.md`](https://github.com/lop-Louis/go-to-docs/blob/main/GOVERNANCE.md).
 
@@ -45,6 +43,8 @@ Anti-drift governance treats the CTA pair as part of the narrative, not an after
    `https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,feedback&title=[Feedback]%20TITLE&body=Page:%20URL`
 5. **Placement:** The CTA sentence must appear before the first `##` heading. Drift checks fail if either action is missing or if the primary action renders more than ~600 px below the H1.
 
+> Automation: `pnpm run ux:scan` enforces that every page opens with a plain sentence followed by both `data-primary-action` and `data-secondary-action` anchors before the first section.
+
 ## Frontmatter contract
 
 Every markdown page still needs ownership and review metadata:
@@ -63,6 +63,12 @@ status: live | stale | archived | draft
 > CTA text now lives in the body, so you **do not** need a `primary_action` field in frontmatter. Drift prevention scripts enforce the action pair directly in the rendered content.
 
 Frontmatter is linted via `pnpm run frontmatter:lint`, which loads `schemas/frontmatter.schema.json` to keep Band A metadata (owner handle, change type, status, refresh window) consistent before a PR can merge.
+
+## Automation surfaces
+
+- **Guard (PR-only):** `pnpm run guard` executes the Band A checks inside the PR workflow and posts the JSON summary as a PR comment (not the CI job summary). Treat red output as blocking; yellow requires reviewer judgment.
+- **Anti-drift (working branch push):** `pnpm run drift` runs whenever you push to a non-default working branch. The warnings land in that workflow’s job summary (no PR comment spam) so you can clean drift before opening a PR.
+- **Lighthouse (post-deploy):** Performance and accessibility checks run _after_ deployment against <https://northbook.guide>. The report lives in the Lighthouse workflow summary; PRs do not need to attach the artifact.
 
 ## Allowed Content (Band A)
 
