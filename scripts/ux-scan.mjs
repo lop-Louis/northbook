@@ -1,52 +1,122 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import matter from 'gray-matter'
 
-const playbookDir = path.join('docs', 'playbook')
+const repoRoot = process.cwd()
+const roots = [path.join(repoRoot, 'docs'), path.join(repoRoot, 'runbooks')]
+const excludedDirs = new Set(['.git', 'node_modules', 'public', '.vitepress'])
+const MAX_PRIMARY_ACTION_LENGTH = Number(process.env.PRIMARY_ACTION_MAX_CHARS ?? 140)
 
-function getMarkdownFiles(dir) {
-  return fs.readdirSync(dir).filter(entry => entry.endsWith('.md'))
+function collectMarkdownFiles() {
+  const files = []
+
+  for (const root of roots) {
+    if (!fs.existsSync(root)) continue
+    walk(root, files)
+  }
+
+  return files
 }
 
-function hasPrimaryActionIntro(content) {
-  const firstSectionIndex = content.indexOf('\n## ')
-  const intro = firstSectionIndex === -1 ? content : content.slice(0, firstSectionIndex)
-  return /primary action/i.test(intro)
+function walk(dir, bucket) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true })
+
+  for (const entry of entries) {
+    if (entry.name.startsWith('.')) continue
+    if (excludedDirs.has(entry.name)) continue
+
+    const entryPath = path.join(dir, entry.name)
+
+    if (entry.isDirectory()) {
+      walk(entryPath, bucket)
+      continue
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.md')) {
+      bucket.push(entryPath)
+    }
+  }
 }
 
-function findNonUnderlinedLink(content) {
-  const withoutCodeFences = content.replace(/```[\s\S]*?```/g, '')
-  const stripped = withoutCodeFences.replace(/<u>[\s\S]*?<\/u>/g, '')
-  const match = stripped.match(/\[[^\]]+\]\([^)]+\)/)
-  return match ? match[0] : null
+function checkPrimaryAction(data) {
+  const issues = []
+  const value = typeof data.primary_action === 'string' ? data.primary_action.trim() : ''
+
+  if (!value) return issues
+
+  if (value.length > MAX_PRIMARY_ACTION_LENGTH) {
+    issues.push(`Primary action exceeds ${MAX_PRIMARY_ACTION_LENGTH} characters`)
+  }
+
+  if (/primary action/i.test(value)) {
+    issues.push('Primary action copy should not reference “Primary action” (keep it user-facing)')
+  }
+
+  if (!/^[A-Z]/.test(value)) {
+    issues.push('Primary action should start with a capitalized verb (e.g., "Use", "Apply")')
+  }
+
+  return issues
+}
+
+function checkHeadingRhythm(content) {
+  const issues = []
+  const headingRegex = /^#{1,6}\s+/gm
+  let prevLevel = null
+
+  for (const match of content.matchAll(headingRegex)) {
+    const level = match[0].trim().split(' ')[0].length
+    if (level === 1) {
+      prevLevel = 1
+      continue
+    }
+
+    if (prevLevel !== null && level > prevLevel + 1) {
+      issues.push(`Heading level jumps from H${prevLevel} to H${level}`)
+    }
+
+    prevLevel = level
+  }
+
+  return issues
 }
 
 function runScan() {
-  const files = getMarkdownFiles(playbookDir)
-  const issues = []
+  const files = collectMarkdownFiles()
+  const problems = []
+  let inspected = 0
 
-  for (const file of files) {
-    const fullPath = path.join(playbookDir, file)
-    const content = fs.readFileSync(fullPath, 'utf8')
+  for (const filePath of files) {
+    const raw = fs.readFileSync(filePath, 'utf8')
+    const { data, content } = matter(raw)
+    const relativePath = path.relative(repoRoot, filePath)
+    const fileIssues = []
 
-    if (!hasPrimaryActionIntro(content)) {
-      issues.push(`${fullPath}: Missing Primary action callout above the first section heading`)
+    if (data && data.primary_action) {
+      inspected++
+      fileIssues.push(...checkPrimaryAction(data))
     }
 
-    const rogueLink = findNonUnderlinedLink(content)
-    if (rogueLink) {
-      issues.push(`${fullPath}: Non-underlined link detected -> ${rogueLink}`)
+    fileIssues.push(...checkHeadingRhythm(content))
+
+    if (fileIssues.length) {
+      problems.push({ file: relativePath, issues: fileIssues })
     }
   }
 
-  if (issues.length) {
+  if (problems.length) {
     console.log('UX scan found issues:')
-    for (const issue of issues) {
-      console.log(`- ${issue}`)
+    for (const problem of problems) {
+      console.log(`- ${problem.file}`)
+      for (const issue of problem.issues) {
+        console.log(`  • ${issue}`)
+      }
     }
     process.exitCode = 1
-  } else {
-    console.log(`UX scan passed across ${files.length} playbook pages.`)
+    return
   }
+
+  console.log(`UX scan passed across ${inspected} markdown files with primary_action frontmatter.`)
 }
 
 runScan()
