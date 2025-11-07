@@ -73,7 +73,7 @@ Frontmatter is linted via `pnpm run frontmatter:lint`, which loads `schemas/fron
 - **Guard (PR-only):** `pnpm run guard` executes the Band A checks inside the PR workflow and posts the JSON summary as a PR comment (not the CI job summary). Guard tasks must be **read-only**; do not bundle file-mutation or nav-generation scripts in the same command. Treat red output as blocking; yellow requires reviewer judgment.
 - **Anti-drift (working branch push):** `pnpm run drift` runs whenever you push to a non-default working branch. The warnings land in that workflow’s job summary (no PR comment spam) so you can clean drift before opening a PR.
 - **Lighthouse (post-deploy):** Performance and accessibility checks run _after_ deployment against <https://northbook.guide>. The report lives in the Lighthouse workflow summary; PRs do not need to attach the artifact.
-- **Navigation guard:** `pnpm run nav:guard` compares each page’s `nav` frontmatter to the generated navigation (`docs/.vitepress/navigation.generated.ts`). Add this to your local/CI checks so config drift fails fast.
+- **Navigation sync:** `pnpm run nav:sync` regenerates `.vitepress/navigation.generated.ts` from frontmatter before `docs:build`. Treat the docs themselves as the source of truth; never hand-edit the generated nav.
 
 ## Navigation & sidebar verification
 

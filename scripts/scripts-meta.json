@@ -1,0 +1,50 @@
+[
+  {
+    "name": "docs:dev",
+    "description": "Start the VitePress dev server"
+  },
+  {
+    "name": "docs:build",
+    "description": "Build the production site and verify CTA placement"
+  },
+  {
+    "name": "docs:preview",
+    "description": "Preview the production build locally"
+  },
+  {
+    "name": "docs:guard",
+    "description": "Run frontmatter lint, guard, drift, and UX scans"
+  },
+  {
+    "name": "nav:sync",
+    "description": "Regenerate nav + sidebar from frontmatter metadata"
+  },
+  {
+    "name": "frontmatter:lint",
+    "description": "Validate Band A frontmatter against the JSON schema"
+  },
+  {
+    "name": "guard",
+    "description": "Band A forbidden pattern scan"
+  },
+  {
+    "name": "drift",
+    "description": "Advisory drift audit (storytelling, inclusive language, etc.)"
+  },
+  {
+    "name": "ux:scan",
+    "description": "Verify CTA intro sentence includes both actions before the first section"
+  },
+  {
+    "name": "links",
+    "description": "Check internal and external links"
+  },
+  {
+    "name": "stale",
+    "description": "Generate stale page report"
+  },
+  {
+    "name": "test",
+    "description": "Run Node tests and component suite"
+  }
+]

@@ -11,6 +11,7 @@
     "guard": "node scripts/guard.mjs",
     "frontmatter:lint": "node scripts/frontmatter-lint.mjs",
     "nav:sync": "node scripts/sync-navigation.mjs",
+    "readme:sync": "node scripts/sync-readme.mjs",
     "drift": "node scripts/drift.mjs",
     "stale": "node scripts/stale.mjs",
     "changelog:preview": "node scripts/changelog.mjs preview",
@@ -29,7 +30,6 @@
     "lighthouse": "node scripts/lighthouse-runner.mjs",
     "review:update": "node scripts/update-last-reviewed.mjs",
     "ux:scan": "node scripts/ux-scan.mjs",
-    "nav:guard": "node scripts/nav-guard.mjs",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -41,10 +41,15 @@
       "prettier --write"
     ],
     "docs/**/*.md": [
-      "node scripts/guard.mjs"
+      "node scripts/guard.mjs",
+      "pnpm run nav:sync && git add docs/.vitepress/navigation.generated.ts"
     ],
     "runbooks/**/*.md": [
-      "node scripts/guard.mjs"
+      "node scripts/guard.mjs",
+      "pnpm run nav:sync && git add docs/.vitepress/navigation.generated.ts"
+    ],
+    "scripts/scripts-meta.json": [
+      "pnpm run readme:sync && git add README.md"
     ]
   },
   "keywords": [
