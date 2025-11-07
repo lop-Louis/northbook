@@ -4,72 +4,19 @@
 
 Keep public documentation useful, safe, and small. Bots chase compliance; humans think strategically.
 
----
-
-## Content Bands
-
-### Band A Only (PUBLIC)
-
-**What belongs:**
-
-- Generic role definitions and responsibilities
-- Process patterns without company-specific details
-- Anonymized examples with no identifying information
-- Publicly available metrics as ranges or deltas
-- Original code samples or properly licensed material
-
-**What does NOT belong:**
-
-- Internal product names, URLs, screenshots
-- Ticket IDs (JIRA-1234, Linear-ABC, etc.)
-- Employee names or identifying details
-- Exact revenue, costs, or customer counts
-- Internal infrastructure specifics
-- Vendor-specific implementations
-- Calendar dates or project timelines
-
-See `docs/band-a.md` for detailed examples.
+> Public-facing readers should use `docs/governance.md` (rendered on the site). This file adds internal-only automation, RACI, and SLO details so we do not duplicate guidance.
 
 ---
 
-## Content Lifecycle
+## Content Bands & Lifecycle
 
-```
-Draft → Review → Live → Watch → Stale → Archive
-```
+The public policy for Band A scope, lifecycle states, and frontmatter validation now lives in `docs/governance.md` (and the published site). Instead of duplicating the rules here, treat that doc as the single source. This file simply adds operational context:
 
-1. **Draft**: Content in progress, not yet published
-2. **Review**: PR open, undergoing sanitization checks
-3. **Live**: Published and within refresh window
-4. **Watch**: Approaching staleness threshold (automated alerts)
-5. **Stale**: Exceeded `refresh_after_days`, needs review
-6. **Archive**: No longer maintained, kept for reference with tombstone
+- **Band A:** Follow the public-facing [Band A reference](docs/band-a.md). Anything forbidden there is also forbidden here.
+- **Lifecycle:** Apply the Draft→Review→Live→Watch→Stale→Archive model from `docs/governance.md`. This internal file only tracks the automation owners for each state.
+- **Frontmatter:** Use the required fields documented in `docs/governance.md`. Automation enforces the same schema.
 
----
-
-## Required Frontmatter
-
-Every markdown page must include:
-
-```yaml
----
-title: Page Title # Human-readable title
-band: A # Content classification (only A allowed)
-owner: '@handle' # Responsible maintainer (GitHub handle)
-refresh_after_days: 90 # Review window (typically 60-90)
-change_type: patch # patch | minor | major
-status: live # live | stale | archived | draft
----
-```
-
-**Field Validation:**
-
-- `title`: Required, non-empty string
-- `band`: Must be exactly 'A'
-- `owner`: GitHub handle starting with @
-- `refresh_after_days`: Integer between 1-365
-- `change_type`: patch (≤200 lines), minor (≤400 lines), major (>400 lines)
-- `status`: One of: live, stale, archived, draft
+Whenever you update those rules, update `docs/governance.md` first, then link back here if new context is needed.
 
 ---
 

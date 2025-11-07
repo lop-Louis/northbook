@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 
+import * as fsSync from 'node:fs'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { Window } from 'happy-dom'
+import matter from 'gray-matter'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const repoRoot = path.resolve(__dirname, '..')
 const distDir = path.join(repoRoot, 'docs/.vitepress/dist')
-const configPath = path.join(repoRoot, 'docs/.vitepress/config.ts')
 
 const CTA_DISTANCE_LIMIT = Number(process.env.PRIMARY_ACTION_MAX_DISTANCE_PX ?? 600)
 const CHAR_TO_PX = Number(process.env.PRIMARY_ACTION_CHAR_TO_PX ?? 0.35)
@@ -49,36 +50,6 @@ const BONUS_PX = {
 }
 
 /**
- * Extract the internal links listed under the "Guides" sidebar group.
- * Falls back to an empty array if the block cannot be parsed.
- */
-async function getGuideLinks() {
-  try {
-    const configSource = await fs.readFile(configPath, 'utf8')
-    const groupMatch = configSource.match(
-      /text:\s*['"]Guides['"][\s\S]*?items:\s*\[([\s\S]*?)\]\s*}/
-    )
-
-    if (!groupMatch) return []
-
-    const itemsBlock = groupMatch[1]
-    const linkRegex = /link:\s*['"]([^'"]+)['"]/g
-    const links = []
-    let match
-
-    while ((match = linkRegex.exec(itemsBlock)) !== null) {
-      const link = match[1]
-      if (link.startsWith('/')) links.push(link)
-    }
-
-    return links
-  } catch (error) {
-    if (error && error.code === 'ENOENT') return []
-    throw error
-  }
-}
-
-/**
  * Recursively collect .html files from a directory and push them into a Set.
  */
 async function collectHtmlFiles(dir, targetSet) {
@@ -103,40 +74,104 @@ async function collectHtmlFiles(dir, targetSet) {
 /**
  * Convert a route like `/decision-spine` into the corresponding dist HTML path.
  */
-function linkToHtmlPath(link) {
-  const clean = link.replace(/^\/+/, '').replace(/\/+$/, '')
-  const base = path.join(distDir, clean)
+function linkToHtmlPath(route) {
+  const trimmed = route.replace(/^\/+/, '')
+  const hasTrailingSlash = route.endsWith('/')
 
-  return clean === '' ? path.join(distDir, 'index.html') : `${base}.html`
+  if (trimmed === '') {
+    return path.join(distDir, 'index.html')
+  }
+
+  const normalized = trimmed.replace(/\/+/g, '/')
+  if (hasTrailingSlash) {
+    return path.join(distDir, normalized, 'index.html')
+  }
+
+  return path.join(distDir, `${normalized}.html`)
+}
+
+function collectDocRoutes() {
+  const docsDir = path.join(repoRoot, 'docs')
+  const skipDirs = new Set(['public', '.vitepress'])
+  const targets = []
+
+  function walk(currentDir) {
+    let entries
+    try {
+      entries = fsSync.readdirSync(currentDir, { withFileTypes: true })
+    } catch (error) {
+      if (error && error.code === 'ENOENT') return
+      throw error
+    }
+
+    for (const entry of entries) {
+      if (entry.name.startsWith('.')) continue
+      if (entry.isDirectory()) {
+        if (skipDirs.has(entry.name)) continue
+        walk(path.join(currentDir, entry.name))
+        continue
+      }
+
+      if (entry.isFile() && entry.name.endsWith('.md')) {
+        const fullPath = path.join(currentDir, entry.name)
+        const relPath = path.relative(docsDir, fullPath)
+        const route = normalizeRoute(relPath)
+        let requiresCTA = false
+
+        try {
+          const raw = fsSync.readFileSync(fullPath, 'utf8')
+          const { data } = matter(raw)
+          if (data && data.primary_action && data.layout !== 'home') {
+            requiresCTA = true
+          }
+        } catch (error) {
+          console.warn(
+            `[verify-primary-actions] Unable to read frontmatter for ${relPath}: ${error.message}`
+          )
+        }
+
+        targets.push({ route, requiresCTA })
+      }
+    }
+  }
+
+  walk(docsDir)
+
+  return targets
+}
+
+function normalizeRoute(relPath) {
+  const normalized = relPath.replace(/\\/g, '/').replace(/\.md$/, '')
+
+  if (normalized === 'index') return '/'
+
+  if (normalized.endsWith('/index')) {
+    const base = normalized.slice(0, -6)
+    return base ? `/${base}/` : '/'
+  }
+
+  return `/${normalized}`
 }
 
 async function main() {
-  const expectedFiles = new Set()
+  const targets = collectDocRoutes()
+  const htmlTargets = []
 
-  const guideLinks = await getGuideLinks()
-  for (const link of guideLinks) {
-    const htmlPath = linkToHtmlPath(link)
-    expectedFiles.add(htmlPath)
-  }
-
-  await collectHtmlFiles(path.join(distDir, 'playbook'), expectedFiles)
-
-  const htmlFiles = []
-
-  for (const candidate of Array.from(expectedFiles).filter(Boolean).sort()) {
+  for (const target of targets) {
+    const htmlPath = linkToHtmlPath(target.route)
     try {
-      const stats = await fs.stat(candidate)
+      const stats = await fs.stat(htmlPath)
       if (stats.isFile()) {
-        htmlFiles.push(candidate)
+        htmlTargets.push({ ...target, htmlPath })
       } else {
         console.warn(
-          `[verify-primary-actions] Skipping non-file target: ${path.relative(repoRoot, candidate)}`
+          `[verify-primary-actions] Skipping non-file target: ${path.relative(repoRoot, htmlPath)}`
         )
       }
     } catch (error) {
       if (error && error.code === 'ENOENT') {
         console.warn(
-          `[verify-primary-actions] Skipping missing target: ${path.relative(repoRoot, candidate)}`
+          `[verify-primary-actions] Skipping missing target: ${path.relative(repoRoot, htmlPath)}`
         )
         continue
       }
@@ -144,27 +179,21 @@ async function main() {
     }
   }
 
-  if (!htmlFiles.length) {
-    console.warn('[verify-primary-actions] No Playbook or Guide HTML files found. Skipping check.')
+  if (!htmlTargets.length) {
+    console.warn('[verify-primary-actions] No documentation HTML files found. Skipping check.')
     return
   }
 
   const failures = []
 
-  for (const htmlPath of htmlFiles) {
-    const { hasAnchor, distance } = await analyzeHtmlFile(htmlPath)
+  for (const target of htmlTargets) {
+    if (!target.requiresCTA) continue
+
+    const { hasAnchor, distance } = await analyzeHtmlFile(target.htmlPath)
 
     if (!hasAnchor || distance == null || distance > CTA_DISTANCE_LIMIT) {
-      const relative =
-        '/' +
-        path
-          .relative(distDir, htmlPath)
-          .replace(/\\/g, '/')
-          .replace(/index\.html$/, '')
-          .replace(/\.html$/, '')
-
       failures.push({
-        page: relative === '/index' ? '/' : relative,
+        page: target.route,
         hasAnchor,
         distance
       })

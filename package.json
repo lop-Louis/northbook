@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs && node scripts/verify-primary-actions.mjs",
+    "docs:build": "node scripts/docs-build.mjs",
     "docs:preview": "vitepress preview docs --port 5173",
-    "guard": "node scripts/guard.mjs",
+    "guard": "node scripts/guard.mjs && node scripts/ux-scan.mjs",
     "stale": "node scripts/stale.mjs",
     "changelog:preview": "node scripts/changelog.mjs preview",
     "changelog:finalize": "node scripts/changelog.mjs finalize",
@@ -24,6 +24,7 @@
     "links": "node scripts/link-check.mjs",
     "lighthouse": "node scripts/lighthouse-runner.mjs",
     "review:update": "node scripts/update-last-reviewed.mjs",
+    "ux:scan": "node scripts/ux-scan.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

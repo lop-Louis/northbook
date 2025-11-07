@@ -4,18 +4,20 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Teams aligning expectations between partners
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Capture the structure of handshake agreements before the full writeup ships
-primary_action: Draft your contract using the approval, escalation, and cadence prompts
+primary_action: >-
+  Use these prompts to draft handshake contracts with approvals, escalation, and
+  cadence.
 ---
 
 # Handshake Contracts
 
-Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
+<a href="#when-to-draft-one" data-primary-action>Use these prompts to draft handshake contracts with approvals, escalation, and cadence.</a>
 
-<a href="#example-outline" data-primary-action>Draft your handshake contract with the outline</a>
+Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
 
 ## When to draft one
 
@@ -25,14 +27,14 @@ Handshake contracts spell out how two groups promise to work together without wa
 
 ## Core ingredients
 
-| Piece       | Guidance                                               | Example                                                                 |
-| ----------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
-| Purpose     | One line that names the shared outcome.                | “Keep release notes current within 24 hours of merge.”                  |
-| Approvals   | Who signs off and how fast they respond.               | “Decisions acknowledged within 48h. Backups listed in the contract.”    |
-| Escalation  | Default path when something blocks progress.           | “Owner → Backup → Sponsor, each with 24h to respond.”                   |
-| Cadence     | How you review whether the contract still makes sense. | “Weekly 15-minute checkpoints; update metrics in the monthly tag.”      |
-| Exit metric | Signal that shows the contract is working—or isn’t.    | “Support backlog stays under 5 tickets older than 3 days.”              |
-| Sunsets     | Trigger for rewriting or retiring the contract.        | “Revisit after the quarterly retrospective or any severity-1 incident.” |
+| Piece       | Guidance                                               | Example                                                                                                                                           |
+| ----------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Purpose     | One line that names the shared outcome.                | “Keep release notes current within 24 hours of merge.”                                                                                            |
+| Approvals   | Who signs off and how fast they respond.               | “Decisions acknowledged within 48h. Backups listed in the contract.”                                                                              |
+| Escalation  | Default path when something blocks progress.           | “Owner → Backup → Sponsor, each with 24h to respond.”                                                                                             |
+| Cadence     | How you review whether the contract still makes sense. | “Weekly 15-minute checkpoints referencing the <u>[state visibility map](../runbooks/state-visibility.md)</u>; update metrics in the monthly tag.” |
+| Exit metric | Signal that shows the contract is working—or isn’t.    | “Support backlog stays under 5 tickets older than 3 days.”                                                                                        |
+| Sunsets     | Trigger for rewriting or retiring the contract.        | “Revisit after the quarterly retrospective or any severity-1 incident.”                                                                           |
 
 ## How to stand one up
 
@@ -41,7 +43,7 @@ Handshake contracts spell out how two groups promise to work together without wa
 3. **Define turnaround times.** State the SLA for approvals, escalations, and status pings.
 4. **Agree on the exit metric.** Choose a signal you can measure weekly so drift is obvious.
 5. **Write the escalation ladder.** Include response windows so no one wonders how long to wait.
-6. **Schedule a cadence review.** Protect 15 minutes to inspect the metric and renew the agreement.
+6. **Schedule a cadence review.** Protect 15 minutes to inspect the metric, walk the <u>[state visibility map](../runbooks/state-visibility.md)</u>, and renew the agreement.
 7. **Share the contract link.** Pin it in both teams’ channels and reference it in relevant docs.
 
 ## Example outline
@@ -57,4 +59,4 @@ Handshake contracts spell out how two groups promise to work together without wa
 - **Sunset:** Revisit after Q1 or any Sev-1 escalation.
 ```
 
-Store the contract beside related docs (Decision Spine, Answer Ledger) so people can find the why, the decision history, and the support structure in one hop.
+Store the contract beside related docs (<u>[Decision Spine](../decision-spine.md)</u>, <u>[Answer Ledger](../answer-ledger.md)</u>) so people can find the why, the decision history, and the support structure in one hop.

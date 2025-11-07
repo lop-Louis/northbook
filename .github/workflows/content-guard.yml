@@ -35,12 +35,34 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run content guard
+      - name: Band A compliance
         id: guard
         run: |
+          set -o pipefail
           echo "Running Band A compliance checks..."
-          pnpm run guard 2>&1 | tee guard-output.txt
-          echo "guard_exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+          GUARD_FORMAT=json node scripts/guard.mjs | tee guard-output.json
+          GUARD_EXIT=${PIPESTATUS[0]}
+          node <<'NODE'
+          const fs = require('node:fs')
+          const data = JSON.parse(fs.readFileSync('guard-output.json', 'utf8'))
+          console.log(`Guard status: ${data.status.toUpperCase()}`)
+          if (data.red.length) {
+            console.log('\n🔴 RED FINDINGS')
+            for (const issue of data.red) console.log(`- ${issue}`)
+          }
+          if (data.yellow.length) {
+            console.log('\n🟡 YELLOW WARNINGS')
+            for (const issue of data.yellow) console.log(`- ${issue}`)
+          }
+          NODE
+          STATUS=$(jq -r '.status' guard-output.json)
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          exit $GUARD_EXIT
+        continue-on-error: true
+
+      - name: UX scan
+        id: uxscan
+        run: pnpm run ux:scan
         continue-on-error: true
 
       - name: Link validation
@@ -61,10 +83,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
-      - name: Build test
+      - name: Build documentation
         id: build
         env:
-          VITE_GA_ID: ${{ secrets.GA_ID || 'G-511628512' }}
+          SKIP_DOCS_GUARD: '1'
         run: pnpm run docs:build
         continue-on-error: true
 
@@ -73,13 +95,15 @@ jobs:
         run: |
           GUARD_EXIT=${{ steps.guard.outcome }}
           LINKS_EXIT=${{ steps.links.outcome }}
+          UX_EXIT=${{ steps.uxscan.outcome }}
           GITLEAKS_EXIT=${{ steps.gitleaks.outcome }}
           BUILD_EXIT=${{ steps.build.outcome }}
+          GUARD_STATUS='${{ steps.guard.outputs.status }}'
 
           if [[ "$GUARD_EXIT" == "failure" ]] || [[ "$GITLEAKS_EXIT" == "failure" ]] || [[ "$BUILD_EXIT" == "failure" ]]; then
             echo "status=red" >> $GITHUB_OUTPUT
             echo "label=red" >> $GITHUB_OUTPUT
-          elif [[ "$LINKS_EXIT" == "failure" ]] || (test -f guard-output.txt && grep -q "YELLOW" guard-output.txt 2>/dev/null); then
+          elif [[ "$LINKS_EXIT" == "failure" ]] || [[ "$UX_EXIT" == "failure" ]] || [[ "$GUARD_STATUS" == "yellow" ]]; then
             echo "status=yellow" >> $GITHUB_OUTPUT
             echo "label=yellow" >> $GITHUB_OUTPUT
           else
@@ -94,7 +118,9 @@ jobs:
           script: |
             const status = '${{ steps.status.outputs.status }}';
             const guardResult = '${{ steps.guard.outcome }}';
+            const guardStatus = '${{ steps.guard.outputs.status }}';
             const linksResult = '${{ steps.links.outcome }}';
+            const uxResult = '${{ steps.uxscan.outcome }}';
             const gitleaksResult = '${{ steps.gitleaks.outcome }}';
             const buildResult = '${{ steps.build.outcome }}';
 
@@ -116,8 +142,13 @@ jobs:
 
             | Governance Check | Result |
             |------------------|--------|
-            | Band A Compliance | ${guardResult === 'success' ? '✅ Passed' : '❌ Failed'} |
+            | Band A Compliance | ${
+              guardResult === 'success'
+                ? (guardStatus === 'yellow' ? '⚠️ Passed w/ warnings' : '✅ Passed')
+                : '❌ Failed'
+            } |
             | Link Integrity | ${linksResult === 'success' ? '✅ Passed' : '⚠️ Issues Found'} |
+            | UX Scan | ${uxResult === 'success' ? '✅ Passed' : '⚠️ Issues Found'} |
             | Sensitive Data Scan | ${gitleaksResult === 'success' ? '✅ Passed' : '❌ Secrets Detected'} |
             | Documentation Build | ${buildResult === 'success' ? '✅ Passed' : '❌ Build Failed'} |
 
@@ -130,6 +161,7 @@ jobs:
             **What these checks mean:**
             - **Band A Compliance:** Verifies content follows public-safe sanitization rules (no internal URLs, ticket IDs, calendar dates, secrets, personal data)
             - **Link Integrity:** Validates all internal documentation links work correctly
+            - **UX Scan:** Ensures primary action callouts are present before the first section for pages that declare one
             - **Sensitive Data Scan:** Ensures no API keys, tokens, or credentials are exposed
             - **Documentation Build:** Confirms the site builds successfully with your changes
 
@@ -159,6 +191,7 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const issue_number = context.issue.number;
+            const prAuthor = context.payload.pull_request?.user?.login ?? '';
             const labelColors = {
               green: '0f766e',
               yellow: 'f59e0b',
@@ -224,7 +257,11 @@ jobs:
                 labels: [label]
               });
             } catch (err) {
-              console.log(`Failed to add label "${label}": ${err.message}`);
+              if (err?.status === 403) {
+                console.log(`Failed to add label "${label}" (likely due to permissions). Skipping.`);
+              } else {
+                console.log(`Failed to add label "${label}": ${err.message}`);
+              }
             }
 
       - name: Confirm all checks passed

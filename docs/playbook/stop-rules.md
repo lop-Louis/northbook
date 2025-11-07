@@ -4,18 +4,18 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Teams pacing delivery and knowing when to pause work
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Offer the framing for stop rules until full guidance ships
-primary_action: Capture your top stop conditions using the format provided
+primary_action: Use this format to capture the stop conditions that keep work safe.
 ---
 
 # Stop Rules Library
 
-Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
+<a href="#when-to-write-a-stop-rule" data-primary-action>Use this format to capture the stop conditions that keep work safe.</a>
 
-<a href="#format" data-primary-action>Capture your stop rules with this format</a>
+Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
 
 ## When to write a stop rule
 
@@ -43,5 +43,5 @@ Stop rules protect teams from marching forward when risk outpaces confidence. De
 ## Maintaining the library
 
 - Review stop rules during quarterly planning and after every major incident.
-- Keep the library alongside the Decision Spine entry so the “why” and “when to stop” stay linked.
-- When a rule fires, log the context in the Answer Ledger outcome to keep institutional memory sharp.
+- Keep the library alongside the <u>[Decision Spine](../decision-spine.md)</u> entry so the "why" and "when to stop" stay linked.
+- When a rule fires, log the context in the <u>[Answer Ledger](../answer-ledger.md)</u> outcome to keep institutional memory sharp.

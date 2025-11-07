@@ -7,12 +7,14 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Anyone publishing public-safe guidance from Northbook
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Explain what qualifies as Band A content and how to sanitize it
-primary_action: Use this checklist before publishing or reviewing content
+primary_action: Use this checklist before you publish or review any guidance.
 ---
 
 # What is Band A
+
+<a href="#what-belongs-in-band-a" data-primary-action>Use this checklist before you publish or review any guidance.</a>
 
 > Public-safe content only. Internal specifics live elsewhere.
 

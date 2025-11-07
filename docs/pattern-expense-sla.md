@@ -8,16 +8,16 @@ status: live
 labels:
   - finance
 audience: People converting finance policies into public-safe actions
-tone: Plainspoken, candid, energetic
-narrative_goal: Show how to translate expense policy into fast, safe guidance
-primary_action: Use the three-line pattern when reminding teams about expenses
+tone: 'Plainspoken, candid, energetic'
+narrative_goal: 'Show how to translate expense policy into fast, safe guidance'
+primary_action: Use the three-line pattern to remind teams about expense expectations.
 ---
 
 # Policy → Action Pattern (Expenses)
 
-> Public-safe guidance for helping people move from policy words to action.
+<a href="#public-safe-example" data-primary-action>Use the three-line pattern to remind teams about expense expectations.</a>
 
-<a href="#public-safe-example" data-primary-action>Draft your expense reminder with the three-line pattern</a>
+> Public-safe guidance for helping people move from policy words to action.
 
 This pattern turns a policy reminder into action with three lines:
 

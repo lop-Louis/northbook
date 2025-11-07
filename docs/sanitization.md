@@ -7,12 +7,14 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Contributors preparing public-safe guidance
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Show how to strip risk while keeping guidance useful
-primary_action: Run these sanitization checks before shipping or reviewing a page
+primary_action: Use this sanitization checklist before shipping or reviewing a page.
 ---
 
 # Sanitization Guidance
+
+<a href="#what-sanitization-protects" data-primary-action>Use this sanitization checklist before shipping or reviewing a page.</a>
 
 Northbook only publishes guidance that the public can quote without a second thought. Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
 

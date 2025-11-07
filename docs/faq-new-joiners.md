@@ -7,12 +7,14 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Engineers and collaborators onboarding to Northbook habits
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Answer recurring new-joiner questions with actionable next steps
-primary_action: Scan the FAQs and follow the linked deeper dives as needed
+primary_action: Use this FAQ to self-serve common onboarding questions.
 ---
 
 # FAQ for New Joiners
+
+<a href="#process-culture" data-primary-action>Use this FAQ to self-serve common onboarding questions.</a>
 
 Common questions from engineers joining the team, with quick answers.
 

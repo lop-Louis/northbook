@@ -7,12 +7,14 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Maintainers and contributors who publish or review Northbook content
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Define the guardrails that keep public docs safe and trustworthy
-primary_action: Apply these rules when editing or approving any page
+primary_action: Use these rules when you edit or approve any page.
 ---
 
 # Governance Policy
+
+<a href="#scope" data-primary-action>Use these rules when you edit or approve any page.</a>
 
 > Public-safe content only. Internal specifics live elsewhere.
 
@@ -29,7 +31,7 @@ Band A restricts pages to neutral, non-sensitive patterns:
 
 - Generic role or process descriptions
 - Decision-making frameworks and facilitation patterns
-- Sanitized examples (no real identifiers)
+- Sanitized examples (no real identifiers) — see the [Handover RACI template runbook](./runbooks/handover-raci-template.md) for a ready-to-use pattern
 - Ranges/relative metrics ("~15%", "5–10", "few", "several")
 - Original or properly licensed code samples
 

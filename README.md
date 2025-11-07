@@ -2,7 +2,7 @@
 
 Guidance over to-do. Northbook is a public VitePress site for Band A principles, patterns, and decisions—guidance you can link without dumping chores.
 
-**Live Site:** https://lop-louis.github.io/northbook/
+**Live Site:** https://northbook.guide
 
 ---
 
@@ -44,7 +44,7 @@ pnpm run validate
 - 📅 Release rhythm documented in `/docs/monthly-release.md`.
 - 🔗 Runbooks stay separate, but you can link back from `/docs`.
 
-See `docs/principles.md` and [GOVERNANCE.md](./GOVERNANCE.md) for fuller details.
+See `docs/principles.md` and [GOVERNANCE](./GOVERNANCE.md) for fuller details.
 
 ---
 
