@@ -7,14 +7,15 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Designers and engineers shipping customer-facing UI
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Give the fastest accessibility fixes that raise baseline quality
-primary_action: Use these quick checks before signing off on UI work.
 ---
 
 # Accessibility Quick Wins
 
 <a href="#keyboard-navigation" data-primary-action>Use these quick checks before signing off on UI work.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 High-impact accessibility improvements that take minimal effort.
 

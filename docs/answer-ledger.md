@@ -7,14 +7,15 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Team leads and knowledge stewards who maintain shared answers
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Show how to capture recurring questions into a searchable ledger
-primary_action: Use this pattern to stand up or refresh your answer ledger.
 ---
 
 # Answer Ledger Pattern
 
 <a href="#what-it-is" data-primary-action>Use this pattern to stand up or refresh your answer ledger.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 What: Structured, searchable list of recurring questions with their current canonical answers.
 Why: Saves time, reduces interruptions, and accelerates onboarding by turning chatter into linkable knowledge.
@@ -48,46 +49,4 @@ to existing versions.
 **Last updated:** YYYY-MM-DD  
 **Owner:** @handle  
 **Related:** [API Guidelines](./api-guidelines)
-
----
-
-## What's our code review SLA?
-
-**Answer:** First review within 4 business hours for PRs under 200 lines.
-Larger PRs should be split or flagged in advance.
-
-**Last updated:** YYYY-MM-DD  
-**Owner:** @handle
 ```
-
-## Maintenance
-
-- Review quarterly
-- Archive questions not asked in 6 months
-- Flag contradictions between answers
-- Update when decisions change
-
-## Integration
-
-Works well with:
-
-- [Decision Spine](./decision-spine) - ledger stores decision outcomes
-- Team wikis - ledger is the FAQ section
-- Onboarding docs - link to ledger entries
-
-## Anti-patterns
-
-- ❌ Dumping everything into one giant page (use sections or multiple pages)
-- ❌ Stale answers without dates (always timestamp)
-- ❌ No ownership (mark who maintains each answer)
-- ❌ Vague questions ("How do we deploy?" - too broad, split into specifics)
-
-## Success metrics
-
-Track:
-
-- Number of repeat questions in chat (should decrease)
-- Time to onboard new team members (should decrease)
-- Link-back rate (ledger links shared in conversations)
-
-See [Anti-drift Content Governance](./governance) for change types and the monthly release cadence.

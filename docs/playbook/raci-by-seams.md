@@ -6,14 +6,15 @@ owner: '@lop'
 refresh_after_days: 60
 status: draft
 audience: Leads mapping accountability across seams
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Provide a table-driven way to clarify who owns what work
-primary_action: Use the seam-first template to map who owns each boundary.
 ---
 
 # RACI by Seams
 
 <a href="#why-seams-not-teams" data-primary-action>Use the seam-first template to map who owns each boundary.</a>
+
+<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 Map the work around seams instead of teams so responsibility stays clear when streams shift. Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
 
@@ -33,16 +34,5 @@ Map the work around seams instead of teams so responsibility stays clear when st
 
 ## Template
 
-| Seam            | R (Responsible)  | A (Accountable)  | C (Consulted)    | I (Informed)         |
-| --------------- | ---------------- | ---------------- | ---------------- | -------------------- |
-| Data quality    | Data Engineer    | Analytics Lead   | Product Manager  | Support Lead         |
-| Release comms   | Product Ops      | Product Director | Engineering Lead | Customer Success     |
-| Incident review | Reliability Lead | CTO              | Legal, Comms     | All affected streams |
-
-## Patterns that keep it useful
-
-- Revisit the table during quarterly planning or after any escalation.
-- Embed it in onboarding for new stream owners.
-- If two seams share the same R and A, merge them or clarify the split.
-
-Remember: this table guides accountability conversations; runbooks capture the actual steps when work kicks off.
+| Seam | R (Responsible) | A (Accountable) | C (Consulted) | I (Informed) |
+|

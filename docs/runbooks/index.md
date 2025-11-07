@@ -6,14 +6,15 @@ owner: '@lop'
 refresh_after_days: 60
 status: live
 audience: Maintainers looking for operational to-do checklists
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Point to the tactical runbooks kept out of guidance sections
-primary_action: Use this index to pick the runbook that fits your scenario.
 ---
 
 # Runbooks
 
 <a href="#top" data-primary-action>Use this index to pick the runbook that fits your scenario.</a>
+
+<a href="./index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 All runbooks follow the [Anti-drift Content Governance](../governance.md) rules; keep identifiers sanitized when you adapt them.
 

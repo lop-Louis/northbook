@@ -7,14 +7,15 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Anyone publishing public-safe guidance from Northbook
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Explain what qualifies as Band A content and how to sanitize it
-primary_action: Use this checklist before you publish or review any guidance.
 ---
 
 # What is Band A
 
 <a href="#what-belongs-in-band-a" data-primary-action>Use this checklist before you publish or review any guidance.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 > Public-safe content only. Internal specifics live elsewhere.
 
@@ -76,30 +77,5 @@ See [Sanitization Checklist](./sanitization) for the full process and final veri
 
 ## Quick Safe/Unsafe Cheat Sheet
 
-| Topic Type   | Safe (Band A)                                         | Unsafe (Remove)                     |
-| ------------ | ----------------------------------------------------- | ----------------------------------- |
-| Metrics      | "response times ~100–500ms"                           | Exact SLA tied to internal contract |
-| Roles        | "A tech lead reviews PRs and mentors engineers"       | Listing individual engineer names   |
-| Tools        | "Static analysis runs in CI"                          | Internal CI server hostname / URL   |
-| Decisions    | Generic frameworks & criteria                         | Internal approval chains with names |
-| Incidents    | Pattern: "post-incident review focuses on prevention" | Specific incident IDs + timeline    |
-| Architecture | High-level pattern ("event-driven workflow")          | Internal topology, IP ranges        |
-
-## Band A Review Triggers
-
-Flag for re-review if:
-
-- Content references an internal codebase path or proprietary repo name
-- More than 30% line change without `change_type: major`
-- Owner field removed or replaced with non-handle
-- New section includes operational metrics beyond ranges
-
-## Common Neutral Substitutions
-
-| Internal Term                       | Replace With                          |
-| ----------------------------------- | ------------------------------------- |
-| Product codename                    | "the product" / "the service"         |
-| Team name                           | "the team"                            |
-| Specific metric (e.g. exact count)  | Range or approximate ("~50", "40–60") |
-| Internal system (e.g. Jenkins host) | "CI pipeline"                         |
-| Specific incident date              | "recent incident"                     |
+| Topic Type | Safe (Band A) | Unsafe (Remove) |
+|

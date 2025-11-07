@@ -7,9 +7,8 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-06'
 audience: Readers tracking what changed in the v2025.11 release
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: 'Summarize the notable additions, updates, and fixes in this tag'
-primary_action: Use this changelog to understand what shipped in the tag.
+tone: Plainspoken, candid, energetic
+narrative_goal: Summarize the notable additions, updates, and fixes in this tag
 ---
 
 Back to [Releases](../release.md)
@@ -17,6 +16,8 @@ Back to [Releases](../release.md)
 # site-v2025.11 · Patch hygiene
 
 <a href="#added" data-primary-action>Use this changelog to understand what shipped in the tag.</a>
+
+<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 **Tag date:** Mid-November release window
 
@@ -30,6 +31,7 @@ Back to [Releases](../release.md)
 ## Updated
 
 - Governance policy now references the internal `GOVERNANCE.md` for automation/RACI, removing redundant Band A copy.
+- Anti-drift governance now requires a primary + secondary CTA pair in the body (frontmatter `primary_action` removed) and documents the difference from project governance.
 - Every doc with `primary_action` exposes it above the fold via a `data-primary-action` anchor; legacy runbooks cleaned up to match.
 - Runbooks index, Decision Spine, Handshake Contracts, RACI by Seams, Stop Rules, Scoreboard, and other Playbook pages now link to the new templates and use underlined cross-links per the UX standard.
 - Homepage CTA clarified (“Use these starting links…”), and multiple guidance pages (Band A, FAQ, Sanitization, Start Here, etc.) refreshed to the new tone.

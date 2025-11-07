@@ -7,14 +7,15 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Facilitators and team leads running collaborative sessions
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Equip meetings with repeatable structures that keep outcomes sharp
-primary_action: Use these facilitation patterns to prep your next collaborative session.
 ---
 
 # Facilitation Techniques
 
 <a href="#silent-brainstorming" data-primary-action>Use these facilitation patterns to prep your next collaborative session.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 What: Small, plug‑and‑play patterns for focused, inclusive sessions and faster group decisions.
 Why: Prevents drift, balances voices, and converts meetings into clear outcomes instead of vague discussion.

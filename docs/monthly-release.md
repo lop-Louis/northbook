@@ -7,14 +7,15 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Maintainers planning and shipping the monthly docs release
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Explain how the monthly tagging cadence keeps the site current
-primary_action: Use the prep checklist here to tag each monthly release.
 ---
 
 # Monthly Release Rhythm
 
 <a href="#goals" data-primary-action>Use the prep checklist here to tag each monthly release.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 A lightweight cadence for publishing improvements and tracking impact.
 
@@ -117,26 +118,5 @@ Sunset or pivot if after 2 consecutive tags:
 
 ## Health Signals
 
-| Signal                     | Healthy | Investigate |
-| -------------------------- | ------- | ----------- |
-| Build success              | ≥99%    | <98%        |
-| Link errors/mo             | ≤5      | >8          |
-| Stale pages                | ≤10%    | >20%        |
-| Feedback ratio (helpful %) | ≥60%    | <40%        |
-
-## Roles
-
-- Maintainer (@lop) prepares tag
-- Policy Owner (@manager-handle) reviews monthly changelog
-- Team contributes improvements via normal PR flow
-
-### 2025-11 - Expense SLA pattern (public-safe)
-
-- Added **Expenses: Policy → Action** page (Band A): SLA + example + consequence + common loophole Q.
-- "Ask KL" on that page now auto-labels finance questions for easier routing via the `finance` label.
-- FAQ for New Joiners links to the pattern with a 10-second action card.
-- Internal specifics remain internal; this page teaches the behavior only.
-
----
-
-_This rhythm supports transparency and lean scope. Avoid bloating monthly tags with low-value changes._
+| Signal | Healthy | Investigate |
+|

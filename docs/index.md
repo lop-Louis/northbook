@@ -8,9 +8,8 @@ change_type: patch
 status: live
 last_reviewed: '2025-01-15'
 audience: Anyone looking for Northbook guidance and entry points
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Orient newcomers to the core pillars and where to start
-primary_action: 'Use these starting links to keep guidance, tone, and UI aligned.'
 hero:
   name: Northbook
   text: Guidance over to-do.
@@ -24,8 +23,7 @@ hero:
       link: /band-a
     - theme: alt
       text: Ask a question
-      link: >-
-        https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
+      link: https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
 features:
   - title: Decide faster
     details: Use the Decision Spine to cut rework.
@@ -36,6 +34,8 @@ features:
 ---
 
 <a href="#governance-safety" data-primary-action>Use these starting links to keep guidance, tone, and UI aligned.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 Guidance stays light on chores. When you need the step-by-step checklist, jump to [runbooks](/runbooks/) (Coming soon).
 
 ## Governance & Safety
@@ -64,7 +64,3 @@ Monthly release captures meaningful changes in [releases](./release.md).
 - Optional analytics for drift scoring
 - Inclusive language heuristics
 - Link freshness scoring
-
----
-
-_Last reviewed: see git history (quarterly review cadence)._

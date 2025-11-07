@@ -7,14 +7,13 @@ refresh_after_days: 90
 change_type: minor
 last_reviewed: '2025-01-15'
 audience: Product ops and accessibility leads running the quarterly sweep
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Outline the repeatable tasks for verifying accessibility health
-primary_action: >-
-  Use this runbook to execute the quarterly accessibility audit and log
-  findings.
 ---
 
 <p data-primary-action>Use this runbook to execute the quarterly accessibility audit and log findings.</p>
+
+<a href="../../docs/runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 ## Purpose
 

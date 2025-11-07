@@ -6,16 +6,15 @@ owner: '@lop'
 refresh_after_days: 120
 status: live
 audience: Editors and maintainers shaping public-facing pages
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: >-
-  Lock the presentation system so content stays consistent without
-  design-by-committee
-primary_action: 'Use this standard to keep layout, typography, and color consistent.'
+tone: Plainspoken, candid, energetic
+narrative_goal: Lock the presentation system so content stays consistent without design-by-committee
 ---
 
 # UX + UI standard
 
 <a href="#layout-width" data-primary-action>Use this standard to keep layout, typography, and color consistent.</a>
+
+<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 Consistent presentation keeps trust high and review cycles short.
 Use this checklist whenever you add or revise content so it ships with the same look, feel, and accessibility guarantees.

@@ -6,14 +6,15 @@ owner: '@lop'
 refresh_after_days: 60
 status: draft
 audience: Teams pacing delivery and knowing when to pause work
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Offer the framing for stop rules until full guidance ships
-primary_action: Use this format to capture the stop conditions that keep work safe.
 ---
 
 # Stop Rules Library
 
 <a href="#when-to-write-a-stop-rule" data-primary-action>Use this format to capture the stop conditions that keep work safe.</a>
+
+<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
 
@@ -33,15 +34,5 @@ Stop rules protect teams from marching forward when risk outpaces confidence. De
 
 ## Format
 
-| Condition                         | Action             | Owner            | Time box / Follow-up         |
-| --------------------------------- | ------------------ | ---------------- | ---------------------------- |
-| No named decider after kick-off   | Freeze scope       | Chapter Lead     | Resolve within 24h           |
-| Approval SLA breach (48h)         | Escalate to backup | Requestor        | Backup must respond in 24h   |
-| Guardrail drops below threshold   | Roll back change   | Stream owner     | Investigate within 1 hour    |
-| Exit metric trending opposite way | Hold new launches  | Product Director | Convene review within 2 days |
-
-## Maintaining the library
-
-- Review stop rules during quarterly planning and after every major incident.
-- Keep the library alongside the <u>[Decision Spine](../decision-spine.md)</u> entry so the "why" and "when to stop" stay linked.
-- When a rule fires, log the context in the <u>[Answer Ledger](../answer-ledger.md)</u> outcome to keep institutional memory sharp.
+| Condition | Action | Owner | Time box / Follow-up |
+|

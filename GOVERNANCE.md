@@ -14,7 +14,7 @@ The public policy for Band A scope, lifecycle states, and frontmatter validati
 
 - **Band A:** Follow the public-facing [Band A reference](docs/band-a.md). Anything forbidden there is also forbidden here.
 - **Lifecycle:** Apply the Draft→Review→Live→Watch→Stale→Archive model from `docs/governance.md`. This internal file only tracks the automation owners for each state.
-- **Frontmatter:** Use the required fields documented in `docs/governance.md`. Automation enforces the same schema.
+- **Frontmatter + CTAs:** Use the required fields documented in `docs/governance.md`; CTA text now lives in the body via `data-primary-action` + `data-secondary-action` pairs, which drift prevention enforces.
 
 Whenever you update those rules, update `docs/governance.md` first, then link back here if new context is needed.
 

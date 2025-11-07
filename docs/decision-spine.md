@@ -7,14 +7,15 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Deciders and collaborators tackling multi-team technical choices
-tone: 'Plainspoken, candid, energetic'
-narrative_goal: 'Give a reusable structure for framing, deciding, and reviewing work'
-primary_action: Use the four-stage spine to structure your next decision.
+tone: Plainspoken, candid, energetic
+narrative_goal: Give a reusable structure for framing, deciding, and reviewing work
 ---
 
 # Decision Spine
 
 <a href="#four-stages" data-primary-action>Use the four-stage spine to structure your next decision.</a>
+
+<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
 
 What: Lightweight framework for making and documenting technical decisions in a repeatable, linkable way.
 Why: Prevents re-litigation, makes tradeoffs explicit early, and leaves a durable paper trail for future teams.
