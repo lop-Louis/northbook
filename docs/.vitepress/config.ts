@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { generatedNav, generatedSidebar } from './navigation.generated'
 
 const GA_ID = process.env.VITE_GA_ID || 'G-511628512'
 const SITE_BASE = '/'
@@ -136,42 +137,13 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
       dark: '/logo-lockup-dark.png'
     },
     nav: [
-      { text: 'Start', link: '/band-a' },
+      ...generatedNav,
       {
         text: 'Ask a question',
         link: 'https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH'
       }
     ],
-    sidebar: [
-      {
-        text: 'Start here',
-        collapsed: false,
-        items: [
-          { text: 'What is Band A', link: '/band-a' },
-          { text: 'FAQ for New Joiners', link: '/faq-new-joiners' },
-          { text: 'Monthly Release Rhythm', link: '/monthly-release' }
-        ]
-      },
-      {
-        text: 'Guides',
-        collapsed: false,
-        items: [
-          { text: 'Decision Spine', link: '/decision-spine' },
-          { text: 'Facilitation', link: '/facilitation' },
-          { text: 'Accessibility Quick Wins', link: '/accessibility-quick-wins' },
-          { text: 'Expenses: Policy → Action', link: '/pattern-expense-sla' }
-        ]
-      },
-      {
-        text: 'Contributor Kit',
-        collapsed: false,
-        items: [
-          { text: 'Sanitization Checklist', link: '/sanitization' },
-          { text: 'Answer Ledger Pattern', link: '/answer-ledger' },
-          { text: 'Governance', link: '/governance' }
-        ]
-      }
-    ],
+    sidebar: generatedSidebar,
     outline: [2, 3],
     footer: {
       message: 'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.'

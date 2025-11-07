@@ -10,6 +10,7 @@
     "docs:guard": "pnpm run frontmatter:lint && pnpm run guard && pnpm run drift && pnpm run ux:scan",
     "guard": "node scripts/guard.mjs",
     "frontmatter:lint": "node scripts/frontmatter-lint.mjs",
+    "nav:sync": "node scripts/sync-navigation.mjs",
     "drift": "node scripts/drift.mjs",
     "stale": "node scripts/stale.mjs",
     "changelog:preview": "node scripts/changelog.mjs preview",
@@ -28,6 +29,7 @@
     "lighthouse": "node scripts/lighthouse-runner.mjs",
     "review:update": "node scripts/update-last-reviewed.mjs",
     "ux:scan": "node scripts/ux-scan.mjs",
+    "nav:guard": "node scripts/nav-guard.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

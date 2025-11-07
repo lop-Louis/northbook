@@ -21,6 +21,7 @@ function run(command, args, options = {}) {
 }
 
 async function main() {
+  await run('pnpm', ['run', 'nav:sync'])
   const skipGuard = process.env.SKIP_DOCS_GUARD === '1'
 
   if (skipGuard) {

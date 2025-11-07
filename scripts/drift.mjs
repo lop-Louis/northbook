@@ -4,8 +4,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
 
-const DOCS = process.env.DOCS || 'docs'
-const RUNBOOKS = process.env.RUNBOOKS || 'runbooks'
+const repoRoot = process.cwd()
+const DOCS = path.join(repoRoot, process.env.DOCS || 'docs')
+const RUNBOOKS = path.join(repoRoot, process.env.RUNBOOKS || 'runbooks')
 const JSON_MODE = process.env.DRIFT_FORMAT === 'json'
 
 const storytellingPrefixes = [/^docs\/playbook\//i, /^docs\/runbooks\//i, /^docs\/start-here\//i]
@@ -41,7 +42,7 @@ function checkFile(p) {
   if (p.includes('.vitepress')) return
 
   fileCount++
-  const relPath = path.relative(process.cwd(), p).split(path.sep).join('/')
+  const relPath = path.relative(repoRoot, p).split(path.sep).join('/')
 
   // Storytelling metadata expectations for certain sections
   const needsStorytelling = storytellingPrefixes.some(rx => rx.test(relPath))

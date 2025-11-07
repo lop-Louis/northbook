@@ -3,7 +3,7 @@
   "title": "Northbook frontmatter",
   "type": "object",
   "additionalProperties": true,
-  "required": ["title", "band", "owner", "refresh_after_days", "change_type", "status"],
+  "required": ["title", "band", "owner", "refresh_after_days", "change_type", "status", "nav"],
   "properties": {
     "title": {
       "type": "string",
@@ -44,8 +44,47 @@
     "narrative_goal": {
       "type": "string"
     },
-    "primary_action": {
+    "nav": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": ["main", "sidebar", "none"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "slot": {
+                "type": "string",
+                "enum": ["main", "sidebar", "none"]
+              },
+              "label": {
+                "type": "string"
+              },
+              "group": {
+                "type": "string"
+              },
+              "order": {
+                "type": "number"
+              }
+            },
+            "required": ["slot"],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": false
+    },
+    "nav_label": {
       "type": "string"
+    },
+    "nav_group": {
+      "type": "string"
+    },
+    "nav_order": {
+      "type": "number"
     }
   }
 }
