@@ -6,17 +6,17 @@ owner: '@lop'
 refresh_after_days: 120
 status: live
 audience: Stream leads packaging a handover
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Offer a public-safe RACI matrix teams can copy fast
-primary_action: Copy the template and adapt the example for your handover
+primary_action: Use this template and example to publish a handover RACI.
 ---
 
 # Handover RACI template
 
+<a href="#how-to-use-it" data-primary-action>Use this template and example to publish a handover RACI.</a>
+
 Use this page when you need to broadcast handover roles without exposing internal specifics.
 The structure below stays inside the [Governance Policy](../governance.md) guardrails and keeps RACI labels uncluttered.
-
-> **Primary action:** Copy the template and adapt the example for your handover.
 
 ## How to use it
 

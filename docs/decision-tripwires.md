@@ -6,16 +6,16 @@ refresh_after_days: 90
 change_type: minor
 status: live
 audience: Deciders and collaborators maintaining decision hygiene
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Show concrete tripwires that pull teams out of slow-motion failure
-primary_action: Copy a tripwire example and wire it into your Decision Spine follow-up plan
+primary_action: Use these tripwires to define when a decision needs intervention.
 ---
 
 # Decision tripwires
 
-Tripwires convert slow drift into clear prompts to act. Pair them with the [Decision Spine](./decision-spine.md) so each decision has a safety net.
+<a href="#top" data-primary-action>Use these tripwires to define when a decision needs intervention.</a>
 
-> **Primary action:** Copy a tripwire example and wire it into your Decision Spine follow-up plan.
+Tripwires convert slow drift into clear prompts to act. Pair them with the [Decision Spine](./decision-spine.md) so each decision has a safety net.
 
 Each example follows the `condition -> action -> owner -> time box` format so you can drop it straight into a decision follow-up checklist.
 

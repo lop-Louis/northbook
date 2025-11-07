@@ -4,18 +4,20 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Goal owners and collaborators tracking shared outcomes
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Introduce the scoreboard format before the full example lands
-primary_action: Outline your baseline, target, and review date using this pattern
+primary_action: >-
+  Use this pattern to outline baseline, target, and review cadence for a shared
+  goal.
 ---
 
 # Common Goal Scoreboard
 
-Scoreboards make a shared outcome visible so every stream knows if the work is moving the needle. Use them when multiple teams touch the same metric and you need one place to track momentum.
+<a href="#anatomy-of-a-scoreboard" data-primary-action>Use this pattern to outline baseline, target, and review cadence for a shared goal.</a>
 
-<a href="#example-layout" data-primary-action>Outline your scoreboard with this example</a>
+Scoreboards make a shared outcome visible so every stream knows if the work is moving the needle. Use them when multiple teams touch the same metric and you need one place to track momentum.
 
 ## Anatomy of a scoreboard
 

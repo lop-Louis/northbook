@@ -4,18 +4,20 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Teams aligning expectations between partners
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Capture the structure of handshake agreements before the full writeup ships
-primary_action: Draft your contract using the approval, escalation, and cadence prompts
+primary_action: >-
+  Use these prompts to draft handshake contracts with approvals, escalation, and
+  cadence.
 ---
 
 # Handshake Contracts
 
-Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
+<a href="#when-to-draft-one" data-primary-action>Use these prompts to draft handshake contracts with approvals, escalation, and cadence.</a>
 
-<a href="#example-outline" data-primary-action>Draft your handshake contract with the outline</a>
+Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
 
 ## When to draft one
 

@@ -7,16 +7,16 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Engineers designing and reviewing HTTP APIs
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Capture the baseline rules for Northbook APIs until the full guide ships
-primary_action: Apply these defaults when drafting or reviewing API changes
+primary_action: Use these defaults when you draft or review API changes.
 ---
 
 # API Guidelines (Stub)
 
-Neutral, public-safe principles for designing and evolving HTTP+JSON APIs. This page is a placeholder until a fuller version is needed.
+<a href="#core-principles" data-primary-action>Use these defaults when you draft or review API changes.</a>
 
-> **Primary action:** Apply these defaults when drafting or reviewing API changes.
+Neutral, public-safe principles for designing and evolving HTTP+JSON APIs. This page is a placeholder until a fuller version is needed.
 
 ## Core Principles
 

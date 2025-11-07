@@ -7,14 +7,16 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-06'
 audience: Readers tracking what changed in the v2025.11 release
-tone: Plainspoken, candid, energetic
-narrative_goal: Summarize the notable additions, updates, and fixes in this tag
-primary_action: Review the sections to understand the release scope
+tone: 'Plainspoken, candid, energetic'
+narrative_goal: 'Summarize the notable additions, updates, and fixes in this tag'
+primary_action: Use this changelog to understand what shipped in the tag.
 ---
 
 Back to [Releases](../release.md)
 
 # site-v2025.11 · Patch hygiene
+
+<a href="#added" data-primary-action>Use this changelog to understand what shipped in the tag.</a>
 
 **Tag date:** Mid-November release window
 

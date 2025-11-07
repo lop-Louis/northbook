@@ -6,18 +6,18 @@ refresh_after_days: 120
 change_type: minor
 status: live
 audience: Designers and engineers building shared UI
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Lock in the visual system so product surfaces feel unified
-primary_action: Apply these tokens and specs before shipping UI work
+primary_action: Use these tokens and specs whenever you ship UI work.
 ---
 
 # UI Baseline
 
+<a href="#layout-rules" data-primary-action>Use these tokens and specs whenever you ship UI work.</a>
+
 What: Canonical specs for spacing, typography, and states across product surfaces.
 Why: Prevents drift between teams and keeps polished UI without pixel-policing.
 When: Before starting screens, reviewing PRs, or creating shared components.
-
-> **Primary action:** Apply these tokens and specs before shipping UI work.
 
 ## Layout Rules
 

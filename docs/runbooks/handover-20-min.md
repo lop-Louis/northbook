@@ -4,18 +4,18 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Stream leads executing a rapid handover
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Lay out the steps that move work from Framing to Ready fast
-primary_action: Run the drill and confirm the acceptance condition is met
+primary_action: Use this drill to move a stream from Framing to Ready.
 ---
 
 # 20-minute handover drill
 
-**Goal:** move a stream from Framing to Ready.
+<a href="#top" data-primary-action>Use this drill to move a stream from Framing to Ready.</a>
 
-> **Primary action:** Run the drill and confirm the acceptance condition is met.
+**Goal:** move a stream from Framing to Ready.
 
 **Steps**
 

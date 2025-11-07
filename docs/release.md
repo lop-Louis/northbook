@@ -7,13 +7,13 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-06'
 audience: Readers tracking monthly site changes
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Provide a clear index of published release notes
-primary_action: Jump to the release changelog you need
+primary_action: Use this page to jump into the release changelog you need.
 ---
 
 # Releases
 
-> **Primary action:** Jump to the release changelog you need.
+<a href="#top" data-primary-action>Use this page to jump into the release changelog you need.</a>
 
 - [v2025.11](/CHANGELOG/site-v2025.11)

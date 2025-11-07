@@ -6,12 +6,14 @@ owner: '@lop'
 refresh_after_days: 120
 status: live
 audience: Stream leads and facilitators sharing transition status publicly
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Make every work state explicit with its entry/exit signals and SLI
-primary_action: Copy the table, publish your state definitions, and review them weekly
+primary_action: 'Use this map to publish states, entry/exit signals, and SLIs.'
 ---
 
 # State visibility map
+
+<a href="#weekly-15-minute-review-agenda" data-primary-action>Use this map to publish states, entry/exit signals, and SLIs.</a>
 
 Stop guessing whether work is stuck. Publish the shared state map so anyone can see where a stream sits and what proof moves it forward.
 Pair this with a weekly 15-minute review so deviations surface fast.

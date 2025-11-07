@@ -44,7 +44,7 @@ pnpm run validate
 - 📅 Release rhythm documented in `/docs/monthly-release.md`.
 - 🔗 Runbooks stay separate, but you can link back from `/docs`.
 
-See `docs/principles.md` and [GOVERNANCE.md](./GOVERNANCE.md) for fuller details.
+See `docs/principles.md` and [GOVERNANCE](./GOVERNANCE.md) for fuller details.
 
 ---
 

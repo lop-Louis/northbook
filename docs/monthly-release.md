@@ -7,16 +7,16 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Maintainers planning and shipping the monthly docs release
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Explain how the monthly tagging cadence keeps the site current
-primary_action: Follow the prep checklist and tag the monthly release
+primary_action: Use the prep checklist here to tag each monthly release.
 ---
 
 # Monthly Release Rhythm
 
-A lightweight cadence for publishing improvements and tracking impact.
+<a href="#goals" data-primary-action>Use the prep checklist here to tag each monthly release.</a>
 
-> **Primary action:** Follow the prep checklist and tag the monthly release.
+A lightweight cadence for publishing improvements and tracking impact.
 
 ## Goals
 

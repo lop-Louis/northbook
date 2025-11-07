@@ -7,18 +7,18 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-04'
 audience: Maintainers and contributors who publish or review Northbook content
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Define the guardrails that keep public docs safe and trustworthy
-primary_action: Apply these rules when editing or approving any page
+primary_action: Use these rules when you edit or approve any page.
 ---
 
 # Governance Policy
 
+<a href="#scope" data-primary-action>Use these rules when you edit or approve any page.</a>
+
 > Public-safe content only. Internal specifics live elsewhere.
 
 Content governance ensures public documentation stays small, safe, and current.
-
-> **Primary action:** Apply these rules when editing or approving any page.
 
 ## Scope
 

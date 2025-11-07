@@ -4,18 +4,18 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Teams pacing delivery and knowing when to pause work
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Offer the framing for stop rules until full guidance ships
-primary_action: Capture your top stop conditions using the format provided
+primary_action: Use this format to capture the stop conditions that keep work safe.
 ---
 
 # Stop Rules Library
 
-Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
+<a href="#when-to-write-a-stop-rule" data-primary-action>Use this format to capture the stop conditions that keep work safe.</a>
 
-<a href="#format" data-primary-action>Capture your stop rules with this format</a>
+Stop rules protect teams from marching forward when risk outpaces confidence. Define them before work starts so everyone knows when to pause, escalate, or roll back.
 
 ## When to write a stop rule
 

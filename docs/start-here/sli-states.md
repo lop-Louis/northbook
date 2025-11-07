@@ -4,16 +4,16 @@ change_type: minor
 band: A
 owner: '@lop'
 refresh_after_days: 60
-status: 'draft'
+status: draft
 audience: Stream and seam leads tracking work health
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Show how work flows across states and which metrics to watch
-primary_action: Map your current initiative to these states and monitor the SLIs
+primary_action: Use the state map to place your initiative and track its SLIs.
 ---
 
 # SLI States
 
-> **Primary action:** Map your current initiative to these states and monitor the SLIs.
+<a href="#top" data-primary-action>Use the state map to place your initiative and track its SLIs.</a>
 
 | State        | Entry                        | Exit                  | SLI                      |
 | ------------ | ---------------------------- | --------------------- | ------------------------ |

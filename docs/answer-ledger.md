@@ -7,18 +7,18 @@ change_type: patch
 status: live
 last_reviewed: '2025-11-04'
 audience: Team leads and knowledge stewards who maintain shared answers
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Show how to capture recurring questions into a searchable ledger
-primary_action: Stand up or update your answer ledger using this pattern
+primary_action: Use this pattern to stand up or refresh your answer ledger.
 ---
 
 # Answer Ledger Pattern
 
+<a href="#what-it-is" data-primary-action>Use this pattern to stand up or refresh your answer ledger.</a>
+
 What: Structured, searchable list of recurring questions with their current canonical answers.
 Why: Saves time, reduces interruptions, and accelerates onboarding by turning chatter into linkable knowledge.
 When: After a question is answered twice, or when a decision needs a stable reference others can reuse.
-
-> **Primary action:** Stand up or update your answer ledger using this pattern.
 
 ## What it is
 
