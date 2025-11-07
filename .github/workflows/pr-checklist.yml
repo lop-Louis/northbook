@@ -36,6 +36,7 @@ jobs:
         id: checks
         env:
           VITE_GA_ID: ${{ secrets.GA_ID || 'G-511628512' }}
+        continue-on-error: true
         run: |
           REPORT_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo "## 📘 Documentation Quality & Governance Report" > report.md

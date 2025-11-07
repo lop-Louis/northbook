@@ -60,20 +60,20 @@ See `docs/principles.md` and [GOVERNANCE](./GOVERNANCE.md) for fuller details.
 
 <!-- scripts:start -->
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm run docs:dev` | Start the VitePress dev server |
-| `pnpm run docs:build` | Build the production site and verify CTA placement |
-| `pnpm run docs:preview` | Preview the production build locally |
-| `pnpm run docs:guard` | Run frontmatter lint, guard, drift, and UX scans |
-| `pnpm run nav:sync` | Regenerate nav + sidebar from frontmatter metadata |
-| `pnpm run frontmatter:lint` | Validate Band A frontmatter against the JSON schema |
-| `pnpm run guard` | Band A forbidden pattern scan |
-| `pnpm run drift` | Advisory drift audit (storytelling, inclusive language, etc.) |
-| `pnpm run ux:scan` | Verify CTA intro sentence includes both actions before the first section |
-| `pnpm run links` | Check internal and external links |
-| `pnpm run stale` | Generate stale page report |
-| `pnpm run test` | Run Node tests and component suite |
+| Command                     | Purpose                                                                  |
+| --------------------------- | ------------------------------------------------------------------------ |
+| `pnpm run docs:dev`         | Start the VitePress dev server                                           |
+| `pnpm run docs:build`       | Build the production site and verify CTA placement                       |
+| `pnpm run docs:preview`     | Preview the production build locally                                     |
+| `pnpm run docs:guard`       | Run frontmatter lint, guard, drift, and UX scans                         |
+| `pnpm run nav:sync`         | Regenerate nav + sidebar from frontmatter metadata                       |
+| `pnpm run frontmatter:lint` | Validate Band A frontmatter against the JSON schema                      |
+| `pnpm run guard`            | Band A forbidden pattern scan                                            |
+| `pnpm run drift`            | Advisory drift audit (storytelling, inclusive language, etc.)            |
+| `pnpm run ux:scan`          | Verify CTA intro sentence includes both actions before the first section |
+| `pnpm run links`            | Check internal and external links                                        |
+| `pnpm run stale`            | Generate stale page report                                               |
+| `pnpm run test`             | Run Node tests and component suite                                       |
 
 <!-- scripts:end -->
 
@@ -100,6 +100,7 @@ Automation catches most issues; reviewers focus on judgment calls.
 - `docs/index.md` — Homepage hero that sells “Guidance over to-do.”
 - `docs/governance.md` — Anti-drift rules for public content.
 - `scripts/guard.mjs` — Band A and anti-drift guard (read-only).
+- `scripts/nav-guard.mjs` — Verifies frontmatter nav metadata matches generated nav/sidebar.
 - `scripts/sync-navigation.mjs` — Generates the nav/sidebar file from frontmatter.
 - `.github/workflows/pages.yml` — Deploys the site.
 - `.github/workflows/guard.yml` — Runs guard on PRs.
