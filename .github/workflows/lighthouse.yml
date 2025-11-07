@@ -95,9 +95,18 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
-            // Read latest results
             const lighthouseDir = '.lighthouse';
-            const files = fs.readdirSync(lighthouseDir);
+            if (!fs.existsSync(lighthouseDir)) {
+              core.warning(`Lighthouse directory "${lighthouseDir}" not found. Skipping comment.`);
+              return;
+            }
+
+            const files = fs.readdirSync(lighthouseDir).filter(name => name.endsWith('.json'));
+            if (!files.length) {
+              core.warning(`No Lighthouse result files found in "${lighthouseDir}".`);
+              return;
+            }
+
             const latestFile = files.sort().reverse()[0];
             const results = JSON.parse(fs.readFileSync(path.join(lighthouseDir, latestFile), 'utf8'));
 

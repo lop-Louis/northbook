@@ -40,7 +40,7 @@ jobs:
         run: |
           set -o pipefail
           echo "Running Band A compliance checks..."
-          GUARD_FORMAT=json pnpm run guard | tee guard-output.json
+          GUARD_FORMAT=json node scripts/guard.mjs | tee guard-output.json
           GUARD_EXIT=${PIPESTATUS[0]}
           node <<'NODE'
           const fs = require('node:fs')
@@ -177,7 +177,6 @@ jobs:
       - name: Label PR
         uses: actions/github-script@v8
         if: always()
-        continue-on-error: true
         with:
           script: |
             const label = '${{ steps.status.outputs.label }}';
@@ -192,6 +191,7 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const issue_number = context.issue.number;
+            const prAuthor = context.payload.pull_request?.user?.login ?? '';
             const labelColors = {
               green: '0f766e',
               yellow: 'f59e0b',
@@ -257,7 +257,11 @@ jobs:
                 labels: [label]
               });
             } catch (err) {
-              console.log(`Failed to add label "${label}": ${err.message}`);
+              if (err?.status === 403) {
+                console.log(`Failed to add label "${label}" (likely due to permissions). Skipping.`);
+              } else {
+                console.log(`Failed to add label "${label}": ${err.message}`);
+              }
             }
 
       - name: Confirm all checks passed
