@@ -43,5 +43,5 @@ Stop rules protect teams from marching forward when risk outpaces confidence. De
 ## Maintaining the library
 
 - Review stop rules during quarterly planning and after every major incident.
-- Keep the library alongside the Decision Spine entry so the “why” and “when to stop” stay linked.
-- When a rule fires, log the context in the Answer Ledger outcome to keep institutional memory sharp.
+- Keep the library alongside the <u>[Decision Spine](../decision-spine.md)</u> entry so the "why" and "when to stop" stay linked.
+- When a rule fires, log the context in the <u>[Answer Ledger](../answer-ledger.md)</u> outcome to keep institutional memory sharp.

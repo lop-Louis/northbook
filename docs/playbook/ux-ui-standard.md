@@ -16,6 +16,8 @@ primary_action: Apply these rules before merging any layout or styling change
 Consistent presentation keeps trust high and review cycles short.
 Use this checklist whenever you add or revise content so it ships with the same look, feel, and accessibility guarantees.
 
+> **Primary action:** Apply these rules before merging any layout or styling change.
+
 ## Layout width
 
 - Content column maxes at ~720px (≈75 characters) to keep lines readable.
