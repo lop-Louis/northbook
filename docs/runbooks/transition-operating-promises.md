@@ -8,16 +8,13 @@ status: live
 audience: Stream leads and facilitators shepherding handovers
 tone: Plainspoken, candid, energetic
 narrative_goal: Codify the non-negotiable rhythms that keep a transition safe
+nav:
+  - none
 ---
 
 # Transition operating promises
 
-<a href="#approvals-template" data-primary-action>Use these templates to codify approvals, escalations, and cadence promises.</a>
-
-<a href="./index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Pair these prompts with the [Handover RACI template](./handover-raci-template.md) so every role knows the service level they own during a transition.
-Stick to the `condition -> action -> owner -> time box` structure for Band A clarity.
+These templates keep transition approvals, escalations, and cadences explicit. <a href="#approvals-template" data-primary-action>Codify your operating promises</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>. Pair them with the [Handover RACI template](./handover-raci-template.md) so every role knows the service level they own during a transition.
 
 ## Approvals template
 

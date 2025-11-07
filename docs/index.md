@@ -31,12 +31,11 @@ features:
     details: Copy-paste prompts that keep meetings on track.
   - title: Ship accessibly
     details: Quick checks that catch 80% of issues.
+nav:
+  - none
 ---
 
-<a href="#governance-safety" data-primary-action>Use these starting links to keep guidance, tone, and UI aligned.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-Guidance stays light on chores. When you need the step-by-step checklist, jump to [runbooks](/runbooks/) (Coming soon).
+Guidance stays light on chores; runbooks carry the detailed checklists. <a href="#governance-safety" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Governance & Safety
 

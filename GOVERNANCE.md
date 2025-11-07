@@ -51,9 +51,10 @@ All pull requests undergo these automated checks:
 
 ### Automation routing
 
-- **Guard:** Runs only on PRs (`pnpm run guard`). Its JSON output is posted as a PR comment so reviewers see red/yellow context without combing through CI logs. The CI job summary just links to the comment.
-- **Anti-drift:** Runs on every push to the working branch (`pnpm run drift`). Results stay inside the job summary; PRs do not repeat the drift report.
+- **Guard:** Runs only on PRs (`pnpm run guard`). Its JSON output is posted as a PR comment so reviewers see red/yellow context without combing through CI logs. Guard checks must be read-only; generation/mutation scripts belong in separate steps. The CI job summary just links to the comment.
+- **Anti-drift:** Runs on every push to non-default working branches (`pnpm run drift`). Results stay inside the job summary; PRs do not repeat the drift report.
 - **Lighthouse:** Executes after deployment against <https://northbook.guide>. The Lighthouse workflow records its scores in the job summary; PRs do not need to attach or comment the report.
+- **Navigation sync:** Frontmatter owns nav placement (`nav` plus optional `nav_label`, `nav_group`, `nav_order`). Run `pnpm run nav:sync` to regenerate `.vitepress/navigation.generated.ts`, and rerun `pnpm run docs:build`. The build fails on dead links; reviewers should bounce PRs that skip the nav update.
 
 ---
 

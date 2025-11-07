@@ -9,15 +9,15 @@ last_reviewed: '2025-11-06'
 audience: Readers tracking what changed in the v2025.11 release
 tone: Plainspoken, candid, energetic
 narrative_goal: Summarize the notable additions, updates, and fixes in this tag
+nav:
+  - none
 ---
 
 Back to [Releases](../release.md)
 
 # site-v2025.11 · Patch hygiene
 
-<a href="#added" data-primary-action>Use this changelog to understand what shipped in the tag.</a>
-
-<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+This changelog captures the mid-November hygiene release so you can skim what shipped. <a href="#added" data-primary-action>Scan the changes</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 **Tag date:** Mid-November release window
 

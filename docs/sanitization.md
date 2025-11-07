@@ -9,15 +9,15 @@ last_reviewed: '2025-11-04'
 audience: Contributors preparing public-safe guidance
 tone: Plainspoken, candid, energetic
 narrative_goal: Show how to strip risk while keeping guidance useful
+nav_group: Contributor Kit
+nav_order: 10
+nav:
+  - sidebar
 ---
 
 # Sanitization Guidance
 
-<a href="#what-sanitization-protects" data-primary-action>Use this sanitization checklist before shipping or reviewing a page.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Northbook only publishes guidance that the public can quote without a second thought. Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
+Northbook only ships guidance that anyone can quote safely. <a href="#what-sanitization-protects" data-primary-action>Run the sanitization checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>. Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
 
 ## What Sanitization Protects
 

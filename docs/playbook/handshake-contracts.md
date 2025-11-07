@@ -9,15 +9,13 @@ audience: Teams aligning expectations between partners
 tone: Plainspoken, candid, energetic
 narrative_goal: Capture the structure of handshake agreements before the full writeup
   ships
+nav:
+  - none
 ---
 
 # Handshake Contracts
 
-<a href="#when-to-draft-one" data-primary-action>Use these prompts to draft handshake contracts with approvals, escalation, and cadence.</a>
-
-<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Handshake contracts spell out how two groups promise to work together without waiting for a formal policy. Treat them as a compact to surface expectations, response times, and how you’ll recover when things slip.
+Handshake contracts spell out how two groups promise to work together before policy catches up. <a href="#when-to-draft-one" data-primary-action>Draft your handshake contract</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## When to draft one
 

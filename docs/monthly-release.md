@@ -9,15 +9,15 @@ last_reviewed: '2025-11-04'
 audience: Maintainers planning and shipping the monthly docs release
 tone: Plainspoken, candid, energetic
 narrative_goal: Explain how the monthly tagging cadence keeps the site current
+nav_group: Start here
+nav_order: 30
+nav:
+  - sidebar
 ---
 
 # Monthly Release Rhythm
 
-<a href="#goals" data-primary-action>Use the prep checklist here to tag each monthly release.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-A lightweight cadence for publishing improvements and tracking impact.
+This cadence keeps the public docs fresh each month and records what changed. <a href="#goals" data-primary-action>Run the prep checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Goals
 

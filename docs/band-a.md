@@ -9,13 +9,17 @@ last_reviewed: '2025-11-04'
 audience: Anyone publishing public-safe guidance from Northbook
 tone: Plainspoken, candid, energetic
 narrative_goal: Explain what qualifies as Band A content and how to sanitize it
+nav_label: Start
+nav_group: Start here
+nav_order: 10
+nav:
+  - main
+  - sidebar
 ---
 
 # What is Band A
 
-<a href="#what-belongs-in-band-a" data-primary-action>Use this checklist before you publish or review any guidance.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+Band A keeps our public guidance safe to quote without leaking specifics. <a href="#what-belongs-in-band-a" data-primary-action>Run the Band A checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 > Public-safe content only. Internal specifics live elsewhere.
 

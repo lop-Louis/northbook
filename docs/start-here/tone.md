@@ -6,15 +6,15 @@ refresh_after_days: 120
 change_type: minor
 status: live
 audience: Anyone writing or editing Northbook content
-tone: 'Plainspoken, candid, energetic'
+tone: Plainspoken, candid, energetic
 narrative_goal: Define how our voice should sound across channels
+nav:
+  - none
 ---
 
 # Voice & Tone Guide
 
-<a href="#voice-pillars" data-primary-action>Use the voice and tone pillars before you publish.</a>
-
-<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+Sounding like Northbook is deliberate, not accidental. <a href="#voice-pillars" data-primary-action>Use the voice and tone pillars</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 What: Shared language rules for anything public-facing—docs, release notes, support replies.
 Why: Keeps every channel tight, human, and on-brand so readers know it's us.

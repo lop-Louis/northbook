@@ -8,15 +8,13 @@ status: live
 audience: Stream leads packaging a handover
 tone: Plainspoken, candid, energetic
 narrative_goal: Offer a public-safe RACI matrix teams can copy fast
+nav:
+  - none
 ---
 
 # Handover RACI template
 
-<a href="#how-to-use-it" data-primary-action>Use this template and example to publish a handover RACI.</a>
-
-<a href="./index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Use this page when you need to broadcast handover roles without exposing internal specifics.
+Use this template when you need to broadcast handover roles without exposing internal specifics. <a href="#how-to-use-it" data-primary-action>Copy the RACI template</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
 The structure below stays inside the [Anti-drift Content Governance](../governance.md) guardrails and keeps RACI labels uncluttered.
 
 ## How to use it

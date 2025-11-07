@@ -10,15 +10,13 @@ audience: Engineers designing and reviewing HTTP APIs
 tone: Plainspoken, candid, energetic
 narrative_goal: Capture the baseline rules for Northbook APIs until the full guide
   ships
+nav:
+  - none
 ---
 
 # API Guidelines (Stub)
 
-<a href="#core-principles" data-primary-action>Use these defaults when you draft or review API changes.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Neutral, public-safe principles for designing and evolving HTTP+JSON APIs. This page is a placeholder until a fuller version is needed.
+Neutral, public-safe defaults keep every HTTP+JSON API predictable while the full guide is in flight. <a href="#core-principles" data-primary-action>Apply the API defaults</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Core Principles
 

@@ -8,15 +8,13 @@ status: live
 audience: Anyone kicking off work and needing the latest guardrails
 tone: Plainspoken, candid, energetic
 narrative_goal: Point readers to the foundational guides before they build
+nav:
+  - none
 ---
 
 # Start Here
 
-<a href="#essentials" data-primary-action>Use these essentials to align voice, UI, and flow before you ship.</a>
-
-<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Use this hub when you need the current voice, UI, and operational rules before shipping anything public.
+Use this hub whenever you need the current voice, UI, and operational rules before shipping anything public. <a href="#essentials" data-primary-action>Review the essentials</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Essentials
 

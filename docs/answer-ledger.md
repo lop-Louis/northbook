@@ -9,13 +9,15 @@ last_reviewed: '2025-11-04'
 audience: Team leads and knowledge stewards who maintain shared answers
 tone: Plainspoken, candid, energetic
 narrative_goal: Show how to capture recurring questions into a searchable ledger
+nav_group: Contributor Kit
+nav_order: 20
+nav:
+  - sidebar
 ---
 
 # Answer Ledger Pattern
 
-<a href="#what-it-is" data-primary-action>Use this pattern to stand up or refresh your answer ledger.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
+Answer ledgers turn recurring questions into searchable, linkable answers. <a href="#what-it-is" data-primary-action>Stand up your ledger</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 What: Structured, searchable list of recurring questions with their current canonical answers.
 Why: Saves time, reduces interruptions, and accelerates onboarding by turning chatter into linkable knowledge.

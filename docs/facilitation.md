@@ -9,15 +9,15 @@ last_reviewed: '2025-11-04'
 audience: Facilitators and team leads running collaborative sessions
 tone: Plainspoken, candid, energetic
 narrative_goal: Equip meetings with repeatable structures that keep outcomes sharp
+nav_group: Guides
+nav_order: 20
+nav:
+  - sidebar
 ---
 
 # Facilitation Techniques
 
-<a href="#silent-brainstorming" data-primary-action>Use these facilitation patterns to prep your next collaborative session.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-What: Small, plug‑and‑play patterns for focused, inclusive sessions and faster group decisions.
+Small, plug-and-play patterns keep collaborative sessions focused and inclusive. <a href="#silent-brainstorming" data-primary-action>Pick a facilitation pattern</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 Why: Prevents drift, balances voices, and converts meetings into clear outcomes instead of vague discussion.
 When: Kickoffs, retros, prioritization, brainstorming, or anytime alignment feels slow or uneven.
 

@@ -9,15 +9,15 @@ last_reviewed: '2025-11-04'
 audience: Engineers and collaborators onboarding to Northbook habits
 tone: Plainspoken, candid, energetic
 narrative_goal: Answer recurring new-joiner questions with actionable next steps
+nav_group: Start here
+nav_order: 20
+nav:
+  - sidebar
 ---
 
 # FAQ for New Joiners
 
-<a href="#process-culture" data-primary-action>Use this FAQ to self-serve common onboarding questions.</a>
-
-<a href="./runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Common questions from engineers joining the team, with quick answers.
+New joiners can self-serve most answers without waiting for a reply. <a href="#process-culture" data-primary-action>Scan the FAQ</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Process & Culture
 

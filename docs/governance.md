@@ -9,6 +9,10 @@ last_reviewed: '2025-11-04'
 audience: Maintainers and contributors who publish or review Northbook content
 tone: Plainspoken, candid, energetic
 narrative_goal: Define the guardrails that keep public docs safe and trustworthy
+nav_group: Contributor Kit
+nav_order: 30
+nav:
+  - sidebar
 ---
 
 # Anti-drift Content Governance
@@ -66,9 +70,24 @@ Frontmatter is linted via `pnpm run frontmatter:lint`, which loads `schemas/fron
 
 ## Automation surfaces
 
-- **Guard (PR-only):** `pnpm run guard` executes the Band A checks inside the PR workflow and posts the JSON summary as a PR comment (not the CI job summary). Treat red output as blocking; yellow requires reviewer judgment.
+- **Guard (PR-only):** `pnpm run guard` executes the Band A checks inside the PR workflow and posts the JSON summary as a PR comment (not the CI job summary). Guard tasks must be **read-only**; do not bundle file-mutation or nav-generation scripts in the same command. Treat red output as blocking; yellow requires reviewer judgment.
 - **Anti-drift (working branch push):** `pnpm run drift` runs whenever you push to a non-default working branch. The warnings land in that workflow’s job summary (no PR comment spam) so you can clean drift before opening a PR.
 - **Lighthouse (post-deploy):** Performance and accessibility checks run _after_ deployment against <https://northbook.guide>. The report lives in the Lighthouse workflow summary; PRs do not need to attach the artifact.
+- **Navigation guard:** `pnpm run nav:guard` compares each page’s `nav` frontmatter to the generated navigation (`docs/.vitepress/navigation.generated.ts`). Add this to your local/CI checks so config drift fails fast.
+
+## Navigation & sidebar verification
+
+Every change that adds, removes, or renames a page must keep the navigation experiences honest:
+
+- Declare nav placement in frontmatter using the `nav` array (`main`, `sidebar`, `external`, `none`). This metadata is the source of truth; config generation scripts read it directly.
+- Update `.vitepress/config.ts` (or regenerate `navigation.generated.ts` if you’re using auto-generation) so the top navigation and sidebar still point only to Band A pages that exist.
+- If you touch a Playbook/Runbook title or path, make sure the sidebar emoji + ordering remain intentional and update cross-links in the documents themselves.
+- Run `pnpm run docs:build` locally; the build fails if nav links are dead. Do not rely on reviewers to chase missing nav updates.
+- If you cannot add a permanent nav slot yet, prefer inline links from related docs rather than leaving a dangling placeholder in the config.
+- Set `nav` in frontmatter to `main`, `sidebar`, or `none` (plus optional `nav_label`, `nav_group`, `nav_order`). `pnpm run nav:sync` regenerates `.vitepress/navigation.generated.ts` from those values before CI runs.
+- Automation regenerates `.vitepress/navigation.generated.ts` during `pnpm run nav:sync` (part of `docs:guard` and `docs:build`), so the nav config always mirrors the frontmatter.
+
+This keeps the published sidebar aligned with the actual docs tree and prevents “secret” pages that drift outside the discoverable structure.
 
 ## Allowed Content (Band A)
 

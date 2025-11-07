@@ -8,6 +8,8 @@ status: live
 audience: Product ops and accessibility leads running the quarterly sweep
 tone: Plainspoken, candid, energetic
 narrative_goal: Outline the repeatable tasks for verifying accessibility health
+nav:
+  - none
 ---
 
 # Accessibility audit runbook

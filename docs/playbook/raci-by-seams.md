@@ -8,15 +8,13 @@ status: draft
 audience: Leads mapping accountability across seams
 tone: Plainspoken, candid, energetic
 narrative_goal: Provide a table-driven way to clarify who owns what work
+nav:
+  - none
 ---
 
 # RACI by Seams
 
-<a href="#why-seams-not-teams" data-primary-action>Use the seam-first template to map who owns each boundary.</a>
-
-<a href="../runbooks/index" data-secondary-action>Browse the Runbooks index for hands-on checklists.</a>
-
-Map the work around seams instead of teams so responsibility stays clear when streams shift. Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
+Mapping RACI by seam keeps ownership stable even when teams reorganize. <a href="#why-seams-not-teams" data-primary-action>Use the seam-first template</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>. Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
 
 ## Why seams, not teams
 
