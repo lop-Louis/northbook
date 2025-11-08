@@ -12,38 +12,38 @@ tone: Plainspoken, candid, energetic
 narrative_goal: Orient newcomers to the core pillars and where to start
 hero:
   name: Northbook
-  text: Guidance over to-do.
+  text: Orientation → Checks → Receipts.
   image:
     src: /logo-symbol.png
     alt: Northbook logo
-  tagline: Teams move faster when the edges are obvious and overridable.
+  tagline: Start, Guides, Runbooks, and Fast support are wired together so every CTA lands on the next action.
   actions:
     - theme: brand
-      text: Onboarding
+      text: Start now
       link: /start-here/
     - theme: alt
       text: Ask a question
       link: https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
 features:
-  - title: Decide faster
-    details: Use the Decision Spine to cut rework.
-    link: /decision-spine
-    linkText: Open Decision Spine
-  - title: Facilitate better
-    details: Copy-paste prompts that keep meetings on track.
-    link: /facilitation
-    linkText: Grab a facilitation prompt
-  - title: Ship accessibly
-    details: Quick checks that catch 80% of issues.
-    link: /accessibility-quick-wins
-    linkText: Run the accessibility quick checks
+  - title: Orient in seconds
+    details: Wayfinding shortcuts and the Start hub get you to the right doc without guessing.
+    link: /start-here/find
+    linkText: Use Wayfinding
+  - title: Ship with receipts
+    details: Quick-Run and Release receipts prove every change before you merge.
+    link: /ops/quick-run
+    linkText: Run Quick-Run
+  - title: Escalate cleanly
+    details: Fast support flows and runbooks keep interrupts and escalations tidy.
+    link: /fix/
+    linkText: Open Fast support
 nav:
   - none
 ---
 
 Find the answer. Use it now. <a href="./start-here/" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
-Guidance stays light on chores; runbooks carry the detailed checklists.
+Every Start, Guide, Runbook, and Fast support page now links to the next action—orientation → checks → receipts without detours.
 
 If this didn’t answer your question in 60 seconds, <a href="https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Homepage&body=Page:%20https://northbook.guide/" data-secondary-action>tell us so we can fix it</a>.
 

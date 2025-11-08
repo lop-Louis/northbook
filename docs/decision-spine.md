@@ -80,6 +80,12 @@ Success metric: [What good looks like]
 - ❌ No named decider (consensus trap)
 - ❌ Never revisiting (sunk cost fallacy)
 
+## Related references
+
+- [Handshake contracts](./playbook/handshake-contracts.md) — Lock expectations once a decision is made.
+- [Start overview](./start-here/index.md) — Send new collaborators here before sharing the spine.
+- [Transition operating promises](./runbooks/transition-operating-promises.md) — Use these when a decision creates new approvals or escalations.
+
 ## Integration with other practices
 
 Combine with:

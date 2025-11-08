@@ -8,6 +8,9 @@ status: live
 nav_group: Start
 nav_order: 12
 nav_label: Wayfinding shortcuts
+audience: Anyone who needs the right Northbook page in under a minute
+tone: Plainspoken, candid, energetic
+narrative_goal: Show newcomers the fastest navigation patterns before they guess
 nav:
   - sidebar
 ---
@@ -24,15 +27,15 @@ You shouldn’t fight the site to find work. <a href="#routes" data-primary-acti
 
 ## Routes by intent {#routes}
 
-| You want to…               | Go here                                                 | Why                                       |
-| -------------------------- | ------------------------------------------------------- | ----------------------------------------- |
-| Frame or decide            | [Decision Spine](../decision-spine)                     | Template + review triggers in one place   |
-| Facilitate                 | [Facilitation Techniques](../facilitation)              | Ready prompts, no filler                  |
-| Ship accessibly            | [Accessibility Quick Wins](../accessibility-quick-wins) | High-signal checks that fit sprint timing |
-| Clear interrupts in 10 min | [Fix-it-fast index](../fix/)                            | Triage flows with escalation packets      |
-| Verify your doc change     | [Quick-Run](../ops/quick-run)                           | Fast regression check before you merge    |
-| Run a deeper op            | [Runbooks index](../runbooks/)                          | Chore-heavy flows with receipts           |
-| See what changed           | [Receipts](../receipts/)                                | Highlights from the latest release        |
+| You want to…           | Go here                                                 | Why                                       |
+| ---------------------- | ------------------------------------------------------- | ----------------------------------------- |
+| Frame or decide        | [Decision Spine](../decision-spine)                     | Template + review triggers in one place   |
+| Facilitate             | [Facilitation Techniques](../facilitation)              | Ready prompts, no filler                  |
+| Ship accessibly        | [Accessibility Quick Wins](../accessibility-quick-wins) | High-signal checks that fit sprint timing |
+| Clear interrupts fast  | [Fast support index](../fix/)                           | Triage flows with escalation packets      |
+| Verify your doc change | [Quick-Run](../ops/quick-run)                           | Fast regression check before you merge    |
+| Run a deeper op        | [All runbooks](../runbooks/)                            | Chore-heavy flows with receipts           |
+| See what changed       | [Release receipts](../receipts/index)                   | Highlights from the latest release        |
 
 ## URL and anchor cheats
 
@@ -43,5 +46,11 @@ You shouldn’t fight the site to find work. <a href="#routes" data-primary-acti
 ## If you still can’t find it
 
 1. Search again using the owner or the keyword in the page’s “tone” or “narrative” fields (e.g., `stale`, `accessibility`).
-2. Skim the sidebar—groups mirror the governance taxonomy (Start, Guides, Runbooks, Contributor Kit, Fix it fast).
+2. Skim the sidebar—groups mirror the governance taxonomy (Start, Guides, Runbooks, Contributor Kit, Fast support).
 3. Still lost? [Open a “Question” issue](https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=%5BQuestion%5D%20Wayfinding&body=Page:%20https://northbook.guide/start-here/find) with what you tried. We patch wayfinding gaps in the next release.
+
+## Related references
+
+- [Start overview](./index.md) — When you need the full onboarding story.
+- [Quick-Run check](../ops/quick-run.md) — The hygiene run linked all over this page.
+- [Wayfinding shortcuts table source](../playbook/) — Keep the canonical index synced if you add new guides.

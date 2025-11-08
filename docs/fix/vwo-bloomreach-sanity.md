@@ -65,3 +65,9 @@ Network screenshots attached
 ```
 
 **Handoff** → [/support-it/contacting-it](/support-it/contacting-it)
+
+## Related references
+
+- [Fast support index](./index.md) — Route to other flows when scripts aren’t the issue.
+- [Accessibility Quick Wins](../accessibility-quick-wins.md) — Re-check if experiments inject UI that could regress a11y.
+- [Monthly cadence](../monthly-release.md) — Document significant experiment fixes in the release log.

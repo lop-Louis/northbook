@@ -82,3 +82,9 @@ See [Sanitization Checklist](./sanitization) for the full process and final veri
 
 | Topic Type | Safe (Band A) | Unsafe (Remove) |
 |
+
+## Related references
+
+- [Sanitization checklist](./sanitization.md) — Deep dive on replacing specifics before shipping.
+- [Anti-drift governance](./governance.md) — Policy backing these rules and how automation enforces them.
+- [Start overview](./start-here/index.md) — Use this when someone needs the “why” behind Band A.

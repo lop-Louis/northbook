@@ -1,5 +1,5 @@
 ---
-title: 'Access to repo or pipeline: quick checks and request'
+title: Repo & pipeline access
 band: A
 owner: '@platform-eng'
 refresh_after_days: 60
@@ -62,3 +62,9 @@ Start/End date: <if temporary>
 ```
 
 **Handoff** → [/support-it/contacting-it](/support-it/contacting-it)
+
+## Related references
+
+- [Fast support index](./index.md) — When access isn’t the real blocker, point teammates to another flow.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Record if access delays breach a transition SLA.
+- [Start overview](../start-here/index.md) — Share this when onboarding contributors who keep hitting access friction.

@@ -27,6 +27,13 @@ These entries inherit the [content governance rules](/governance) so readers rec
 - [RACI by seams](./raci-by-seams.md) — Assign ownership using the seam-first model.
 - [Stop rules](./stop-rules.md) — Define the tripwires that pause or stop work when promises are at risk.
 - [Scoreboard](./scoreboard.md) — Publish baselines, targets, cadence, and accountability in one card.
+- [North Star & guardrails](./north-star-guardrails.md) — Keep direction, autonomy, and accountability in balance.
 - [Policy → action: expenses](/pattern-expense-sla) — Show the expense SLA as a working example.
 
 Want a new pattern canonized? [Propose an addition to the playbook](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,proposal&title=%5BPlaybook%5D%20New%20pattern&body=Page:%20https://northbook.guide/playbook/).
+
+## Related references
+
+- [Start overview](../start-here/index.md) — Direct newcomers here before dropping them into canonical playbooks.
+- [Runbooks index](../runbooks/index.md) — Use this when a pattern needs a chore-heavy counterpart.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Where playbook language turns into enforceable promises.

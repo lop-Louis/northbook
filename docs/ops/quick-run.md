@@ -47,3 +47,9 @@ Ship a docs change? Run this in under 10 minutes. <a href="#run-it" data-primary
 ## Stop rule
 
 If you spend more than 10 minutes chasing failures or the guard stays red after two fixes, stop and escalate: run the [Link drift Proof Run](../labs/link-drift) or open a `kl,question` issue with the failing slug.
+
+## Related references
+
+- [Link Integrity runbook](../runbooks/link-integrity.md) — Full remediation path when Quick-Run isn’t enough.
+- [Fast support index](../fix/) — Interrupt flows for anything that blocks shipping.
+- [Release receipts](../receipts/index) — Paste your Quick-Run evidence when logging a release.

@@ -51,3 +51,9 @@ This pattern turns a policy reminder into action with three lines:
 - ✔️ SLA expressed as a range or day count (no calendar dates)
 - ✔️ Generic consequence that reflects policy intent without quoting it
 - ✔️ Link from onboarding/FAQ so people can find the pattern quickly
+
+## Related references
+
+- [Start overview](./start-here/index.md) — Direct readers here when they need the why before the pattern.
+- [Transition operating promises](./runbooks/transition-operating-promises.md) — Use this when expenses are part of a handover contract.
+- [Release receipts](./receipts/index) — Log when you update this pattern so the change shows up in the release notes.

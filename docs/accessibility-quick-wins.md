@@ -118,6 +118,13 @@ a:focus {
 - ❌ Placeholder text as label replacement
 - ❌ Low contrast gray text for "subtle" UI
 - ❌ Auto-playing media without controls
+- ❌ Forgetting to update docs when new components ship (sync with [Accessibility audit runbook](./runbooks/accessibility-audit.md))
+
+## Related references
+
+- [Accessibility audit runbook](./runbooks/accessibility-audit.md) — Quarterly deep dive that proves these wins are in place.
+- [Link Integrity runbook](./runbooks/link-integrity.md) — Run this after adding/removing accessibility documentation to keep links healthy.
+- [Wayfinding shortcuts](./start-here/find.md) — Share this when teammates need quick access to the relevant runbook or guide.
 - ❌ Time-limited actions without extensions
 
 ## Resources

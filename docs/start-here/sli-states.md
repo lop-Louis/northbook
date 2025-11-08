@@ -49,3 +49,9 @@ This map keeps every initiative’s SLI state and guardrails obvious. <a href="#
 - Add a new state only when you have a distinct entry/exit signal _and_ a measurable guardrail.
 - Retire a state if it lives purely in tooling (e.g., CI automation) and the audience never acts on it.
 - Re-run `pnpm run nav:sync` after editing so the Start navigation stays honest.
+
+## Related references
+
+- [State visibility map](../runbooks/state-visibility.md) — Publish this table in your shared status doc.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Define what happens when an SLI breaches.
+- [Release receipts](../receipts/index) — Note state changes when you tag a release.

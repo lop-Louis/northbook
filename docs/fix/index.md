@@ -28,3 +28,9 @@ Each page sticks to the 10-minute path and ends with a ready-to-paste escalation
 - [VWO/Bloomreach sanity](./vwo-bloomreach-sanity.md) — Detect duplicate injections, CSP blocks, or wrong keys fast.
 
 Need a different blocker covered? [Request a new Fix-it-fast flow](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,feature&title=%5BFlow%5D%20Fix%20it%20fast%20request&body=Page:%20https://northbook.guide/fix/).
+
+## Related references
+
+- [Quick-Run check](../ops/quick-run.md) — Run this before/after a fast fix so receipts stay in your PR.
+- [Link Integrity runbook](../runbooks/link-integrity.md) — When a fix touches multiple anchors or navigation tables.
+- [Start overview](../start-here/index.md) — Share this if an interrupt uncovers a missing orientation doc.

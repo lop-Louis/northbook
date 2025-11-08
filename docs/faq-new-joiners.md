@@ -115,3 +115,9 @@ Need more detail? Read the public-safe pattern: [Expenses: Policy → Action](./
 - DM your manager
 
 **Remember**: There are no dumb questions in your first 90 days (or ever).
+
+## Related references
+
+- [Start overview](./start-here/index.md) — Orients you to the full doc system.
+- [Wayfinding shortcuts](./start-here/find.md) — When you need a specific runbook or guide fast.
+- [Playbook canon](./playbook/) — Deep patterns referenced throughout this FAQ.

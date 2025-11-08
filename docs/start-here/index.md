@@ -49,3 +49,10 @@ Need the UI, tone, or states for your artifact? Use:
 ## Feedback loop
 
 If this hub doesn’t land you on the right page within a minute, [tell us](https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Start%20here&body=Page:%20https://northbook.guide/start-here/) so we can plug the gap.
+
+## Related references
+
+- [Wayfinding shortcuts](./find.md) — Fast pointer to every major doc category.
+- [Band A guardrails](../band-a.md) — Sanitization contract before you publish.
+- [Quick-Run check](../ops/quick-run.md) — Required pre-flight after any doc edit.
+- [Playbook canon](../playbook/) — The deeper guidance you’ll link once you’re oriented.

@@ -1,5 +1,5 @@
 ---
-title: 'Teams notifications: quick checks and when to escalate'
+title: Teams notification check
 band: A
 owner: '@support-it'
 refresh_after_days: 60
@@ -72,3 +72,9 @@ Screenshots: teams-notifications-1, teams-notifications-2
 Upstream policy and device settings dominate behavior; we keep only a 10-minute path then hand off to IT as source of truth.
 
 **Handoff** → [/support-it/contacting-it](/support-it/contacting-it)
+
+## Related references
+
+- [Fast support index](./index.md) — Share other flows if Teams wasn’t the real blocker.
+- [Quick-Run check](../ops/quick-run.md) — Run after editing or linking new Teams guidance.
+- [Link Integrity runbook](../runbooks/link-integrity.md) — Needed when notification links in docs must be rewritten.
