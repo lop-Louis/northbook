@@ -11,7 +11,7 @@ tone: Plainspoken, candid, energetic
 narrative_goal: Explain how the monthly tagging cadence keeps the site current
 nav_group: Start
 nav_order: 30
-nav_label: Monthly release
+nav_label: Monthly cadence
 nav:
   - sidebar
 ---

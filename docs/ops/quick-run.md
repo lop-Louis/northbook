@@ -5,9 +5,9 @@ owner: '@lop'
 change_type: patch
 refresh_after_days: 45
 status: live
-nav_group: Ship checks
-nav_order: 10
-nav_label: Quick-Run
+nav_group: Start
+nav_order: 15
+nav_label: Quick-Run check
 nav:
   - sidebar
 ---

@@ -2,7 +2,7 @@
 // Do not edit manually.
 export const generatedNav = [
   {
-    text: 'Orientation hub',
+    text: 'Overview',
     link: '/start-here/'
   },
   {
@@ -16,48 +16,36 @@ export const generatedSidebar = [
     collapsed: false,
     items: [
       {
-        text: 'Orientation hub',
+        text: 'Overview',
         link: '/start-here/'
+      },
+      {
+        text: 'Wayfinding shortcuts',
+        link: '/start-here/find'
+      },
+      {
+        text: 'Quick-Run check',
+        link: '/ops/quick-run'
       },
       {
         text: 'New joiner FAQ',
         link: '/faq-new-joiners'
       },
       {
-        text: 'Receipts',
+        text: 'Release receipts',
         link: '/receipts/'
       },
       {
-        text: 'Monthly release',
+        text: 'Monthly cadence',
         link: '/monthly-release'
       },
       {
-        text: 'SLI states',
+        text: 'SLI states map',
         link: '/start-here/sli-states'
       },
       {
-        text: 'Band A',
+        text: 'Band A guardrails',
         link: '/band-a'
-      }
-    ]
-  },
-  {
-    text: 'Ship checks',
-    collapsed: false,
-    items: [
-      {
-        text: 'Quick-Run',
-        link: '/ops/quick-run'
-      }
-    ]
-  },
-  {
-    text: 'Wayfinding',
-    collapsed: false,
-    items: [
-      {
-        text: 'Wayfinding map',
-        link: '/start-here/find'
       }
     ]
   },

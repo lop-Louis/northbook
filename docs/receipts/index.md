@@ -7,7 +7,7 @@ refresh_after_days: 30
 status: live
 nav_group: Start
 nav_order: 25
-nav_label: Receipts
+nav_label: Release receipts
 nav:
   - sidebar
 ---
