@@ -113,3 +113,9 @@ Enforces crisp decision cadence and prevents fatigue-driven poor choices.
 - 📝 Document decisions immediately in the meeting
 
 See also: [Decision Spine](./decision-spine) for structuring decision outcomes
+
+## Related references
+
+- [Community meeting pack](./runbooks/community-pack.md) — Use this agenda template when you host recurring sessions.
+- [Transition operating promises](./runbooks/transition-operating-promises.md) — Document escalations if facilitated meetings support a handover.
+- [Wayfinding shortcuts](./start-here/find.md) — Direct participants to the right doc mid-session without derailing facilitation.

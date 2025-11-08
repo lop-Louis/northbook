@@ -31,3 +31,9 @@ These entries inherit the [content governance rules](/governance) so readers rec
 - [Policy → action: expenses](/pattern-expense-sla) — Show the expense SLA as a working example.
 
 Want a new pattern canonized? [Propose an addition to the playbook](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,proposal&title=%5BPlaybook%5D%20New%20pattern&body=Page:%20https://northbook.guide/playbook/).
+
+## Related references
+
+- [Start overview](../start-here/index.md) — Direct newcomers here before dropping them into canonical playbooks.
+- [Runbooks index](../runbooks/index.md) — Use this when a pattern needs a chore-heavy counterpart.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Where playbook language turns into enforceable promises.

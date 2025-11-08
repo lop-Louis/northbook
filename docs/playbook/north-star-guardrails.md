@@ -144,3 +144,9 @@ We track simple trends, not punitive targets:
 - A shared table listing streams, owners, North Star, exit metric, SLII level, and state.
 - A decision log per stream.
 - The Northbook Assistant running the four checks above.
+
+## Related references
+
+- [State visibility map](../runbooks/state-visibility.md) — Where the public state table referenced here lives.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Use these when a guardrail breach needs an explicit escalation path.
+- [Playbook canon](./index.md) — Jump to the other patterns (RACI by seams, Handshake contracts) mentioned throughout this guide.
