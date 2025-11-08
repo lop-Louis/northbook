@@ -2,7 +2,7 @@
 title: Northbook
 layout: home
 band: A
-owner: '@louis'
+owner: '@lop'
 refresh_after_days: 120
 change_type: patch
 status: live
@@ -20,7 +20,7 @@ hero:
   actions:
     - theme: brand
       text: Start here
-      link: /band-a
+      link: /guides/find
     - theme: alt
       text: Ask a question
       link: https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH
@@ -35,7 +35,7 @@ nav:
   - none
 ---
 
-Guidance stays light on chores; runbooks carry the detailed checklists. <a href="#governance-safety" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Guidance stays light on chores; runbooks carry the detailed checklists. <a href="./guides/find" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Governance & Safety
 
