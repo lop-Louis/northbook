@@ -8,7 +8,7 @@ status: live
 audience: Stream and seam leads tracking work health
 tone: Plainspoken, candid, energetic
 narrative_goal: Show how work flows across states and which metrics to watch
-nav_group: Onboarding
+nav_group: Start
 nav_order: 35
 nav_label: SLI states
 nav:

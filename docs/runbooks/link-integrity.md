@@ -7,7 +7,7 @@ refresh_after_days: 60
 status: live
 nav_group: Runbooks
 nav_order: 20
-nav_label: Link integrity
+nav_label: Link Integrity
 nav:
   - sidebar
 ---

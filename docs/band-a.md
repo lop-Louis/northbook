@@ -9,8 +9,8 @@ last_reviewed: '2025-11-04'
 audience: Anyone publishing public-safe guidance from Northbook
 tone: Plainspoken, candid, energetic
 narrative_goal: Explain what qualifies as Band A content and how to sanitize it
-nav_label: Band A policy
-nav_group: Onboarding
+nav_label: Band A
+nav_group: Start
 nav_order: 40
 nav:
   - sidebar

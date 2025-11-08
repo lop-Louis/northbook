@@ -5,7 +5,7 @@ owner: '@lop'
 change_type: patch
 refresh_after_days: 45
 status: live
-nav_group: Ops hygiene
+nav_group: Ship checks
 nav_order: 10
 nav_label: Quick-Run
 nav:

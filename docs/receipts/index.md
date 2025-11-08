@@ -5,7 +5,7 @@ owner: '@lop'
 change_type: patch
 refresh_after_days: 30
 status: live
-nav_group: Onboarding
+nav_group: Start
 nav_order: 25
 nav_label: Receipts
 nav:

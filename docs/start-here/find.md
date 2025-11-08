@@ -43,5 +43,5 @@ You shouldn’t fight the site to find work. <a href="#routes" data-primary-acti
 ## If you still can’t find it
 
 1. Search again using the owner or the keyword in the page’s “tone” or “narrative” fields (e.g., `stale`, `accessibility`).
-2. Skim the sidebar—groups mirror the governance taxonomy (Start, Guides, Runbooks, Fix it fast, Wayfinding).
+2. Skim the sidebar—groups mirror the governance taxonomy (Start, Ship checks, Wayfinding, Guides, Runbooks, Contributor Kit, Fix it fast).
 3. Still lost? [Open a “Question” issue](https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=%5BQuestion%5D%20Wayfinding&body=Page:%20https://northbook.guide/start-here/find) with what you tried. We patch wayfinding gaps in the next release.

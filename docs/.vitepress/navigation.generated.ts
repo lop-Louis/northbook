@@ -12,7 +12,7 @@ export const generatedNav = [
 ] as const
 export const generatedSidebar = [
   {
-    text: 'Onboarding',
+    text: 'Start',
     collapsed: false,
     items: [
       {
@@ -20,7 +20,7 @@ export const generatedSidebar = [
         link: '/start-here/'
       },
       {
-        text: 'FAQ for New Joiners',
+        text: 'New joiner FAQ',
         link: '/faq-new-joiners'
       },
       {
@@ -28,7 +28,7 @@ export const generatedSidebar = [
         link: '/receipts/'
       },
       {
-        text: 'Monthly Release Rhythm',
+        text: 'Monthly release',
         link: '/monthly-release'
       },
       {
@@ -36,13 +36,13 @@ export const generatedSidebar = [
         link: '/start-here/sli-states'
       },
       {
-        text: 'Band A policy',
+        text: 'Band A',
         link: '/band-a'
       }
     ]
   },
   {
-    text: 'Ops hygiene',
+    text: 'Ship checks',
     collapsed: false,
     items: [
       {
@@ -96,7 +96,7 @@ export const generatedSidebar = [
         link: '/runbooks/'
       },
       {
-        text: 'Link integrity',
+        text: 'Link Integrity',
         link: '/runbooks/link-integrity'
       }
     ]
@@ -124,27 +124,27 @@ export const generatedSidebar = [
     collapsed: false,
     items: [
       {
-        text: 'Fix it fast index',
+        text: 'Fix it fast',
         link: '/fix/'
       },
       {
-        text: 'Teams notifications: quick checks and when to escalate',
+        text: 'Teams notifications check',
         link: '/fix/teams-notifications'
       },
       {
-        text: 'Access to repo or pipeline: quick checks and request',
+        text: 'Repo & pipeline access',
         link: '/fix/access-repo-pipeline'
       },
       {
-        text: 'Design System component usage decision',
+        text: 'Design system component',
         link: '/fix/ds-component-decision'
       },
       {
-        text: 'Feature flag not behaving on Staging',
+        text: 'Feature flag on staging',
         link: '/fix/flag-staging'
       },
       {
-        text: 'VWO/Bloomreach script sanity check',
+        text: 'VWO/Bloomreach sanity',
         link: '/fix/vwo-bloomreach-sanity'
       }
     ]

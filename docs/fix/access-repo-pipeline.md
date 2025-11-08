@@ -22,6 +22,7 @@ nav:
   - sidebar
 nav_group: Fix it fast
 nav_order: 20
+nav_label: Repo & pipeline access
 ---
 
 Unblock repo or pipeline access in five minutes, then escalate with a clean request. <a href="#quick-path" data-primary-action>Follow the quick checks</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate to Support IT</a>.
