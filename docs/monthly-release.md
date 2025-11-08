@@ -9,7 +9,7 @@ last_reviewed: '2025-11-04'
 audience: Maintainers planning and shipping the monthly docs release
 tone: Plainspoken, candid, energetic
 narrative_goal: Explain how the monthly tagging cadence keeps the site current
-nav_group: Start here
+nav_group: Onboarding
 nav_order: 30
 nav:
   - sidebar

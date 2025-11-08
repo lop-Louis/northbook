@@ -9,7 +9,7 @@ last_reviewed: '2025-11-04'
 audience: Engineers and collaborators onboarding to Northbook habits
 tone: Plainspoken, candid, energetic
 narrative_goal: Answer recurring new-joiner questions with actionable next steps
-nav_group: Start here
+nav_group: Onboarding
 nav_order: 20
 nav:
   - sidebar

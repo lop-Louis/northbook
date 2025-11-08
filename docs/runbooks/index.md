@@ -8,8 +8,11 @@ status: live
 audience: Maintainers looking for operational to-do checklists
 tone: Plainspoken, candid, energetic
 narrative_goal: Point to the tactical runbooks kept out of guidance sections
+nav_group: Runbooks
+nav_order: 10
+nav_label: Runbooks
 nav:
-  - none
+  - sidebar
 ---
 
 # Runbooks

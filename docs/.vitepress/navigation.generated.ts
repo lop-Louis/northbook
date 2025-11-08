@@ -3,33 +3,49 @@
 export const generatedNav = [
   {
     text: 'Start',
-    link: '/band-a'
+    link: '/start-here/'
+  },
+  {
+    text: 'Playbook',
+    link: '/playbook/'
   }
 ] as const
 export const generatedSidebar = [
   {
-    text: 'Start here',
+    text: 'Onboarding',
     collapsed: false,
     items: [
       {
+        text: 'Start',
+        link: '/start-here/'
+      },
+      {
+        text: 'Find it fast',
+        link: '/start-here/find'
+      },
+      {
         text: 'Quick-Run',
         link: '/ops/quick-run'
-      },
-      {
-        text: 'Receipts',
-        link: '/receipts/'
-      },
-      {
-        text: 'Start',
-        link: '/band-a'
       },
       {
         text: 'FAQ for New Joiners',
         link: '/faq-new-joiners'
       },
       {
+        text: 'Receipts',
+        link: '/receipts/'
+      },
+      {
         text: 'Monthly Release Rhythm',
         link: '/monthly-release'
+      },
+      {
+        text: 'SLI states',
+        link: '/start-here/sli-states'
+      },
+      {
+        text: 'Band A policy',
+        link: '/band-a'
       }
     ]
   },
@@ -38,12 +54,12 @@ export const generatedSidebar = [
     collapsed: false,
     items: [
       {
-        text: 'Find what you need, fast',
-        link: '/playbook/'
-      },
-      {
         text: 'Decision Spine',
         link: '/decision-spine'
+      },
+      {
+        text: 'Playbook',
+        link: '/playbook/'
       },
       {
         text: 'Facilitation Techniques',
@@ -56,6 +72,16 @@ export const generatedSidebar = [
       {
         text: 'Policy → Action Pattern (Expenses)',
         link: '/pattern-expense-sla'
+      }
+    ]
+  },
+  {
+    text: 'Runbooks',
+    collapsed: false,
+    items: [
+      {
+        text: 'Runbooks',
+        link: '/runbooks/'
       }
     ]
   },

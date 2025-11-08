@@ -5,6 +5,11 @@ owner: '@lop'
 change_type: patch
 refresh_after_days: 45
 status: live
+nav_group: Onboarding
+nav_order: 15
+nav_label: Quick-Run
+nav:
+  - sidebar
 ---
 
 Find the answer. Use it now. <a href="../ops/quick-run" data-primary-action>Run the Quick-Run</a> or <a href="../labs/link-drift" data-secondary-action>Open the Proof Run</a>.
