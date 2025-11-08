@@ -38,3 +38,9 @@ The structure below stays inside the [Anti-drift Content Governance](../governan
 | Merge final PR to enable feature | Engineering lead | Tech lead          | QA lead         | Support team      | Attach receipts + rollback plan                         |
 | Update docs + run Link Integrity | Doc steward      | Product sponsor    | QA lead         | Entire org        | Reference [Link Integrity runbook](./link-integrity.md) |
 | Approve scope change >10%        | Product sponsor  | Steering committee | Finance partner | Transition distro | Requires updated SLI + timeline                         |
+
+## Related references
+
+- [20-minute handover drill](./handover-20-min.md) — Use this before or after the RACI to lock scope.
+- [Transition operating promises](./transition-operating-promises.md) — Pair each RACI line with an explicit SLA or escalation.
+- [SLI states map](./state-visibility.md) — Keep the official state tracker aligned with your RACI owners.

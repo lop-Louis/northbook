@@ -34,3 +34,9 @@ Color legend: 🟢 on track, 🟡 at risk, 🟠 behind.
 1. Duplicate the table into the shared status doc.
 2. Keep baselines immutable; adjust targets only during planning.
 3. Update status bands weekly and drop a link to the latest receipt (release, PR, metric screenshot).
+
+## Related references
+
+- [Transition operating promises](./transition-operating-promises.md) — Promise owners should include their metric deltas in status updates.
+- [Release receipts](../receipts/) — Attach the table or a screenshot each time you tag a release.
+- [Fast support index](../fix/) — Add a metric row if interrupts are part of the promise you’re tracking.

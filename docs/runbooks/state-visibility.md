@@ -26,3 +26,9 @@ Stop guessing whether work is stuck—let this map show the state, entry signal,
 | Verify       | Change deployed to test/stage, telemetry hooks active                            | Acceptance checks green, Sev-1/2 regressions = 0, release note draft done | Verify cycle ≤48 hours                         |
 | Ready        | Verification signed, rollback tested, runbooks updated                           | Feature/pack shipped or feature flag enabled to target audience           | Release queue ≤2 business days                 |
 | Live / Watch | Change public; monitoring engaged                                                | Watch window complete; metrics stable                                     | Error budget burn <20%; feedback triaged daily |
+
+## Related references
+
+- [SLI States](../start-here/sli-states.md) — Mirror these rows in the public-facing legend so teams see the same definitions.
+- [Transition operating promises](./transition-operating-promises.md) — When a state breaches its SLI, trigger the promises here.
+- [Decision Spine](../decision-spine.md) — If a stream drops back into Framing, link to the spine so reviewers see context.

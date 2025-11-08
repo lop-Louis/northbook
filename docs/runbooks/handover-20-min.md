@@ -36,3 +36,9 @@ Force clarity fast: this drill moves a stream from Framing to Ready in 20 minute
 - SLI column moves from Framing → Ready in the [SLI states map](../start-here/sli-states.md)
 - Next PR is created or prepped with owners assigned
 - Risks/Contracts table updated with the new owners and timestamps
+
+## Related references
+
+- [Handover RACI template](./handover-raci-template.md) — Document who owns every activity after the drill.
+- [Transition operating promises](./transition-operating-promises.md) — Publish the approvals/escalations you agreed to in the session.
+- [SLI states map](../start-here/sli-states.md) — Update the official state tracker the moment the drill finishes.

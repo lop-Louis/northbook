@@ -34,19 +34,19 @@ Fill this table before the handover call so nobody waits for ad-hoc green lights
 
 When a promise is violated, the on-call should know exactly who to page.
 
-| Breach                         | First escalation                              | Second escalation | Auto-stop rule                         |
-| ------------------------------ | --------------------------------------------- | ----------------- | -------------------------------------- |
-| SLA missed by >24h             | Delivery lead pings facilitator + owning lead | Program sponsor   | Pause transition until next review     |
-| Risk not acknowledged in 48h   | Facilitator pings governance owner            | VP sponsor        | Strip scope to minimum viable handover |
-| Docs or runbooks lack receipts | Doc steward pings contributor                 | Governance owner  | Block release tag                      |
+| Breach                         | First escalation                              | Second escalation | Auto-stop rule                                                                                              |
+| ------------------------------ | --------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| SLA missed by >24h             | Delivery lead pings facilitator + owning lead | Program sponsor   | Pause transition until next review                                                                          |
+| Risk not acknowledged in 48h   | Facilitator pings governance owner            | VP sponsor        | Strip scope to minimum viable handover                                                                      |
+| Docs or runbooks lack receipts | Doc steward pings contributor                 | Governance owner  | Block release tag until [Quick-Run](../ops/quick-run) + [Link Integrity](./link-integrity.md) receipts land |
 
 ## Status cadence
 
-| Signal                    | Audience                      | Channel                         | Owner           | Notes                                                  |
-| ------------------------- | ----------------------------- | ------------------------------- | --------------- | ------------------------------------------------------ |
-| Daily checkpoint (10 min) | Core transition team          | Async thread with template      | Facilitator     | Share blockers + highlight upcoming promises           |
-| Weekly executive update   | Sponsors + partner teams      | Snapshot doc + link to receipts | Program manager | Include SLA/RACI deltas + next focus                   |
-| Release-ready review      | QA, doc steward, product lead | Live call + notes               | QA lead         | Run Quick-Run + Link Integrity receipts before closing |
+| Signal                    | Audience                      | Channel                         | Owner           | Notes                                                                                            |
+| ------------------------- | ----------------------------- | ------------------------------- | --------------- | ------------------------------------------------------------------------------------------------ |
+| Daily checkpoint (10 min) | Core transition team          | Async thread with template      | Facilitator     | Share blockers + highlight upcoming promises                                                     |
+| Weekly executive update   | Sponsors + partner teams      | Snapshot doc + link to receipts | Program manager | Include SLA/RACI deltas + next focus                                                             |
+| Release-ready review      | QA, doc steward, product lead | Live call + notes               | QA lead         | Run [Quick-Run](../ops/quick-run) + [Link Integrity runbook](./link-integrity.md) before closing |
 
 ## Communication promises
 
@@ -56,6 +56,13 @@ When a promise is violated, the on-call should know exactly who to page.
 
 ## After the handover
 
-1. Archive the fulfilled promises in `/receipts/` with the release tag.
+1. Archive the fulfilled promises in [Release receipts](../receipts/) with the release tag.
 2. Note any exceptions or escalations in the [Link Integrity runbook](./link-integrity.md) if they affected docs.
-3. Review this page every 6 months—promises that no one owns should be removed or reassigned.
+3. Update the [Fast support index](../fix/) if new interrupts surfaced during the transition.
+4. Review this page every 6 months—promises that no one owns should be removed or reassigned.
+
+## Related references
+
+- [Handover RACI template](./handover-raci-template.md) — align each promise with the accountable role.
+- [SLI states map](../start-here/sli-states.md) — show state changes when promises trigger handoffs.
+- [Playbook canon](../playbook/) — link to the governing decision patterns you referenced.

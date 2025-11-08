@@ -55,3 +55,9 @@ Tickets opened: #123, #124
 - Run Lighthouse in an incognito window to avoid extensions skewing results.
 - If new components ship (e.g., custom nav, accordions), add them to the tested page list.
 - At least once per half-year, pair with an assistive tech user for a qualitative check.
+
+## Related references
+
+- [Accessibility Quick Wins](../accessibility-quick-wins) — Share this page with partners after the sweep.
+- [Wayfinding shortcuts](../start-here/find.md) — Confirm links in navigation tables still map correctly.
+- [Release receipts](../receipts/) — Log the audit date and key outcomes with the monthly tag.

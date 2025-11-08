@@ -96,6 +96,10 @@ export const generatedSidebar = [
         link: '/facilitation'
       },
       {
+        text: 'North Star & Guardrails',
+        link: '/playbook/north-star-guardrails'
+      },
+      {
         text: 'Accessibility quick wins',
         link: '/accessibility-quick-wins'
       },
