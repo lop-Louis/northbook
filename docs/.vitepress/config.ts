@@ -3,6 +3,7 @@ import { generatedNav, generatedSidebar } from './navigation.generated'
 
 const GA_ID = process.env.VITE_GA_ID || 'G-511628512'
 const ENABLE_GA4 = process.env.ENABLE_GA4 === 'true'
+const RELEASE_TAG = process.env.RELEASE_TAG || 'dev'
 const SITE_BASE = '/'
 
 export default defineConfig({
@@ -169,11 +170,20 @@ if (window.ENABLE_GA4) {
         link: 'https://github.com/lop-louis/northbook/issues/new?labels=kl,question&title=[Question]%20PATH'
       }
     ],
-    sidebar: generatedSidebar,
+    sidebar: [
+      {
+        text: 'Start',
+        items: [
+          { text: 'Receipts', link: '/receipts/' },
+          { text: 'Ops Quick-Run', link: '/ops/quick-run' }
+        ]
+      },
+      ...generatedSidebar
+    ],
     outline: [2, 3],
     footer: {
-      message:
-        'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.<br>Last public snapshot: <a href="/CHANGELOG/site-v2025.11" style="color: var(--vp-c-brand-1); font-weight: 500;">v2025.11</a>'
+      message: `Privacy-friendly analytics enabled.${RELEASE_TAG !== 'dev' ? ` Release: ${RELEASE_TAG}` : ''}`,
+      copyright: '© Northbook'
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/lop-louis/northbook' }],
     search: {
