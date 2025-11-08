@@ -121,3 +121,9 @@ Sunset or pivot if after 2 consecutive tags:
 
 | Signal | Healthy | Investigate |
 |
+
+## Related references
+
+- [Release receipts](./receipts/) — Publish the highlights from each tag here.
+- [Shared metric visibility](./runbooks/shared-metric-visibility.md) — Update metrics before locking the changelog.
+- [Transition operating promises](./runbooks/transition-operating-promises.md) — Align monthly commitments with the promises table if cadence slips.

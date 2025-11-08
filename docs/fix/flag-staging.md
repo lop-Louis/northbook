@@ -62,3 +62,9 @@ Console/network screenshots attached
 ```
 
 **Handoff** → [/support-it/contacting-it](/support-it/contacting-it)
+
+## Related references
+
+- [Fast support index](./index.md) — Share other flows if the blocker isn’t flag-related.
+- [Transition operating promises](../runbooks/transition-operating-promises.md) — Update promises if the flag outage pauses a handover.
+- [Decision Spine](../decision-spine.md) — Refer to it when a flag outcome requires a re-frame or new decision.

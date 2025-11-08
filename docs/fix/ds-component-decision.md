@@ -69,3 +69,9 @@ Review slot: <date>
 Forks explode maintenance; extensions keep invariants, tokens, and tests intact.
 
 **Handoff** → [/playbook/handshake-contracts](/playbook/handshake-contracts)
+
+## Related references
+
+- [Playbook canon](../playbook/) — Especially the Handshake Contracts and Decision Spine entries referenced here.
+- [Quick-Run check](../ops/quick-run.md) — Run after editing DS documentation to keep receipts.
+- [Accessibility Quick Wins](../accessibility-quick-wins.md) — Validate any component extension still honors the a11y baseline.
