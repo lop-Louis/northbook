@@ -1,0 +1,5 @@
+{
+  "setup": ["pnpm i", "pnpm build"],
+  "check": ["node -e \"console.log('ok')\""],
+  "timeout_minutes": 10
+}

@@ -35,7 +35,23 @@ nav:
   - none
 ---
 
-Guidance stays light on chores; runbooks carry the detailed checklists. <a href="#governance-safety" data-primary-action>Use the starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+## Why this exists
+
+**Curated quick-paths with escalation packets and governance guardrails**, not another wiki. Every runbook includes a clear escalation path when self-service hits a wall. See [Fix-it-fast flows](./runbooks/index) for common interrupts or [Governance](./governance) for content lifecycle rules.
+
+## North-star KPIs
+
+Track what sponsors care about:
+
+- **Time-to-answer** for common interrupts
+- **% escalations** with complete packet
+- **Stale pages** at tag time
+
+Learn more: [Monthly Release Rhythm](./monthly-release) · [Shared Metric Visibility](./runbooks/shared-metric-visibility)
+
+---
+
+Guidance stays light on chores; runbooks carry the detailed checklists. <a href="#governance-safety" data-primary-action>Jump to starting links</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
 
 ## Governance & Safety
 

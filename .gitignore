@@ -18,6 +18,9 @@ dist/
 *.log
 *.tmp
 
+# Generated reports
+reports/*.json
+
 # OS-specific
 .DS_Store
 Thumbs.db

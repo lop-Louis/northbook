@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import { generatedNav, generatedSidebar } from './navigation.generated'
 
 const GA_ID = process.env.VITE_GA_ID || 'G-511628512'
+const ENABLE_GA4 = process.env.ENABLE_GA4 === 'true'
 const SITE_BASE = '/'
 
 export default defineConfig({
@@ -121,24 +122,39 @@ export default defineConfig({
     [
       'script',
       {
-        async: '',
-        src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
+        defer: '',
+        src: 'https://static.cloudflareinsights.com/beacon.min.js',
+        'data-cf-beacon': '{"token":"CF_TOKEN","spa": true}'
       }
     ],
-    [
-      'script',
-      {},
-      `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_ID}', { anonymize_ip: true });
-(function(){
-  var v = location.pathname.startsWith('/v2/') ? 'v2' : 'v1';
-  gtag('event', 'page_view', { site_version: v });
-})();
+    ...(ENABLE_GA4
+      ? [
+          [
+            'script',
+            {
+              async: '',
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
+            }
+          ],
+          [
+            'script',
+            {},
+            `
+window.ENABLE_GA4 = true;
+if (window.ENABLE_GA4) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA_ID}', { anonymize_ip: true });
+  (function(){
+    var v = location.pathname.startsWith('/v2/') ? 'v2' : 'v1';
+    gtag('event', 'page_view', { site_version: v });
+  })();
+}
   `
-    ]
+          ]
+        ]
+      : [['script', {}, 'window.ENABLE_GA4 = false;']])
   ],
   themeConfig: {
     siteTitle: false,
@@ -156,11 +172,20 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });
     sidebar: generatedSidebar,
     outline: [2, 3],
     footer: {
-      message: 'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.'
+      message:
+        'Text © CC BY-NC 4.0 • Code samples MIT • Views are my own.<br>Last public snapshot: <a href="/CHANGELOG/site-v2025.11" style="color: var(--vp-c-brand-1); font-weight: 500;">v2025.11</a>'
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/lop-louis/northbook' }],
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: 'Press K to search',
+            buttonAriaLabel: 'Search documentation'
+          }
+        }
+      }
     },
     editLink: {
       pattern: 'https://github.com/lop-louis/northbook/edit/main/docs/:path',
