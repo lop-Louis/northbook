@@ -9,7 +9,7 @@
     "docs:build": "RELEASE_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo dev) node scripts/docs-build.mjs",
     "docs:preview": "vitepress preview docs --port 5173",
     "docs:guard": "pnpm run frontmatter:lint && pnpm run guard && pnpm run drift && pnpm run ux:scan",
-    "guard": "node scripts/check-content.mjs",
+    "guard": "node scripts/guard.mjs",
     "labs": "node scripts/run-labs.mjs",
     "verify:cta": "node scripts/verify-primary-actions.mjs",
     "fingerprint": "node scripts/build-fingerprint.mjs",
