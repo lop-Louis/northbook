@@ -1,7 +1,8 @@
 ---
 title: Quick-Run
 band: A
-owner: Louis
+owner: '@lop'
+change_type: patch
 refresh_after_days: 45
 status: live
 ---

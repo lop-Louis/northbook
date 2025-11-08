@@ -1,7 +1,8 @@
 ---
 title: Link Drift · Proof Run
 band: A
-owner: Louis
+owner: '@lop'
+change_type: patch
 refresh_after_days: 60
 status: live
 sidebar: false

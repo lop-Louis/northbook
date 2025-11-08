@@ -1,7 +1,8 @@
 ---
 title: Keep links from breaking
 band: A
-owner: Louis
+owner: '@lop'
+change_type: patch
 refresh_after_days: 60
 status: live
 ---

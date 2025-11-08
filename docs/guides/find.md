@@ -1,7 +1,8 @@
 ---
 title: Find what you need, fast
 band: A
-owner: Louis
+owner: '@lop'
+change_type: patch
 refresh_after_days: 30
 status: live
 ---
