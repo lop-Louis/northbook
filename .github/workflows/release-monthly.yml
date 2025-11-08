@@ -15,7 +15,9 @@ jobs:
         with:
           node-version: '20'
       - run: npm i -g pnpm && pnpm i
-      - run: pnpm guard || true
+      - run: pnpm guard
+      - run: pnpm fingerprint
+      - run: node scripts/should-build.mjs || true
       - run: pnpm labs || true
       - name: Compute signal and tag
         run: |

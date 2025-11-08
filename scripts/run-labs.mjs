@@ -2,6 +2,22 @@
 import fs from 'node:fs'
 import { spawn } from 'node:child_process'
 
+const fingerprintPath = 'reports/build-fingerprint.json'
+const prevFingerprintPath = 'reports/build-fingerprint.prev.json'
+let skipBuild = false
+
+try {
+  if (fs.existsSync(fingerprintPath)) {
+    const current = JSON.parse(fs.readFileSync(fingerprintPath, 'utf8')).fingerprint
+    if (fs.existsSync(prevFingerprintPath)) {
+      const prev = JSON.parse(fs.readFileSync(prevFingerprintPath, 'utf8')).fingerprint
+      skipBuild = Boolean(prev && prev === current)
+    }
+  }
+} catch (error) {
+  console.warn('[labs] Unable to compare fingerprints:', error.message)
+}
+
 const labs = fs.existsSync('labs')
   ? fs.readdirSync('labs').filter(f => f.endsWith('.lab.json'))
   : []
@@ -29,7 +45,19 @@ for (const f of labs) {
   const deadline = Date.now() + (conf.timeout_minutes || 10) * 60000
   let ok = true
   for (const cmd of conf.setup || []) {
-    if (Date.now() > deadline || !(ok = ok && (await run(cmd)))) break
+    if (Date.now() > deadline) {
+      ok = false
+      break
+    }
+    const normalized = normalizeCmd(cmd)
+    const isBuildCmd =
+      /(^|\s)(pnpm|npm|yarn)\s+(run\s+)?(docs:build|build)\b/.test(normalized) ||
+      /\bvitepress\s+build\b/.test(normalized)
+    if (skipBuild && isBuildCmd) {
+      console.log(`[labs] Skipping build step (unchanged): ${cmd}`)
+      continue
+    }
+    if (!(ok = ok && (await run(cmd)))) break
   }
   for (const cmd of ok ? conf.check || [] : []) {
     if (Date.now() > deadline || !(ok = ok && (await run(cmd)))) break
@@ -40,5 +68,15 @@ for (const f of labs) {
 
 fs.mkdirSync('reports', { recursive: true })
 fs.writeFileSync('reports/labs.json', JSON.stringify({ pass, fail, results }, null, 2))
+
+try {
+  if (fs.existsSync(fingerprintPath)) {
+    const payload = JSON.parse(fs.readFileSync(fingerprintPath, 'utf8'))
+    fs.writeFileSync(prevFingerprintPath, JSON.stringify(payload, null, 2))
+  }
+} catch (error) {
+  console.warn('[labs] Unable to persist fingerprint:', error.message)
+}
+
 console.log(JSON.stringify({ pass, fail, results }, null, 2))
 process.exit(0)
