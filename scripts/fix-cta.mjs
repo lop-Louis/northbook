@@ -4,9 +4,9 @@ import path from 'node:path'
 
 const REPORT_PATH = path.join('reports', 'yellow-flags.json')
 const CTA_SNIPPET_MD =
-  'Need to fix this fast? [Run the Ops Quick-Run](/ops/quick-run) · [Try the 10-minute lab](/labs/link-drift)'
+  'Need to fix this fast? [Run the Ops Quick-Run](../ops/quick-run) · [Try the 10-minute lab](../labs/link-drift)'
 const CTA_SNIPPET_HTML =
-  '<a href="/ops/quick-run" data-primary-action>Run the Ops Quick-Run</a> or <a href="/labs/link-drift" data-secondary-action>Try the 10-minute lab</a>.'
+  '<a href="../ops/quick-run" data-primary-action>Run the Ops Quick-Run</a> or <a href="../labs/link-drift" data-secondary-action>Try the 10-minute lab</a>.'
 
 if (!fs.existsSync(REPORT_PATH)) {
   console.error(`Missing ${REPORT_PATH}. Run "pnpm guard" first.`)
