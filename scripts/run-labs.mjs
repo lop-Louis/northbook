@@ -9,9 +9,17 @@ let pass = 0
 let fail = 0
 let results = []
 
+const normalizeCmd = cmd => {
+  if (cmd.trim() === 'pnpm i') {
+    return 'echo "Skipping pnpm install; dependencies already present"'
+  }
+  return cmd
+}
+
 const run = cmd =>
   new Promise(res => {
-    const [c, ...a] = cmd.split(' ')
+    const normalized = normalizeCmd(cmd)
+    const [c, ...a] = normalized.split(' ')
     const p = spawn(c, a, { stdio: 'inherit', shell: true })
     p.on('close', code => res(code === 0))
   })

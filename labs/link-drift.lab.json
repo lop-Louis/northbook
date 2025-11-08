@@ -1,5 +1,5 @@
 {
   "setup": ["pnpm i", "pnpm build"],
-  "check": ["node -e \"console.log('ok')\""],
+  "check": ["node scripts/check-links.mjs"],
   "timeout_minutes": 10
 }

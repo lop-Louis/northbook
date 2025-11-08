@@ -4,6 +4,7 @@
   "description": "Northbook — public-safe guidance, principles, and patterns.",
   "type": "module",
   "scripts": {
+    "build": "pnpm run docs:build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "node scripts/docs-build.mjs",
     "docs:preview": "vitepress preview docs --port 5173",
