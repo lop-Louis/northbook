@@ -1,0 +1,116 @@
+[
+  {
+    "id": "adoption.pages_touched",
+    "name": "Pages touched",
+    "description": "Count of unique public docs/labs touched within the 14-day cycle.",
+    "type": "adoption",
+    "source": "Cloudflare GraphQL httpRequestsAdaptiveGroups",
+    "query": "filter(path starts_with [/docs,/labs] and edgeResponseStatus < 400) unique(path)",
+    "refresh_after_days": 1,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "up",
+    "thresholds": {
+      "healthy": ">=25 unique slugs / 14d",
+      "watch": "15-24 unique slugs / 14d",
+      "breach": "<15 unique slugs / 14d"
+    },
+    "kill_criteria": "If <10 unique slugs for two consecutive cycles, pause pilots and reopen guardrail review.",
+    "notes": "Excludes assets and release note pages."
+  },
+  {
+    "id": "adoption.time_to_answer",
+    "name": "Time to answer",
+    "description": "Median seconds from landing on a page to the first CTA completion.",
+    "type": "adoption",
+    "source": "Cloudflare custom event nb.time_to_answer.v1",
+    "query": "median(event.elapsed_ms_bucket)/1000 grouped by slug",
+    "refresh_after_days": 1,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "down",
+    "thresholds": {
+      "healthy": "<=60s median; 80th percentile <=70s",
+      "watch": "61-70s median or 80th percentile <=75s",
+      "breach": ">70s median or 80th percentile >75s"
+    },
+    "kill_criteria": "If 80th percentile >75s for two cycles, stop new UI bets until copy/IA tightened.",
+    "notes": "Duration bucket rounded to nearest 100ms."
+  },
+  {
+    "id": "quality.lab_pass_rate",
+    "name": "Lab pass rate",
+    "description": "Percentage of annex labs (Quick-Run, Link Drift) passing on the first run.",
+    "type": "quality",
+    "source": "Cloudflare custom event nb.lab_pass.v1",
+    "query": "count(result='pass')/count(*) * 100",
+    "refresh_after_days": 7,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "up",
+    "thresholds": {
+      "healthy": ">=92%",
+      "watch": "88-91%",
+      "breach": "<88%"
+    },
+    "kill_criteria": "If <85% for one cycle, freeze new experiments and run lab hardening sprint.",
+    "notes": "Lab name dimension recorded for Link Drift vs Quick-Run."
+  },
+  {
+    "id": "quality.broken_links",
+    "name": "Broken links",
+    "description": "Average count of 4xx/5xx exits triggered from Northbook pages per day.",
+    "type": "quality",
+    "source": "Cloudflare GraphQL httpRequestsAdaptiveGroups",
+    "query": "filter(edgeResponseStatus >= 400 and path starts_with [/docs,/labs]) sum(requests)",
+    "refresh_after_days": 1,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "down",
+    "thresholds": {
+      "healthy": "<=2/day",
+      "watch": "3-4/day",
+      "breach": ">=5/day"
+    },
+    "kill_criteria": "If >=5/day for three consecutive days, trigger Link Integrity runbook.",
+    "notes": "Exclude upstream outages by checking cfCacheStatus != 'DYN'."
+  },
+  {
+    "id": "credibility.state_freshness",
+    "name": "State page freshness",
+    "description": "Days since the public State page frontmatter `last_reviewed` timestamp.",
+    "type": "credibility",
+    "source": "Repo frontmatter + Cloudflare snapshot timestamp",
+    "query": "snapshot.timestamp - docs/state page last_reviewed",
+    "refresh_after_days": 1,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "down",
+    "thresholds": {
+      "healthy": "<=30 days",
+      "watch": "31-40 days",
+      "breach": ">40 days"
+    },
+    "kill_criteria": "If >45 days, block releases until State and Receipts refresh together.",
+    "notes": "Calculated locally; still surfaced via snapshot summary."
+  },
+  {
+    "id": "credibility.exceptions_resolved",
+    "name": "Exceptions resolved on time",
+    "description": "Percent of open exceptions closed before their expiry date within the cycle.",
+    "type": "credibility",
+    "source": "Cloudflare custom event nb.exception_state.v1",
+    "query": "count(state='closed_on_time')/count(state in ['opened','closed_on_time','closed_late']) * 100",
+    "refresh_after_days": 7,
+    "owner": "@lop",
+    "steward": "@lop",
+    "direction": "up",
+    "thresholds": {
+      "healthy": "100%",
+      "watch": "90-99%",
+      "breach": "<90%"
+    },
+    "kill_criteria": "If <80% for one cycle, halt new exceptions and re-baseline governance process.",
+    "notes": "Requires exception id + expiry baked into payload."
+  }
+]

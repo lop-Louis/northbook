@@ -1,0 +1,91 @@
+{
+  "generated_at": "2025-02-15T12:00:00.000Z",
+  "range": {
+    "from": "2025-02-14T12:00:00.000Z",
+    "to": "2025-02-15T12:00:00.000Z",
+    "days": 1
+  },
+  "signals": {
+    "adoption.pages_touched": {
+      "value": {
+        "count": 29
+      },
+      "primary": 29,
+      "unit": "pages",
+      "status": "healthy",
+      "direction": "up",
+      "reason": ">=25 unique slugs (29)",
+      "display": "29 unique slugs",
+      "delta": null
+    },
+    "adoption.time_to_answer": {
+      "value": {
+        "medianSeconds": 52,
+        "p80Seconds": 68,
+        "samples": 184
+      },
+      "primary": 52,
+      "unit": "seconds",
+      "status": "healthy",
+      "direction": "down",
+      "reason": "Median 52.0s, p80 68.0s",
+      "display": "Median 52.0s (p80 68.0s)",
+      "delta": null
+    },
+    "quality.lab_pass_rate": {
+      "value": {
+        "percentage": 93.61702127659575,
+        "pass": 44,
+        "total": 47
+      },
+      "primary": 93.61702127659575,
+      "unit": "%",
+      "status": "healthy",
+      "direction": "up",
+      "reason": "93.6%",
+      "display": "93.6% pass (44/47)",
+      "delta": null
+    },
+    "quality.broken_links": {
+      "value": {
+        "total": 6,
+        "perDay": 6
+      },
+      "primary": 6,
+      "unit": "errors/day",
+      "status": "breach",
+      "direction": "down",
+      "reason": ">=5/day (6.0)",
+      "display": "6.0 per day (6 total)",
+      "delta": null
+    },
+    "credibility.state_freshness": {
+      "value": {
+        "days": 0
+      },
+      "primary": 0,
+      "unit": "days",
+      "status": "healthy",
+      "direction": "down",
+      "reason": "<=30 days (0)",
+      "display": "0 days since update",
+      "delta": null
+    },
+    "credibility.exceptions_resolved": {
+      "value": {
+        "percentage": 80,
+        "onTime": 4,
+        "totalClosed": 5
+      },
+      "primary": 80,
+      "unit": "%",
+      "status": "breach",
+      "direction": "up",
+      "reason": "80.0%",
+      "display": "80.0% on time (4/5)",
+      "delta": null
+    }
+  },
+  "mode": "dry-run",
+  "registry_version": "YWRvcHRpb24u"
+}

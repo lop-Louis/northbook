@@ -76,6 +76,7 @@ See `docs/principles.md` and [GOVERNANCE](./GOVERNANCE.md) for fuller details.
 | `pnpm run ux:scan` | Verify CTA intro sentence includes both actions before the first section |
 | `pnpm run links` | Check internal and external links |
 | `pnpm run stale` | Generate stale page report |
+| `pnpm run analytics:snapshot` | Pull Cloudflare analytics aggregates and emit Receipts artifacts |
 | `pnpm run test` | Run Node tests and component suite |
 
 <!-- scripts:end -->

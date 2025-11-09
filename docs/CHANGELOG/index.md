@@ -16,6 +16,6 @@ Stay current on what shipped without reading every PR. <a href="#latest" data-pr
 
 ## Latest
 
-- [Site release v2025.11](./site-v2025.11.md) — Fix-it-fast flows, nav automation, and CTA governance.
+- [Site release v2025.11](./site-v2025.11.md) — Fix-it-fast flows, nav automation, CTA governance, plus the Feb 2025 Cloudflare analytics follow-on.
 
 Older releases live in the repository history; feel free to [open an issue](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,question&title=%5BRelease%5D%20Archive%20request) if you need a summary surfaced publicly.

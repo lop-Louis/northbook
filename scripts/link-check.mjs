@@ -87,7 +87,15 @@ function extractAnchors(filePath) {
   const anchors = new Set()
   let m
   while ((m = headingRegex.exec(text)) !== null) {
-    const headingText = m[1].trim()
+    let headingText = m[1].trim()
+
+    // Support explicit anchors like "## Title {#custom-id}"
+    const customAnchorMatch = headingText.match(/\{#([a-z0-9\-_]+)\}\s*$/i)
+    if (customAnchorMatch) {
+      anchors.add(customAnchorMatch[1])
+      headingText = headingText.replace(/\{#([a-z0-9\-_]+)\}\s*$/i, '').trim()
+    }
+
     const slug = slugify(headingText)
     if (slug) anchors.add(slug)
   }

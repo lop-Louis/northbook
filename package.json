@@ -13,6 +13,7 @@
     "labs": "node scripts/run-labs.mjs",
     "verify:cta": "node scripts/verify-primary-actions.mjs",
     "fingerprint": "node scripts/build-fingerprint.mjs",
+    "analytics:snapshot": "node scripts/cloudflare-snapshot.mjs",
     "should-build": "node scripts/should-build.mjs",
     "freeze:check": "node scripts/freeze-manager.mjs check",
     "freeze:verify": "node scripts/freeze-manager.mjs verify-file",

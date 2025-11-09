@@ -36,6 +36,8 @@ Every runbook follows the [Anti-drift Content Governance](../governance.md) rule
 
 - [Shared metric visibility](./shared-metric-visibility.md) — Publish shared KPIs with context and owners.
 - [State visibility map](./state-visibility.md) — Show every work stream’s entry/exit signals plus the SLI tied to it.
+- [Cloudflare analytics receipts](./cloudflare-analytics.md) — Wire aggregated analytics, privacy review, and baseline capture into the Receipts cadence.
+- [Signal Registry](./signal-registry.md) — Single source of truth for every contract signal, including queries, thresholds, and kill criteria.
 
 ## Quality gates & hygiene
 

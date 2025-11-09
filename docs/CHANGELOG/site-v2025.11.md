@@ -5,7 +5,7 @@ owner: '@lop'
 refresh_after_days: 90
 change_type: patch
 status: live
-last_reviewed: '2025-11-06'
+last_reviewed: '2025-02-15'
 audience: Readers tracking what changed in the v2025.11 release
 tone: Plainspoken, candid, energetic
 narrative_goal: Summarize the notable additions, updates, and fixes in this tag
@@ -50,3 +50,30 @@ This changelog captures the mid-November hygiene release so you can skim what sh
 
 - Zero 404s at build.
 - At least one page emitted `doc_helped` events.
+
+## Follow-on: Cloudflare analytics receipts (Feb 2025)
+
+Mid-February work extended this release to wire Cloudflare analytics into the contract and keep adoption/quality/credibility metrics live while respecting privacy guardrails.
+
+### Added
+
+- **Cloudflare analytics runbook** (`docs/runbooks/cloudflare-analytics.md`) now documents the privacy review, signal mapping, instrumentation schema, baseline requirements, and stop rule.
+- **Signal Registry** exists in Markdown (`docs/runbooks/signal-registry.md`) and JSON (`reports/signal-registry.json`), covering ids, owners, queries, cadences, thresholds, and kill criteria.
+- **Automation:** `pnpm run analytics:snapshot` (powered by `scripts/cloudflare-snapshot.mjs`) fetches Cloudflare aggregates, computes deltas, and emits snapshot/summary receipts with a dry-run mode for local proof.
+- **State page** (`docs/state/index.md`) publishes the latest adoption/quality/credibility readings with traceability back to the decision entry and receipts.
+
+### Updated
+
+- **Receipts** (`docs/receipts/index.md`) now explains the analytics snapshot workflow, machine vs. human artifacts, 14-day baseline handling, and the <10-minute SLA.
+- **Runbooks index & navigation** reference the new telemetry artifacts so operators can reach them from the sidebar without digging through the repo.
+- **Navigation** regenerated (via `pnpm run nav:sync`) to expose the State page under Start and both telemetry runbooks under the Runbooks stack.
+
+### Fixed
+
+- Seeded placeholder (dry-run) snapshot + summary so Receipts/State stay honest before production credentials land.
+- State freshness computation now warns when `last_reviewed` is missing and falls back to file `mtime`, preventing silent credibility drift.
+
+### Governance receipts (Feb 2025)
+
+- `pnpm run analytics:snapshot -- --dry-run`
+- `pnpm run nav:sync`

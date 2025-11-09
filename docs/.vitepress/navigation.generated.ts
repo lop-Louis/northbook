@@ -32,6 +32,10 @@ export const generatedSidebar = [
         link: '/faq-new-joiners'
       },
       {
+        text: 'State page',
+        link: '/state/'
+      },
+      {
         text: 'Release receipts',
         link: '/receipts/'
       },
@@ -148,6 +152,14 @@ export const generatedSidebar = [
       {
         text: 'State visibility map',
         link: '/runbooks/state-visibility'
+      },
+      {
+        text: 'Cloudflare analytics',
+        link: '/runbooks/cloudflare-analytics'
+      },
+      {
+        text: 'Signal Registry',
+        link: '/runbooks/signal-registry'
       }
     ]
   },

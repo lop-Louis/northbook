@@ -56,6 +56,10 @@
     "description": "Generate stale page report"
   },
   {
+    "name": "analytics:snapshot",
+    "description": "Pull Cloudflare analytics aggregates and emit Receipts artifacts"
+  },
+  {
     "name": "test",
     "description": "Run Node tests and component suite"
   }
