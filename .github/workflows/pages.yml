@@ -29,6 +29,11 @@ jobs:
     env:
       GA_ID: ${{ secrets.GA_ID || 'G-511628512' }}
     steps:
+      - name: Checkout root (tooling)
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
       - name: Checkout main (release)
         uses: actions/checkout@v5
         with:
@@ -45,8 +50,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: '9.0.0'
 
       - name: Setup Node
         uses: actions/setup-node@v6
