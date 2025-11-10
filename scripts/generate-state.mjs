@@ -2,6 +2,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
+import prettier from 'prettier'
 
 const args = process.argv.slice(2)
 const CHECK_MODE = args.includes('--check')
@@ -11,6 +12,10 @@ const releasesDir = path.join(repoRoot, 'ops', 'releases')
 const stateDir = path.join(repoRoot, 'docs', 'state')
 const stateFile = path.join(stateDir, 'index.md')
 const mismatches = []
+
+async function formatMarkdown(content) {
+  return prettier.format(content, { parser: 'markdown' })
+}
 
 function readJSON(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'))
@@ -43,7 +48,7 @@ function resolveLink(fromFile, target) {
   return relative
 }
 
-function buildReleaseIndexContent(manifest, releaseName, releaseDir) {
+async function buildReleaseIndexContent(manifest, releaseName, releaseDir) {
   const summary =
     manifest.summary || `Release bundle for ${releaseName}. Generated from ops metadata.`
 
@@ -93,14 +98,15 @@ ${section('Receipts', receipts)}
     status: manifest.status || 'live'
   }
 
-  return matter.stringify(body.trim() + '\n', frontmatter)
+  const raw = matter.stringify(body.trim() + '\n', frontmatter)
+  return await formatMarkdown(raw)
 }
 
 function relativeFromState(targetPath) {
   return path.relative(path.dirname(stateFile), targetPath).split(path.sep).join('/')
 }
 
-function buildStatePage(releases) {
+async function buildStatePage(releases) {
   const frontmatter = {
     title: 'State',
     band: 'A',
@@ -164,10 +170,11 @@ Keep the monthly state bundle predictable. [Open ${latestTag}](${latestLink}) or
 ${sections}
 `
 
-  return matter.stringify(body.trim() + '\n', frontmatter)
+  const raw = matter.stringify(body.trim() + '\n', frontmatter)
+  return await formatMarkdown(raw)
 }
 
-function main() {
+async function main() {
   if (!fs.existsSync(releasesDir)) {
     console.warn('No ops/releases directory found. Skipping state generation.')
     process.exit(0)
@@ -195,9 +202,10 @@ function main() {
     process.exit(0)
   }
 
-  const releases = releaseDirs.map(entry => {
+  const releases = []
+  for (const entry of releaseDirs) {
     const manifest = readJSON(entry.manifestPath)
-    const indexContent = buildReleaseIndexContent(manifest, entry.name, entry.dir)
+    const indexContent = await buildReleaseIndexContent(manifest, entry.name, entry.dir)
     const indexPath = path.join(entry.dir, 'index.md')
     if (CHECK_MODE) {
       const existing = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') : ''
@@ -207,11 +215,11 @@ function main() {
     } else {
       fs.writeFileSync(indexPath, indexContent)
     }
-    return { ...entry, manifest }
-  })
+    releases.push({ ...entry, manifest })
+  }
 
   ensureDir(stateDir)
-  const stateContent = buildStatePage(releases.slice().reverse())
+  const stateContent = await buildStatePage(releases.slice().reverse())
   if (CHECK_MODE) {
     const existing = fs.existsSync(stateFile) ? fs.readFileSync(stateFile, 'utf8') : ''
     if (existing !== stateContent) {
@@ -235,4 +243,7 @@ function main() {
   }
 }
 
-main()
+main().catch(err => {
+  console.error(err)
+  process.exit(1)
+})

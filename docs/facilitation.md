@@ -9,7 +9,7 @@ last_reviewed: '2025-11-04'
 audience: Facilitators and team leads running collaborative sessions
 tone: Plainspoken, candid, energetic
 narrative_goal: Equip meetings with repeatable structures that keep outcomes sharp
-nav_group: Guides
+nav_group: Playbook
 nav_order: 20
 nav_label: Facilitation patterns
 nav:

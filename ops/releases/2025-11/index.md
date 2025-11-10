@@ -22,6 +22,7 @@ Monthly release artefacts live here. Follow the release folder decision for nami
 - [Cloudflare analytics decision](../../../docs/decisions/cloudflare-analytics.md)
 - [Release-centric ops folders](../../../docs/decisions/release-folders.md)
 - [Automate state and release pages](../../../docs/decisions/automation-state-pages.md)
+- [Verify-in-10 decision](../../../docs/decisions/verify-in-10.md)
 
 ## Signals
 

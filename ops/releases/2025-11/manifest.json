@@ -23,6 +23,10 @@
     {
       "title": "Automate state and release pages",
       "path": "docs/decisions/automation-state-pages.md"
+    },
+    {
+      "title": "Verify-in-10 decision",
+      "path": "docs/decisions/verify-in-10.md"
     }
   ],
   "signals": [

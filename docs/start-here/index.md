@@ -19,15 +19,21 @@ nav:
 
 # Start Here
 
-Jump into the work, not the policy. [Run your first decision](../decision-spine) or [Browse the playbook](../playbook/).
+Jump into the work, not the policy. [Place your initiative on the SLI map](./sli-states) or [Read the Verify-in-10 guide](../playbook/verify-in-10).
+
+## SL actions first
+
+1. **Find my stage** — Drop the work into the [SLI map](./sli-states) so the team sees the same signals.
+2. **Verify-in-10 (guide → lab)** — [Read the pattern](../playbook/verify-in-10.md), then [run the 10-minute lab](../labs/verify-in-10.md) before calling a change “done.”
+3. **Post Receipts & State** — Update [`ops/releases/YYYY-MM/manifest.json`](../monthly-release.md) and run `pnpm run state:build` so [State](../state/index.md) shows the new signals.
+
+> Completed the SL loop? Then move on to decisions, facilitation, or accessibility below.
 
 ## Pick your first win
 
 - **Decide faster** — Use the [Decision Spine](../decision-spine) to frame options, make the call, and leave a review plan.
 - **Facilitate better** — Borrow ready-to-use prompts from [Facilitation Techniques](../facilitation) to keep meetings on-rails.
 - **Ship accessibly** — Run the [Accessibility Quick Wins](../accessibility-quick-wins) checklist to catch the 80% issues fast.
-
-Each page opens with the same CTA pair so you always know what to do next.
 
 ## When you need the rules
 
@@ -42,7 +48,7 @@ Need the UI, tone, or states for your artifact? Use:
 
 ## Fix it fast or escalate
 
-- Follow the [Quick-Run](../ops/quick-run) when something regresses after an edit.
+- Follow the [Quick-Run](../ops/quick-run) when something regresses after an edit, then [Verify-in-10](../playbook/verify-in-10.md) + [run the lab](../labs/verify-in-10.md) before re-listing it as Live.
 - Browse the [Fix-it-fast index](../fix/) when interrupts hit and you need a 10-minute checklist.
 - Need something more involved? The [Runbooks index](../runbooks/) keeps the chore-heavy flows out of guidance pages.
 

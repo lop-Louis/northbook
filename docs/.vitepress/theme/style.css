@@ -158,6 +158,15 @@ textarea {
   color: #f8fafc;
 }
 
+.home-cta-helper {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+}
+.home-cta-helper + .home-cta-helper {
+  margin-top: 0.25rem;
+}
+
 .VPHomeFeatures .item .title {
   color: var(--nb-color-navy);
   font-family: var(--vp-font-family-heading);

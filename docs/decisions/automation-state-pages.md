@@ -13,40 +13,51 @@ related_contract: ../contracts/northbook-operations-contract-v1.md
 release_tag: site-v2025.11
 ---
 
-# Automate state and release pages decision
+# Automate State and release pages
 
-Keep the State page, release indices, and cross-links generated from the release metadata. [Review the frame](#frame) or [open the latest bundle](../../ops/releases/2025-11/index.md).
+Keep the State page, release indices, and cross-links generated off the same release metadata source of truth. [Open the latest bundle](../../ops/releases/2025-11/index.md) or [review the State visibility runbook](../runbooks/state-visibility.md) for context.
 
-## Frame
+## Intent
 
-### Problem
+Make State, Receipts, and release indices regenerate from manifests so editors stop hand-syncing three surfaces. The goal is one command, one schema, zero guesswork.
 
-Now that release folders centralize artefacts, manually updating State/Receipts/indices is redundant and error-prone.
+## Tension
 
-### Constraints
+- Release folders already centralize artefacts; manual markdown edits now duplicate manifest data.
+- Every change must stay local-first, stay under the 10-minute CI budget, and honor the guardrail that generated files still show owner, date, guardrail mapping, and release tag.
+- Without automation, State/Receipts fall out of sync and the ledger loses credibility.
 
-- Must remain local-first and finish under the 10-minute CI budget.
-- Generated files still need frontmatter (`owner`, `date`, `guardrail_mapping`, `release_tag`).
-- CI must block when generated files drift.
+## Guardrails and constraints
 
-### Stakes
+1. Generator runs locally and in CI inside 10 minutes.
+2. Output files keep the required frontmatter plus Decisions, Signals, and Receipts sections.
+3. CI blocks any drift between manifests and generated markdown.
 
-- **If successful:** One command regenerates indices and the State page, CI verifies they’re current, and every release consistently links decisions, signals, and receipts.
-- **If unsuccessful:** Operators keep duplicating work, and releases drift out of sync with receipts.
+## Options considered
 
-## Work plan
+| Option                                   | Outcome                                                            |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| Manual edits (status quo)                | Slow, error-prone, no single source of truth.                      |
+| Partial automation                       | Only the State page regenerates, release folders stay manual.      |
+| Full manifest-driven generation (chosen) | One script emits release indices and State, CI enforces freshness. |
 
-1. Build a Node script that scans `ops/releases/YYYY-MM/manifest.json` files and emits deterministic `index.md` files plus `docs/state/index.md`.
-2. Integrate the script into `pnpm run docs:guard` and a dedicated CI step so PRs fail when generated files aren’t committed.
-3. Document the new workflow in the release bundle and runbooks.
+## Decision
 
-## Acceptance checks
+Adopt full manifest-driven generation. One Node script reads `ops/releases/YYYY-MM/manifest.json`, emits deterministic `index.md` files and `docs/state/index.md`, and runs as part of `pnpm run docs:guard` plus a dedicated CI step. This keeps receipts visible, enforces frontmatter, and removes duplicate editing.
 
-- Generator runs locally and in CI in < 10 minutes.
-- Generated files include required frontmatter and sections (Decisions, Signals, Receipts).
-- State page reflects the latest release plus links to all bundles.
-- CI fails if `pnpm run state:check` detects pending changes.
+## Commitments
+
+1. Build the generator script and land fixtures for a pilot release.
+2. Wire the script into local guardrails and CI (`pnpm run state:check`) so PRs fail when regeneration is needed.
+3. Update the release bundle, State ledger, and relevant runbooks with the new workflow.
+
+## Proof / acceptance
+
+- Generator finishes locally and in CI in under 10 minutes.
+- Generated files keep owner/date/guardrail mapping/release tag and list Decisions, Signals, Receipts.
+- State page reflects the latest release and links to all bundles.
+- CI fails when `pnpm run state:check` detects pending changes.
 
 ## Stop rule
 
-If automation slows CI beyond 10 minutes or flakes >5% of builds over two cycles, pause it, revert to manual updates, and revisit the approach.
+If the automation pushes CI beyond 10 minutes or flakes more than 5% of builds across two cycles, pause it, revert to manual updates, and work a follow-up decision before retrying.

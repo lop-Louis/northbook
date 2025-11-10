@@ -13,54 +13,52 @@ related_contract: ../contracts/northbook-operations-contract-v1.md
 release_tag: site-v2025.11
 ---
 
-# Release-centric ops folders decision
+# Release-centric ops folders
 
-Cluster every release’s artefacts under one predictable directory. [Review the frame](#frame) or [open the 2025‑11 bundle](../../ops/releases/2025-11/index.md).
+Cluster every release’s artefacts under one predictable directory. [Open the 2025‑11 bundle](../../ops/releases/2025-11/index.md) or [jump to the release manifest](../../ops/releases/2025-11/manifest.json).
 
-## Frame
+## Intent
 
-### Problem
+Give each release a self-contained folder so reviewers open `ops/releases/YYYY-MM/index.md` and instantly see the month’s Decisions, Signals, and Receipts.
 
-Ops artefacts (receipts, analytics snapshots, decision logs) were scattered across `docs/`, `reports/`, and ad-hoc folders. Reviewers had to guess which files belonged to a release, making monthly tagging and audits slow.
+## Tension
 
-### Constraints
+- Receipts, analytics, and decisions were scattered across `docs/`, `reports/`, and ad-hoc folders, making audits slow.
+- Governance requires visible state + receipts + decisions per release.
+- Structure must stay lightweight enough to maintain monthly and runnable locally.
 
-- Governance & Decisions seam requires visible state + receipts + decisions per release.
-- Structure must be lightweight enough to maintain every month and run locally.
-- CI needs to prevent future drift (files outside release folders, missing index updates).
+## Guardrails and constraints
 
-### Stakes
+1. Keep everything local-first with deterministic naming (`YYYY-MM` folders, `YYYY-MM-DD-short-name` files).
+2. CI enforces presence of `index.md` plus required frontmatter (owner, date, guardrail mapping, release tag).
+3. State and Receipts surfaces must link back to the release folder so receipts are traceable.
 
-- **If successful:** Contributors can open `ops/releases/YYYY-MM/index.md` to see the whole month, Receipts/State link there, and quality gates ensure every new artefact lands in the right folder.
-- **If unsuccessful:** Release artefacts keep drifting, reviewers waste time locating files, and the traceability map breaks.
+## Options considered
 
-## Options
+| Option                               | Notes                                                  |
+| ------------------------------------ | ------------------------------------------------------ |
+| Ad-hoc folders                       | Zero work but impossible to audit.                     |
+| Single flat release log              | One file, but conflicts and unreadable history.        |
+| Release-centric directories (chosen) | Predictable path, easy to script, aligns with cadence. |
 
-1. **Ad-hoc folders (status quo)** — Leave files where they are. Pros: zero work. Cons: no discoverability, high manual effort.
-2. **Single flat release log** — Append everything to one markdown file. Pros: one surface. Cons: conflicts, unreadable history.
-3. **Release-centric directories (chosen)** — Create `ops/releases/YYYY-MM/` with an `index.md` that links to artefacts and documents decisions. Pros: predictable path, easy to script, aligns with monthly cadence.
+## Decision
 
-## Decide
+Adopt release-centric directories. Create `ops/releases/YYYY-MM/` with an `index.md` capturing Decisions, Signals, Receipts plus links to artefacts. Update State/Receipts to reference the folder and add CI to guard the structure.
 
-- **Choice:** Option 3 — Release-centric directories.
-- **Owner:** Louis (Product/Ops).
-- **Scope:** Create `ops/releases/2025-11/` as the pilot, document naming conventions, update State/Receipts pages, and add a CI check.
-- **Naming:** Directories follow `YYYY-MM`. Files inside follow `YYYY-MM-DD-short-name.md/json`.
+## Commitments
 
-## Work plan
+1. Build the pilot `ops/releases/2025-11/` with owner/date/guardrail mapping/release tag frontmatter and the standard sections.
+2. Link the pilot index from State and Receipts pages.
+3. Ship `scripts/release-folders-check.mjs` and wire it into CI to enforce naming and index presence.
+4. Document the pattern inside the release bundle manifest and State ledger so every subsequent release follows the template.
 
-1. Create `ops/releases/2025-11/index.md` with frontmatter (`owner`, `date`, `guardrail_mapping`, `release_tag`) and sections for Decisions, Signals, Receipts.
-2. Link the pilot index from the State and Receipts pages.
-3. Add `scripts/release-folders-check.mjs` + CI step to enforce naming/frontmatter/index presence.
-4. Document the change in the release bundle (manifest + State ledger entry) so reviewers see it in the next tag.
+## Proof / acceptance
 
-## Acceptance checks
-
-- Every release folder includes `index.md` with owner/date/guardrail mapping/release tag.
-- Index lists decisions, signals, and receipts for the cycle with working links.
-- State + Receipts pages reference the latest release index.
-- CI blocks PRs when a release folder is missing an index or required frontmatter.
+- Every release folder includes a compliant `index.md`.
+- Index pages list Decisions, Signals, Receipts with working links.
+- State and Receipts surfaces point to the latest release index.
+- CI blocks PRs when release folders drift.
 
 ## Stop rule
 
-If finding artefacts in this structure takes >30 minutes per week across two cycles, propose an adjustment (hybrid or flat) via a new decision entry.
+If locating artefacts in this structure takes >30 minutes per week across two cycles, open a follow-up decision with a revised structure (hybrid or flat).

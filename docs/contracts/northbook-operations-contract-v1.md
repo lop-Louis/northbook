@@ -175,6 +175,7 @@ Define and run lightweight acceptance checks that protect the North Star without
 - Page has owner and date.
 - Links resolve within three hops.
 - State and Receipts visible.
+- Verify-in-10 run before promoting a change from Verify to Ready/Live.
 
 ### Risks and tripwires — Subcontract 2: Tests and Acceptance
 

@@ -27,15 +27,16 @@ You shouldn’t fight the site to find work. [Pick the fastest route](#routes) o
 
 ## Routes by intent {#routes}
 
-| You want to…           | Go here                                                 | Why                                       |
-| ---------------------- | ------------------------------------------------------- | ----------------------------------------- |
-| Frame or decide        | [Decision Spine](../decision-spine)                     | Template + review triggers in one place   |
-| Facilitate             | [Facilitation Techniques](../facilitation)              | Ready prompts, no filler                  |
-| Ship accessibly        | [Accessibility Quick Wins](../accessibility-quick-wins) | High-signal checks that fit sprint timing |
-| Clear interrupts fast  | [Fast support index](../fix/)                           | Triage flows with escalation packets      |
-| Verify your doc change | [Quick-Run](../ops/quick-run)                           | Fast regression check before you merge    |
-| Run a deeper op        | [All runbooks](../runbooks/)                            | Chore-heavy flows with receipts           |
-| See what changed       | [State ledger](../state/index.md)                       | Highlights + links for the latest release |
+| You want to…           | Go here                                                                                      | Why                                       |
+| ---------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| Frame or decide        | [Decision Spine](../decision-spine)                                                          | Template + review triggers in one place   |
+| Facilitate             | [Facilitation Techniques](../facilitation)                                                   | Ready prompts, no filler                  |
+| Ship accessibly        | [Accessibility Quick Wins](../accessibility-quick-wins)                                      | High-signal checks that fit sprint timing |
+| Clear interrupts fast  | [Fast support index](../fix/)                                                                | Triage flows with escalation packets      |
+| Check for regressions  | [Quick-Run](../ops/quick-run)                                                                | Fast regression check before you merge    |
+| Verify your doc change | [Verify-in-10 guide](../playbook/verify-in-10.md) + [10-minute lab](../labs/verify-in-10.md) | Learn the pattern, then run the lab       |
+| Run a deeper op        | [All runbooks](../runbooks/)                                                                 | Chore-heavy flows with receipts           |
+| See what changed       | [State ledger](../state/index.md)                                                            | Highlights + links for the latest release |
 
 ## URL and anchor cheats
 

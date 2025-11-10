@@ -24,6 +24,10 @@ export const generatedSidebar = [
         link: '/start-here/find'
       },
       {
+        text: 'State',
+        link: '/state/'
+      },
+      {
         text: 'New joiner FAQ',
         link: '/faq-new-joiners'
       },
@@ -72,7 +76,7 @@ export const generatedSidebar = [
     ]
   },
   {
-    text: 'Guides',
+    text: 'Playbook',
     collapsed: false,
     items: [
       {
@@ -94,6 +98,10 @@ export const generatedSidebar = [
       {
         text: 'Accessibility quick wins',
         link: '/accessibility-quick-wins'
+      },
+      {
+        text: 'Verify-in-10 guide',
+        link: '/playbook/verify-in-10'
       },
       {
         text: 'Policy-to-action example',
@@ -158,10 +166,6 @@ export const generatedSidebar = [
       {
         text: 'Sanitization checklist',
         link: '/sanitization'
-      },
-      {
-        text: 'State',
-        link: '/state/'
       },
       {
         text: 'Answer ledger pattern',

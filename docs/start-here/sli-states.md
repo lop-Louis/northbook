@@ -17,7 +17,7 @@ nav:
 
 # SLI States
 
-This map keeps every initiative’s SLI state and guardrails obvious. [Place your initiative](#sli-states) or [Browse the runbooks index](../runbooks/index).
+This map keeps every initiative’s SLI state and guardrails obvious. [Place your initiative](#sli-states) or [Read the Verify-in-10 guide](../playbook/verify-in-10).
 
 | State            | Entry signals                                                                 | Exit signals                                                         | SLI guardrail                                                  |
 | ---------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -55,3 +55,4 @@ This map keeps every initiative’s SLI state and guardrails obvious. [Place you
 - [State visibility map](../runbooks/state-visibility.md) — Publish this table in your shared status doc.
 - [Transition operating promises](../runbooks/transition-operating-promises.md) — Define what happens when an SLI breaches.
 - [State ledger](../state/index.md) — Note state changes when you tag a release.
+- [Verify-in-10 guide](../playbook/verify-in-10.md) + [10-minute lab](../labs/verify-in-10.md) — Default gate before moving from Verify to Live.
