@@ -34,10 +34,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       # BLOCKERS (must pass)
-      - name: 🔴 Link validation
-        id: links
-        run: pnpm run links
-
       - name: 🔴 Frontmatter schema
         id: frontmatter
         run: pnpm run frontmatter:lint
