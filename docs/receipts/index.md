@@ -12,7 +12,7 @@ nav:
   - sidebar
 ---
 
-Find the answer. Use it now. <a href="../ops/quick-run" data-primary-action>Run the Quick-Run</a> or <a href="../labs/link-drift" data-secondary-action>Open the Proof Run</a>.
+Find the answer. Use it now. [Run the Quick-Run](../ops/quick-run) or [Open the Proof Run](../labs/link-drift).
 
 ### 2025-11
 

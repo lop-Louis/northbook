@@ -17,7 +17,7 @@ nav:
 
 # Handover RACI template
 
-Use this template when you need to broadcast handover roles without exposing internal specifics. <a href="#how-to-use-it" data-primary-action>Copy the RACI template</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
+Use this template when you need to broadcast handover roles without exposing internal specifics. [Copy the RACI template](#how-to-use-it) or [Browse the runbooks index](./index).
 The structure below stays inside the [Anti-drift Content Governance](../governance.md) guardrails and keeps RACI labels uncluttered.
 
 ## How to use it

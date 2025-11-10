@@ -14,7 +14,7 @@ nav:
 
 # RACI by Seams
 
-Mapping RACI by seam keeps ownership stable even when teams reorganize. <a href="#why-seams-not-teams" data-primary-action>Use the seam-first template</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>. Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
+Mapping RACI by seam keeps ownership stable even when teams reorganize. [Use the seam-first template](#why-seams-not-teams) or [Browse the runbooks index](../runbooks/index). Each seam represents a boundary where ownership often fuzzes—APIs ↔ clients, platform ↔ feature, product ↔ ops.
 
 ## Why seams, not teams
 

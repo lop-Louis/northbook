@@ -17,7 +17,9 @@ nav:
 
 # State visibility map
 
-Stop guessing whether work is stuck—let this map show the state, entry signal, and SLI guardrail for every stream. <a href="#weekly-15-minute-review-agenda" data-primary-action>Publish your state map</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>. Pair this with a weekly 15-minute review so deviations surface fast.
+Stop guessing whether work is stuck—let this map show the state, entry signal, and SLI guardrail for every stream. [Publish your state map](#state-table) or [Browse the runbooks index](./index). Pair this with a weekly 15-minute review so deviations surface fast.
+
+## State table
 
 | State        | Entry signals (what must be true)                                                | Exit signals (what closes the state)                                      | SLI                                            |
 | ------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------- |

@@ -25,7 +25,7 @@ nav_order: 50
 nav_label: VWO/Bloomreach sanity
 ---
 
-Verify experiment scripts are injected once, load from the right CDN, and aren’t blocked by CSP. <a href="#quick-path" data-primary-action>Run the sanity checks</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate to Support IT</a>.
+Verify experiment scripts are injected once, load from the right CDN, and aren’t blocked by CSP. [Run the sanity checks](#quick-path) or [Escalate to Support IT](/support-it/contacting-it).
 
 > **Works here:** staging + prod · VWO + Bloomreach · Regions: MY, DK  
 > **Owner:** Web Platform (`/support-it/contacting-it`)

@@ -18,7 +18,7 @@ nav:
 
 # Sanitization Guidance
 
-Northbook only ships guidance that anyone can quote safely. <a href="#what-sanitization-protects" data-primary-action>Run the sanitization checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>. Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
+Northbook only ships guidance that anyone can quote safely. [Run the sanitization checklist](#what-sanitization-protects) or [Browse the runbooks index](./runbooks/index). Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
 
 ## What Sanitization Protects
 

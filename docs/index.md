@@ -41,15 +41,15 @@ nav:
   - none
 ---
 
-Find the answer. Act within 60 seconds. <a href="./start-here/" data-primary-action>Use the starting links</a> or <a href="./playbook/north-star-guardrails" data-secondary-action>Read the North Star & Guardrails</a>.
+Find the answer. Act within 60 seconds. [Use the starting links](./start-here/) or [Read the North Star & Guardrails](./playbook/north-star-guardrails).
 
 **Protect the North Star.** Every page has an owner, band, exit metric, and links to State and Receipts. Default deny outside the guardrails. Exceptions need owner, reason, expiry, rollback, and stop rule—but they're allowed.
 
-If this didn't answer your question in 60 seconds, <a href="https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Homepage&body=Page:%20https://northbook.guide/" data-secondary-action>tell us so we can fix it</a>.
+If this didn't answer your question in 60 seconds, [tell us so we can fix it](https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Homepage&body=Page:%20https://northbook.guide/).
 
 ## Governance & Safety
 
-**Invariants enforced:**
+### Invariants enforced:
 
 1. **Default deny outside the guardrails** — If a change is not covered, it is out of scope.
 2. **Public Band-A content only** — No sensitive or internal-only information.
@@ -90,7 +90,7 @@ Before submitting:
 
 ## Receipts & State
 
-**Tracked per 14-day cycle:**
+### Tracked per 14-day cycle:
 
 - **Adoption** — Pages touched and time to answer
 - **Quality** — Lab pass rate and broken link count

@@ -18,7 +18,7 @@ nav:
 
 # Decision Spine
 
-This lightweight spine keeps framing, options, the call, and the review aligned across teams. <a href="#four-stages" data-primary-action>Run your next decision through the spine</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+This lightweight spine keeps framing, options, the call, and the review aligned across teams. [Run your next decision through the spine](#four-stages) or [Browse the runbooks index](./runbooks/index).
 
 - **Why**: Prevents re-litigation, makes tradeoffs explicit early, and leaves a durable paper trail for future teams.
 - **When**: Use for multi‑stakeholder choices, anything with meaningful tradeoffs, or answers you expect to paste more than twice.

@@ -19,7 +19,7 @@ nav:
 
 # Start Here
 
-Jump into the work, not the policy. <a href="../decision-spine" data-primary-action>Run your first decision</a> or <a href="../playbook/" data-secondary-action>Browse the playbook</a>.
+Jump into the work, not the policy. [Run your first decision](../decision-spine) or [Browse the playbook](../playbook/).
 
 ## Pick your first win
 

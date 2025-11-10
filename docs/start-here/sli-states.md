@@ -17,7 +17,7 @@ nav:
 
 # SLI States
 
-This map keeps every initiative’s SLI state and guardrails obvious. <a href="#top" data-primary-action>Place your initiative</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+This map keeps every initiative’s SLI state and guardrails obvious. [Place your initiative](#sli-states) or [Browse the runbooks index](../runbooks/index).
 
 | State            | Entry signals                                                                 | Exit signals                                                         | SLI guardrail                                                  |
 | ---------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------- |

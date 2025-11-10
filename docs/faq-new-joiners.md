@@ -18,7 +18,7 @@ nav:
 
 # FAQ for New Joiners
 
-New joiners can self-serve most answers without waiting for a reply. <a href="#process-culture" data-primary-action>Scan the FAQ</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+New joiners can self-serve most answers without waiting for a reply. [Scan the FAQ](#process-culture) or [Browse the runbooks index](./runbooks/index).
 
 ## Process & Culture
 

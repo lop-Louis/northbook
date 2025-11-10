@@ -17,7 +17,7 @@ nav:
 
 # Runbooks
 
-This index keeps the chore-heavy flows out of the softer guidance pages. <a href="#handoffs" data-primary-action>Jump to the runbook stack you need</a> or <a href="https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Runbooks%20index&body=Page:%20https://northbook.guide/runbooks/" data-secondary-action>Flag a missing runbook</a>.
+This index keeps the chore-heavy flows out of the softer guidance pages. [Jump to the runbook stack you need](#handoffs) or [Flag a missing runbook](https://github.com/lop-Louis/go-to-docs/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Runbooks%20index&body=Page:%20https://northbook.guide/runbooks/).
 
 Every runbook follows the [Anti-drift Content Governance](../governance.md) rules—sanitize identifiers before you paste receipts.
 

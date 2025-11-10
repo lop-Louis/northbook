@@ -17,7 +17,7 @@ nav:
 
 # Shared metric visibility
 
-When multiple teams chase one metric, this template keeps baseline → target → date honest. <a href="#template" data-primary-action>Fill in your metric table</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>. Pair it with the [Monthly Release Rhythm](../monthly-release.md) so status stays current at each tag.
+When multiple teams chase one metric, this template keeps baseline → target → date honest. [Fill in your metric table](#template) or [Browse the runbooks index](./index). Pair it with the [Monthly Release Rhythm](../monthly-release.md) so status stays current at each tag.
 
 ## Template
 

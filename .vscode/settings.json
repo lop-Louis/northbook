@@ -19,5 +19,8 @@
     {
       "text": "Commit messages must include type and scope of work as prefix, with short description total less than 100 characters (e.g. `docs(api): add guardrail`)."
     }
-  ]
+  ],
+  "yaml.schemas": {
+    "../schemas/frontmatter.schema.json": ["docs/**/*.md"]
+  }
 }

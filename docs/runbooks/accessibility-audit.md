@@ -17,7 +17,7 @@ nav:
 
 # Accessibility audit runbook
 
-Run this quarterly sweep before release windows to keep public docs accessible. <a href="#purpose" data-primary-action>Start the audit</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
+Run this quarterly sweep before release windows to keep public docs accessible. [Start the audit](#purpose) or [Browse the runbooks index](./index).
 
 ## Purpose
 

@@ -34,19 +34,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       # BLOCKERS (must pass)
-      - name: 🔴 Link validation
-        id: links
-        run: pnpm run links
+      - name: 🔴 Markdown lint & links
+        id: markdown_lint
+        run: pnpm run lint:md
 
       - name: 🔴 Frontmatter schema
         id: frontmatter
         run: pnpm run frontmatter:lint
-
-      - name: 🔴 Primary actions
-        id: primary_actions
-        run: |
-          SKIP_DOCS_GUARD=1 pnpm run docs:build
-          node scripts/verify-primary-actions.mjs
 
       # WARNERS (continue on error)
       - name: 🟡 Content guard
@@ -90,22 +84,16 @@ jobs:
           echo "## 🔴 Critical (Must Pass)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          if [ "${{ steps.links.outcome }}" == "success" ]; then
-            echo "✅ Link validation" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.markdown_lint.outcome }}" == "success" ]; then
+            echo "✅ Markdown links & lint" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ **Link validation failed** - Fix broken links" >> $GITHUB_STEP_SUMMARY
+            echo "❌ **Markdown link check failed** - Fix broken links or lint errors" >> $GITHUB_STEP_SUMMARY
           fi
 
           if [ "${{ steps.frontmatter.outcome }}" == "success" ]; then
             echo "✅ Frontmatter schema" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Frontmatter schema failed** - Add missing required fields" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          if [ "${{ steps.primary_actions.outcome }}" == "success" ]; then
-            echo "✅ Primary actions" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ **Primary actions failed** - Add CTA pairs" >> $GITHUB_STEP_SUMMARY
           fi
 
           # Warners section
@@ -124,7 +112,7 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
 
           # Final verdict
-          if [ "${{ steps.links.outcome }}" == "success" ] && [ "${{ steps.frontmatter.outcome }}" == "success" ] && [ "${{ steps.primary_actions.outcome }}" == "success" ]; then
+          if [ "${{ steps.markdown_lint.outcome }}" == "success" ] && [ "${{ steps.frontmatter.outcome }}" == "success" ]; then
             echo "✨ **All critical checks passed** - Ready to merge" >> $GITHUB_STEP_SUMMARY
           else
             echo "🚫 **Critical checks failed** - Fix blockers above before merging" >> $GITHUB_STEP_SUMMARY

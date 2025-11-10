@@ -17,7 +17,7 @@ nav:
 
 # Link integrity runbook
 
-Keep every link contract intact so readers never hit a dead end. <a href="#action" data-primary-action>Run the link check flow</a> or <a href="../labs/link-drift" data-secondary-action>Open the Proof Run</a>.
+Keep every link contract intact so readers never hit a dead end. [Run the link check flow](#action) or [Open the Proof Run](../labs/link-drift).
 
 ## Trigger
 

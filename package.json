@@ -11,7 +11,8 @@
     "docs:guard": "pnpm run frontmatter:lint && pnpm run guard && pnpm run drift && pnpm run ux:scan",
     "guard": "node scripts/guard.mjs",
     "labs": "node scripts/run-labs.mjs",
-    "verify:cta": "node scripts/verify-primary-actions.mjs",
+    "lint:md": "markdownlint \"**/*.md\" --config .markdownlint.jsonc",
+    "lint:md:fix": "markdownlint \"**/*.md\" --config .markdownlint.jsonc --fix",
     "fingerprint": "node scripts/build-fingerprint.mjs",
     "should-build": "node scripts/should-build.mjs",
     "freeze:check": "node scripts/freeze-manager.mjs check",
@@ -31,10 +32,9 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint . --fix && prettier --write .",
+    "lint": "pnpm run lint:md && eslint . && prettier --check .",
+    "lint:fix": "pnpm run lint:md:fix && eslint . --fix && prettier --write .",
     "typecheck": "tsc --noEmit",
-    "links": "node scripts/link-check.mjs",
     "lighthouse": "node scripts/lighthouse-runner.mjs",
     "review:update": "node scripts/update-last-reviewed.mjs",
     "ux:scan": "node scripts/ux-scan.mjs",
@@ -45,7 +45,11 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,md,yml,yaml}": [
+    "*.md": [
+      "markdownlint --config .markdownlint.jsonc --fix",
+      "prettier --write"
+    ],
+    "*.{json,yml,yaml}": [
       "prettier --write"
     ],
     "docs/**/*.md": [
@@ -98,6 +102,8 @@
     "husky": "^9.1.7",
     "lighthouse": "^12.2.1",
     "lint-staged": "^16.2.6",
+    "markdownlint": "^0.39.0",
+    "markdownlint-cli": "^0.45.0",
     "playwright": "^1.48.2",
     "prettier": "^3.6.2",
     "typescript": "^5.7.2",

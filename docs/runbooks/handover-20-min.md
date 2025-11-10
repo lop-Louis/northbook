@@ -17,7 +17,7 @@ nav:
 
 # 20-minute handover drill
 
-Force clarity fast: this drill moves a stream from Framing to Ready in 20 minutes. <a href="#top" data-primary-action>Run the drill</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>.
+Force clarity fast: this drill moves a stream from Framing to Ready in 20 minutes. [Run the drill](#20-minute-handover-drill) or [Browse the runbooks index](./index).
 
 **Goal:** move a stream from Framing to Ready.
 

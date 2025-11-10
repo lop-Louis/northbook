@@ -18,7 +18,7 @@ nav:
 
 # What is Band A
 
-Band A keeps our public guidance safe to quote without leaking specifics. <a href="#what-belongs-in-band-a" data-primary-action>Run the Band A checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Band A keeps our public guidance safe to quote without leaking specifics. [Run the Band A checklist](#what-belongs-in-band-a) or [Browse the runbooks index](./runbooks/index).
 
 > Public-safe content only. Internal specifics live elsewhere.
 

@@ -25,7 +25,7 @@ nav_order: 40
 nav_label: Feature flag on staging
 ---
 
-Confirm staging feature flags in minutes before looping in the platform team. <a href="#quick-path" data-primary-action>Run the flag checks</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate to Support IT</a>.
+Confirm staging feature flags in minutes before looping in the platform team. [Run the flag checks](#quick-path) or [Escalate to Support IT](/support-it/contacting-it).
 
 > **Works here:** staging · Feature flag SDK · Regions: MY, DK  
 > **Owner:** Platform Engineering (`/support-it/contacting-it`)

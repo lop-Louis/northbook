@@ -14,7 +14,7 @@ nav:
 
 # Common Goal Scoreboard
 
-Scoreboards keep one shared metric visible so every stream knows if the work is moving the needle. <a href="#anatomy-of-a-scoreboard" data-primary-action>Outline your scoreboard</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Scoreboards keep one shared metric visible so every stream knows if the work is moving the needle. [Outline your scoreboard](#anatomy-of-a-scoreboard) or [Browse the runbooks index](../runbooks/index).
 
 ## Anatomy of a scoreboard
 

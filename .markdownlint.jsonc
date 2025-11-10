@@ -1,0 +1,29 @@
+{
+  // Base rules
+  "default": true,
+
+  // Allow longer lines—CTA copy and tables often exceed 80 chars intentionally.
+  "MD013": false,
+
+  // Enforce single H1 per file but ignore titles declared in frontmatter.
+  "MD025": {
+    "front_matter_title": ""
+  },
+
+  // Trailing punctuation + bare URLs appear in CTA and email/link copies.
+  "MD026": false,
+  "MD034": false,
+  "MD029": false,
+
+  // Allow inline HTML for any remaining media snippets.
+  "MD033": false,
+
+  // Fragment links reference permissible heading variants.
+  "MD051": false,
+
+  // Some pages intentionally omit fenced code languages (CTA snippets).
+  "MD040": false,
+
+  // Some pages intentionally start with frontmatter metadata or callouts.
+  "MD041": false
+}

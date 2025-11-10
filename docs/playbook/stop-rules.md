@@ -14,7 +14,7 @@ nav:
 
 # Stop Rules Library
 
-Stop rules protect teams from marching forward when risk outpaces confidence. <a href="#when-to-write-a-stop-rule" data-primary-action>Capture your stop conditions</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>. Define them before work starts so everyone knows when to pause, escalate, or roll back.
+Stop rules protect teams from marching forward when risk outpaces confidence. [Capture your stop conditions](#when-to-write-a-stop-rule) or [Browse the runbooks index](../runbooks/index). Define them before work starts so everyone knows when to pause, escalate, or roll back.
 
 ## When to write a stop rule
 
