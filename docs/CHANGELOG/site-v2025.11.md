@@ -30,6 +30,7 @@ This changelog captures the mid-November hygiene release so you can skim what sh
 - **Governance traceability:** Added dedicated `contracts/` and `decisions/` directories. Logged the [Contracts directory decision](../decisions/contracts-directory.md) and published the [Northbook Operations Contract v1.0](../contracts/northbook-operations-contract-v1.md) with links back to this release and the State/Receipts surfaces.
 - **Signals & analytics:** Logged the [Cloudflare analytics decision](../decisions/cloudflare-analytics.md), shipped [`scripts/cloudflare-analytics.mjs`](../../scripts/cloudflare-analytics.mjs), and added the [Cloudflare analytics](../runbooks/cloudflare-analytics.md) + [Signal Registry](../runbooks/signal-registry.md) runbooks so adoption/quality/credibility receipts come from sanitized exports.
 - **CTA guardrail:** Logged the draft [CTA guardrail alignment decision](../decisions/cta-guardrail-alignment.md) that pauses the markdown-only CTA scan in favor of the above-the-fold post-build check until new metadata automation lands.
+- **Release folders:** Logged the [release-centric ops folders decision](../decisions/release-folders.md), created `ops/releases/2025-11/index.md`, and added a CI check plus State/Receipts links so each release bundles its artefacts predictably.
 
 ## Updated
 

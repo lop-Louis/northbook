@@ -63,6 +63,8 @@
   --vp-nav-screen-bg-color: #ffffff;
   --vp-code-color: var(--nb-color-code-light);
 
+  --vp-sidebar-bg: var(--vp-c-bg-alt);
+
   --vp-home-hero-name-color: var(--nb-color-navy);
   --vp-home-hero-text-color: var(--vp-c-text-2);
   --vp-home-hero-tagline-color: #334155;
@@ -90,7 +92,7 @@
   --vp-c-brand-soft: rgba(248, 177, 62, 0.14);
 
   --vp-c-bg: var(--nb-color-navy);
-  --vp-c-bg-alt: #121a2d;
+  --vp-c-bg-alt: #010d2c;
   --vp-c-bg-soft: rgba(148, 163, 184, 0.12);
   --vp-c-surface-1: #162239;
   --vp-c-surface-2: #1c2c45;
@@ -100,6 +102,8 @@
   --vp-nav-bg-color: var(--nb-color-navy);
   --vp-nav-screen-bg-color: var(--nb-color-navy);
   --vp-code-color: var(--nb-color-code-dark);
+
+  --vp-sidebar-bg: var(--vp-c-bg-alt);
 
   --vp-c-text-1: #f8fafc;
   --vp-c-text-2: #d1ddff;
@@ -169,7 +173,7 @@ textarea {
 }
 
 .dark .VPSidebar {
-  background: #0c1422;
+  background: var(--vp-sidebar-bg);
   border-right: 1px solid rgba(15, 23, 42, 0.9);
 }
 
@@ -212,8 +216,8 @@ textarea {
   backdrop-filter: none;
 }
 
-.dark .VPSidebar .curtain {
-  background-color: transparent;
+.VPSidebar .curtain {
+  background-color: var(--vp-sidebar-bg);
   backdrop-filter: none;
   border-bottom: 1px solid rgba(148, 163, 184, 0.14);
 }

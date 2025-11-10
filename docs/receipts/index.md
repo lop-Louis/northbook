@@ -21,6 +21,7 @@ Find the answer. Use it now. [Run the Quick-Run](../ops/quick-run) or [Open the 
 **Credibility** — State page refreshed 12 days ago, 1 exception open / 2 resolved on time.
 
 > Source: [`reports/cloudflare-snapshot.json`](../../reports/cloudflare-snapshot.json) generated via `pnpm run analytics:snapshot`.
+> Release bundle: [`ops/releases/2025-11/index.md`](https://github.com/lop-louis/go-to-docs/tree/main/ops/releases/2025-11).
 
 ## Related references
 
