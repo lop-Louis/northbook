@@ -6,6 +6,10 @@ dist/
 .vitepress/dist/
 .vitepress/cache/*
 
+# Generated public folders
+public/v1/
+public/staging/
+
 # Lighthouse results
 .lighthouse/
 

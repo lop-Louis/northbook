@@ -152,8 +152,8 @@ export default defineConfig({
   themeConfig: {
     siteTitle: false,
     logo: {
-      light: withBase('logo-lockup-light.png'),
-      dark: withBase('logo-lockup-dark.png')
+      light: '/logo-lockup-light.png',
+      dark: '/logo-lockup-dark.png'
     },
     nav: [
       ...generatedNav,

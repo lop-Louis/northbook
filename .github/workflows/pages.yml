@@ -153,6 +153,18 @@ jobs:
           }
           echo "✅ /v1/ RACI responding"
 
+          curl -sf https://northbook.guide/v1/logo-lockup-light.png > /dev/null || {
+            echo "❌ v1 light logo missing"
+            exit 1
+          }
+          echo "✅ v1 light logo reachable"
+
+          curl -sf https://northbook.guide/v1/logo-lockup-dark.png > /dev/null || {
+            echo "❌ v1 dark logo missing"
+            exit 1
+          }
+          echo "✅ v1 dark logo reachable"
+
           curl -sf https://northbook.guide/staging/playbook/raci-by-seams | grep -q "RACI" || {
             echo "❌ /staging/ RACI page failed"
             exit 1
