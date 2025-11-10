@@ -19,7 +19,7 @@ nav:
 
 Stop guessing whether work is stuck—let this map show the state, entry signal, and SLI guardrail for every stream. [Publish your state map](#state-table) or [Browse the runbooks index](./index). Pair this with a weekly 15-minute review so deviations surface fast.
 
-> Latest release bundle: [`ops/releases/2025-11/index.md`](https://github.com/lop-louis/go-to-docs/tree/main/ops/releases/2025-11) summarises decisions, signals, and receipts for the current cycle.
+> Latest release bundle: [`ops/releases/2025-11/index.md`](../../ops/releases/2025-11/index.md) summarises decisions, signals, and receipts for the current cycle.
 
 ## State table
 

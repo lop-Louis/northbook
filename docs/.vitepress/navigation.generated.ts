@@ -28,6 +28,10 @@ export const generatedSidebar = [
         link: '/ops/quick-run'
       },
       {
+        text: 'State',
+        link: '/state/'
+      },
+      {
         text: 'New joiner FAQ',
         link: '/faq-new-joiners'
       },

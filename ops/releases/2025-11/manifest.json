@@ -1,0 +1,50 @@
+{
+  "title": "Release ops bundle · 2025-11",
+  "owner": "@lop",
+  "date": "2025-11-09",
+  "guardrail_mapping": "governance-state",
+  "release_tag": "site-v2025.11",
+  "status": "live",
+  "summary": "Monthly release artefacts live here. Follow the release folder decision for naming rules.",
+  "decisions": [
+    {
+      "title": "Cloudflare analytics decision",
+      "path": "docs/decisions/cloudflare-analytics.md"
+    },
+    {
+      "title": "Release-centric ops folders",
+      "path": "docs/decisions/release-folders.md"
+    },
+    {
+      "title": "Automate state and release pages",
+      "path": "docs/decisions/automation-state-pages.md"
+    }
+  ],
+  "signals": [
+    {
+      "title": "Analytics snapshot",
+      "path": "reports/cloudflare-snapshot.json",
+      "note": "Generated via pnpm run analytics:snapshot"
+    },
+    {
+      "title": "Cloudflare export template",
+      "path": "reports/cloudflare-export.sample.json",
+      "note": "Shows the expected sanitized structure"
+    },
+    {
+      "title": "Labs report",
+      "path": "reports/labs.json",
+      "note": "Quick-Run + Proof Run lab results"
+    }
+  ],
+  "receipts": [
+    {
+      "title": "Receipts 2025-11",
+      "path": "docs/receipts/index.md#2025-11"
+    },
+    {
+      "title": "State visibility",
+      "path": "docs/runbooks/state-visibility.md"
+    }
+  ]
+}
