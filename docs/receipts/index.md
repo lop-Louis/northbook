@@ -1,30 +1,18 @@
 ---
-title: Receipts
+title: Release receipts (archived)
 band: A
 owner: '@lop'
 change_type: patch
-refresh_after_days: 30
-status: live
-nav_group: Start
-nav_order: 25
-nav_label: Release receipts
+refresh_after_days: 90
+status: archived
 nav:
-  - sidebar
+  - none
 ---
 
-Find the answer. Use it now. [Run the Quick-Run](../ops/quick-run) or [Open the Proof Run](../labs/link-drift).
+Release receipts now live inside the automated [State ledger](../state/index.md) and the per-release bundles under `ops/releases/`.
 
-### 2025-11
+- Open `docs/state/index.md` to see the latest site-vYYYY.MM entry with adoption/quality/credibility highlights.
+- Each entry is generated from `ops/releases/YYYY-MM/manifest.json`; update the manifest and run `pnpm run state:build` whenever you tag a release.
+- For raw metrics (analytics snapshot, labs report, exceptions), refer to the files referenced in the manifest (e.g., `reports/cloudflare-snapshot.json`, `reports/labs.json`).
 
-**Adoption** — 3 pages touched / 1,740 views / median time-to-answer 51 s (Cloudflare analytics, 14-day window).  
-**Quality** — Lab pass rate 1.00, broken links 0 (Quick-Run + Link Drift).  
-**Credibility** — State page refreshed 12 days ago, 1 exception open / 2 resolved on time.
-
-> Source: [`reports/cloudflare-snapshot.json`](../../reports/cloudflare-snapshot.json) generated via `pnpm run analytics:snapshot`.
-> Release bundle: [`ops/releases/2025-11/index.md`](https://github.com/lop-louis/go-to-docs/tree/main/ops/releases/2025-11).
-
-## Related references
-
-- [Monthly cadence](../monthly-release.md) — Use this process when you prep the next tag.
-- [Transition operating promises](../runbooks/transition-operating-promises.md) — Paste links to fulfilled promises in each receipt.
-- [Fast support index](../fix/) — Note any new fast-support flows launched during the release.
+This page remains only to redirect old bookmarks.

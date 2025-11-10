@@ -24,20 +24,12 @@ export const generatedSidebar = [
         link: '/start-here/find'
       },
       {
-        text: 'Quick-Run check',
-        link: '/ops/quick-run'
-      },
-      {
         text: 'State',
         link: '/state/'
       },
       {
         text: 'New joiner FAQ',
         link: '/faq-new-joiners'
-      },
-      {
-        text: 'Release receipts',
-        link: '/receipts/'
       },
       {
         text: 'Monthly cadence',

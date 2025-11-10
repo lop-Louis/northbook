@@ -171,7 +171,7 @@ Automated weekly scan on Mondays at 2 AM UTC checks for:
 ### Monthly (Manual)
 
 - First week: Review stale report, close or extend
-- Release tag: `site-YYYY.MM` with changelog
+- Release tag: `site-YYYY.MM` with updated release manifest and State ledger entry
 - SLO review in team retrospective
 
 ### Quarterly (Strategic)

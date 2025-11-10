@@ -17,7 +17,7 @@ release_tag: site-v2025.11
 
 Keep governance docs discoverable and receipt-backed. [Review the frame](#frame) or [Read the operations contract](../contracts/northbook-operations-contract-v1.md).
 
-State: [State visibility map](../runbooks/state-visibility.md) · Receipts: [Release receipts](../receipts/index.md) · Release reference: [site-v2025.11 changelog](/CHANGELOG/site-v2025.11)  
+State: [State visibility map](../runbooks/state-visibility.md) · Receipts: [Release receipts](../receipts/index.md) · Release reference: [site-v2025.11 bundle](../../ops/releases/2025-11/index.md)  
 Guardrail mapping: Governance & Decisions invariants (decision entries visible, exceptions current, state updated under 30 days, monthly release tags) in the [North Star & Guardrails playbook](../playbook/north-star-guardrails.md#governance-requirements).
 
 ## Frame
@@ -35,21 +35,21 @@ Post‑V1 contracts and their decision entries need a predictable home so contri
 ### Stakes
 
 - **Placed well:** Governance docs remain easy to locate, stay linked to their releases, and model how to log future contracts (security, privacy, etc.).
-- **Placed poorly:** Contracts sprawl across release folders or changelog notes, making it slow to discover, update, or audit them.
+- **Placed poorly:** Contracts sprawl across release folders or legacy log notes, making it slow to discover, update, or audit them.
 
 ## Options
 
 ### Option 1 — Per-release folders
 
-Store each contract inside the release folder that introduced it. Pros: keeps temporal context with release artifacts. Cons: governance spreads across multiple release directories, so contributors must know the exact release to find a contract; duplicates decision metadata in changelog snippets.
+Store each contract inside the release folder that introduced it. Pros: keeps temporal context with release artifacts. Cons: governance spreads across multiple release directories, so contributors must know the exact release to find a contract; duplicates decision metadata in State entries.
 
 ### Option 2 — Dedicated contracts directory
 
-Create a top-level `contracts/` section for all governance contracts plus a sibling `decisions/` directory. Each contract includes metadata about its introducing release and links back to the changelog, while decisions cross-link to both the contract and release receipts. Pros: predictable location, scales as new contracts arrive, keeps nav intentional via a Contracts group. Cons: requires upfront directory creation and nav tuning.
+Create a top-level `contracts/` section for all governance contracts plus a sibling `decisions/` directory. Each contract includes metadata about its introducing release and links back to the release bundle, while decisions cross-link to both the contract and release receipts. Pros: predictable location, scales as new contracts arrive, keeps nav intentional via a Contracts group. Cons: requires upfront directory creation and nav tuning.
 
-### Option 3 — Embed full text in the changelog
+### Option 3 — Embed full text in one release log
 
-Expand changelog entries to include the full contract text and decision rationale. Pros: zero new directories. Cons: changelog becomes bloated, governance content mixes with operational updates, and individual contracts become hard to maintain or cross-link.
+Expand the release log entry (legacy changelog) to include the full contract text and decision rationale. Pros: zero new directories. Cons: the log becomes bloated, governance content mixes with operational updates, and individual contracts become hard to maintain or cross-link.
 
 ## Decide
 
@@ -57,7 +57,7 @@ Expand changelog entries to include the full contract text and decision rational
 - **Decider:** Product/Operations lead (@lop acting steward).
 - **Date:** Mid-November 2025 release window.
 - **Rationale:** Centralizes governance docs to satisfy the 60-second discovery rule, keeps the guardrail chain visible (contract ↔ decision ↔ receipts), and lets future contracts reuse the same layout without bloating release folders.
-- **Release linkage:** [site-v2025.11 changelog](../CHANGELOG/site-v2025.11).
+- **Release linkage:** [site-v2025.11 bundle](../../ops/releases/2025-11/index.md).
 - **Contract reference:** [Northbook Operations Contract v1.0](../contracts/northbook-operations-contract-v1.md).
 
 ## Review

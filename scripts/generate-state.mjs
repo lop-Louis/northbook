@@ -65,10 +65,20 @@ function buildReleaseIndexContent(manifest, releaseName, releaseDir) {
     return `## ${title}\n\n${list}\n`
   }
 
+  const highlights = manifest.metrics
+    ? `## Highlights
+
+- **Adoption** — ${manifest.metrics.adoption || '_Not provided_'}
+- **Quality** — ${manifest.metrics.quality || '_Not provided_'}
+- **Credibility** — ${manifest.metrics.credibility || '_Not provided_'}
+`
+    : ''
+
   const body = `# ${manifest.title}
 
 ${summary}
 
+${highlights}
 ${section('Decisions', decisions)}
 ${section('Signals', signals)}
 ${section('Receipts', receipts)}
@@ -121,6 +131,12 @@ function buildStatePage(releases) {
         return `- ${title}: ${formatted}`
       }
 
+      const metricsLines = manifest.metrics
+        ? `- Adoption: ${manifest.metrics.adoption || 'n/a'}
+- Quality: ${manifest.metrics.quality || 'n/a'}
+- Credibility: ${manifest.metrics.credibility || 'n/a'}`
+        : '- Metrics: _Not provided_'
+
       return `## ${releaseTag} (${rel.name})
 
 - Owner: ${manifest.owner || '@lop'}
@@ -128,6 +144,7 @@ function buildStatePage(releases) {
 ${listSection('Decisions', manifest.decisions || [])}
 ${listSection('Signals', manifest.signals || [])}
 ${listSection('Receipts', manifest.receipts || [])}
+${metricsLines}
 `
     })
     .join('\n')

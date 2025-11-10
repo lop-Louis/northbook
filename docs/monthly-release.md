@@ -18,7 +18,7 @@ nav:
 
 # Monthly Release Rhythm
 
-This cadence keeps the public docs fresh each month and records what changed. [Run the prep checklist](#goals) or [Browse the runbooks index](./runbooks/index).
+This cadence keeps the public docs fresh each month and records what changed. [Run the prep checklist](#preparation-checklist) or [Browse the runbooks index](./runbooks/index).
 
 ## Goals
 
@@ -41,67 +41,57 @@ Example: `site-v2025.11`
 
 ## Preparation Checklist
 
-1. Merge outstanding approved PRs
-2. Run `npm run guard` (no red failures)
-3. Run `npm run docs:build` (build success)
-4. Review stale report and address critical items
-5. Update `CHANGELOG.md` with sections below
+1. Merge outstanding approved PRs.
+2. Run `pnpm run docs:guard` and fix red failures.
+3. Refresh analytics + labs: `pnpm run analytics:snapshot` and rerun the relevant labs (`pnpm run labs` or Quick-Run/Proof Run) so `reports/labs.json` is current.
+4. Update `ops/releases/YYYY-MM/manifest.json`, then run `pnpm run state:build` to regenerate `ops/releases/YYYY-MM/index.md` and `docs/state/index.md`.
+5. Update the [Receipts](./receipts/index.md) entry for the month using the snapshot values and link back to the release bundle.
 
-## Changelog Template
+## Release Manifest Template
 
-```markdown
-## site-vYYYY.MM (YYYY-MM-DD)
+Create `ops/releases/YYYY-MM/manifest.json` (copy the previous month) and fill:
 
-### Added
-
-- New: Accessibility Quick Wins page
-
-### Updated
-
-- Decision Spine: clarified review stage
-
-### Fixed
-
-- Removed outdated facilitation example
-
-### Metrics (last 30 days)
-
-- Pages viewed: ~X
-- Feedback issues opened: X helpful / X not-helpful
-- Stale pages at tag time: X
-- Shared metric snapshot: see [shared metric visibility runbook](./runbooks/shared-metric-visibility.md)
-
-### Policy / Governance
-
-- No changes OR Updated governance SLO wording
-
-### Next Focus
-
-- Improve FAQ discoverability
-- Expand ledger pattern examples
+```jsonc
+{
+  "title": "Release ops bundle · 2025-11",
+  "owner": "@lop",
+  "date": "YYYY-MM-DD",
+  "guardrail_mapping": "governance-state",
+  "release_tag": "site-v2025.11",
+  "status": "live",
+  "summary": "Monthly release artefacts live here.",
+  "decisions": [{ "title": "Example decision", "path": "docs/decisions/example.md" }],
+  "signals": [{ "title": "Analytics snapshot", "path": "reports/cloudflare-snapshot.json" }],
+  "receipts": [{ "title": "Receipts 2025-11", "path": "docs/receipts/index.md#2025-11" }]
+}
 ```
+
+Run `pnpm run state:build` to regenerate `ops/releases/YYYY-MM/index.md` and `docs/state/index.md`, then commit those files with the manifest. This keeps the State ledger, release bundle, and Receipts page in sync.
 
 ## Tagging Steps
 
 ```bash
-# Generate changelog section first (manual edit or script)
-node scripts/changelog.mjs >> CHANGELOG.md
+# Refresh analytics snapshot and labs (if applicable)
+pnpm run analytics:snapshot
 
-# Commit changelog update
-git add CHANGELOG.md
-git commit -m "chore: update changelog for site-v2025.11"
+# Update release manifest and regenerate state bundle
+pnpm run state:build
 
-# Create and push tag
-git tag site-v2025.11
-git push origin site-v2025.11
+# Commit manifest + generated files + receipts entry
+git add ops/releases/YYYY-MM docs/state/index.md docs/receipts/index.md
+git commit -m "release: bundle site-vYYYY.MM"
+
+# Create and push tag after review
+git tag site-vYYYY.MM
+git push origin site-vYYYY.MM
 ```
 
 ## Metrics Sources
 
-- Page views: (Analytics dashboard if configured)
-- Feedback: GitHub issues with `feedback` label
+- Page views / time-to-answer: `pnpm run analytics:snapshot` (Cloudflare export)
+- Feedback / labs: [`reports/labs.json`](../../reports/labs.json) and the [Link Drift Proof Run](./labs/link-drift.md)
 - Stale count: Weekly stale report issue data
-- Shared metric: Update via the [shared metric visibility](./runbooks/shared-metric-visibility.md) template before tagging
+- Shared metric: Update via the [shared metric visibility](./runbooks/shared-metric-visibility.md) template before updating the manifest
 
 ## Governance Review
 
@@ -124,6 +114,7 @@ Sunset or pivot if after 2 consecutive tags:
 
 ## Related references
 
+- [State ledger](./state/index.md) — Generated from the release manifests.
 - [Release receipts](./receipts/index) — Publish the highlights from each tag here.
-- [Shared metric visibility](./runbooks/shared-metric-visibility.md) — Update metrics before locking the changelog.
+- [Shared metric visibility](./runbooks/shared-metric-visibility.md) — Update metrics before locking the manifest.
 - [Transition operating promises](./runbooks/transition-operating-promises.md) — Align monthly commitments with the promises table if cadence slips.

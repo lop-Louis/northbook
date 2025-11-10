@@ -6,6 +6,11 @@
   "release_tag": "site-v2025.11",
   "status": "live",
   "summary": "Monthly release artefacts live here. Follow the release folder decision for naming rules.",
+  "metrics": {
+    "adoption": "3 pages touched / 1,740 views / median time-to-answer 51 s (Cloudflare analytics, 14-day window).",
+    "quality": "Lab pass rate 1.00, broken links 0 (Quick-Run + Link Drift).",
+    "credibility": "State page refreshed 12 days ago, 1 exception open / 2 resolved on time."
+  },
   "decisions": [
     {
       "title": "Cloudflare analytics decision",
@@ -39,11 +44,11 @@
   ],
   "receipts": [
     {
-      "title": "Receipts 2025-11",
-      "path": "docs/receipts/index.md#2025-11"
+      "title": "State ledger entry",
+      "path": "docs/state/index.md#site-v2025.11-2025-11"
     },
     {
-      "title": "State visibility",
+      "title": "State visibility runbook",
       "path": "docs/runbooks/state-visibility.md"
     }
   ]

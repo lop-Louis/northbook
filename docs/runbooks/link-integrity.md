@@ -37,7 +37,7 @@ Keep every link contract intact so readers never hit a dead end. [Run the link c
 
 - Automated link check (`pnpm run links`, Quick-Run, or Proof Run) exits 0
 - Screenshots or logs attached to the PR / issue
-- Release note or changelog updated when the public URL changed
+- Release manifest / State ledger entry updated when the public URL changed
 
 ## Stop rule
 

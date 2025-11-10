@@ -52,7 +52,7 @@ Ops artefacts (receipts, analytics snapshots, decision logs) were scattered acro
 1. Create `ops/releases/2025-11/index.md` with frontmatter (`owner`, `date`, `guardrail_mapping`, `release_tag`) and sections for Decisions, Signals, Receipts.
 2. Link the pilot index from the State and Receipts pages.
 3. Add `scripts/release-folders-check.mjs` + CI step to enforce naming/frontmatter/index presence.
-4. Update the changelog to document the new structure and decision.
+4. Document the change in the release bundle (manifest + State ledger entry) so reviewers see it in the next tag.
 
 ## Acceptance checks
 
