@@ -14,7 +14,7 @@ nav:
 
 # Decision tripwires
 
-Tripwires convert slow drift into clear prompts to act. <a href="#top" data-primary-action>Define your triggers</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>. Pair them with the [Decision Spine](./decision-spine.md) so each decision has a safety net.
+Tripwires convert slow drift into clear prompts to act. [Define your triggers](#decision-tripwires) or [Browse the runbooks index](./runbooks/index). Pair them with the [Decision Spine](./decision-spine.md) so each decision has a safety net.
 
 Each example follows the `condition -> action -> owner -> time box` format so you can drop it straight into a decision follow-up checklist.
 

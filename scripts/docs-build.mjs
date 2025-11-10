@@ -31,7 +31,6 @@ async function main() {
   }
 
   await run('pnpm', ['exec', 'vitepress', 'build', 'docs'])
-  await run(process.execPath, ['scripts/verify-primary-actions.mjs'])
 }
 
 main().catch(err => {

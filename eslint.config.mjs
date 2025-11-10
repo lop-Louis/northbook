@@ -16,7 +16,9 @@ export default [
       '**/docs/.vitepress/cache/**',
       '**/.vitepress/dist/**',
       '**/.vitepress/cache/**',
-      '**/coverage/**'
+      '**/coverage/**',
+      '**/public/v1/**',
+      '**/public/staging/**'
     ]
   },
 

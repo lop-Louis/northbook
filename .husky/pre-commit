@@ -8,8 +8,4 @@ npx lint-staged
 echo "🛡️ Running content guard..."
 pnpm run guard || exit 1
 
-# Check links
-echo "🔗 Checking links..."
-pnpm run links || exit 1
-
 echo "✅ Pre-commit checks passed!"

@@ -19,7 +19,7 @@ nav:
 
 # Policy → Action Pattern (Expenses)
 
-This three-line pattern turns finance policy into action without leaking specifics. <a href="#public-safe-example" data-primary-action>Apply the expense pattern</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+This three-line pattern turns finance policy into action without leaking specifics. [Apply the expense pattern](#public-safe-example) or [Browse the runbooks index](./runbooks/index).
 
 This pattern turns a policy reminder into action with three lines:
 

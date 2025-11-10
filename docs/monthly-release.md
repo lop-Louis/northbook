@@ -18,7 +18,7 @@ nav:
 
 # Monthly Release Rhythm
 
-This cadence keeps the public docs fresh each month and records what changed. <a href="#goals" data-primary-action>Run the prep checklist</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+This cadence keeps the public docs fresh each month and records what changed. [Run the prep checklist](#goals) or [Browse the runbooks index](./runbooks/index).
 
 ## Goals
 

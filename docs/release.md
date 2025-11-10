@@ -15,6 +15,6 @@ nav:
 
 # Releases
 
-Need a past release? this index jumps you straight to the changelog. <a href="#top" data-primary-action>Open the release notes</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Need a past release? this index jumps you straight to the changelog. [Open the release notes](#releases) or [Browse the runbooks index](./runbooks/index).
 
 - [v2025.11](/CHANGELOG/site-v2025.11)

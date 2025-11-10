@@ -1,6 +1,6 @@
 # Contributor Guide
 
-## Welcome!
+## Welcome
 
 Thank you for contributing to Northbook. Guidance over to-do. Northbook = guidance, not chores. This guide keeps principles and patterns in the open while chore-like runbooks stay elsewhere.
 
@@ -29,7 +29,7 @@ pnpm install
 pnpm run docs:dev
 ```
 
-Visit http://localhost:5173
+Visit <http://localhost:5173>
 
 ---
 

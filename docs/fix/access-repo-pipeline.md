@@ -25,7 +25,7 @@ nav_order: 20
 nav_label: Repo & pipeline access
 ---
 
-Unblock repo or pipeline access in five minutes, then escalate with a clean request. <a href="#quick-path" data-primary-action>Follow the quick checks</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate to Support IT</a>.
+Unblock repo or pipeline access in five minutes, then escalate with a clean request. [Follow the quick checks](#quick-path) or [Escalate to Support IT](/support-it/contacting-it).
 
 > **Works here:** prod · GitHub + Azure DevOps · Regions: MY, DK  
 > **Owner:** Platform Engineering (`/support-it/contacting-it`)

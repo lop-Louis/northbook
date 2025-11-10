@@ -14,7 +14,7 @@ nav:
 
 # Quick-Run
 
-Ship a docs change? Run this in under 10 minutes. <a href="#run-it" data-primary-action>Run the Quick-Run</a> or <a href="../labs/link-drift" data-secondary-action>Open the Proof Run</a>.
+Ship a docs change? Run this in under 10 minutes. [Run the Quick-Run](#run-it) or [Open the Proof Run](../labs/link-drift).
 
 ## Trigger
 

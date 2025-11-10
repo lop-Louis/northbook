@@ -25,7 +25,7 @@ nav_order: 30
 nav_label: Design system component
 ---
 
-Make a consistent call on whether to use, extend, or fork a DS component without re-litigating. <a href="#quick-path" data-primary-action>Walk the decision steps</a> or <a href="/playbook/handshake-contracts" data-secondary-action>Review the handshake contract pattern</a>.
+Make a consistent call on whether to use, extend, or fork a DS component without re-litigating. [Walk the decision steps](#quick-path) or [Review the handshake contract pattern](/playbook/handshake-contracts).
 
 > **Works here:** prod · Flos UI · Regions: MY, DK  
 > **Owner:** Design System Lead

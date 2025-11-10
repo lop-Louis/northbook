@@ -15,7 +15,7 @@ nav:
   - sidebar
 ---
 
-Resolve the highest-volume interrupts with a single click. <a href="#flows" data-primary-action>Pick the quick-check flow</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate straight to Support IT</a>.
+Resolve the highest-volume interrupts with a single click. [Pick the quick-check flow](#flows) or [Escalate straight to Support IT](/support-it/contacting-it).
 
 Each page sticks to the 10-minute path and ends with a ready-to-paste escalation packet.
 

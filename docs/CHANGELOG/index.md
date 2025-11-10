@@ -12,7 +12,7 @@ nav:
   - none
 ---
 
-Stay current on what shipped without reading every PR. <a href="#latest" data-primary-action>Open the latest release notes</a> or <a href="https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,question&title=%5BRelease%5D%20Question&body=Page:%20https://northbook.guide/CHANGELOG/" data-secondary-action>Ask about a release</a>.
+Stay current on what shipped without reading every PR. [Open the latest release notes](#latest) or [Ask about a release](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,question&title=%5BRelease%5D%20Question&body=Page:%20https://northbook.guide/CHANGELOG/).
 
 ## Latest
 

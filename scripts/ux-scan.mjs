@@ -6,8 +6,7 @@ const repoRoot = process.cwd()
 const roots = [path.join(repoRoot, 'docs'), path.join(repoRoot, 'runbooks')]
 const excludedDirs = new Set(['.git', 'node_modules', 'public', '.vitepress'])
 
-const PRIMARY_ANCHOR_REGEX = /<a\b[^>]*\bdata-primary-action\b[^>]*>/i
-const SECONDARY_ANCHOR_REGEX = /<a\b[^>]*\bdata-secondary-action\b[^>]*>/i
+const MARKDOWN_LINK_REGEX = /(?<!\!)\[([^\]]+)\]\(([^)\s]+(?:\s+[^)]*)?)\)/g
 
 function collectMarkdownFiles() {
   const files = []
@@ -87,22 +86,31 @@ function runScan() {
     if (data && data.layout === 'home') continue
 
     const intro = extractIntro(content)
-    const primaryMatch = PRIMARY_ANCHOR_REGEX.exec(intro)
-    const secondaryMatch = SECONDARY_ANCHOR_REGEX.exec(intro)
+    const linkMatches = []
+    MARKDOWN_LINK_REGEX.lastIndex = 0
+    let match
+    while ((match = MARKDOWN_LINK_REGEX.exec(intro)) !== null) {
+      linkMatches.push({ index: match.index, raw: match[0] })
+      if (linkMatches.length >= 2) break
+    }
 
     const missing = []
-    if (!primaryMatch) missing.push('primary action')
-    if (!secondaryMatch) missing.push('secondary action')
+    if (linkMatches.length < 1) missing.push('primary action')
+    if (linkMatches.length < 2) missing.push('secondary action')
 
     const rawFirstLine = firstContentLine(intro || '')
     const normalizedFirstLine = stripHtmlAndMd(rawFirstLine)
+    const trimmedFirst = rawFirstLine.trim().toLowerCase()
     const hasPlainspokenOpener =
-      normalizedFirstLine.length > 0 && !rawFirstLine.trim().toLowerCase().startsWith('<a ')
+      normalizedFirstLine.length > 0 &&
+      !trimmedFirst.startsWith('<a ') &&
+      !trimmedFirst.startsWith('[')
 
+    const firstLinkIndex = linkMatches[0]?.index ?? -1
     const introBeforePrimary =
-      primaryMatch && stripHtmlAndMd(intro.slice(0, primaryMatch.index)).length > 0
+      firstLinkIndex >= 0 && stripHtmlAndMd(intro.slice(0, firstLinkIndex)).length > 0
 
-    if (!hasPlainspokenOpener || (primaryMatch && !introBeforePrimary)) {
+    if (!hasPlainspokenOpener || (firstLinkIndex >= 0 && !introBeforePrimary)) {
       missing.push('plainspoken opener before CTA pair')
     }
 

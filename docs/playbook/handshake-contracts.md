@@ -15,7 +15,7 @@ nav:
 
 # Handshake Contracts
 
-Handshake contracts spell out how two groups promise to work together before policy catches up. <a href="#when-to-draft-one" data-primary-action>Draft your handshake contract</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Handshake contracts spell out how two groups promise to work together before policy catches up. [Draft your handshake contract](#when-to-draft-one) or [Browse the runbooks index](../runbooks/index).
 
 ## When to draft one
 

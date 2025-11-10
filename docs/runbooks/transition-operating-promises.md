@@ -17,7 +17,7 @@ nav:
 
 # Transition operating promises
 
-These templates keep transition approvals, escalations, and cadences explicit. <a href="#approvals-template" data-primary-action>Codify your operating promises</a> or <a href="./index" data-secondary-action>Browse the runbooks index</a>. Pair them with the [Handover RACI template](./handover-raci-template.md) so every role knows the service level they own during a transition.
+These templates keep transition approvals, escalations, and cadences explicit. [Codify your operating promises](#approvals-template) or [Browse the runbooks index](./index). Pair them with the [Handover RACI template](./handover-raci-template.md) so every role knows the service level they own during a transition.
 
 ## Approvals template
 

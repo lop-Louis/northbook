@@ -3,6 +3,7 @@
     "vue.volar",
     "yzhang.markdown-all-in-one",
     "davidanson.vscode-markdownlint",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "redhat.vscode-yaml"
   ]
 }

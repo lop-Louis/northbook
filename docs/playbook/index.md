@@ -16,7 +16,7 @@ nav:
   - sidebar
 ---
 
-Keep guidance consistent without adding chores. <a href="#playbook-pages" data-primary-action>Open the playbook page you need</a> or <a href="https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Playbook%20index&body=Page:%20https://northbook.guide/playbook/" data-secondary-action>Give feedback on the playbook</a>.
+Keep guidance consistent without adding chores. [Open the playbook page you need](#playbook-pages) or [Give feedback on the playbook](https://github.com/lop-louis/go-to-docs/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Playbook%20index&body=Page:%20https://northbook.guide/playbook/).
 
 These entries inherit the [content governance rules](/governance) so readers recognize layout, tone, and CTA placement at a glance.
 
