@@ -18,7 +18,7 @@ nav:
 
 # Answer Ledger Pattern
 
-Answer ledgers turn recurring questions into searchable, linkable answers. <a href="#what-it-is" data-primary-action>Stand up your ledger</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Answer ledgers turn recurring questions into searchable, linkable answers. [Stand up your ledger](#what-it-is) or [Browse the runbooks index](./runbooks/index).
 
 - **What**: Structured, searchable list of recurring questions with their current canonical answers.
 - **Why**: Saves time, reduces interruptions, and accelerates onboarding by turning chatter into linkable knowledge.

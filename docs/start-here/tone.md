@@ -14,7 +14,7 @@ nav:
 
 # Voice & Tone Guide
 
-Sounding like Northbook is deliberate, not accidental. <a href="#voice-pillars" data-primary-action>Use the voice and tone pillars</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Sounding like Northbook is deliberate, not accidental. [Use the voice and tone pillars](#voice-pillars) or [Browse the runbooks index](../runbooks/index).
 
 What: Shared language rules for anything public-facing—docs, release notes, support replies.
 Why: Keeps every channel tight, human, and on-brand so readers know it's us.
@@ -37,13 +37,13 @@ When: Use this before writing net-new content or auditing drafts from others.
 
 ## Word Choices
 
-**Do**
+### Do
 
 - Use present tense: "Guard passes" vs. "Guard will pass."
 - Swap adverbs for data: "Merge after two green builds" vs. "Merge carefully."
 - Prefer lists over long paragraphs when citing steps.
 
-**Avoid**
+### Avoid
 
 - Emojis in docs (save them for async chatter).
 - Hyped adjectives ("amazing", "incredible")—state proof instead.

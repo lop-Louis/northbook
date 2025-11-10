@@ -1,5 +1,7 @@
 node_modules
 dist
+public/v1/
+public/staging/
 docs/.vitepress/dist
 docs/.vitepress/cache
 .vitepress/dist

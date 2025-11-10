@@ -17,7 +17,7 @@ Back to [Releases](../release.md)
 
 # site-v2025.11 · Patch hygiene
 
-This changelog captures the mid-November hygiene release so you can skim what shipped. <a href="#added" data-primary-action>Scan the changes</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+This changelog captures the mid-November hygiene release so you can skim what shipped. [Scan the changes](#added) or [Browse the runbooks index](../runbooks/index).
 
 **Tag date:** Mid-November release window
 
@@ -27,6 +27,8 @@ This changelog captures the mid-November hygiene release so you can skim what sh
 - **Runbooks:** Handover RACI template, Transition operating promises, Shared metric visibility, State visibility map, and Accessibility Audit runbook now live with sanitized examples.
 - **CTA policy:** Anti-drift governance now requires inline primary + secondary CTA pairs per page; frontmatter `primary_action` removed in favor of body-level actions and Feedback.vue fallbacks.
 - **Tooling:** `scripts/frontmatter-lint.mjs` (with nav support), and `scripts/sync-navigation.mjs` shipped to keep frontmatter `nav` metadata, generated nav, and `.vitepress/config.ts` aligned.
+- **Governance traceability:** Added dedicated `contracts/` and `decisions/` directories. Logged the [Contracts directory decision](../decisions/contracts-directory.md) and published the [Northbook Operations Contract v1.0](../contracts/northbook-operations-contract-v1.md) with links back to this release and the State/Receipts surfaces.
+- **CTA guardrail:** Logged the draft [CTA guardrail alignment decision](../decisions/cta-guardrail-alignment.md) that pauses the markdown-only CTA scan in favor of the above-the-fold post-build check until new metadata automation lands.
 
 ## Updated
 

@@ -18,7 +18,7 @@ nav:
 
 # Anti-drift Content Governance
 
-Keep public docs anti-drift by following this policy. <a href="#scope" data-primary-action>Apply the rules</a> or <a href="./runbooks/index" data-secondary-action>Jump to the runbooks index</a>.
+Keep public docs anti-drift by following this policy. [Apply the rules](#scope) or [Jump to the runbooks index](./runbooks/index).
 
 > Public-safe content only. Internal specifics live elsewhere. This page is the Anti-drift content governance playbook; project-level governance (RACI, automation owners, SLOs) lives in [`GOVERNANCE.md`](https://github.com/lop-Louis/go-to-docs/blob/main/GOVERNANCE.md).
 
@@ -103,7 +103,7 @@ Band A restricts pages to neutral, non-sensitive patterns:
 
 ### Forbidden Patterns
 
-**Never publish:**
+### Never publish:
 
 - Internal product / system names, proprietary URLs, screenshots
 - Ticket IDs (replace with `TICKET-ID` when teaching patterns)

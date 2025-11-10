@@ -14,7 +14,7 @@ nav:
 
 # UI Baseline
 
-Consistent UI happens when every team uses the same tokens and states. <a href="#layout-rules" data-primary-action>Apply the specs</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Consistent UI happens when every team uses the same tokens and states. [Apply the specs](#layout-rules) or [Browse the runbooks index](../runbooks/index).
 
 What: Canonical specs for spacing, typography, and states across product surfaces.
 Why: Prevents drift between teams and keeps polished UI without pixel-policing.

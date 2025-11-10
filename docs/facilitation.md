@@ -18,7 +18,7 @@ nav:
 
 # Facilitation Techniques
 
-Small, plug-and-play patterns keep collaborative sessions focused and inclusive. <a href="#silent-brainstorming" data-primary-action>Pick a facilitation pattern</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Small, plug-and-play patterns keep collaborative sessions focused and inclusive. [Pick a facilitation pattern](#silent-brainstorming) or [Browse the runbooks index](./runbooks/index).
 
 - **Why**: Prevents drift, balances voices, and converts meetings into clear outcomes instead of vague discussion.
 - **When**: Kickoffs, retros, prioritization, brainstorming, or anytime alignment feels slow or uneven.

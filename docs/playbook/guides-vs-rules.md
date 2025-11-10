@@ -14,7 +14,7 @@ nav:
 
 # Guides ≠ Rules
 
-Guides suggest a path; rules mandate it—labeling them cleanly avoids rework and frustration. <a href="#spot-the-difference" data-primary-action>Classify your practice</a> or <a href="../runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+Guides suggest a path; rules mandate it—labeling them cleanly avoids rework and frustration. [Classify your practice](#spot-the-difference) or [Browse the runbooks index](../runbooks/index).
 
 ## Spot the difference
 

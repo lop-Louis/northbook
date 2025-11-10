@@ -18,7 +18,7 @@ nav:
 
 # Accessibility Quick Wins
 
-These quick wins catch the bulk of accessibility bugs before you ship. <a href="#keyboard-navigation" data-primary-action>Run the quick checks</a> or <a href="./runbooks/index" data-secondary-action>Browse the runbooks index</a>.
+These quick wins catch the bulk of accessibility bugs before you ship. [Run the quick checks](#keyboard-navigation) or [Browse the runbooks index](./runbooks/index).
 
 ## Keyboard navigation
 

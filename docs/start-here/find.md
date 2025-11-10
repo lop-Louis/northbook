@@ -17,7 +17,7 @@ nav:
 
 # Wayfinding map
 
-You shouldn’t fight the site to find work. <a href="#routes" data-primary-action>Pick the fastest route</a> or <a href="../runbooks/index" data-secondary-action>Jump to the runbooks</a>.
+You shouldn’t fight the site to find work. [Pick the fastest route](#routes) or [Jump to the runbooks](../runbooks/index).
 
 ## First three clicks
 

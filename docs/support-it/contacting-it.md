@@ -20,10 +20,10 @@ nav:
   - none
 ---
 
-Escalate stubborn IT issues with a clean packet so the liaison can act fast. <a href="#prep-the-packet" data-primary-action>Prep the escalation packet</a> or <a href="#contact-options" data-secondary-action>Pick a contact channel</a>.
+Escalate stubborn IT issues with a clean packet so the liaison can act fast. [Prep the escalation packet](#prep-the-packet) or [Pick a contact channel](#contact-options).
 
 > **Works here:** staging + prod · Teams + ServiceNow · Regions: MY, DK  
-> **Owner:** Support IT liaison (support-it@northbook.guide)
+> **Owner:** Support IT liaison (<support-it@northbook.guide>)
 
 ## Prep the packet
 

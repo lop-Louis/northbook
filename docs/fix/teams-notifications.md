@@ -25,7 +25,7 @@ nav_order: 10
 nav_label: Teams notifications check
 ---
 
-Keep Teams notifications reliable with a 10-minute check path before involving IT. <a href="#quick-path-3-7-checks" data-primary-action>Run the quick checks</a> or <a href="/support-it/contacting-it" data-secondary-action>Escalate to Support IT</a>.
+Keep Teams notifications reliable with a 10-minute check path before involving IT. [Run the quick checks](#quick-path-37-checks) or [Escalate to Support IT](../support-it/contacting-it).
 
 > **Works here:** prod · Microsoft Teams desktop/web · Regions: MY, DK  
 > **Owner:** Support IT liaison (`/support-it/contacting-it`)

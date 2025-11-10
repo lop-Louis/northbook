@@ -17,7 +17,7 @@ nav:
 
 # North Star & Guardrails
 
-Make the work predictable. Protect the North Star. Ship small, prove it, and keep receipts. <a href="#why--the-reasoning" data-primary-action>See the reasoning</a> or <a href="#philosophy" data-secondary-action>Read the philosophy</a>.
+Make the work predictable. Protect the North Star. Ship small, prove it, and keep receipts. [See the reasoning](#why-the-reasoning) or [Read the philosophy](#philosophy).
 
 ## Executive summary
 
@@ -26,8 +26,8 @@ We align on a clear **North Star**: a visitor reaches the right doc and a runnab
 ## Watch the brief {#watch-the-brief}
 
 <video controls width="100%" style="max-width: 800px; margin: 1rem 0;">
-  <source src="/North_Star_&_Guardrails.mp4" type="video/mp4">
-  Your browser does not support the video tag. <a href="/North_Star_&_Guardrails.mp4" download>Download the walkthrough video</a>.
+  <source src="../public/North_Star_&_Guardrails.mp4" type="video/mp4">
+  Your browser does not support the video tag. [Download the walkthrough video](/North_Star_&_Guardrails.mp4).
 </video>
 
 _This walkthrough explains the North Star, guardrails, roles, and rhythm in under 7 minutes._
@@ -52,7 +52,7 @@ This is the canonical outcome. Replace the numbers only via a decision entry.
 
 A small set of invariants that protect the North Star and keep delivery predictable. All guardrails are **overridable** with a logged exception that includes owner, reason, expiry, rollback plan, and a measurable stop rule.
 
-**Core invariants:**
+### Core invariants:
 
 1. **Default deny outside the guardrails** — If a change is not covered, it is out of scope. The only path back in is a logged exception.
 2. **Public Band-A content only** — No sensitive or internal-only information.
@@ -61,14 +61,14 @@ A small set of invariants that protect the North Star and keep delivery predicta
 5. **One owner and date on every change** — Clear accountability.
 6. **Sanitize for public use before publish** — Privacy and safety first.
 
-**Page requirements (UI Delivery):**
+### Page requirements (UI Delivery):
 
 - Plain opener plus two actions above the first section.
 - Exit metric sentence visible on page.
 - Links to State and Receipts visible.
 - Band and owner shown in frontmatter or header.
 
-**Testing defaults:**
+### Testing defaults:
 
 - Runnable in 10 minutes.
 - Contracts present when shared or risky.
@@ -76,7 +76,7 @@ A small set of invariants that protect the North Star and keep delivery predicta
 
 ### Roles
 
-**Seams and subcontracts:**
+### Seams and subcontracts:
 
 - **UX Research & Content Design** — Problem discovery, hypothesis framing, IA, content design, and quick validation. Ensures information scent is obvious.
 - **UI Delivery** — Create or change pages and components. Hands acceptance checklists to Tests.
@@ -84,12 +84,12 @@ A small set of invariants that protect the North Star and keep delivery predicta
 - **Governance and Decisions** — Keep scope, decisions, exceptions, state, and receipts public and current.
 - **Automation and CI** — Automate checks, gate merges, post receipts.
 
-**Lanes within roles:**
+### Lanes within roles:
 
 - **Owner** — Approve scope, decisions, exceptions, and final publish.
 - **Operator** — Draft content, run checks, post receipts, flag expiries.
 
-**Stewards:**
+### Stewards:
 
 - **Scope Steward** — Validates guardrail mapping, runs Scope Gate.
 - **Signal Steward** — Maintains signal registry, defines queries, checks freshness.
@@ -101,18 +101,18 @@ A small set of invariants that protect the North Star and keep delivery predicta
 
 **Baseline window:** Last 14 days (site analytics and change history)
 
-**Per change:**
+### Per change:
 
 - Guardrail checks run automatically.
 - Exceptions logged with owner, reason, expiry, rollback, and stop rule.
 
-**Change control:**
+### Change control:
 
 - Single bet per cycle. Stop if receipts are flat or negative beyond the stop rule.
 - Use "decision" entries for scope or metric changes.
 - Pilot first for wide changes.
 
-**Governance:**
+### Governance:
 
 - Monthly release tagging on the first business day.
 - State page updated within 30 days.
@@ -120,14 +120,14 @@ A small set of invariants that protect the North Star and keep delivery predicta
 
 ### Visibility
 
-**Interfaces between seams:**
+### Interfaces between seams:
 
 - **UI → Tests** — Supplies acceptance checklist.
 - **UI → Governance** — Supplies guardrail mapping and decision link.
 - **Tests → Automation** — Supplies pass–fail signals.
 - **Automation → Governance** — Posts receipts and state.
 
-**Traceability:**
+### Traceability:
 
 Change → Decision → Guardrail → Page → Signal → Receipt
 
@@ -136,7 +136,7 @@ Change → Decision → Guardrail → Page → Signal → Receipt
 - Receipts reference the signal ids and the release tag.
 - Coverage ≥ 90% of merged changes in the last cycle.
 
-**Public visibility:**
+### Public visibility:
 
 Each change keeps an owner, one-line why, exit metric, and current state label. State changes stay public so people can see progress without meetings.
 
@@ -173,34 +173,34 @@ We set a level per work area, adjust as context shifts, and match our style acco
 
 ### Guardrails v1 — contract enforcement
 
-**Scope gate:**
+### Scope gate:
 
 1. **No mapping, no merge** — Every change maps to a guardrail or carries a logged exception.
 2. **Metric changes require decision entry** — Documented and traceable.
 3. **Band and owner visible** — Clear accountability.
 4. **Single bet per cycle** — Focus prevents thrash.
 
-**UI delivery checks:**
+### UI delivery checks:
 
 1. Plain opener plus two actions above first section.
 2. Exit metric sentence visible on page.
 3. State and Receipts links visible.
 4. Band and owner in frontmatter or header.
 
-**Test defaults:**
+### Test defaults:
 
 1. Runnable in 10 minutes for annex labs.
 2. Contracts present when shared or risky.
 3. One-line rollout and stop rule documented.
 
-**Governance requirements:**
+### Governance requirements:
 
 1. Decision exists for any scope or metric change.
 2. All exceptions have not expired.
 3. State page updated within last 30 days.
 4. Release tag present for current month.
 
-**Automation invariants:**
+### Automation invariants:
 
 1. Local-first; hosted only if saves ≥ 2 hours per week within 2 weeks.
 2. No secrets in public repos.
@@ -215,14 +215,14 @@ We set a level per work area, adjust as context shifts, and match our style acco
 - **Quality** — Lab pass rate and broken link count.
 - **Credibility** — State page freshness and exceptions resolved on time.
 
-**Signal Registry:**
+### Signal Registry:
 
 - ≤ 8 active signals maximum.
 - Each signal has an owner and refresh SLA.
 - North Star has one leading indicator and one lagging receipt.
 - Privacy and public safety sanitized.
 
-**Baseline window and source:**
+### Baseline window and source:
 
 - Last 14 days
 - Site analytics and change history
@@ -230,7 +230,7 @@ We set a level per work area, adjust as context shifts, and match our style acco
 
 ### Stop rule and backup plan
 
-**Primary stop rule:**
+### Primary stop rule:
 
 If the North Star target misses for two cycles and exceptions increase, pause new features and run a 7-day tighten pass focused on:
 
@@ -238,7 +238,7 @@ If the North Star target misses for two cycles and exceptions increase, pause ne
 - Acceptance tests
 - Automation noise reduction
 
-**Freeze protocol triggers:**
+### Freeze protocol triggers:
 
 - Time-to-answer worsens by ≥ 10% for two consecutive days
 - More than three expired exceptions
@@ -246,7 +246,7 @@ If the North Star target misses for two cycles and exceptions increase, pause ne
 - Test flakiness > 5% over a week
 - Security or privacy breach indicators
 
-**Freeze steps:**
+### Freeze steps:
 
 1. Announce freeze with cause, owner, start time.
 2. CI sets merge block except critical fixes and exception work.
@@ -254,14 +254,14 @@ If the North Star target misses for two cycles and exceptions increase, pause ne
 4. Fix, verify against acceptance checks, and post receipts.
 5. Close with exit criteria met and stop rule noted.
 
-**Exit criteria:**
+### Exit criteria:
 
 - North Star back to baseline window
 - Exceptions reduced to ≤ 1 and none expired
 - Zero critical link failures
 - Flakiness back under 5%
 
-**Backup:**
+### Backup:
 
 If a freeze exceeds 7 calendar days without measurable improvement, escalate, cut scope by 30%, and re-run only the smallest slice with contracts visible.
 
@@ -276,41 +276,41 @@ If a freeze exceeds 7 calendar days without measurable improvement, escalate, cu
 
 ## FAQ
 
-**Is this more bureaucracy?**
+### Is this more bureaucracy?
 
 No. If a guardrail adds more than a minute for no clear benefit, we strip or relax it. Contracts are light: runnable in 10 minutes, one owner per change, receipts posted automatically.
 
-**Does automation block work?**
+### Does automation block work?
 
 Only when a check catches an issue we agreed matters. Anyone can override with a logged exception (owner, reason, expiry, rollback, stop rule). Pipelines finish within 10 minutes.
 
-**What if we need different rules?**
+### What if we need different rules?
 
 Guardrails apply to this operation. If scope changes, log a decision entry. Exceptions expire automatically—no entry, no work.
 
-**How will I see progress?**
+### How will I see progress?
 
 Each page shows owner, band, exit metric. State page updates within 30 days. Receipts posted per 14-day cycle: pages touched, time-to-answer, lab pass rate, broken links, state freshness, exceptions resolved.
 
-**What happens during a freeze?**
+### What happens during a freeze?
 
 CI blocks merges except critical fixes and exception work. Daily status posted. Exit when North Star returns to baseline, exceptions ≤ 1, zero critical link failures, flakiness < 5%. If freeze exceeds 7 days, escalate and cut scope by 30%.
 
 ## Appendix A — Example entries
 
-**North Star:**
+### North Star:
 
 _A visitor reaches the right doc and a runnable next action in under 60 seconds, for at least 80% of sessions across two consecutive weeks._
 
-**Exit metric example:**
+### Exit metric example:
 
 _Time-to-answer median under 60 seconds for 80% of sessions across last 14 days._
 
-**Guardrail mapping example:**
+### Guardrail mapping example:
 
 _Change #123 maps to UI Delivery guardrail 2 (exit metric visible) and links to decision entry homepage-refresh-nov-2024._
 
-**Exception entry example:**
+### Exception entry example:
 
 ```
 Exception ID: homepage-video-test
@@ -321,7 +321,7 @@ Rollback: Remove video embed and revert to static screenshot
 Stop rule: If time-to-answer increases by >5% or page load exceeds 3s for 48 hours
 ```
 
-**Receipt snapshot example:**
+### Receipt snapshot example:
 
 ```
 Cycle: Oct 25 to Nov 8, 2024
@@ -332,7 +332,7 @@ Credibility: State page updated Nov 7, exceptions resolved 3/3
 
 ## Appendix B — Minimal artifacts
 
-**Required per subcontract:**
+### Required per subcontract:
 
 - **UX Research & Content Design** — Hypothesis notes, content briefs, task protocols.
 - **UI Delivery** — Pages with opener + 2 CTAs, exit metric sentence, State/Receipts links, acceptance checklists.
@@ -340,7 +340,7 @@ Credibility: State page updated Nov 7, exceptions resolved 3/3
 - **Governance and Decisions** — Decision entries, exceptions list with expiries, monthly release tags, State page.
 - **Automation and CI** — Pass–fail status, receipts artifacts, link health reports.
 
-**Signal Registry:**
+### Signal Registry: — Appendix B — Minimal artifacts
 
 - id, name, description
 - source and query reference
@@ -350,7 +350,7 @@ Credibility: State page updated Nov 7, exceptions resolved 3/3
 - thresholds and buckets
 - kill_criteria and notes
 
-**Traceability Map:**
+### Traceability Map:
 
 - Machine-readable map: Change → Decision → Guardrail → Page → Signal → Receipt
 - Human page showing edges and orphans

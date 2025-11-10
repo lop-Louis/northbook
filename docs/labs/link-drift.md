@@ -8,7 +8,7 @@ status: live
 sidebar: false
 ---
 
-Find the answer. Use it now. <a href="../ops/quick-run" data-primary-action>Run the Quick-Run</a> or <a href="../labs/link-drift" data-secondary-action>Open the Proof Run</a>.
+Find the answer. Use it now. [Run the Quick-Run](../ops/quick-run) or [Open the Proof Run](../labs/link-drift).
 
 ## Goal
 
@@ -24,13 +24,7 @@ pnpm docs:build
 
 Expect "Build complete."
 
-2. Check links
-
-```bash
-node scripts/check-links.mjs
-```
-
-Expect "0 broken links."
+2. Check links — already covered by the markdown lint + CTA guardrail. If you need extra assurance, run `pnpm run lint:md` (same command Quick-Run already calls).
 
 ## Pass/Fail
 
