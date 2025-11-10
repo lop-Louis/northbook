@@ -26,6 +26,7 @@
     "changelog:preview": "node scripts/changelog.mjs preview",
     "changelog:finalize": "node scripts/changelog.mjs finalize",
     "changelog:add": "node scripts/changelog.mjs add",
+    "analytics:snapshot": "node scripts/cloudflare-analytics.mjs",
     "test": "pnpm run test:unit && pnpm run test:components",
     "test:unit": "node --test tests/*.test.mjs",
     "test:components": "vitest run tests/components tests/accessibility",

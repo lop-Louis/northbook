@@ -410,6 +410,8 @@ Canonical list of signals we compute and display. Small, stable set that proves 
 - Automation computes and posts receipts
 - Governance curates and sunsets
 - UI consumes for state panels
+- Cloudflare analytics export → [`scripts/cloudflare-analytics.mjs`](../../scripts/cloudflare-analytics.mjs) → [`docs/runbooks/cloudflare-analytics.md`](../runbooks/cloudflare-analytics.md)
+- Registry stays public at [`docs/runbooks/signal-registry.md`](../runbooks/signal-registry.md)
 
 ### Rollout — Subcontract 6: Signal Registry
 

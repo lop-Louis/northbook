@@ -16,9 +16,11 @@ Find the answer. Use it now. [Run the Quick-Run](../ops/quick-run) or [Open the 
 
 ### 2025-11
 
-**Adoption** — Proof Run passed on link drift in under 10 minutes.  
-**Quality** — CTA yellows 39 → 0 after auto-fix.  
-**Credibility** — Release tag visible in footer for this build.
+**Adoption** — 3 pages touched / 1,740 views / median time-to-answer 51 s (Cloudflare analytics, 14-day window).  
+**Quality** — Lab pass rate 1.00, broken links 0 (Quick-Run + Link Drift).  
+**Credibility** — State page refreshed 12 days ago, 1 exception open / 2 resolved on time.
+
+> Source: [`reports/cloudflare-snapshot.json`](../../reports/cloudflare-snapshot.json) generated via `pnpm run analytics:snapshot`.
 
 ## Related references
 
