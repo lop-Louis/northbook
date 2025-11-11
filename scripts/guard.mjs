@@ -188,11 +188,12 @@ function checkFile(p) {
   while ((receiptsMatch = receiptsLinkPattern.exec(content)) !== null) {
     const link = receiptsMatch[1]
     const normalized = link.split('#')[0]
-    const isReceiptsPath =
-      normalized.startsWith('/signals/receipts/') || normalized.startsWith('../signals/receipts/')
+    const receiptsRegex = /^(\.\.\/|\/)signals\/receipts\/v\d{4}\.\d{2}-[a-z0-9-]+\.md$/i
 
-    if (!isReceiptsPath) {
-      red.push(`${p}: Receipts link "${link}" must point to /signals/receipts/<tag>.md (blocking)`)
+    if (!receiptsRegex.test(normalized)) {
+      red.push(
+        `${p}: Receipts link "${link}" must match /signals/receipts/vYYYY.MM-<seam>.md (blocking)`
+      )
       checkCount++
       continue
     }
@@ -214,6 +215,13 @@ function checkFile(p) {
   if (data) {
     checkCtaLabel(p, 'primary', data.cta_primary_label)
     checkCtaLabel(p, 'secondary', data.cta_secondary_label)
+
+    const segments = p.split(path.sep)
+    const inDrafts = segments.includes('drafts')
+    if (inDrafts && data.search !== false) {
+      red.push(`${p}: drafts pages must set frontmatter search: false (blocking)`)
+      checkCount++
+    }
   }
 }
 

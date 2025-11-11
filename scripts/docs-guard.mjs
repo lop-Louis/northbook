@@ -42,6 +42,14 @@ for (const step of steps) {
   runStep(step)
 }
 
+const fixtureResult = spawnSync('node', ['scripts/fixtures-guard.mjs'], {
+  stdio: 'inherit'
+})
+if (fixtureResult.status !== 0) {
+  console.error('Fixture guard checks failed.')
+  process.exit(fixtureResult.status ?? 1)
+}
+
 const sitemapFiles = ['public/sitemap.xml', 'public/feed.rss', 'public/feed.xml']
 for (const file of sitemapFiles) {
   const abs = path.join(process.cwd(), file)

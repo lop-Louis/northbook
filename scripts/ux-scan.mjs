@@ -3,10 +3,26 @@ import path from 'node:path'
 import matter from 'gray-matter'
 
 const repoRoot = process.cwd()
-const roots = [path.join(repoRoot, 'docs'), path.join(repoRoot, 'runbooks')]
+const docsRoot = process.env.DOCS
+  ? path.resolve(repoRoot, process.env.DOCS)
+  : path.join(repoRoot, 'docs')
+const runbooksRoot = process.env.RUNBOOKS
+  ? path.resolve(repoRoot, process.env.RUNBOOKS)
+  : path.join(repoRoot, 'runbooks')
+const roots = [docsRoot, runbooksRoot]
 const excludedDirs = new Set(['.git', 'node_modules', 'public', '.vitepress'])
 
 const MARKDOWN_LINK_REGEX = /(?<!\!)\[([^\]]+)\]\(([^)\s]+(?:\s+[^)]*)?)\)/g
+const toneLintPath = path.join(repoRoot, 'ops', 'tone_lint.json')
+let ctaBanlist = []
+if (fs.existsSync(toneLintPath)) {
+  try {
+    const toneConfig = JSON.parse(fs.readFileSync(toneLintPath, 'utf8'))
+    ctaBanlist = (toneConfig.banlist_terms || []).map(term => term.toLowerCase().trim())
+  } catch (error) {
+    console.warn(`Warning: unable to parse ${toneLintPath}: ${error.message}`)
+  }
+}
 
 function collectMarkdownFiles() {
   const files = []
@@ -113,6 +129,19 @@ function runScan() {
 
     if (!hasPlainspokenOpener || (firstLinkIndex >= 0 && !introBeforePrimary)) {
       missing.push('plainspoken opener before CTA pair')
+    }
+
+    if (ctaBanlist.length) {
+      const labels = [data?.cta_primary_label, data?.cta_secondary_label]
+      for (const label of labels) {
+        if (!label || typeof label !== 'string') continue
+        const lower = label.toLowerCase()
+        const bannedHit = ctaBanlist.find(term => term && lower.includes(term))
+        if (bannedHit) {
+          missing.push(`CTA label "${label}" contains banned term "${bannedHit}"`)
+          break
+        }
+      }
     }
 
     if (missing.length) {

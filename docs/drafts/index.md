@@ -16,6 +16,7 @@ decision_link: /decisions/dec-2025-11-proof-or-private.md
 date: '2025-11-11'
 nav:
   - none
+search: false
 ---
 
 # Drafts holding pen
