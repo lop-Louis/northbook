@@ -45,9 +45,9 @@ const SIDEBAR_BLUEPRINT = [
     text: 'Operate',
     collapsed: false,
     items: [
+      { text: 'North Star & guardrails', link: '/operate/north-star-guardrails' },
       { text: 'Versioning & releases', link: '/operate/versioning-and-releases/' },
       { text: 'Sanitization checklist', link: '/operate/sanitization' },
-      { text: 'Link integrity', link: '/operate/link-integrity' },
       { text: 'Verify-in-10 guide', link: '/operate/verify-in-10' },
       { text: 'Decision spine', link: '/operate/decision-spine' },
       { text: 'Playbook canon', link: '/operate/' },

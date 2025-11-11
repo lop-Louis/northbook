@@ -49,7 +49,6 @@ Use [Start Here](../start-here/) for orientation copy; keep this page focused on
 
 - `/legacy` renders the [published banner](../../ops/legacy_banner.md) and points visitors to `/start-here/`.
 - Every moved path lands in [`ops/redirect_ledger.csv`](../../ops/redirect_ledger.csv) with lower-case, single-hop entries.
-- Run [Link Integrity](../operate/link-integrity.md) plus Link Drift before shipping nav changes; 404s stop the freeze exit.
 
 ## Receipts & monitoring
 

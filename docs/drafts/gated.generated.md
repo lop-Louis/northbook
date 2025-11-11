@@ -62,4 +62,4 @@ Exit metric: gated pages either ship or leave the repo within 30 days.
 - `/support/flag-staging` — opener missing exit metric or two CTAs
 - `/support/vwo-bloomreach-sanity` — opener missing exit metric or two CTAs
 
-_Last updated: 2025-11-11T08:36:20.646Z_
+_Last updated: 2025-11-11T09:43:23.393Z_

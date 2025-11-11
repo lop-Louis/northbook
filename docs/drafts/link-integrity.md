@@ -22,6 +22,7 @@ leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
 decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
+search: false
 ---
 
 # Link integrity runbook

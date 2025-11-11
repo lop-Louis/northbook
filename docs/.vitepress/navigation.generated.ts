@@ -57,16 +57,16 @@ export const generatedSidebar = [
     collapsed: false,
     items: [
       {
+        text: 'North Star & guardrails',
+        link: '/operate/north-star-guardrails'
+      },
+      {
         text: 'Versioning & releases',
         link: '/operate/versioning-and-releases/'
       },
       {
         text: 'Sanitization checklist',
         link: '/operate/sanitization'
-      },
-      {
-        text: 'Link integrity',
-        link: '/operate/link-integrity'
       },
       {
         text: 'Verify-in-10 guide',
