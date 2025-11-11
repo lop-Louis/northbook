@@ -20,6 +20,7 @@ date: '2025-11-11'
 
 Keep freezes transparent and exceptions short-lived.
 [Copy the exception template](../../ops/templates/exeption_template.md) or [append the ledger entry](./_exceptions_ledger.csv).
+File an L3 override? Gated instructions live in `/ops/templates/exeption_template.md` and must cite owner, expiry (<=30 days), and exit criteria before merge.
 
 This log summarizes public exceptions tied to the governance seam. Each entry must include owner, scope, expiry (<= 30 days), trigger, exit criteria, and a link to the private ledger (`_exceptions_ledger.csv`). Use the template in `ops/templates/exeption_template.md` when filing a new record.
 
