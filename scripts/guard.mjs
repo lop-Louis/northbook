@@ -183,6 +183,34 @@ function checkFile(p) {
     checkCount++
   }
 
+  const receiptsLinkPattern = /\[See the receipts\]\(([^)]+)\)/gi
+  let receiptsMatch
+  while ((receiptsMatch = receiptsLinkPattern.exec(content)) !== null) {
+    const link = receiptsMatch[1]
+    const normalized = link.split('#')[0]
+    const isReceiptsPath =
+      normalized.startsWith('/signals/receipts/') || normalized.startsWith('../signals/receipts/')
+
+    if (!isReceiptsPath) {
+      red.push(`${p}: Receipts link "${link}" must point to /signals/receipts/<tag>.md (blocking)`)
+      checkCount++
+      continue
+    }
+
+    if (!normalized.startsWith('http')) {
+      let target
+      if (normalized.startsWith('/')) {
+        target = path.join(process.cwd(), normalized.replace(/^\//, ''))
+      } else {
+        target = path.resolve(path.dirname(p), normalized)
+      }
+      if (!fs.existsSync(target)) {
+        red.push(`${p}: Receipts link target "${normalized}" not found on disk (blocking)`)
+        checkCount++
+      }
+    }
+  }
+
   if (data) {
     checkCtaLabel(p, 'primary', data.cta_primary_label)
     checkCtaLabel(p, 'secondary', data.cta_secondary_label)

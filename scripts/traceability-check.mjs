@@ -92,6 +92,17 @@ function resolveDecisionLink(pagePath, linkValue) {
 
 const pages = walkDocs(docsDir, [])
 const errors = []
+const decisionCache = new Map()
+
+function getDecisionMeta(targetPath) {
+  if (decisionCache.has(targetPath)) return decisionCache.get(targetPath)
+  if (!fs.existsSync(targetPath)) return null
+  const raw = fs.readFileSync(targetPath, 'utf8')
+  const parsed = matter(raw)
+  const data = parsed.data || {}
+  decisionCache.set(targetPath, data)
+  return data
+}
 
 for (const page of pages) {
   const relPath = path.relative(repoRoot, page)
@@ -110,6 +121,18 @@ for (const page of pages) {
       errors.push(`${relPath}: decision_link "${decisionLink}" cannot be resolved`)
     } else if (!resolved.startsWith('http') && !fs.existsSync(resolved)) {
       errors.push(`${relPath}: decision link target "${decisionLink}" not found on disk`)
+    } else if (!resolved.startsWith('http')) {
+      const decisionMeta = getDecisionMeta(resolved)
+      const decisionRel = path.relative(repoRoot, resolved)
+      if (!decisionMeta || !decisionMeta.decision_id) {
+        errors.push(
+          `${relPath}: decision link target "${decisionRel}" missing decision_id in frontmatter`
+        )
+      } else if (!/^dec-[a-z0-9-]+$/.test(decisionMeta.decision_id)) {
+        errors.push(
+          `${relPath}: decision link target "${decisionRel}" has invalid decision_id "${decisionMeta.decision_id}"`
+        )
+      }
     }
   }
 
