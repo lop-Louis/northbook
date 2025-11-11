@@ -22,13 +22,13 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
 ---
 
 # Policy → Action Pattern (Expenses)
 
-This three-line pattern turns finance policy into action without leaking specifics. [Apply the expense pattern](#public-safe-example) or [Browse the runbooks index](./operate/runbooks-index).
+This three-line pattern turns finance policy into action without leaking specifics. [Apply the expense pattern](#public-safe-example) or [Browse the runbooks index](./index).
 
 This pattern turns a policy reminder into action with three lines:
 
@@ -63,6 +63,6 @@ This pattern turns a policy reminder into action with three lines:
 
 ## Related references
 
-- [Start overview](./navigate/index.md) — Direct readers here when they need the why before the pattern.
-- [Transition operating promises](./operate/transition-operating-promises.md) — Use this when expenses are part of a handover contract.
-- [State ledger](./navigate/state-ledgerindex.md) — Log when you update this pattern so the change shows up in the release notes.
+- [Start overview](../navigate/index) — Direct readers here when they need the why before the pattern.
+- [Transition operating promises](./transition-operating-promises) — Use this when expenses are part of a handover contract.
+- [State ledger](../navigate/state-ledger) — Log when you update this pattern so the change shows up in the release notes.

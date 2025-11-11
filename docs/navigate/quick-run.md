@@ -17,7 +17,7 @@ cta_primary_label: Try the Navigate path
 cta_secondary_label: See example route
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
 ---
 
@@ -59,6 +59,5 @@ If you spend more than 10 minutes chasing failures or the guard stays red after 
 
 ## Related references
 
-- [Link Integrity runbook](.../operate/link-integrity.md) — Full remediation path when Quick-Run isn’t enough.
 - [Fast support index](../support/) — Interrupt flows for anything that blocks shipping.
 - [State ledger](../navigate/state-ledger.md) — Update the release entry when logging a change.

@@ -33,7 +33,7 @@ cta_primary_label: Choose a fix flow
 cta_secondary_label: See example exception
 leading_metric: m-time-to-freeze
 lagging_metric: m-time-to-recovery
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
 ---
 
@@ -64,6 +64,6 @@ Escalate stubborn IT issues with a clean packet so the liaison can act fast. [Pr
 | P3       | Single user interruption   | 4 business hours | 2 business days   |
 | P4       | Informational              | 1 business day   | 5 business days   |
 
-Missed SLA? Reply to the ticket, @mention the liaison again, then escalate via the `/escalations` contact listed in [/governance](/governance).
+Missed SLA? Reply to the ticket, @mention the liaison again, then escalate via the `/escalations` contact listed in [Contact it](../support-it/contacting-it.md).
 
 **Handoff** → Quick paths usually live under [/runbooks](../operate/runbooks-index.md); link that context when you escalate.

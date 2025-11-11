@@ -17,13 +17,13 @@ cta_primary_label: Try the Navigate path
 cta_secondary_label: See example route
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
 ---
 
 # Voice & Tone Guide
 
-Sounding like Northbook is deliberate, not accidental. [Use the voice and tone pillars](#voice-pillars) or [Browse the runbooks index](.../operate/runbooks-index).
+Sounding like Northbook is deliberate, not accidental. [Use the voice and tone pillars](#voice-pillars) or [Browse the runbooks index](../operate/index).
 
 ## Guardrail ID gr-101 — narrator tone guide
 
@@ -65,4 +65,4 @@ When: Use this before writing net-new content or auditing drafts from others.
 - Hyped adjectives ("amazing", "incredible")—state proof instead.
 - Passive constructions that hide ownership.
 
-Pair this with [Sanitization](../sanitization) and [Decision Spine](../decision-spine) to keep content actionable.
+Pair this with [Sanitization](../operate/sanitization) and [Decision Spine](../operate/decision-spine) to keep content actionable.

@@ -21,13 +21,13 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-04'
 ---
 
 # Facilitation Techniques
 
-Small, plug-and-play patterns keep collaborative sessions focused and inclusive. [Pick a facilitation pattern](#silent-brainstorming) or [Browse the runbooks index](./operate/runbooks-index).
+Small, plug-and-play patterns keep collaborative sessions focused and inclusive. [Pick a facilitation pattern](#silent-brainstorming) or [Browse the runbooks index](./index).
 
 - **Why**: Prevents drift, balances voices, and converts meetings into clear outcomes instead of vague discussion.
 - **When**: Kickoffs, retros, prioritization, brainstorming, or anytime alignment feels slow or uneven.
@@ -125,6 +125,6 @@ See also: [Decision Spine](./decision-spine) for structuring decision outcomes
 
 ## Related references
 
-- [Community meeting pack](./operate/community-pack.md) — Use this agenda template when you host recurring sessions.
-- [Transition operating promises](./operate/transition-operating-promises.md) — Document escalations if facilitated meetings support a handover.
-- [Wayfinding shortcuts](./navigate/find.md) — Direct participants to the right doc mid-session without derailing facilitation.
+- [Community meeting pack](./community-pack) — Use this agenda template when you host recurring sessions.
+- [Transition operating promises](./transition-operating-promises) — Document escalations if facilitated meetings support a handover.
+- [Wayfinding shortcuts](../navigate/find) — Direct participants to the right doc mid-session without derailing facilitation.

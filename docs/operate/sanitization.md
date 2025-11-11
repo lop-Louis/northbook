@@ -21,13 +21,13 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-04'
 ---
 
 # Sanitization Guidance
 
-Northbook only ships guidance that anyone can quote safely. [Run the sanitization checklist](#what-sanitization-protects) or [Browse the runbooks index](./operate/runbooks-index). Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
+Northbook only ships guidance that anyone can quote safely. [Run the sanitization checklist](#what-sanitization-protects) or [Browse the runbooks index](../operate/runbooks-index). Use these guardrails to keep every page linkable while chore-like checklists stay in `/runbooks`.
 
 ## What Sanitization Protects
 

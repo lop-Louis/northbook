@@ -20,7 +20,7 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
-decision_link: /decisions/adopt-deep-embed-north-star
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
 ---
 
@@ -67,6 +67,6 @@ Tickets opened: #123, #124
 
 ## Related references
 
-- [Accessibility Quick Wins](../accessibility-quick-wins) — Share this page with partners after the sweep.
+- [Accessibility Quick Wins](../operate/accessibility-quick-wins) — Share this page with partners after the sweep.
 - [Wayfinding shortcuts](../navigate/find.md) — Confirm links in navigation tables still map correctly.
 - [State ledger](../navigate/state-ledger.md) — Log the audit date and key outcomes with the monthly tag.

@@ -12,7 +12,7 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
-decision_link: /decisions/adopt-deep-embed-north-star.md
+decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-10'
 ---
 
@@ -20,7 +20,7 @@ date: '2025-11-10'
 
 Guardrail reference: [Narrator tone guide (gr-101)](../navigate/tone.md).
 
-Keep the IA overhaul guardrails enforceable and receipt-backed. [Review the deep-embed decision](../decisions/adopt-deep-embed-north-star.md) or [Open the governance release bundle](../../ops/releases/2025-11/index.md).
+Keep the IA overhaul guardrails enforceable and receipt-backed. [Review the deep-embed decision](../decisions/dec-2025-11-ia-overhaul.md) or [Open the governance release bundle](../../ops/releases/2025-11/index.md).
 Exit metric: governance freeze triggers stay clear while annex labs finish in <= 10 minutes.
 
 **Owner:** Louis
@@ -233,7 +233,7 @@ Freeze new migrations if in any release either of these is true:
   A simple page that says what changed this month and what is pending.
 
 - **Release tag**
-  A monthly label on the repo. Format vYYYY.MM-<lane> and it links to the snapshot and receipts.
+  A monthly label on the repo. Format vYYYY.MM-\<seam\> and it links to the snapshot and receipts.
 
 - **SLA**
   How often something must be refreshed. Signals default to 30 days.
@@ -348,11 +348,10 @@ Everything else is a nudge or a conscious override with an expiry.
 
 ---
 
-### Appendix G · Tags, lanes, and snapshots
+### Appendix G · Tags, and snapshots
 
 - **Monthly tag**
-  First business day. Format vYYYY.MM-<lane>.
-  Lanes: pilot, main, legacy.
+  First business day. Format vYYYY.MM-\<seam\>.
 
 - **What the tag links to**
   The state snapshot and a receipts page.
