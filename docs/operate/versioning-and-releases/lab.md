@@ -9,8 +9,8 @@ sidebar: false
 bucket: operate
 north_star_id: ns-001
 guardrail_id: gr-103
-cta_primary_label: Run the lab
-cta_secondary_label: Log receipts
+cta_primary_label: Use this lab
+cta_secondary_label: See example receipts
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
 decision_link: /decisions/dec-2025-11-operate-pilot.md

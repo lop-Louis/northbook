@@ -39,12 +39,18 @@ features:
       lab, and keep the North Star guardrails visible.
     link: /operate/verify-in-10
     linkText: Run Verify-in-10
-  - title: Support with guidance
+  - title: Learn with proof
     details: >-
-      Clear the top interrupts via three Fix flows, each capped at 10 minutes
-      with escalation packets ready for handoff.
-    link: /support/
-    linkText: Open Fix flows
+      Refresh dashboards within 30 days, log decisions with receipts, and keep
+      the signal registry as the single source of truth.
+    link: /learn/
+    linkText: Open the Learn lane
+  - title: Mitigate with guidance
+    details: >-
+      Clear the top interrupts via capped fix flows, trigger freezes fast, and
+      publish mitigations with exceptions plus receipts.
+    link: /mitigate/
+    linkText: Open Mitigate lane
 nav:
   - none
 bucket: navigate

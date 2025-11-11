@@ -9,7 +9,7 @@ status: live
 
 # Release ops bundle · 2025-11
 
-Monthly release artefacts live here. Follow the release folder decision for naming rules.
+Monthly release artefacts live here. Follow the release folder decision for naming rules. This window locks the Navigate/Operate/Learn/Mitigate skeleton with `/legacy` traffic capped at 3.4% and ships the Operate pilot (versioning & releases) with m-lab-pass 0.92 and zero L3 overrides.
 
 ## Highlights
 
@@ -25,12 +25,16 @@ Monthly release artefacts live here. Follow the release folder decision for nami
 - [Automate state and release pages](../../../docs/decisions/automation-state-pages.md)
 - [Verify-in-10 decision](../../../docs/decisions/verify-in-10.md)
 - [Deep-embed North Star governance decision](../../../docs/decisions/dec-2025-11-ia-overhaul.md)
+- [Operate pilot — versioning & releases](../../../docs/decisions/dec-2025-11-operate-pilot.md)
+- [Navigation lock decision](../../../docs/decisions/dec-2025-11-nav-lock.md)
 
 ## Signals
 
 - [Analytics snapshot](../../../reports/cloudflare-snapshot.json) — Generated via pnpm run analytics:snapshot
 - [Cloudflare export template](../../../reports/cloudflare-export.sample.json) — Shows the expected sanitized structure
 - [Labs report](../../../reports/labs.json) — Quick-Run + Proof Run lab results
+- [Pilot receipts](../../../docs/signals/receipts/v2025.11-releases.md) — Adoption, quality, credibility for the operate pilot slice
+- [Pilot state snapshot](../../../docs/releases/state/v2025.11-releases.md)
 
 ## Receipts
 

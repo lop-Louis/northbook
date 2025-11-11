@@ -4,16 +4,24 @@ import { DefaultTheme } from 'vitepress'
 // Do not edit manually.
 export const generatedNav = [
   {
+    text: 'Start here',
+    link: '/start-here/'
+  },
+  {
     text: 'Navigate',
     link: '/navigate/'
   },
   {
-    text: 'Support',
-    link: '/support/'
-  },
-  {
     text: 'Operate',
     link: '/operate/'
+  },
+  {
+    text: 'Learn',
+    link: '/learn/'
+  },
+  {
+    text: 'Mitigate',
+    link: '/mitigate/'
   }
 ] as DefaultTheme.NavItem[]
 
@@ -35,16 +43,8 @@ export const generatedSidebar = [
         link: '/navigate/state-ledger'
       },
       {
-        text: 'New joiner FAQ',
-        link: '/navigate/faq-new-joiners'
-      },
-      {
         text: 'Monthly cadence',
         link: '/navigate/monthly-release'
-      },
-      {
-        text: 'SLI states map',
-        link: '/navigate/sli-states'
       },
       {
         text: 'Band A guardrails',
@@ -57,101 +57,55 @@ export const generatedSidebar = [
     collapsed: false,
     items: [
       {
-        text: '20-minute handover',
-        link: '/operate/handover-20-min'
-      },
-      {
-        text: 'All runbooks',
-        link: '/operate/runbooks-index'
-      },
-      {
-        text: 'Decision spine',
-        link: '/operate/decision-spine'
-      },
-      {
-        text: 'Sanitization checklist',
-        link: '/operate/sanitization'
-      },
-      {
-        text: 'Playbook canon',
-        link: '/operate/'
-      },
-      {
-        text: 'Answer ledger pattern',
-        link: '/operate/answer-ledger'
-      },
-      {
-        text: 'Facilitation patterns',
-        link: '/operate/facilitation'
-      },
-      {
-        text: 'Handover RACI template',
-        link: '/operate/handover-raci-template'
-      },
-      {
-        text: 'Link Integrity',
-        link: '/operate/link-integrity'
-      },
-      {
-        text: 'North Star & Guardrails',
+        text: 'North Star & guardrails',
         link: '/operate/north-star-guardrails'
-      },
-      {
-        text: 'Accessibility audit',
-        link: '/operate/accessibility-audit'
-      },
-      {
-        text: 'Accessibility quick wins',
-        link: '/operate/accessibility-quick-wins'
-      },
-      {
-        text: 'Anti-drift governance',
-        link: '/operate/governance'
-      },
-      {
-        text: 'Verify-in-10 guide',
-        link: '/operate/verify-in-10'
-      },
-      {
-        text: 'Community meeting pack',
-        link: '/operate/community-pack'
-      },
-      {
-        text: 'Policy-to-action example',
-        link: '/operate/pattern-expense-sla'
       },
       {
         text: 'Versioning & releases',
         link: '/operate/versioning-and-releases/'
       },
       {
-        text: 'Transition promises',
-        link: '/operate/transition-operating-promises'
+        text: 'Sanitization checklist',
+        link: '/operate/sanitization'
       },
       {
-        text: 'Shared metric visibility',
-        link: '/operate/shared-metric-visibility'
+        text: 'Verify-in-10 guide',
+        link: '/operate/verify-in-10'
       },
       {
-        text: 'State visibility map',
-        link: '/operate/state-visibility'
+        text: 'Decision spine',
+        link: '/operate/decision-spine'
       },
       {
-        text: 'Cloudflare analytics',
-        link: '/operate/cloudflare-analytics'
+        text: 'Playbook canon',
+        link: '/operate/'
       },
       {
-        text: 'Signal Registry',
+        text: 'Signal registry',
         link: '/operate/signal-registry'
       },
       {
         text: 'Guardrail index',
         link: '/operate/guardrail-index'
+      },
+      {
+        text: 'Cloudflare analytics',
+        link: '/operate/cloudflare-analytics'
       }
     ]
   },
   {
-    text: 'Support',
+    text: 'Learn',
+    collapsed: false,
+    items: [
+      {
+        text: 'Receipts & dashboards',
+        link: '/learn/receipts'
+      }
+    ]
+  },
+  {
+    text: 'Mitigate',
     collapsed: false,
     items: [
       {

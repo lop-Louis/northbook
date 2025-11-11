@@ -26,7 +26,7 @@ adr_ref: /governance/decisions/exp-platform.html
 stop_rule: Update if vendor URLs or CMS template changes.
 nav:
   - none
-nav_group: Support
+nav_group: Mitigate
 nav_order: 50
 nav_label: VWO/Bloomreach sanity
 bucket: mitigate
@@ -79,5 +79,5 @@ Network screenshots attached
 ## Related references
 
 - [Fast support index](./index.md) — Route to other flows when scripts aren’t the issue.
-- [Accessibility Quick Wins](../operate/accessibility-quick-wins.md) — Re-check if experiments inject UI that could regress a11y.
+- [UI baseline](../navigate/ui.md) — Re-check if experiments inject UI that could regress a11y.
 - [Monthly cadence](../navigate/monthly-release.md) — Document significant experiment fixes in the release log.

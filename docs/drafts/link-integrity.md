@@ -22,11 +22,13 @@ leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
 decision_link: /decisions/dec-2025-11-ia-overhaul.md
 date: '2025-11-11'
+search: false
 ---
 
 # Link integrity runbook
 
 Keep every link contract intact so readers never hit a dead end. [Run the link check flow](#action) or [Open the Proof Run](../labs/link-drift).
+Exit metric: Link Drift + Quick-Run both pass with zero 404s for the touched scope.
 
 ## Trigger
 
@@ -61,5 +63,5 @@ If the link checker fails twice or you uncover a structural navigation issue, st
 ## Related runs
 
 - [Quick-Run](../navigate/quick-run) — fastest check when you touched a single file.
-- [Fix-it-fast index](../support/) — when the link outage is blocking production work.
+- [Fix-it-fast index](../mitigate/index.md) — when the link outage is blocking production work.
 - [State ledger](../navigate/state-ledger.md) — confirm whether the fix landed in the latest release.

@@ -30,8 +30,8 @@ Exit metric: readers act via the CTA pair within 60 seconds.
 
 - Owner: @lop
 - [Release bundle](../../ops/releases/2025-11/index.md)
-- Decisions: [Navigation lanes decision](../decisions/navigation-lanes.md), [Cloudflare analytics decision](../decisions/cloudflare-analytics.md), [Release-centric ops folders](../decisions/release-folders.md), [Automate state and release pages](../decisions/automation-state-pages.md), [Verify-in-10 decision](../decisions/verify-in-10.md), [Deep-embed North Star governance decision](../decisions/dec-2025-11-ia-overhaul.md)
-- Signals: [Analytics snapshot](../../reports/cloudflare-snapshot.json), [Cloudflare export template](../../reports/cloudflare-export.sample.json), [Labs report](../../reports/labs.json)
+- Decisions: [Navigation lanes decision](../decisions/navigation-lanes.md), [Cloudflare analytics decision](../decisions/cloudflare-analytics.md), [Release-centric ops folders](../decisions/release-folders.md), [Automate state and release pages](../decisions/automation-state-pages.md), [Verify-in-10 decision](../decisions/verify-in-10.md), [Deep-embed North Star governance decision](../decisions/dec-2025-11-ia-overhaul.md), [Operate pilot — versioning & releases](../decisions/dec-2025-11-operate-pilot.md), [Navigation lock decision](../decisions/dec-2025-11-nav-lock.md)
+- Signals: [Analytics snapshot](../../reports/cloudflare-snapshot.json), [Cloudflare export template](../../reports/cloudflare-export.sample.json), [Labs report](../../reports/labs.json), [Pilot receipts](../signals/receipts/v2025.11-releases.md), [Pilot state snapshot](../releases/state/v2025.11-releases.md)
 - Receipts: [State ledger entry](./state-ledger.md#site-v2025.11-2025-11), [State visibility runbook](../operate/state-visibility.md)
 - Adoption: 3 pages touched / 1,740 views / median time-to-answer 51 s (Cloudflare analytics, 14-day window).
 - Quality: Lab pass rate 1.00, broken links 0 (Quick-Run + Link Drift).

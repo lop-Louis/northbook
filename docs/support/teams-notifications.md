@@ -27,7 +27,7 @@ adr_ref: /governance/decisions/it-handoff.html
 stop_rule: Archive if <1 use in 90 days or upstream policy changes.
 nav:
   - sidebar
-nav_group: Support
+nav_group: Mitigate
 nav_order: 10
 nav_label: 'Fix: Teams notifications'
 bucket: mitigate
@@ -43,6 +43,7 @@ search: false
 ---
 
 Keep Teams notifications reliable with a 10-minute check path before involving IT. [Run the quick checks](#quick-path-37-checks) or [Escalate to Support IT](../support-it/contacting-it).
+Exit metric: ≥90% of toast/badge issues clear inside 10 minutes before escalation.
 
 > **Works here:** prod · Microsoft Teams desktop/web · Regions: MY  
 > **Owner:** Support IT liaison (`/KL-Office-O365/Issues`)
