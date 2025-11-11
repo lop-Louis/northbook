@@ -1,0 +1,28 @@
+{
+  "allowlist_cta": [
+    "try",
+    "use",
+    "choose",
+    "see example",
+    "compare",
+    "preview",
+    "adapt",
+    "learn more"
+  ],
+  "banlist_terms": [
+    "must",
+    "always",
+    "fix now",
+    "comply",
+    "mandatory",
+    "best practice",
+    "do this",
+    "enforce"
+  ],
+  "warn_threshold_per_500_words": 2,
+  "cta_label_escalates_to_l3_if_banned": true,
+  "synonyms_watch": {
+    "best practice": ["standard", "canonical best"],
+    "mandatory": ["required", "obligatory"]
+  }
+}

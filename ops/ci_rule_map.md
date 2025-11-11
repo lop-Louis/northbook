@@ -1,0 +1,24 @@
+# ci rule map (private)
+
+budget: "cold-start ≤ 5 minutes"
+
+blocks (l4):
+
+- sanitization/red-lines (gdpr, secrets, unverifiable numbers)
+- broken traceability (cannot map pr → decision/exception → guardrail → page → signal → receipt)
+
+l3 (conscious override):
+
+- missing traceability link (if reversible)
+- signals over cap or stale after one release warning
+
+l2 (nudge):
+
+- tone/cta pattern issues
+- missing metric mapping
+- archetype deviations
+
+notes:
+
+- all ids and tags lowercase
+- tag format: vyyyy.mm-<seam> (example `v2025.11-navigation`)

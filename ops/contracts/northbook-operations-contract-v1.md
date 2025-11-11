@@ -3,7 +3,7 @@ title: Northbook Operations Contract v1.0
 band: A
 owner: '@lop'
 change_type: major
-status: live
+status: archived
 refresh_after_days: 14
 ---
 
