@@ -141,3 +141,245 @@ Freeze new migrations if in any release either of these is true:
 5. Latest tag contains state and receipts links.
 6. Annex labs run in 10 minutes or less.
 7. Public sanitization lints pass.
+
+## Fine. Dictionary time. Here are appendices that translate the ops-speak into human.
+
+## Appendix
+
+### Appendix A · Plain-English Glossary
+
+- **North Star**
+  The one-sentence promise the site is judged by. It does not change per section.
+
+- **Guardrails**
+  Boundaries that keep pages helpful and respectful. They protect tone, privacy, and credibility.
+
+- **Buckets**
+  The four shelves the whole site sits on:
+  Navigate (why and scope), Operate (how options), Learn (proof and metrics), Mitigate (risk and rollback).
+
+- **Opener pattern**
+  The first screen of any page. One sentence why, two suggested actions, one exit-metric line. No lectures up top.
+
+- **CTA**
+  The button or link that suggests what to try next. Labels stay gentle: try, use, choose, see example.
+
+- **Exit metric**
+  What “good” looks like for this page in one line, for example time-to-answer drops.
+
+- **Signal**
+  A metric we track on purpose. Example nav_open, lab_pass, time_to_answer. Capped at 8 total so we stay sane.
+
+- **Leading vs lagging**
+  Leading moves quickly and hints at direction, example CTA clicks. Lagging moves slower and proves the win, example time-to-answer over a week.
+
+- **Receipt**
+  A short, time-bounded proof attached to a release, example Adoption up 12 percent since October.
+
+- **Baseline window**
+  The “before” period we compare against, default last 30 days.
+
+- **Single bet**
+  We run one model for a window. No parallel theories.
+
+- **Seam**
+  A critical edge in the system: Navigation, Governance, Signals, Tests, Releases.
+
+- **Steward**
+  The person minding a seam. For now it is you, on all seams.
+
+- **Invariant**
+  A rule that must hold or we stop. Example every page has an opener pattern.
+
+- **Traceability**
+  The chain that lets us prove why a change happened and roll it back. PR ↔ decision or exception ↔ guardrail ↔ page ↔ signal ↔ receipt.
+
+- **Exception**
+  A conscious break with a reason, owner, expiry, and exit criteria.
+
+- **Freeze**
+  Temporary stop on migrations because risk or damage crossed a line.
+
+- **Enforcement ladder**
+  Five levels that decide how hard the system reacts. L0 observe, L1 highlight, L2 nudge, L3 conscious override with expiry, L4 block.
+
+- **Deep-embed**
+  The North Star and receipts appear directly on section landings. The star is always visible.
+
+- **Dual-run**
+  Old and new live together for a short period so users do not get lost.
+
+- **Redirect ledger**
+  A list that maps old links to new ones. Verified so we do not create loops.
+
+- **Orphan**
+  A page or PR that is not linked into the traceability chain.
+
+- **State snapshot**
+  A simple page that says what changed this month and what is pending.
+
+- **Release tag**
+  A monthly label on the repo. Format vYYYY.MM-<lane> and it links to the snapshot and receipts.
+
+- **SLA**
+  How often something must be refreshed. Signals default to 30 days.
+
+- **Annex lab**
+  A small, runnable example or test that proves a page’s claim. Must run in 10 minutes or less.
+
+- **Time-to-answer**
+  How long a reader needs to find a usable answer from entry to click.
+
+- **Sanitization**
+  Removing names, secrets, and exact numbers that would leak or mislead. Directional ranges are allowed.
+
+- **Red-lines**
+  The short list that triggers a hard block. See Appendix E.
+
+- **Compliance audit prune**
+  When an audit hits, affected content is blocked and removed, with an entry in the log.
+
+- **GDPR violation**
+  Any exposure or misuse of personal data that breaks EU rules. This is a hard stop.
+
+- **Source of truth**
+  The canonical place where facts live, for example the Governance folder and release tags.
+
+- **Pilot**
+  A tiny end-to-end trial before a wide change.
+
+- **Band A**
+  Public content only. No sensitive internals.
+
+- **Legacy**
+  The old site routes kept briefly with a banner while you migrate.
+
+---
+
+### Appendix B · The Enforcement Ladder by example
+
+- **L0 Observe**
+  You used one stern word. We log it. No action.
+
+- **L1 Highlight**
+  Preview shows “Tone is a bit pushy.” You can still ship.
+
+- **L2 Nudge**
+  A PR comment says “Add an exit metric and map your CTAs to signals.” Merge allowed.
+
+- **L3 Conscious override**
+  Traceability is missing. You add an exception with owner, expiry in 30 days, and exit criteria. Merge allowed.
+
+- **L4 Block**
+  You pasted a real customer name or an API key. Merge denied until fixed.
+
+Default behavior stays at L1 or L2. Blocks are rare and only for red-lines.
+
+---
+
+### Appendix C · What shows up on a page
+
+Above the fold you always see:
+
+1. **Why** in one sentence
+2. **Two actions** with soft labels
+3. **Exit metric** line
+4. **Tiny receipts** panel with the last release’s Adoption, Quality, Credibility
+
+Everything else sits below. No walls of text up top.
+
+---
+
+### Appendix D · Signals and metrics cheat-sheet
+
+- **Navigate**
+  Leading nav_open rate
+  Lagging time-to-answer change
+
+- **Operate**
+  Leading annex lab pass on the example
+  Lagging defect rate on pages changed this month
+
+- **Learn**
+  Leading dashboard freshness in days
+  Lagging decision hit rate, percent of decisions that produced expected receipts
+
+- **Mitigate**
+  Leading time-to-freeze from trigger
+  Lagging time-to-recovery back to baseline
+
+Cap total active signals at 8. Each has an owner and a refresh deadline.
+
+---
+
+### Appendix E · What actually triggers a block
+
+- Personal data, GDPR issues, security secrets
+- Broken traceability that prevents rollback
+- Unverifiable hard numbers presented as fact
+- Compliance audit prune requests
+
+Everything else is a nudge or a conscious override with an expiry.
+
+---
+
+### Appendix F · Exceptions and freezes, quick guide
+
+- **Exception**
+  Use when you need to ship without a perfect chain or tone. Include owner, date, trigger, expiry within 30 days, exit criteria. Public log is scrubbed. Private ledger mirrors the IDs.
+
+- **Freeze**
+  Triggers: annex lab pass rate below 80 percent, time-to-answer worsens 20 percent or more, or exceptions older than 14 days.
+  Action: stop migrations in scope, publish exit criteria, resume when proof is back within 10 percent of baseline for 7 days.
+
+---
+
+### Appendix G · Tags, lanes, and snapshots
+
+- **Monthly tag**
+  First business day. Format vYYYY.MM-<lane>.
+  Lanes: pilot, main, legacy.
+
+- **What the tag links to**
+  The state snapshot and a receipts page.
+  The receipts page lists Adoption, Quality, Credibility with dates.
+
+---
+
+### Appendix H · Autonomy rules in one page
+
+- Two options minimum on every page.
+- Actions are reversible and state a stop rule in one sentence.
+- Tone is guidance, not orders.
+- Most tests nudge. Blocks are only for red-lines.
+- L3 overrides are allowed with owner, expiry, and exit criteria.
+
+---
+
+### Appendix I · Contributor quick checklist
+
+1. Does the opener show why, two actions, and an exit metric
+2. Do CTAs use the soft allowlist
+3. Did you map actions to one leading and one lagging signal
+4. Does the frontmatter include bucket, north_star_id, guardrail_id, owner, band, date, CTA labels, metrics, and decision_link if scope or metrics changed
+5. Does an annex lab exist and run in 10 minutes or less
+6. Is traceability complete PR to receipt
+7. Did you avoid names, secrets, and exact internal numbers
+
+If you tick these boxes, you are inside the guardrails and nobody will nag you.
+
+---
+
+### Appendix J · Tiny FAQ
+
+- **Can I suggest only one action**
+  Only with an exception that states the tradeoff and expiry.
+
+- **What if the example lab needs 15 minutes**
+  Cut scope or split the example so the runnable part is under 10 minutes.
+
+- **What if I hate the gentle CTA words**
+  Then your page fails tone lint. Use the allowlist. It exists so readers feel respected.
+
+- **What if I ship and forget the metrics mapping**
+  You get a nudge. If it happens again next release, you need an override with an expiry.

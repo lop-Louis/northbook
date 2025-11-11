@@ -5,6 +5,15 @@ owner: '@lop'
 change_type: patch
 status: live
 refresh_after_days: 14
+bucket: operate
+north_star_id: ns-001
+guardrail_id: gr-103
+cta_primary_label: Run the guardrail pattern
+cta_secondary_label: Open the runbook
+leading_metric: m-lab-pass
+lagging_metric: m-defect-rate-changed-pages
+decision_link: /decisions/adopt-deep-embed-north-star
+date: '2025-11-11'
 ---
 
 # Governance exceptions

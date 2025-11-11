@@ -7,7 +7,7 @@ change_type: minor
 status: live
 last_reviewed: '2025-11-10'
 audience: Anyone kicking off work and needing a fast orientation
-tone: Plainspoken, candid, energetic
+tone: 'Plainspoken, candid, energetic'
 narrative_goal: Give newcomers outcome-based entry points before policy
 nav_group: Navigate
 nav_order: 1
@@ -16,6 +16,15 @@ nav:
   - slot: main
     label: Navigate
   - sidebar
+bucket: navigate
+north_star_id: ns-001
+guardrail_id: gr-101
+cta_primary_label: Open the Navigate path
+cta_secondary_label: See the Verify example
+leading_metric: m-nav-open
+lagging_metric: m-time-to-answer
+decision_link: /decisions/adopt-deep-embed-north-star
+date: '2025-11-10'
 ---
 
 # Start Here

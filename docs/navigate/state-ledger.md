@@ -10,11 +10,21 @@ nav_order: 15
 nav_label: State
 nav:
   - sidebar
+bucket: navigate
+north_star_id: ns-001
+guardrail_id: gr-101
+cta_primary_label: Open the Navigate path
+cta_secondary_label: See the Verify example
+leading_metric: m-nav-open
+lagging_metric: m-time-to-answer
+decision_link: /decisions/adopt-deep-embed-north-star
+date: '2025-11-09'
 ---
 
 # Release state ledger
 
 Keep the monthly state bundle predictable. [Open site-v2025.11](../../ops/releases/2025-11/index.md) or [Browse the State runbook](../operate/state-visibility.md).
+Exit metric: readers act via the CTA pair within 60 seconds.
 
 ## site-v2025.11 (2025-11)
 

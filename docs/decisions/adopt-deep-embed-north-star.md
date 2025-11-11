@@ -1,26 +1,36 @@
 ---
-title: 'adopt deep-embed north star + four-bucket ia with autonomy ladder'
+title: adopt deep-embed north star + four-bucket ia with autonomy ladder
 owner: '@lop'
 decider: '@lop'
 date: '2025-11-11'
 decision_date: '2025-11-11'
 next_review: '2026-01-10'
-band: 'A'
-seam: 'governance'
-decision_id: 'dec-2025-11-ia-overhaul'
-baseline_window: 'last-30-days'
-north_star_id: 'ns-001'
-guardrail_id: 'gr-101' # narrator-tone-guide
-delta_type: 'people-capacity-risk'
-stop_rule: 'freeze if annex lab pass < 80% or time-to-answer worsens >=20% vs baseline for 7 days.'
+band: A
+seam: governance
+decision_id: dec-2025-11-ia-overhaul
+baseline_window: last-30-days
+north_star_id: ns-001
+guardrail_id: gr-101
+delta_type: people-capacity-risk
+stop_rule: >-
+  freeze if annex lab pass < 80% or time-to-answer worsens >=20% vs baseline for
+  7 days.
 tags:
-  - 'v2025.11-governance'
-change_type: 'major'
-status: 'live'
+  - v2025.11-governance
+change_type: major
+status: live
 refresh_after_days: 30
-success_metric: 'North Star line + opener pattern visible on each bucket landing with receipts panel shipped; CTA lint stays <= 1 red-line per cycle.'
-release_tag: 'site-v2025.11'
+success_metric: >-
+  North Star line + opener pattern visible on each bucket landing with receipts
+  panel shipped; CTA lint stays <= 1 red-line per cycle.
+release_tag: site-v2025.11
 related_contract: ../contracts/northbook-ia-overhaul.md
+bucket: operate
+cta_primary_label: Run the guardrail pattern
+cta_secondary_label: Open the runbook
+leading_metric: m-lab-pass
+lagging_metric: m-defect-rate-changed-pages
+decision_link: /decisions/adopt-deep-embed-north-star
 ---
 
 # Adopt deep-embed North Star + four-bucket IA with autonomy ladder

@@ -5,14 +5,23 @@ owner: '@lop'
 change_type: patch
 status: live
 refresh_after_days: 30
-audience: Stewards keeping adoption, quality, and credibility signals current
-tone: Plainspoken, candid, energetic
-narrative_goal: List every signal, its source, refresh cadence, and kill criteria
+audience: 'Stewards keeping adoption, quality, and credibility signals current'
+tone: 'Plainspoken, candid, energetic'
+narrative_goal: 'List every signal, its source, refresh cadence, and kill criteria'
 nav_group: Operate
 nav_order: 95
 nav_label: Signal Registry
 nav:
   - sidebar
+bucket: operate
+north_star_id: ns-001
+guardrail_id: gr-103
+cta_primary_label: Run the guardrail pattern
+cta_secondary_label: Open the runbook
+leading_metric: m-lab-pass
+lagging_metric: m-defect-rate-changed-pages
+decision_link: /decisions/adopt-deep-embed-north-star
+date: '2025-11-11'
 ---
 
 # Signal Registry
