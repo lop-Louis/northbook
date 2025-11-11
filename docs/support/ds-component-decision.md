@@ -24,7 +24,7 @@ adr_ref: /governance/decisions/ds-fork-policy.html
 stop_rule: 'If tokens or a11y rules change, refresh immediately.'
 nav:
   - none
-nav_group: Support
+nav_group: Mitigate
 nav_order: 30
 nav_label: Design system component
 bucket: mitigate

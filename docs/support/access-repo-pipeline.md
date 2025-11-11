@@ -25,7 +25,7 @@ adr_ref: /governance/decisions/access-model.html
 stop_rule: Archive if model changes or <1 use in 90 days.
 nav:
   - sidebar
-nav_group: Support
+nav_group: Mitigate
 nav_order: 20
 nav_label: 'Fix: Repo & pipeline access'
 bucket: mitigate

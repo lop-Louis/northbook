@@ -61,5 +61,5 @@ If the link checker fails twice or you uncover a structural navigation issue, st
 ## Related runs
 
 - [Quick-Run](../navigate/quick-run) — fastest check when you touched a single file.
-- [Fix-it-fast index](../support/) — when the link outage is blocking production work.
+- [Fix-it-fast index](../mitigate/index.md) — when the link outage is blocking production work.
 - [State ledger](../navigate/state-ledger.md) — confirm whether the fix landed in the latest release.

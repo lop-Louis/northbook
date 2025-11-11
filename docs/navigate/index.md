@@ -67,7 +67,7 @@ Need the UI, tone, or states for your artifact? Use:
 ## Fix it fast or escalate
 
 - Follow the [Quick-Run](../navigate/quick-run) when something regresses after an edit, then [Verify-in-10](../operate/verify-in-10.md) + [run the lab](../labs/verify-in-10.md) before re-listing it as Live.
-- Browse the [Fix-it-fast index](../support/) when interrupts hit and you need a 10-minute checklist.
+- Browse the [Fix-it-fast index](../mitigate/index.md) when interrupts hit and you need a 10-minute checklist.
 - Need something more involved? The [Runbooks index](../operate/runbooks-index) keeps the chore-heavy flows out of guidance pages.
 
 ## Feedback loop

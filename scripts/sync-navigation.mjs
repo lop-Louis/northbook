@@ -11,7 +11,8 @@ const outputPath = path.join(docsDir, '.vitepress', 'navigation.generated.ts')
 const GROUP_ORDER = new Map([
   ['Navigate', 10],
   ['Operate', 20],
-  ['Support', 30]
+  ['Learn', 30],
+  ['Mitigate', 40]
 ])
 
 function collectMarkdownFiles(dir) {
@@ -63,8 +64,12 @@ function deriveGroup(route) {
     case '':
     case 'start-here':
       return 'Navigate'
+    case 'learn':
+      return 'Learn'
+    case 'mitigate':
+    case 'support':
     case 'fix':
-      return 'Support'
+      return 'Mitigate'
     default:
       return 'Operate'
   }
@@ -80,6 +85,30 @@ function buildNavigation() {
   const files = collectMarkdownFiles(docsDir)
   const mainNav = []
   const sidebarGroups = new Map()
+
+  const mustHave = [
+    'bucket',
+    'north_star_id',
+    'guardrail_id',
+    'owner',
+    'band',
+    'date',
+    'cta_primary_label',
+    'cta_secondary_label',
+    'leading_metric',
+    'lagging_metric'
+  ]
+
+  function isPublishable(page) {
+    return (
+      mustHave.every(k => page.frontmatter?.[k]) &&
+      page.content.includes('**why**') &&
+      page.content.toLowerCase().includes('**exit metric**')
+    )
+  }
+
+  const publishable = files.filter(isPublishable)
+  const drafts = files.filter(p => !isPublishable(p)) // write these to /drafts index, excluded from sitemap
 
   for (const file of files) {
     const raw = fs.readFileSync(file, 'utf8')

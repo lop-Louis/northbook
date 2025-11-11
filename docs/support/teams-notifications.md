@@ -27,7 +27,7 @@ adr_ref: /governance/decisions/it-handoff.html
 stop_rule: Archive if <1 use in 90 days or upstream policy changes.
 nav:
   - sidebar
-nav_group: Support
+nav_group: Mitigate
 nav_order: 10
 nav_label: 'Fix: Teams notifications'
 bucket: mitigate

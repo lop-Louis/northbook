@@ -4,16 +4,20 @@ import { DefaultTheme } from 'vitepress'
 // Do not edit manually.
 export const generatedNav = [
   {
+    text: 'Mitigate',
+    link: '/mitigate/'
+  },
+  {
     text: 'Navigate',
     link: '/navigate/'
   },
   {
-    text: 'Support',
-    link: '/support/'
-  },
-  {
     text: 'Operate',
     link: '/operate/'
+  },
+  {
+    text: 'Learn',
+    link: '/learn/'
   }
 ] as DefaultTheme.NavItem[]
 
@@ -151,12 +155,22 @@ export const generatedSidebar = [
     ]
   },
   {
-    text: 'Support',
+    text: 'Learn',
     collapsed: false,
     items: [
       {
-        text: 'Fix: Interrupt flows',
-        link: '/support/'
+        text: 'Learn',
+        link: '/learn/'
+      }
+    ]
+  },
+  {
+    text: 'Mitigate',
+    collapsed: false,
+    items: [
+      {
+        text: 'Mitigate',
+        link: '/mitigate/'
       },
       {
         text: 'Fix: Teams notifications',
@@ -165,6 +179,10 @@ export const generatedSidebar = [
       {
         text: 'Fix: Repo & pipeline access',
         link: '/support/access-repo-pipeline'
+      },
+      {
+        text: 'Fix: Interrupt flows',
+        link: '/support/'
       }
     ]
   }

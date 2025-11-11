@@ -1,2 +1,4 @@
 from_path,to_path,reason,tag
 /old/example-path,/new/example-path,"ia migration","v2025.11-navigation"
+/support/,/mitigate/,"nav lock freeze","v2025.11-navigation"
+/support/index.html,/mitigate/,"nav lock freeze","v2025.11-navigation"
