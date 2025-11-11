@@ -25,6 +25,13 @@ date: '2025-11-11'
 
 Sounding like Northbook is deliberate, not accidental. [Use the voice and tone pillars](#voice-pillars) or [Browse the runbooks index](.../operate/runbooks-index).
 
+## Guardrail ID gr-101 — narrator tone guide
+
+- **Purpose:** Keep Band-A guidance plainspoken, candid, and respectful across every seam so tone drifts are caught early.
+- **Positive behaviors:** short sentences, clear owners, explicit metrics, CTA verbs from the allowlist (`try`, `use`, `choose`, `see example`, `compare`, `preview`, `adapt`, `learn more`), and receipts linked near the fold.
+- **Red-lines (blockers):** banned copy like "must", "always", "fix now", "comply", "mandatory", "best practice", "do this", "enforce" appearing more than twice per 500 words.
+- **Enforcement:** CI lints for CTA labels + banned terms; human review checks tone when landing pages drift past the cap.
+
 What: Shared language rules for anything public-facing—docs, release notes, support replies.
 Why: Keeps every channel tight, human, and on-brand so readers know it's us.
 When: Use this before writing net-new content or auditing drafts from others.

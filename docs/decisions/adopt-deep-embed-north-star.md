@@ -40,7 +40,7 @@ Make the deep-embed governance bet actionable for every seam.
 
 ## context
 
-The site behaves like a content library: helpful but unable to prove value or protect tone. We're formalizing the operating model so guidance stays respectful, changes are traceable, and outcomes have receipts.
+The site behaves like a content library: helpful but unable to prove value or protect tone. We're formalizing the operating model so guidance stays respectful, changes are traceable, and outcomes have receipts. Guardrail reference: [Narrator tone guide (gr-101)](../navigate/tone.md#guardrail-id-gr-101—narrator-tone-guide).
 
 ## decision
 

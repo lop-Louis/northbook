@@ -5,13 +5,27 @@ owner: '@lop'
 change_type: major
 status: live
 refresh_after_days: 14
+bucket: operate
+north_star_id: ns-001
+guardrail_id: gr-103
+cta_primary_label: Use this guardrail
+cta_secondary_label: See example runbook
+leading_metric: m-lab-pass
+lagging_metric: m-defect-rate-changed-pages
+decision_link: /decisions/adopt-deep-embed-north-star.md
+date: '2025-11-10'
 ---
 
 # Northbook IA Overhaul — Operations Contract v1
 
+Guardrail reference: [Narrator tone guide (gr-101)](../navigate/tone.md).
+
+Keep the IA overhaul guardrails enforceable and receipt-backed. [Review the deep-embed decision](../decisions/adopt-deep-embed-north-star.md) or [Open the governance release bundle](../../ops/releases/2025-11/index.md).
+Exit metric: governance freeze triggers stay clear while annex labs finish in <= 10 minutes.
+
 **Owner:** Louis
 **Band:** A (public)
-**Effective:** 2025-11-10
+**Effective:** 10 Nov 2025
 **Refresh SLA:** 30 days
 **Tag reference:** latest release `vYYYY.MM-<seam>`
 
