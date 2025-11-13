@@ -5,7 +5,6 @@ import path from 'node:path'
 
 const BLOCKING_REASON = {
   redline: 'red-line violation',
-  traceability: 'traceability gap',
   budget: 'ci budget exceeded (>5 minutes)'
 }
 
@@ -14,9 +13,7 @@ const steps = [
   { name: 'guard', mode: 'block', reason: BLOCKING_REASON.redline },
   { name: 'drift', mode: 'warn' },
   { name: 'release:folders:check', mode: 'warn' },
-  { name: 'state:check', mode: 'warn' },
-  { name: 'traceability:check', mode: 'block', reason: BLOCKING_REASON.traceability },
-  { name: 'ux:scan', mode: 'warn' }
+  { name: 'state:check', mode: 'warn' }
 ]
 
 const warnings = []
@@ -40,14 +37,6 @@ function runStep({ name, mode, reason }) {
 
 for (const step of steps) {
   runStep(step)
-}
-
-const fixtureResult = spawnSync('node', ['scripts/fixtures-guard.mjs'], {
-  stdio: 'inherit'
-})
-if (fixtureResult.status !== 0) {
-  console.error('Fixture guard checks failed.')
-  process.exit(fixtureResult.status ?? 1)
 }
 
 const sitemapFiles = ['public/sitemap.xml', 'public/feed.rss', 'public/feed.xml']

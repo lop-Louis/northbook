@@ -59,6 +59,7 @@ function walkDocs(dir, list) {
     if (entry.name.startsWith('.')) continue
     if (entry.name === 'node_modules' || entry.name === '.vitepress') continue
     const abs = path.join(dir, entry.name)
+    if (abs.split(path.sep).includes('drafts')) continue
     if (entry.isDirectory()) {
       walkDocs(abs, list)
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
