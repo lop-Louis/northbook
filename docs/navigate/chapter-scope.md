@@ -15,6 +15,9 @@ cta_secondary_label: see_roster_signals
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
 release_tag: site-v2025.11
+list_label: >
+  The fast scope line for the frontend chapter: what belongs here, what does not, and how to exit to
+  squads or exceptions.
 ---
 
 Use this scope line when a request seems fuzzy. [Try the ops defaults](../operate/ops-defaults-meetings.md) or [Open the roster signals](../learn/signals-roster.md) to keep the loop tight.

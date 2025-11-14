@@ -18,6 +18,8 @@ search: false
 release_tag: site-v2025.11
 nav:
   - none
+list_label: >
+  Index of tagged Northbook releases for when you need to see how the system changed over time.
 ---
 
 This page is for people who need to see **what changed when**, not for day-to-day work.

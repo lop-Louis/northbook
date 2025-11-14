@@ -15,6 +15,9 @@ cta_secondary_label: open
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
 release_tag: site-v2025.11
+list_label: >
+  How we tell a casual chat from an ops session, plus the default 1:1 pattern we fall back to when
+  nothing else is agreed.
 ---
 
 Steady every touchpoint before you dive in. [Use this kit in your next session](#what-you-can-do-here) or [Open the shared parking lot](#11-fallback-pattern) so nothing drifts.

@@ -21,6 +21,9 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
+list_label: >
+  Where we park the ugly stuff for this pilot: blocks, exceptions, and how we decide what to do
+  about them.
 ---
 
 Use this page when something is **blocking work** and you want to handle it in the open, not in private chats.

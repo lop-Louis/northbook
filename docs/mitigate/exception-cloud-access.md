@@ -15,6 +15,8 @@ lagging_metric: m-time-to-recovery
 release_tag: site-v2025.11
 cta_primary_label: raise_exception
 cta_secondary_label: use_in_next_session
+list_label: >
+  Simple template for handling cloud access blocks in the open instead of hacking around them.
 ---
 
 Use this page when **cloud access is blocking your work**.

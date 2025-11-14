@@ -36,6 +36,7 @@ const remediationHints = {
   cta_secondary_label: "Add 'cta_secondary_label: <cta_key>' (see ops/cta-map.json).",
   leading_metric: "Add 'leading_metric: m-...' using ops/signal_registry_seed.csv.",
   lagging_metric: "Add 'lagging_metric: m-...' using ops/signal_registry_seed.csv.",
+  list_label: "Add 'list_label: <short summary>' so release lists stay human-readable.",
   tags: "Add a 'tags:' array (e.g., 'tags: [v2025.11-governance]') to link releases."
 }
 

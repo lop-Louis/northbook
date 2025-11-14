@@ -15,6 +15,9 @@ cta_secondary_label: raise_exception
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
+list_label: >
+  Who is currently on point for scope, signals and exceptions in this pilot, plus how fast they aim
+  to respond.
 ---
 
 Use this page to answer two simple questions:

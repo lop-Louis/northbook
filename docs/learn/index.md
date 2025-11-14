@@ -21,6 +21,8 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
+list_label: >
+  How we watch the pilot’s health and turn two simple signals into small, real changes.
 ---
 
 Use this page when you want to **see what we are learning** from how the chapter runs, not just what we planned.

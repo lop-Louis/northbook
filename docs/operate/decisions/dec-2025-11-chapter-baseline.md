@@ -14,7 +14,7 @@ cta_secondary_label: open_decision_bundle
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 date: '2025-11-15'
-release_tag: site-v2025.11decisi
+release_tag: site-v2025.11
 nav:
   - none
 search: false

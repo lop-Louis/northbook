@@ -150,6 +150,11 @@
         "m-time-to-freeze",
         "m-time-to-recovery"
       ]
+    },
+    "list_label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
     }
   }
 }

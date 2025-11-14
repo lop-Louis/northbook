@@ -21,6 +21,9 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
+list_label: >
+  What lives in Operate for the frontend pilot: the current state, named stewards, and the few
+  working agreements we actually run.
 ---
 
 Use this page when you are thinking about **how the web frontend chapter runs**, not just about one pull request.

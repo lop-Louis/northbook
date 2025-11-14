@@ -15,6 +15,9 @@ cta_secondary_label: open_steward_roster
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
+list_label: >
+  Snapshot of where the frontend chapter pilot stands today across lanes, stewards, and the live
+  signals.
 ---
 
 This page gives a simple picture of where the **web frontend chapter** is right now for the Northbook pilot.

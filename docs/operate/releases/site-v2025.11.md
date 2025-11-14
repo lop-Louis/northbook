@@ -18,12 +18,17 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
+list_label: >
+  Bundle of everything tagged site-v2025.11 so ops and auditors can see what this release actually
+  touched.
 ---
 
 This release bundle shows what the **web frontend chapter pilot** put in place around November 2025.
 
-If you only care about where we are today, use the [chapter state page](../state/web-frontend).  
-If you care about **how we got here**, you are in the right place.
+- If you only care about where we are today, use the **chapter state page**.
+- If you care about **how we got here**, you are in the right place.
+
+<PageCTA />
 
 ## What this release was about
 

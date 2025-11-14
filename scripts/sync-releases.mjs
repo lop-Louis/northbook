@@ -50,7 +50,8 @@ function buildEntry(relativePath, frontmatter) {
     status: frontmatter.status ?? null,
     decision_id: frontmatter.decision_id ?? null,
     leading_metric: frontmatter.leading_metric ?? null,
-    lagging_metric: frontmatter.lagging_metric ?? null
+    lagging_metric: frontmatter.lagging_metric ?? null,
+    list_label: frontmatter.list_label ?? null
   }
 }
 

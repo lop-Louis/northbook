@@ -21,6 +21,9 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
+list_label: >
+  How the Navigate bucket works in this pilot and what belongs here instead of Operate, Learn, or
+  Mitigate.
 ---
 
 Use this page when you are trying to figure out **where** in Northbook your work or question belongs.

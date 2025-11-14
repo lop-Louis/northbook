@@ -17,6 +17,9 @@ cta_secondary_label: see_roster_signals
 leading_metric: m-time-to-answer
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
+list_label: >
+  What the frontend chapter is for, what it is not for, and when to bring something here instead of
+  to your squad.
 ---
 
 Use this page when you need a quick answer to one question:

@@ -49,5 +49,21 @@
   "raise_exception": {
     "text": "Log an exception instead of hacking around it",
     "doc": "mitigate/exception-cloud-access.md"
+  },
+  "see_guardrail": {
+    "text": "Use this guardrail",
+    "doc": "operate/north-star-guardrails.md"
+  },
+  "see_guardrail_runbook": {
+    "text": "See example runbook",
+    "doc": "operate/north-star-guardrails.md"
+  },
+  "open_decision_bundle": {
+    "text": "See the decisions involved",
+    "doc": "operate/decisions/dec-2025-11-chapter-baseline.md"
+  },
+  "open_latest_release": {
+    "text": "Open the latest release bundle",
+    "doc": "operate/releases/site-v2025.11.md"
   }
 }
