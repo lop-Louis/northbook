@@ -4,14 +4,14 @@ owner: '@louis'
 band: A
 refresh_after_days: 30
 change_type: minor
-status: live
+status: pilot
 bucket: operate
 north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
-cta_primary_label: review
-cta_secondary_label: share
+cta_primary_label: use_in_next_session
+cta_secondary_label: open_steward_roster
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
@@ -26,6 +26,8 @@ It is meant to answer three questions:
 3. Where should I look before I walk into a chapter ops conversation?
 
 There is no full playbook here on purpose. This is a small, honest slice of how we are currently running.
+
+<PageCTA />
 
 ## What this page is for
 

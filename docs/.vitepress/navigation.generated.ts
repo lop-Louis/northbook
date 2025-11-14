@@ -53,7 +53,7 @@ export const generatedSidebar = [
         link: '/operate/'
       },
       {
-        text: 'Chapter state (pilot)',
+        text: 'Chapter state',
         link: '/operate/state/web-frontend'
       },
       {

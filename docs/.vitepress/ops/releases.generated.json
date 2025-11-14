@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-14T03:43:59.617Z",
+  "generatedAt": "2025-11-14T07:13:53.640Z",
   "releases": {
     "site-v2025.11decisi": {
       "pages": [],
@@ -23,7 +23,7 @@
           "path": "/operate/ops-defaults-meetings",
           "bucket": "operate",
           "owner": "@louis",
-          "status": "live",
+          "status": "pilot",
           "decision_id": "dec-2025-11-chapter-ops-defaults",
           "leading_metric": "m-lab-pass",
           "lagging_metric": "m-defect-rate-changed-pages"
@@ -43,7 +43,7 @@
           "path": "/operate/state/web-frontend",
           "bucket": "operate",
           "owner": "@louis",
-          "status": "live",
+          "status": "pilot",
           "decision_id": "dec-2025-11-chapter-ops-defaults",
           "leading_metric": "m-dashboard-freshness-days",
           "lagging_metric": "m-decision-hit-rate"
@@ -53,7 +53,7 @@
           "path": "/mitigate/exception-cloud-access",
           "bucket": "mitigate",
           "owner": "@louis",
-          "status": "live",
+          "status": "pilot",
           "decision_id": "dec-2025-11-chapter-ops-defaults",
           "leading_metric": "m-time-to-freeze",
           "lagging_metric": "m-time-to-recovery"
@@ -83,7 +83,7 @@
           "path": "/mitigate",
           "bucket": "mitigate",
           "owner": "@louis",
-          "status": "live",
+          "status": "pilot",
           "decision_id": "dec-2025-11-chapter-ops-defaults",
           "leading_metric": "m-dashboard-freshness-days",
           "lagging_metric": "m-decision-hit-rate"

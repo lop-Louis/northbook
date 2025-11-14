@@ -44,7 +44,7 @@
     },
     "status": {
       "type": "string",
-      "enum": ["live", "stale", "archived", "draft"]
+      "enum": ["live", "stale", "pilot", "archived"]
     },
     "last_reviewed": {
       "type": "string",

@@ -11,6 +11,8 @@ narrative_goal: Route people to the small set of active pilot pages without over
 bucket: navigate
 north_star_id: ns-001
 guardrail_id: gr-101
+cta_primary_label: open_chapter_state
+cta_secondary_label: open_steward_roster
 decision_id: dec-2025-11-chapter-ops-defaults
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
@@ -26,8 +28,7 @@ Use this page when you are trying to figure out **where** in Northbook your work
 Exit metric: you leave with one page to open next, not a list of ten.  
 From here, most people either go to **chapter state** or to the **steward roster**:
 
-- [Open chapter state](../operate/state/web-frontend)
-- [Open steward roster](../operate/stewards)
+<PageCTA />
 
 ## What “Navigate” means in this pilot
 

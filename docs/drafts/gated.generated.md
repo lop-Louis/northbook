@@ -15,7 +15,6 @@ cta_primary_label: Use this guardrail
 cta_secondary_label: See example runbook
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
-decision_link: /decisions/dec-2025-11-proof-or-private.md
 date: '2025-11-14'
 ---
 
@@ -26,4 +25,4 @@ Exit metric: gated pages either ship or leave the repo within 30 days.
 
 - _None_
 
-_Last updated: 2025-11-14T03:43:59.665Z_
+_Last updated: 2025-11-14T07:13:53.754Z_

@@ -32,7 +32,7 @@ const SIDEBAR_BLUEPRINT = [
     collapsed: false,
     items: [
       { text: 'Operate overview', link: '/operate/' },
-      { text: 'Chapter state (pilot)', link: '/operate/state/web-frontend' },
+      { text: 'Chapter state', link: '/operate/state/web-frontend' },
       { text: 'Steward roster', link: '/operate/stewards' }
     ]
   },
@@ -118,7 +118,6 @@ function writeGatedList(entries) {
     cta_secondary_label: 'See example runbook',
     leading_metric: 'm-nav-open',
     lagging_metric: 'm-time-to-answer',
-    decision_link: '/decisions/dec-2025-11-proof-or-private.md',
     date: new Date().toISOString().slice(0, 10)
   }
   const intro = `Keep unfinished pages out of nav until they meet the opener contract. [Return to the drafts hub](./index.md) or [Fix the opener contract](../operate/north-star-guardrails.md#ui-delivery-checks).

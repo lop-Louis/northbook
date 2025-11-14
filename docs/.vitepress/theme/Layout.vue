@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
+import { computed } from 'vue'
 import { useData } from 'vitepress'
 import Feedback from './Feedback.vue'
 
 const { Layout } = DefaultTheme
 const { page } = useData()
+
+const isDraftPage = computed(() => {
+  const filePath = page.value?.filePath || ''
+  return filePath.includes('/drafts/') || page.value?.frontmatter?.status === 'pilot'
+})
 </script>
 
 <template>
@@ -17,7 +23,11 @@ const { page } = useData()
         <Badge v-if="page.frontmatter.owner" type="info">
           <strong>{{ page.frontmatter.owner }}</strong>
         </Badge>
-        <Badge v-if="page.frontmatter.status" style="margin-left: 0.5rem" type="tip">
+        <Badge
+          v-if="page.frontmatter.status"
+          style="margin-left: 0.5rem"
+          :type="page.frontmatter.status === 'pilot' ? 'warning' : 'tip'"
+        >
           {{ page.frontmatter.status }}
         </Badge>
       </div>
@@ -39,6 +49,10 @@ const { page } = useData()
         >
           See issue
         </a>
+      </div>
+      <div v-else-if="isDraftPage" class="nb-draft-callout">
+        🧪 This draft is still under testing and curation. Expect rough edges and help tighten it
+        before sharing broadly.
       </div>
     </template>
 

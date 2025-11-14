@@ -148,6 +148,42 @@
   background-color: var(--vp-c-danger-soft);
 }
 
+.nb-draft-callout {
+  padding: 0.8rem;
+  border: 1px dashed color-mix(in srgb, var(--vp-c-bg-soft) 70%, rgba(0, 0, 0, 0.5));
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 70%, var(--vp-c-brand-soft));
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-2);
+}
+
+.dark .nb-draft-callout {
+  border-color: color-mix(in srgb, var(--vp-c-bg-soft) 80%, #ffffff);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 60%, rgba(255, 255, 255, 0.05));
+  color: var(--vp-c-text-1);
+}
+
+.vp-badge.tip,
+.VPBadge.tip {
+  background-color: var(--nb-color-purple-soft) !important;
+  color: var(--nb-color-purple-text) !important;
+  border: 1px solid var(--nb-color-purple);
+}
+
+.vp-badge.info,
+.VPBadge.info {
+  background-color: var(--nb-color-info-bg) !important;
+  color: var(--nb-color-info-text) !important;
+  border: 1px solid var(--nb-color-info-border) !important;
+}
+
+.vp-badge.warning,
+.VPBadge.warning {
+  background-color: var(--nb-color-warning-bg) !important;
+  color: var(--nb-color-warning-text) !important;
+  border: 1px solid var(--nb-color-warning-border) !important;
+}
+
 /* ===================================
  * Navigation title overflow prevention
  * ================================== */

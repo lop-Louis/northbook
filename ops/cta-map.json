@@ -1,0 +1,53 @@
+{
+  "start_with_chapter_scope": {
+    "text": "Start with the chapter scope line",
+    "doc": "navigate/frontend-charter.md"
+  },
+  "open_navigate_overview": {
+    "text": "Open the navigation overview",
+    "doc": "navigate/index.md"
+  },
+  "open_operate_overview": {
+    "text": "Open the operate overview",
+    "doc": "operate/index.md"
+  },
+  "open_learn_overview": {
+    "text": "Open the learn overview",
+    "doc": "learn/index.md"
+  },
+  "open_mitigate_overview": {
+    "text": "Open the mitigate overview",
+    "doc": "mitigate/index.md"
+  },
+  "open_chapter_state": {
+    "text": "Open chapter state",
+    "doc": "operate/state/web-frontend.md"
+  },
+  "open_steward_roster": {
+    "text": "Open steward roster",
+    "doc": "operate/stewards.md"
+  },
+  "open_signals_roster": {
+    "text": "Open signals roster",
+    "doc": "learn/signals-roster.md"
+  },
+  "open_cloud_exception": {
+    "text": "Open the cloud-access stub",
+    "doc": "mitigate/exception-cloud-access.md"
+  },
+  "try_ops_defaults": {
+    "text": "Try the ops defaults",
+    "doc": "operate/ops-defaults-meetings.md"
+  },
+  "use_in_next_session": {
+    "text": "Use this in your next session"
+  },
+  "see_roster_signals": {
+    "text": "See the roster signals",
+    "doc": "learn/signals-roster.md"
+  },
+  "raise_exception": {
+    "text": "Log an exception instead of hacking around it",
+    "doc": "mitigate/exception-cloud-access.md"
+  }
+}

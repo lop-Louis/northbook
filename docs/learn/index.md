@@ -11,6 +11,8 @@ narrative_goal: Focus attention on the two health checks without turning it into
 bucket: learn
 north_star_id: ns-001
 guardrail_id: gr-103
+cta_primary_label: open_signals_roster
+cta_secondary_label: open_chapter_state
 decision_id: dec-2025-11-chapter-ops-defaults
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
@@ -23,13 +25,11 @@ search: false
 
 Use this page when you want to **see what we are learning** from how the chapter runs, not just what we planned.
 
-Exit metric: you leave knowing which simple signal to look at to understand how the chapter feels right now.  
+Exit metric: you leave knowing which simple signal to look at to understand how the chapter feels right now.
+
 For this pilot, that lives in the **signals roster**:
 
-- [Open signals roster](./signals-roster)
-- [See chapter state for context](../operate/state/web-frontend)
-
----
+<PageCTA />
 
 ## What “Learn” means in this pilot
 

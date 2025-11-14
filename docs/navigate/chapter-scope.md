@@ -10,8 +10,8 @@ north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
-cta_primary_label: try
-cta_secondary_label: open
+cta_primary_label: try_ops_defaults
+cta_secondary_label: see_roster_signals
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
 release_tag: site-v2025.11

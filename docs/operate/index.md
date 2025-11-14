@@ -11,6 +11,8 @@ narrative_goal: 'Point people to chapter state, stewards, signals, and cloud-acc
 bucket: operate
 north_star_id: ns-001
 guardrail_id: gr-103
+cta_primary_label: open_chapter_state
+cta_secondary_label: open_steward_roster
 decision_id: dec-2025-11-chapter-ops-defaults
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
@@ -26,8 +28,7 @@ Use this page when you are thinking about **how the web frontend chapter runs**,
 Exit metric: you leave knowing which ops page to look at before you change how the chapter operates.  
 Most of the time, that means:
 
-- [Review the chapter state](./state/web-frontend)
-- [Review the steward roster](./stewards)
+<PageCTA />
 
 ## What “Operate” means in this pilot
 

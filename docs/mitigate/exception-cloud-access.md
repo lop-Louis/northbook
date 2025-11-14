@@ -4,7 +4,7 @@ owner: '@louis'
 band: A
 refresh_after_days: 14
 change_type: minor
-status: live
+status: pilot
 bucket: mitigate
 north_star_id: ns-001
 guardrail_id: gr-103
@@ -13,6 +13,8 @@ date: '2025-11-15'
 leading_metric: m-time-to-freeze
 lagging_metric: m-time-to-recovery
 release_tag: site-v2025.11
+cta_primary_label: raise_exception
+cta_secondary_label: use_in_next_session
 ---
 
 Use this page when **cloud access is blocking your work**.
@@ -24,6 +26,8 @@ Two moves only:
 
 The detailed graphs and trails live in the reporting views and releases.  
 This page is here to keep the story and the promises clear.
+
+<PageCTA />
 
 ## What this page is for
 

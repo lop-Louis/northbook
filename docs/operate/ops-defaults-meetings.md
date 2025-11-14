@@ -4,7 +4,7 @@ owner: '@louis'
 band: A
 refresh_after_days: 14
 change_type: minor
-status: live
+status: pilot
 bucket: operate
 north_star_id: ns-001
 guardrail_id: gr-103

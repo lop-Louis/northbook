@@ -13,6 +13,8 @@ narrative_goal: >-
 bucket: navigate
 north_star_id: ns-001
 guardrail_id: gr-101
+cta_primary_label: start_with_chapter_scope
+cta_secondary_label: open_navigate_overview
 decision_id: dec-2025-11-chapter-ops-defaults
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
@@ -27,8 +29,7 @@ Use this page when you are not sure where to begin with Northbook.
 Exit metric: you leave knowing whether you should look at the **chapter state** or at **who owns what** next.  
 Try one of these:
 
-- [See the chapter state](../operate/state/web-frontend)
-- [See who owns what](../operate/stewards)
+<PageCTA />
 
 ## What “start here” means for this pilot
 

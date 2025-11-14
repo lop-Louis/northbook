@@ -10,8 +10,8 @@ north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
-cta_primary_label: review
-cta_secondary_label: share
+cta_primary_label: open_signals_roster
+cta_secondary_label: raise_exception
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
@@ -23,6 +23,8 @@ Use this page to answer two simple questions:
 2. Is anyone carrying too much without a backup?
 
 If you feel overloaded or unsure who owns what, this is the place to raise it and adjust.
+
+<PageCTA />
 
 ## Steward roster
 

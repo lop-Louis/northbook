@@ -12,6 +12,8 @@ decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
+cta_primary_label: use_in_next_session
+cta_secondary_label: open_chapter_state
 release_tag: site-v2025.11
 ---
 
@@ -22,6 +24,8 @@ This page keeps an eye on two simple things:
 
 The graphs and detailed numbers live in the reporting views.  
 Here you just see what we are watching and what “healthy” looks like.
+
+<PageCTA />
 
 ## What this page is for
 

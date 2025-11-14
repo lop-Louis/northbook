@@ -4,13 +4,15 @@ owner: '@louis'
 band: A
 refresh_after_days: 60
 change_type: patch
-status: live
+status: pilot
 audience: People facing blockers and wanting to handle them in the open
 tone: 'Plainspoken, calm, practical'
 narrative_goal: Help people log serious blocks and use the cloud-access stub without drama
 bucket: mitigate
 north_star_id: ns-001
 guardrail_id: gr-103
+cta_primary_label: open_cloud_exception
+cta_secondary_label: raise_exception
 decision_id: dec-2025-11-chapter-ops-defaults
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
@@ -26,8 +28,7 @@ Use this page when something is **blocking work** and you want to handle it in t
 Exit metric: you leave knowing whether your blocker belongs in the **cloud-access stub** or somewhere else, and what to do next.  
 Most pilot-era blocks go here:
 
-- [Open cloud-access stub](./exception-cloud-access)
-- [See who owns exceptions](../operate/stewards)
+<PageCTA />
 
 ## What “Mitigate” means in this pilot
 

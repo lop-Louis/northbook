@@ -12,8 +12,8 @@ state_link: /ops/releases/2025-11/index.md
 receipts_link: /reports/receipts/2025-11.md
 refresh_after_days: 365
 change_type: minor
-cta_primary_label: try the ops defaults
-cta_secondary_label: see the roster signals
+cta_primary_label: try_ops_defaults
+cta_secondary_label: see_roster_signals
 leading_metric: m-time-to-answer
 lagging_metric: m-decision-hit-rate
 release_tag: site-v2025.11
@@ -27,6 +27,8 @@ Use this page when you need a quick answer to one question:
 - Try the ops defaults if you need a concrete way to use this in your next 1:1 or ops session.
 
 Exit metric: a new chapter member can explain what this chapter is for and not for in under 60 seconds after reading.
+
+<PageCTA />
 
 ## Scope line
 
