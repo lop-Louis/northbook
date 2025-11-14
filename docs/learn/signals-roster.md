@@ -1,5 +1,5 @@
 ---
-title: Signals roster · baseline + direction clarity
+title: Signals roster
 owner: '@louis'
 band: A
 refresh_after_days: 30
@@ -12,7 +12,6 @@ decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
-decision_link: operate/decisions/dec-2025-11-chapter-baseline.md
 release_tag: site-v2025.11
 ---
 
