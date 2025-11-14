@@ -1,24 +1,25 @@
 ---
-title: Web Frontend chapter scope line
+title: Web frontend chapter · fast scope line (archived)
 owner: '@louis'
 band: A
 refresh_after_days: 30
 change_type: minor
-status: live
+status: archived
 bucket: navigate
 north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
-cta_primary_label: try_ops_defaults
-cta_secondary_label: see_roster_signals
+cta_primary_label: start_with_chapter_scope
+cta_secondary_label: open_chapter_state
 leading_metric: m-nav-open
 lagging_metric: m-time-to-answer
 release_tag: site-v2025.11
 list_label: >
-  The fast scope line for the frontend chapter: what belongs here, what does not, and how to exit to
-  squads or exceptions.
+  **Heads-up:** The canonical scope page is now [Frontend chapter · scope line](./frontend-charter.md).
 ---
+
+> **Heads-up:** The canonical scope page is now [Frontend chapter · scope line](./frontend-charter.md). This archived copy sticks around for historical reference. Start there unless you were sent here for comparison.
 
 Use this scope line when a request seems fuzzy. [Try the ops defaults](../operate/ops-defaults-meetings.md) or [Open the roster signals](../learn/signals-roster.md) to keep the loop tight.
 

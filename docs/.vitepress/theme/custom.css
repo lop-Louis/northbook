@@ -184,6 +184,57 @@
   border: 1px solid var(--nb-color-warning-border) !important;
 }
 
+.nb-page-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.nb-back-button {
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  color: var(--vp-c-text-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nb-back-button:hover,
+.nb-back-button:focus-visible {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  outline: none;
+  background: color-mix(in srgb, var(--vp-c-brand-soft) 40%, transparent);
+}
+
+.nb-page-title {
+  flex: 1;
+  margin-bottom: 4rem;
+  font-size: 2.5rem;
+  color: var(--vp-c-text-1);
+}
+
+.nb-spacer {
+  flex: 1;
+}
+
+.nb-page-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: fit-content;
+}
+
+.nb-status-badge {
+  margin-left: 0;
+}
+
 /* ===================================
  * Navigation title overflow prevention
  * ================================== */

@@ -1,36 +1,57 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import Feedback from './Feedback.vue'
 
 const { Layout } = DefaultTheme
 const { page } = useData()
 
-const isDraftPage = computed(() => {
+const isPilotOrDraft = computed(() => {
   const filePath = page.value?.filePath || ''
   return filePath.includes('/drafts/') || page.value?.frontmatter?.status === 'pilot'
 })
+
+const pageTitle = computed(() => page.value?.frontmatter?.title ?? page.value?.title ?? '')
+
+function goBack() {
+  if (history.length > 1) {
+    history.back()
+  } else {
+    window.location.href = withBase('/')
+  }
+}
 </script>
 
 <template>
   <Layout>
     <template #doc-before>
-      <div
-        v-if="page.frontmatter.owner || page.frontmatter.status"
-        style="font-size: 0.85rem; opacity: 0.75; margin-bottom: 0.5rem"
-      >
-        <Badge v-if="page.frontmatter.owner" type="info">
-          <strong>{{ page.frontmatter.owner }}</strong>
-        </Badge>
-        <Badge
-          v-if="page.frontmatter.status"
-          style="margin-left: 0.5rem"
-          :type="page.frontmatter.status === 'pilot' ? 'warning' : 'tip'"
+      <div class="nb-page-header">
+        <button
+          type="button"
+          class="nb-back-button"
+          aria-label="Go back to the previous page"
+          @click="goBack"
         >
-          {{ page.frontmatter.status }}
-        </Badge>
+          ← Back
+        </button>
+        <span class="nb-spacer" />
+        <div v-if="page.frontmatter.owner || page.frontmatter.status" class="nb-page-badges">
+          <Badge v-if="page.frontmatter.owner" type="info">
+            <strong>{{ page.frontmatter.owner }}</strong>
+          </Badge>
+          <Badge
+            v-if="page.frontmatter.status"
+            :type="page.frontmatter.status === 'pilot' ? 'warning' : 'tip'"
+            class="nb-status-badge"
+          >
+            {{ page.frontmatter.status }}
+          </Badge>
+        </div>
       </div>
+      <h1 v-if="pageTitle" class="nb-page-title">
+        {{ pageTitle }}
+      </h1>
       <div
         v-if="page.frontmatter.status === 'stale'"
         style="
@@ -50,7 +71,7 @@ const isDraftPage = computed(() => {
           See issue
         </a>
       </div>
-      <div v-else-if="isDraftPage" class="nb-draft-callout">
+      <div v-else-if="isPilotOrDraft" class="nb-draft-callout">
         🧪 This draft is still under testing and curation. Expect rough edges and help tighten it
         before sharing broadly.
       </div>

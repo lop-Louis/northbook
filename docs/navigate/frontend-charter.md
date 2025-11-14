@@ -101,6 +101,33 @@ From you, as a chapter member, this space needs:
 
 You do not have to be loud. You do need to be truthful.
 
+## Scope line at a glance
+
+Use this quick scope line when routing work:
+
+- **In:** removing ambiguity around frontend-adjacent work, keeping shared baselines current, and posting receipts for the two live signals.
+- **Out:** HR performance calls, salary ladders, or long-form research that belongs in a squad or people team lane.
+
+If something feels in-between, flag it instead of letting it drift. The ops defaults give you three simple scope tests: reduce ambiguity, protect focus, publish receipts. If a topic fails those tests, change the lane.
+
+## When to exit or reroute
+
+If a request fails the scope tests:
+
+- move it to a squad backlog with a named owner/date, or
+- log an exception with owner, expiry (≤ 30 days), rollback path, and stop rule so Governance can track the detour.
+
+Most exceptions go into the [cloud-access stub](../mitigate/exception-cloud-access.md); future stubs will follow the same pattern.
+
+## How we know this is working
+
+Over two review cycles we look for two simple signals:
+
+- **Roster freshness:** at least 9 out of 10 active members have their baseline row current.
+- **Direction after conversations:** at least 8 out of 10 people leave Operation-mode sessions knowing their next step.
+
+Those checks live on the [signals roster](../learn/signals-roster.md) and its receipts, not on this page, so you always have one place to update the numbers.
+
 ## Where to go next
 
 If you are using this page, these are the next steps:

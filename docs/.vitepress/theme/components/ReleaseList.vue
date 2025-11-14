@@ -51,17 +51,13 @@ function toHref(path: string | null) {
         <a class="release-list__link" :href="toHref(entry.path)">
           <span class="release-list__title">
             {{ entry.title }}
+            <div class="release-list__meta">
+              <Badge v-if="entry.bucket" type="info">{{ entry.bucket }}</Badge>
+              <Badge v-if="entry.status" :type="entry.status === 'pilot' ? 'warning' : 'tip'">
+                {{ entry.status }}
+              </Badge>
+            </div>
           </span>
-          <Badge v-if="entry.bucket" type="info" class="release-list__meta">{{
-            entry.bucket
-          }}</Badge>
-          <Badge
-            v-if="entry.status"
-            style="margin-left: 0.5rem"
-            :type="entry.status === 'pilot' ? 'warning' : 'tip'"
-          >
-            {{ entry.status }}
-          </Badge>
           <p v-if="entry.list_label" class="release-list__summary">
             {{ entry.list_label }}
           </p>
@@ -113,11 +109,14 @@ function toHref(path: string | null) {
 
 .release-list__title {
   font-weight: 600;
+  display: flex;
+  justify-content: space-between;
   color: var(--vp-c-text-1);
 }
 
 .release-list__meta {
-  margin-left: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .release-list__summary {
