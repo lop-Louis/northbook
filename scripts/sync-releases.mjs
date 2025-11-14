@@ -102,7 +102,7 @@ async function main() {
 
   await fs.mkdir(outputDir, { recursive: true })
   const payload = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: new Date().toISOString().slice(0, 10),
     releases: releaseMap
   }
   await fs.writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8')

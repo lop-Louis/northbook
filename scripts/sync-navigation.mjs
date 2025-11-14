@@ -95,12 +95,38 @@ function isDraftPath(filePath) {
 
 function writeGatedList(entries) {
   ensureDir(draftsDir)
+  const hasExisting = fs.existsSync(gatedListPath)
+  let previousData = null
+  let previousBody = null
+  let previousRaw = null
+  if (hasExisting) {
+    previousRaw = fs.readFileSync(gatedListPath, 'utf8')
+    const parsed = matter(previousRaw)
+    previousData = parsed.data
+    previousBody = parsed.content.trim()
+  }
+
   const listBody = entries.length
     ? entries
         .sort((a, b) => a.route.localeCompare(b.route))
         .map(entry => `- \`${entry.route}\` — ${entry.reason}`)
         .join('\n')
     : '- _None_'
+
+  const intro = `Keep unfinished pages out of nav until they meet the opener contract. [Return to the drafts hub](./index.md) or [Fix the opener contract](../operate/north-star-guardrails.md#ui-delivery-checks).
+Exit metric: gated pages either ship or leave the repo within 30 days.
+
+`
+
+  const content = `${intro}# Gated pages (auto-generated)
+
+${listBody}
+`
+
+  const contentChanged = (previousBody || '') !== content.trim()
+  const now = new Date()
+  const isoDate = now.toISOString().slice(0, 10)
+  const timestamp = now.toISOString()
 
   const fm = {
     title: 'Gated pages',
@@ -114,23 +140,18 @@ function writeGatedList(entries) {
     bucket: 'operate',
     north_star_id: 'ns-001',
     guardrail_id: 'gr-104',
-    cta_primary_label: 'Use this guardrail',
-    cta_secondary_label: 'See example runbook',
+    cta_primary_label: 'see_guardrail',
+    cta_secondary_label: 'see_guardrail_runbook',
     leading_metric: 'm-nav-open',
     lagging_metric: 'm-time-to-answer',
-    date: new Date().toISOString().slice(0, 10)
+    date: contentChanged ? isoDate : (previousData?.date ?? isoDate),
+    last_updated: contentChanged ? timestamp : (previousData?.last_updated ?? timestamp)
   }
-  const intro = `Keep unfinished pages out of nav until they meet the opener contract. [Return to the drafts hub](./index.md) or [Fix the opener contract](../operate/north-star-guardrails.md#ui-delivery-checks).
-Exit metric: gated pages either ship or leave the repo within 30 days.
 
-`
-  const body = `${intro}# Gated pages (auto-generated)
-
-${listBody}
-
-_Last updated: ${new Date().toISOString()}_
-`
-  const output = matter.stringify(body.trim() + '\n', fm)
+  const output = matter.stringify(content.trim() + '\n', fm)
+  if (hasExisting && previousRaw === output) {
+    return
+  }
   fs.writeFileSync(gatedListPath, output)
 }
 

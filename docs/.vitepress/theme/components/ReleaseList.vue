@@ -33,7 +33,10 @@ const props = withDefaults(
 
 const releases = releasesData.releases as Record<string, ReleaseBlock>
 const release = computed(() => releases?.[props.releaseTag] ?? null)
-const entries = computed<ReleaseEntry[]>(() => release.value?.[props.kind] ?? [])
+const entries = computed<ReleaseEntry[]>(() => {
+  const list = release.value?.[props.kind] ?? []
+  return list.filter(entry => entry.status !== 'archived')
+})
 
 function toHref(path: string | null) {
   if (!path) return '#'
