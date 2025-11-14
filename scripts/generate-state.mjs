@@ -158,7 +158,7 @@ ${metricsLines}
   const body = `# Release state ledger
 
 Keep the monthly state bundle predictable. [Open ${latestTag}](${latestLink}) or [Browse the State runbook](${runbookLink}).
-Exit metric: readers act via the CTA pair within 60 seconds.
+**Expected Takeaway:** readers act via the CTA pair within 60 seconds.
 
 ${sections}
 `

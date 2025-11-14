@@ -1,5 +1,5 @@
 ---
-title: Learn lane · Web frontend pilot
+title: Learn overview
 owner: '@louis'
 band: A
 refresh_after_days: 60
@@ -27,11 +27,13 @@ list_label: >
 
 Use this page when you want to **see what we are learning** from how the chapter runs, not just what we planned.
 
-Exit metric: you leave knowing which simple signal to look at to understand how the chapter feels right now.
-
-For this pilot, that lives in the **signals roster**:
+> **Expected Takeaway:** you leave knowing which simple signal to look at to understand how the chapter feels right now.
 
 <PageCTA />
+
+## Quick links for the web frontend pilot
+
+<PilotPageList bucket="learn" />
 
 ## What “Learn” means in this pilot
 

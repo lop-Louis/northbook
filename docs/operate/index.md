@@ -1,5 +1,5 @@
 ---
-title: Operate lane · Web frontend pilot
+title: Operate overview
 owner: '@louis'
 band: A
 refresh_after_days: 60
@@ -28,10 +28,13 @@ list_label: >
 
 Use this page when you are thinking about **how the web frontend chapter runs**, not just about one pull request.
 
-Exit metric: you leave knowing which ops page to look at before you change how the chapter operates.  
-Most of the time, that means:
-
 <PageCTA />
+
+> **Expected Takeaway:** you leave knowing which ops page to look at before you change how the chapter operates.
+
+## Quick links for the web frontend pilot
+
+<PilotPageList bucket="operate" />
 
 ## What “Operate” means in this pilot
 
@@ -54,7 +57,7 @@ A simple snapshot of:
 - which ops pages are active
 - what to look at before a chapter ops session
 
-> [Open chapter state](./state/web-frontend)
+> [Open chapter state](../changelog/state/web-frontend)
 
 ### Steward roster
 
@@ -75,7 +78,7 @@ Shows the two health checks we are watching:
 - how fresh the roster is
 - whether people leave sessions with a clear next step
 
-> [Open signals roster](/learn/signals-roster)
+> [Open signals roster](../learn/signals-roster)
 
 ### Cloud-access exception stub
 
@@ -84,7 +87,7 @@ Used when cloud access blocks meaningful work:
 - log the blocker with an owner and expiry
 - follow a safe temporary path while the fix is in progress
 
-> [Open cloud-access stub](/mitigate/exception-cloud-access)
+> [Open cloud-access stub](../mitigate/exception-cloud-access)
 
 ## If you want the deeper contract
 

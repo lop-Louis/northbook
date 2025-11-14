@@ -96,7 +96,7 @@ Use the **copy_writer_starter_pack** templates for opener, CTA labels, and annex
    - Acceptance: snapshot exists; links valid; tag listed as `v2025.11-main`.
 
 6. **Ops / Receipts**
-   - Path: [2025-11.md](../../operate/releases/site-v2025.11.md)
+   - Path: [2025-11.md](../../changelog/releases/site-v2025.11.md)
    - What: stub Adoption, Quality, Credibility with placeholders for the two metrics; link to analytics source.
    - Acceptance: shows owner/date; references signal ids; attached from the monthly tag.
 

@@ -1,5 +1,5 @@
 ---
-title: Frontend chapter · scope line
+title: Frontend charter
 bucket: navigate
 north_star_id: ns-001
 guardrail_id: gr-103
@@ -29,9 +29,9 @@ Use this page when you need a quick answer to one question:
 - Start here when you are unsure whether something belongs in the chapter or in your squad.
 - Try the ops defaults if you need a concrete way to use this in your next 1:1 or ops session.
 
-Exit metric: a new chapter member can explain what this chapter is for and not for in under 60 seconds after reading.
-
 <PageCTA />
+
+**Expected Takeaway:** a new chapter member can explain what this chapter is for and not for in under 60 seconds after reading.
 
 ## Scope line
 

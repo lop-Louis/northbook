@@ -25,7 +25,7 @@ hero:
   actions:
     - theme: brand
       text: See the chapter state
-      link: /operate/state/web-frontend
+      link: /changelog/state/web-frontend
     - theme: alt
       text: See who owns what
       link: /operate/stewards
@@ -34,7 +34,7 @@ features:
     details: >-
       Open the chapter state page to see a simple snapshot of what shipped
       recently and which ops pages are in play for this pilot.
-    link: /operate/state/web-frontend
+    link: /changelog/state/web-frontend
     linkText: Open chapter state
   - title: Know who to tap
     details: >-
@@ -86,7 +86,7 @@ Go to the **chapter state** page:
 - see the latest snapshot for this pilot
 - see which ops pages are currently in play
 
-> [Open chapter state](./operate/state/web-frontend)
+> [Open chapter state](./changelog/state/web-frontend)
 
 ### I want to know who owns what in ops
 
@@ -133,4 +133,4 @@ If you could not find a useful page or a clear next step from here, tell us.
 
 We will treat it as a signal that the entrance is wrong, not that you are.
 
-> If you help maintain Northbook and need history or traceability, use the [Releases view](./operate/releases/). It is written for operators and auditors, not for first-time visitors.
+> If you help maintain Northbook and need history or traceability, use the [Releases view](./changelog/releases/). It is written for operators and auditors, not for first-time visitors.

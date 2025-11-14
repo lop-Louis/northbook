@@ -1,5 +1,5 @@
 ---
-title: Mitigate lane · Web frontend pilot
+title: Mitigate overview
 owner: '@louis'
 band: A
 refresh_after_days: 60
@@ -28,10 +28,14 @@ list_label: >
 
 Use this page when something is **blocking work** and you want to handle it in the open, not in private chats.
 
-Exit metric: you leave knowing whether your blocker belongs in the **cloud-access stub** or somewhere else, and what to do next.  
-Most pilot-era blocks go here:
-
 <PageCTA />
+
+> **Expected Takeaway:** you leave knowing whether your blocker belongs in the **cloud-access stub** or somewhere else, and what to do next.  
+> Most pilot-era blocks go here:
+
+## Quick links for the web frontend pilot
+
+<PilotPageList bucket="mitigate" />
 
 ## What “Mitigate” means in this pilot
 

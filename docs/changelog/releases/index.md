@@ -24,13 +24,13 @@ list_label: >
 
 This page is for people who need to see **what changed when**, not for day-to-day work.
 
-If you just need a current picture, use the [chapter state · web frontend pilot](../../operate/state/web-frontend) instead.
+If you just need a current picture, use the [chapter state · web frontend pilot](../../changelog/state/web-frontend) instead.
 
 ## Releases in this pilot
 
 For now, we only track the pilot under one release tag:
 
 - `site-v2025.11` · web frontend chapter ops pilot  
-  → [Open release bundle](../../operate/releases/site-v2025.11)
+  → [Open release bundle](../../changelog/releases/site-v2025.11)
 
 As the pilot grows, new tags will show up here. No tag, no history.

@@ -6,22 +6,6 @@ export const generatedNav = [
   {
     text: 'Start here',
     link: '/start-here/'
-  },
-  {
-    text: 'Navigate',
-    link: '/navigate/'
-  },
-  {
-    text: 'Operate',
-    link: '/operate/'
-  },
-  {
-    text: 'Learn',
-    link: '/learn/'
-  },
-  {
-    text: 'Mitigate',
-    link: '/mitigate/'
   }
 ] as DefaultTheme.NavItem[]
 
@@ -30,10 +14,6 @@ export const generatedSidebar = [
     text: 'Navigate',
     collapsed: false,
     items: [
-      {
-        text: 'Start here',
-        link: '/start-here/'
-      },
       {
         text: 'Navigate overview',
         link: '/navigate/'
@@ -51,10 +31,6 @@ export const generatedSidebar = [
       {
         text: 'Operate overview',
         link: '/operate/'
-      },
-      {
-        text: 'Chapter state',
-        link: '/operate/state/web-frontend'
       },
       {
         text: 'Defaults Meeting',

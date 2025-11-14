@@ -21,7 +21,7 @@
   },
   "open_chapter_state": {
     "text": "Open chapter state",
-    "doc": "operate/state/web-frontend.md"
+    "doc": "changelog/state/web-frontend.md"
   },
   "open_steward_roster": {
     "text": "Open steward roster",
@@ -32,7 +32,7 @@
     "doc": "learn/signals-roster.md"
   },
   "open_cloud_exception": {
-    "text": "Open the cloud-access stub",
+    "text": "Open cloud-access blocks",
     "doc": "mitigate/exception-cloud-access.md"
   },
   "try_ops_defaults": {

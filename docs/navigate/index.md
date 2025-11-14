@@ -1,5 +1,5 @@
 ---
-title: Navigate lane · Northbook pilot
+title: Navigate overview
 owner: '@lop'
 band: A
 refresh_after_days: 120
@@ -26,22 +26,19 @@ list_label: >
   Mitigate.
 ---
 
-Use this page when you are trying to figure out **where** in Northbook your work or question belongs.
-
-Exit metric: you leave with one page to open next, not a list of ten.  
-From here, most people either go to **chapter state** or to the **steward roster**:
-
-<PageCTA />
-
-## What “Navigate” means in this pilot
-
-Long term, “Navigate” will cover maps and shortcuts across all of Northbook.
-
 In this pilot, it does one simpler job:
 
 - help you find the **few** ops pages that are actually in play for the web frontend chapter
 
 We keep the navigation surface small on purpose so it stays honest and easy to use.
+
+<PageCTA />
+
+> **Expected Takeaway:** you leave with one page to open next, not a list of ten.
+
+## Quick links for the web frontend pilot
+
+<PilotPageList bucket="navigate" />
 
 ## Common situations
 
@@ -52,7 +49,7 @@ Start with the **chapter state**:
 - see what the pilot is currently testing
 - see which ops pages matter right now
 
-> [Open chapter state](../operate/state/web-frontend)
+> [Open chapter state](../changelog/state/web-frontend)
 
 ### “I’m not sure who owns this kind of problem”
 

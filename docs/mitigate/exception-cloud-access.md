@@ -1,5 +1,5 @@
 ---
-title: Cloud access exception stub
+title: Cloud access blocks
 owner: '@louis'
 band: A
 refresh_after_days: 14

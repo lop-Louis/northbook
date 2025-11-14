@@ -20,7 +20,7 @@ last_updated: '2025-11-14T08:44:50.213Z'
 ---
 
 Keep unfinished pages out of nav until they meet the opener contract. [Return to the drafts hub](./index.md) or [Fix the opener contract](../operate/north-star-guardrails.md#ui-delivery-checks).
-Exit metric: gated pages either ship or leave the repo within 30 days.
+**Expected Takeaway:** gated pages either ship or leave the repo within 30 days.
 
 # Gated pages (auto-generated)
 

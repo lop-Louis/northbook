@@ -7,19 +7,12 @@ import prettier from 'prettier'
 const repoRoot = process.cwd()
 const docsDir = path.join(repoRoot, 'docs')
 const outputPath = path.join(docsDir, '.vitepress', 'navigation.generated.ts')
-const FIXED_NAV = [
-  { text: 'Start here', link: '/start-here/' },
-  { text: 'Navigate', link: '/navigate/' },
-  { text: 'Operate', link: '/operate/' },
-  { text: 'Learn', link: '/learn/' },
-  { text: 'Mitigate', link: '/mitigate/' }
-]
+const FIXED_NAV = [{ text: 'Start here', link: '/start-here/' }]
 const SIDEBAR_BLUEPRINT = [
   {
     text: 'Navigate',
     collapsed: false,
     items: [
-      { text: 'Start here', link: '/start-here/' },
       { text: 'Navigate overview', link: '/navigate/' },
       { text: 'Frontend charter', link: '/navigate/frontend-charter' }
     ]
@@ -29,7 +22,6 @@ const SIDEBAR_BLUEPRINT = [
     collapsed: false,
     items: [
       { text: 'Operate overview', link: '/operate/' },
-      { text: 'Chapter state', link: '/operate/state/web-frontend' },
       { text: 'Defaults Meeting', link: '/operate/ops-defaults-meetings' },
       { text: 'Steward roster', link: '/operate/stewards' }
     ]
@@ -114,18 +106,30 @@ function buildNavigation() {
   })
 
   const missingSidebar = new Set()
-  const sidebar = SIDEBAR_BLUEPRINT.map(group => {
-    const items = group.items.filter(item => {
-      const normalized = normalizeRoute(item.link)
-      if (publishableRoutes.has(normalized)) {
-        return true
+  const sidebar = []
+
+  for (const group of SIDEBAR_BLUEPRINT) {
+    if (group.items) {
+      const items = group.items.filter(item => {
+        const normalized = normalizeRoute(item.link)
+        if (publishableRoutes.has(normalized)) {
+          return true
+        }
+        missingSidebar.add(normalized)
+        return false
+      })
+      if (items.length) {
+        sidebar.push({ text: group.text, collapsed: group.collapsed, items })
       }
-      missingSidebar.add(normalized)
-      return false
-    })
-    if (!items.length) return null
-    return { text: group.text, collapsed: group.collapsed, items }
-  }).filter(Boolean)
+    } else if (group.link && group.text) {
+      const normalized = normalizeRoute(group.link)
+      if (publishableRoutes.has(normalized)) {
+        sidebar.push({ text: group.text, link: group.link })
+      } else {
+        missingSidebar.add(normalized)
+      }
+    }
+  }
 
   if (missingSidebar.size) {
     console.warn(

@@ -1,5 +1,5 @@
 ---
-title: Chapter state · Web frontend pilot
+title: Chapter state
 owner: '@louis'
 band: A
 refresh_after_days: 30
@@ -58,7 +58,7 @@ These are the pages that are "in play" right now. If you only have a few minutes
 
 - **Steward roster**
   See who is currently on point for scope, signals, and exceptions, plus their expected response window.
-  → [Open steward roster](../stewards)
+  → [Open steward roster](../../operate/stewards)
 
 - **Signals roster**
   See the two health checks we are watching: how fresh the roster is, and whether people leave sessions knowing their next step.
@@ -98,6 +98,6 @@ Raise it in the next chapter ops session or with whoever shared Northbook with y
 ## If you need history
 
 If you need to see **when** these pages changed or which decisions and guardrails are tied to them,  
-open the [Releases view](../../operate/releases/) and use the `site-v2025.11` bundle.
+open the [Releases view](../../changelog/releases/) and use the `site-v2025.11` bundle.
 
 Most people do not need this for day-to-day work.

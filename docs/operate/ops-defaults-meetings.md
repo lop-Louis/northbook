@@ -10,8 +10,8 @@ north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
 date: '2025-11-15'
-cta_primary_label: use
-cta_secondary_label: open
+cta_primary_label: try_ops_defaults
+cta_secondary_label: see_roster_signals
 leading_metric: m-lab-pass
 lagging_metric: m-defect-rate-changed-pages
 release_tag: site-v2025.11
@@ -49,7 +49,7 @@ Over two review cycles:
 ## Reference log:
 
 - [Frontend Charter](../navigate/frontend-charter.md)
-- [Release v2025.11](./releases/site-v2025.11.md)
+- [Release v2025.11](../changelog/releases/site-v2025.11.md)
 
 ---
 

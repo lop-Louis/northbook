@@ -1,5 +1,5 @@
 ---
-title: Chapter ops steward roster
+title: Steward roster
 owner: '@louis'
 band: A
 refresh_after_days: 14

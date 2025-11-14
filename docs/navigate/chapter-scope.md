@@ -1,5 +1,5 @@
 ---
-title: Web frontend chapter · fast scope line (archived)
+title: Chapter Scope (duplicate)
 owner: '@louis'
 band: A
 refresh_after_days: 30

@@ -1,39 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useData, withBase } from 'vitepress'
-import ctaMap from '../../../../ops/cta-map.json'
-
-type CtaConfig = {
-  text: string
-  doc?: string
-}
-
-const CTA_MAP = ctaMap as Record<string, CtaConfig>
+import { resolveCta } from '../../ctaMap'
 
 const { page } = useData()
-
-function docPathToRoute(docPath?: string) {
-  if (!docPath) return undefined
-  let normalized = docPath.trim().replace(/\\/g, '/')
-  normalized = normalized.replace(/^(\.\/)+/, '')
-  if (normalized.startsWith('docs/')) normalized = normalized.slice(5)
-  if (!normalized) return '/'
-
-  let isIndex = normalized.endsWith('index.md')
-  if (isIndex) {
-    normalized = normalized.slice(0, -'index.md'.length)
-  } else if (normalized.endsWith('.md')) {
-    normalized = normalized.slice(0, -'.md'.length)
-  }
-
-  normalized = normalized.replace(/\/+$/, '')
-  let route = `/${normalized}`.replace(/\/+/g, '/')
-  if (route !== '/' && isIndex) {
-    route = `${route}/`
-  }
-
-  return route || '/'
-}
 
 const ctas = computed(() => {
   const frontmatter = page.value.frontmatter || {}
@@ -45,15 +15,15 @@ const ctas = computed(() => {
     .map(label => label.trim())
     .filter(Boolean)
     .map(label => {
-      const mapped = CTA_MAP[label]
+      const mapped = resolveCta(label)
       if (!mapped) {
         return { key: label, text: label }
       }
 
-      const route = docPathToRoute(mapped.doc)
+      const route = mapped.to
       return {
         key: label,
-        text: mapped.text,
+        text: mapped.label,
         link: route ? withBase(route) : undefined
       }
     })
@@ -61,6 +31,7 @@ const ctas = computed(() => {
 </script>
 
 <template>
+  <b>Quick Lane</b> if this is what you looking for:
   <div v-if="ctas.length" class="page-ctas" role="group" aria-label="Page actions">
     <component
       :is="cta.link ? 'a' : 'span'"
