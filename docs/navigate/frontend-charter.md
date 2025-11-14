@@ -102,7 +102,7 @@ You do not have to be loud. You do need to be truthful.
 
 If you are using this page, these are the next steps:
 
-- **Meeting defaults:** open the ops defaults for "Casual" vs "Operation" and the 1:1 fallback.
+- **Meeting defaults:** try the ops defaults for "Casual" vs "Operation" and the 1:1 fallback.
 - **Signals:** see the roster signals we use to check whether this baseline is actually working.
 
 This keeps the chapter small, honest and usable: a clear scope line here, practical defaults in ops, and visible signals for whether people feel they have direction.

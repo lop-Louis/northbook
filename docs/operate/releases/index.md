@@ -9,8 +9,8 @@ bucket: operate
 north_star_id: ns-001
 guardrail_id: gr-103
 decision_id: dec-2025-11-chapter-ops-defaults
-cta_primary_label: Open latest release
-cta_secondary_label: See chapter state
+cta_primary_label: open_latest_release
+cta_secondary_label: open_chapter_state
 leading_metric: m-dashboard-freshness-days
 lagging_metric: m-decision-hit-rate
 date: '2025-11-15'

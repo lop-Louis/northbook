@@ -56,7 +56,7 @@
   --vp-c-text-2: #475569;
   --vp-c-bg: #ffffff;
   --vp-c-bg-alt: #f7f8fb;
-  --vp-c-bg-soft: #eef2ff;
+  --vp-c-bg-soft: var(--vp-c-bg-alt);
   --vp-c-surface-1: #f8fafc;
   --vp-c-surface-2: var(--vp-c-bg-soft);
   --vp-c-card: #f8fafc;
@@ -89,9 +89,9 @@
   --nb-color-warning-bg: #fef7f2;
   --nb-color-warning-border: #f4b99f;
   --nb-color-warning-text: #8a3e16;
-  --nb-color-info-bg: #e6f4ff;
-  --nb-color-info-border: #7cb3e6;
-  --nb-color-info-text: #0b3d6d;
+  --nb-color-info-bg: #ecf2f7;
+  --nb-color-info-border: #c3cfdb;
+  --nb-color-info-text: #14283b;
 }
 
 .dark {
