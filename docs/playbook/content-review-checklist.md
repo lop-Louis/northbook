@@ -10,8 +10,7 @@ audience: squad
 tone: practical
 narrative_goal: teach
 primary_action: /start-here
-review_after_days: 90
- 
+refresh_after_days: 90
 ---
 
 Use this checklist to keep content reviews consistent and fast. Add a short note in the PR when items are complete. This page is intentionally concise — treat it as a quick, repeatable guide.
