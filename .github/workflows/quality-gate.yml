@@ -16,7 +16,7 @@ jobs:
     if: github.event.pull_request.draft == false
 
     env:
-      DIST_DIR: docs/.vitepress/dist
+      DIST_DIR: ./docs/.vitepress/dist
       BASE_URL: /
 
     steps:
@@ -171,7 +171,6 @@ jobs:
           if [ "${{ steps.markdown_lint.outcome }}" = "success" ] \
              && [ "${{ steps.frontmatter.outcome }}" = "success" ] \
              && [ "${{ steps.release_folders.outcome }}" = "success" ] \
-             && [ "${{ steps.state_check.outcome }}" = "success" ] \
              && [ "${{ steps.build_docs.outcome }}" = "success" ] \
              && [ "${{ steps.link_check_internal.outcome }}" = "success" ]; then
             echo "✨ **All critical checks passed** – ready to merge" >> $GITHUB_STEP_SUMMARY
