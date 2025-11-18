@@ -1,20 +1,42 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 
+const repo = 'lop-louis/northbook'
+const route = useRoute()
 const { page } = useData()
 
-const feedbackPaths = computed(() => {
-  const paths = page.value?.frontmatter?.feedback_paths
-  if (!Array.isArray(paths)) return []
-  return paths
-    .map(item => {
-      if (!item) return null
-      const { label, href } = item as { label?: string; href?: string }
-      if (!label || !href) return null
-      return { label, href }
-    })
-    .filter(Boolean) as { label: string; href: string }[]
+const bucket = computed(() => {
+  const segments = route.path.split('/').filter(Boolean)
+  return segments[0] ?? 'root'
+})
+
+const exits = computed(() => {
+  const path = route.path
+  const data = {
+    steward: { label: 'Tag the steward roster contact', href: '/operate/stewards' },
+    exception: { label: 'Log blocker as exception', href: '/mitigate/exception-cloud-access' }
+  }
+
+  const issue = (bucketLabel: string) => ({
+    label: `Open a ${bucketLabel} feedback issue`,
+    href: `https://github.com/${repo}/issues/new?labels=feedback,kl,${bucketLabel}&title=%5B${encodeURIComponent(
+      bucketLabel
+    )}%5D%20${encodeURIComponent(path)}&body=What%20felt%20off%3F%0A%0APage%3A%20${encodeURIComponent(path)}`
+  })
+
+  switch (bucket.value) {
+    case 'navigate':
+      return [data.steward, issue('navigate')]
+    case 'operate':
+      return [data.steward, data.exception, issue('operate')]
+    case 'learn':
+      return [data.steward, issue('learn')]
+    case 'mitigate':
+      return [data.exception, data.steward, issue('mitigate')]
+    default:
+      return [data.steward, data.exception, issue('home')]
+  }
 })
 
 function iconFor(href: string) {
@@ -23,10 +45,8 @@ function iconFor(href: string) {
 }
 
 const shouldRender = computed(() => {
-  const frontmatter = page.value?.frontmatter ?? {}
-  if (frontmatter.skip_feedback === true) return false
-  if (frontmatter.layout === 'home') return false
-  return feedbackPaths.value.length > 0
+  if (page.value?.frontmatter?.layout === 'home') return false
+  return exits.value.length > 0
 })
 </script>
 
@@ -37,7 +57,7 @@ const shouldRender = computed(() => {
     </div>
     <div class="vp-feedback__row">
       <a
-        v-for="path in feedbackPaths"
+        v-for="path in exits"
         :key="path.href"
         class="vp-button"
         :href="path.href"
