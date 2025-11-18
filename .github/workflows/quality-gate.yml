@@ -65,10 +65,10 @@ jobs:
         uses: lycheeverse/lychee-action@v2.7.0
         with:
           args: >-
-            --base "${{ env.DIST_DIR }}"
+            --base-url "${{ env.DIST_DIR }}"
             --require-https
             --offline
-            --exclude-path "**/drafts/**"
+            --exclude-path ".*/drafts/.*"
             --github-token "${{ secrets.GITHUB_TOKEN }}"
             "${{ env.DIST_DIR }}/**/*.html"
         env:
