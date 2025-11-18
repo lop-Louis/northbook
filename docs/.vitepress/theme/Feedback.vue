@@ -26,17 +26,11 @@ const shouldRender = computed(() => {
 </script>
 
 <template>
-  <div
-    v-if="shouldRender"
-    class="vp-feedback"
-    role="region"
-    aria-label="Page feedback exits"
-    style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--vp-c-divider)"
-  >
-    <div class="vp-feedback__title" style="font-size: 0.9rem; opacity: 0.85; margin-bottom: 0.4rem">
+  <div v-if="shouldRender" class="vp-feedback" role="region" aria-label="Page feedback exits">
+    <div class="vp-feedback__title">
       If this page isn’t working for you, use one of these exits:
     </div>
-    <div class="vp-feedback__row" style="flex-wrap: wrap; gap: 0.5rem">
+    <div class="vp-feedback__row">
       <a
         v-for="path in feedbackPaths"
         :key="path.href"
@@ -50,3 +44,30 @@ const shouldRender = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.vp-feedback {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--vp-c-divider);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.vp-feedback__title {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.vp-feedback__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vp-button {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+</style>
