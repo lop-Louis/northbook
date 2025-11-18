@@ -1,5 +1,7 @@
 ---
 title: Chapter state
+mode: pilot
+pilot_id: web_frontend_chapter_v1
 owner: '@louis'
 band: A
 refresh_after_days: 30

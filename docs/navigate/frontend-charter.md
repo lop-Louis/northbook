@@ -1,5 +1,7 @@
 ---
 title: Frontend charter
+mode: pilot
+pilot_id: web_frontend_chapter_v1
 bucket: navigate
 north_star_id: ns-001
 guardrail_id: gr-103
