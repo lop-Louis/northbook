@@ -69,5 +69,30 @@ const shouldRender = computed(() => {
 .vp-button {
   font-size: 0.95rem;
   line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.vp-button:hover {
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
+}
+
+.vp-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--vp-c-brand-1);
 }
 </style>
