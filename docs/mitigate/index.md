@@ -40,3 +40,5 @@ Use this when work is **blocked** and you need an open, safe path forward.
   → [Open steward roster](../operate/stewards)
 
 If it is not about a real blocker, it stays out of Mitigate for now.
+
+If a blocker needs escalation, log it in the stub and flag the steward roster contact.

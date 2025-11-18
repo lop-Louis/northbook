@@ -48,6 +48,8 @@ Go to the **steward roster** for scope, signals, or exception owners and backups
 
 > [Open steward roster](../operate/stewards)
 
+If navigation feels off, open a PR/note and tag the steward roster contact.
+
 ### “I want to see the health checks”
 
 Open **signals roster** to see roster freshness and “do people leave with a next step.”

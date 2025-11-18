@@ -46,3 +46,5 @@ Use this when you are changing **how the chapter runs**—state, stewards, signa
 The **ops contract** explains guardrails, exceptions, and receipts for this pilot.  
 Read it when you are working **on** Northbook, not just using it.  
 → [Open ops contract](./ops-contract)
+
+If something breaks in Operate, open a PR or note and tag the steward roster contact; log blockers as exceptions.

@@ -62,6 +62,7 @@ If any receipt slips, pause new changes until it is back in bounds.
 - **Decision changes** (scope, metrics) require a linked `decision_id` and release note.
 - **Signal responses**: when roster freshness or “next step” dips for two weeks, log the cause in state and add the adjustment plan.
 - **Feedback loop**: use PR notes + `chapter state` to record what changed and why; add a short “what’s different” line to the next release entry.
+- **Operator feedback path**: open a PR or note, tag the steward roster contact, and log any blocker as an exception if it stops work. Update `chapter state` with the change and include it in the next release entry.
 
 ## How to use this page
 

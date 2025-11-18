@@ -36,3 +36,5 @@ See the two health checks; nothing more yet.
   → [Open signals roster](./signals-roster)
 
 Use it before ops sessions and after them. More write-ups can wait.
+
+If the signals view is unclear, open a PR or note and tag the steward roster contact.
