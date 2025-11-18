@@ -16,7 +16,7 @@ jobs:
     if: github.event.pull_request.draft == false
 
     env:
-      DIST_DIR: ./docs/.vitepress/dist
+      DIST_DIR: ${{ github.workspace }}/docs/.vitepress/dist
       BASE_URL: /
 
     steps:
