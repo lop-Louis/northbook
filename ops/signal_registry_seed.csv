@@ -1,0 +1,10 @@
+signal_id,owner,sla_days,description,leading_or_lagging
+m-nav-open,louis,30,"section landing opens","leading"
+m-time-to-answer,louis,30,"median minutes to usable answer","lagging"
+m-lab-pass,louis,30,"annex lab pass rate","leading"
+m-defect-rate-changed-pages,louis,30,"defects per changed page","lagging"
+m-dashboard-freshness-days,louis,30,"days since last dashboard refresh","leading"
+m-decision-hit-rate,louis,30,"decisions that produced expected receipts","lagging"
+m-time-to-freeze,louis,30,"elapsed time from trigger to freeze","leading"
+m-time-to-recovery,louis,30,"elapsed time to recover to baseline","lagging"
+m-search-noise,louis,30,"irrelevant results per 100 internal searches","leading"

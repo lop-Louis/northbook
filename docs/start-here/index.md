@@ -1,58 +1,68 @@
 ---
-title: Start Here
-band: A
+title: Start here
 owner: '@lop'
-refresh_after_days: 60
-change_type: minor
+band: A
+refresh_after_days: 120
+change_type: patch
 status: live
-last_reviewed: '2025-11-10'
-audience: Anyone kicking off work and needing a fast orientation
-tone: Plainspoken, candid, energetic
-narrative_goal: Give newcomers outcome-based entry points before policy
-nav_group: Start
-nav_order: 1
-nav_label: Overview
-nav:
-  - main
-  - sidebar
+audience: People who are not sure where to begin with the Northbook pilot
+tone: 'Plainspoken, calm, practical'
+narrative_goal: >-
+  Help newcomers choose between chapter state and steward roster as their first
+  step
+bucket: navigate
+north_star_id: ns-001
+guardrail_id: gr-101
+cta_primary_label: start_with_chapter_scope
+cta_secondary_label: open_navigate_overview
+decision_id: dec-2025-11-chapter-ops-defaults
+leading_metric: m-nav-open
+lagging_metric: m-time-to-answer
+date: '2025-01-15'
+release_tag: site-v2025.11
+list_label: >
+  Entry point for the pilot when you are not sure which chapter ops page to open first.
 ---
 
-# Start Here
+For now, Northbook is a small pilot focused on the **frontend chapter**.
 
-Jump into the work, not the policy. [Run your first decision](../decision-spine) or [Browse the playbook](../playbook/).
+It is here to help you answer two questions:
 
-## Pick your first win
+1. Where does my question or change belong?
+2. Who should I talk to or what should I read next?
 
-- **Decide faster** — Use the [Decision Spine](../decision-spine) to frame options, make the call, and leave a review plan.
-- **Facilitate better** — Borrow ready-to-use prompts from [Facilitation Techniques](../facilitation) to keep meetings on-rails.
-- **Ship accessibly** — Run the [Accessibility Quick Wins](../accessibility-quick-wins) checklist to catch the 80% issues fast.
+There is no full playbook behind this page yet on purpose.  
+We only expose the pieces that are already in use.
 
-Each page opens with the same CTA pair so you always know what to do next.
+<PageCTA />
 
-## When you need the rules
+> **Expected Takeaway:** you leave knowing whether you should look at the **chapter state** or at **who owns what** next.
 
-Need to publish or link something publicly? Check [What is Band A](../band-a) for the sanitization contract, then ship.
+## Quick links for the web frontend pilot
 
-Need the UI, tone, or states for your artifact? Use:
+<PilotPageList :max-items="8" />
 
-- [Find anything fast](./find) for a search cheatsheet
-- [Voice & Tone](./tone) for sample phrasing
-- [UI Baseline](./ui) for typography, buttons, and spacing
-- [SLI States](./sli-states) to see how we visualize progress
+## If you want to see where the chapter stands
 
-## Fix it fast or escalate
+Open the **chapter state** page:
 
-- Follow the [Quick-Run](../ops/quick-run) when something regresses after an edit.
-- Browse the [Fix-it-fast index](../fix/) when interrupts hit and you need a 10-minute checklist.
-- Need something more involved? The [Runbooks index](../runbooks/) keeps the chore-heavy flows out of guidance pages.
+- see what the current pilot covers
+- see which ops pages are actively in play
+- use it as a quick briefing before a chapter ops session
 
-## Feedback loop
+> [Open chapter state](../changelog/state/web-frontend)
 
-If this hub doesn’t land you on the right page within a minute, [tell us](https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Start%20here&body=Page:%20https://northbook.guide/start-here/) so we can plug the gap.
+## If you want to know who owns what
 
-## Related references
+Open the **steward roster**:
 
-- [Wayfinding shortcuts](./find.md) — Fast pointer to every major doc category.
-- [Band A guardrails](../band-a.md) — Sanitization contract before you publish.
-- [Quick-Run check](../ops/quick-run.md) — Required pre-flight after any doc edit.
-- [Playbook canon](../playbook/) — The deeper guidance you’ll link once you’re oriented.
+- see who looks after scope, signals, and exceptions
+- see who is backup and how fast they’re expected to respond
+
+> [Open steward roster](../operate/stewards)
+
+## If this still feels unclear
+
+If you reached this page and still feel lost, treat that as useful feedback.
+
+Raise it in the next chapter ops session or with whoever shared Northbook with you so we can adjust this entrance.

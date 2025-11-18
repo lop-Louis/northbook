@@ -3,10 +3,36 @@ import path from 'node:path'
 import matter from 'gray-matter'
 
 const repoRoot = process.cwd()
-const roots = [path.join(repoRoot, 'docs'), path.join(repoRoot, 'runbooks')]
+const docsRoot = process.env.DOCS
+  ? path.resolve(repoRoot, process.env.DOCS)
+  : path.join(repoRoot, 'docs')
+const runbooksRoot = process.env.RUNBOOKS
+  ? path.resolve(repoRoot, process.env.RUNBOOKS)
+  : path.join(repoRoot, 'runbooks')
+const roots = [docsRoot, runbooksRoot]
 const excludedDirs = new Set(['.git', 'node_modules', 'public', '.vitepress'])
 
 const MARKDOWN_LINK_REGEX = /(?<!\!)\[([^\]]+)\]\(([^)\s]+(?:\s+[^)]*)?)\)/g
+const toneLintPath = path.join(repoRoot, 'ops', 'tone_lint.json')
+const ctaMapPath = path.join(repoRoot, 'ops', 'cta-map.json')
+let ctaBanlist = []
+let ctaKeys = new Set()
+if (fs.existsSync(toneLintPath)) {
+  try {
+    const toneConfig = JSON.parse(fs.readFileSync(toneLintPath, 'utf8'))
+    ctaBanlist = (toneConfig.banlist_terms || []).map(term => term.toLowerCase().trim())
+  } catch (error) {
+    console.warn(`Warning: unable to parse ${toneLintPath}: ${error.message}`)
+  }
+}
+if (fs.existsSync(ctaMapPath)) {
+  try {
+    const ctaConfig = JSON.parse(fs.readFileSync(ctaMapPath, 'utf8'))
+    ctaKeys = new Set(Object.keys(ctaConfig || {}))
+  } catch (error) {
+    console.warn(`Warning: unable to parse ${ctaMapPath}: ${error.message}`)
+  }
+}
 
 function collectMarkdownFiles() {
   const files = []
@@ -82,8 +108,9 @@ function runScan() {
     const { data, content } = matter(raw)
     const relative = path.relative(repoRoot, filePath)
 
-    // Skip layout: home pages
-    if (data && data.layout === 'home') continue
+    const isHome = data && data.layout === 'home'
+    const isBandA = data && data.band === 'A'
+    if (isHome || !isBandA) continue
 
     const intro = extractIntro(content)
     const linkMatches = []
@@ -112,6 +139,20 @@ function runScan() {
 
     if (!hasPlainspokenOpener || (firstLinkIndex >= 0 && !introBeforePrimary)) {
       missing.push('plainspoken opener before CTA pair')
+    }
+
+    if (ctaBanlist.length) {
+      const labels = [data?.cta_primary_label, data?.cta_secondary_label]
+      for (const label of labels) {
+        if (!label || typeof label !== 'string') continue
+        const lower = label.toLowerCase()
+        if (ctaKeys.has(label.trim())) continue
+        const bannedHit = ctaBanlist.find(term => term && lower.includes(term))
+        if (bannedHit) {
+          missing.push(`CTA label "${label}" contains banned term "${bannedHit}"`)
+          break
+        }
+      }
     }
 
     if (missing.length) {

@@ -69,16 +69,76 @@ let red = []
 let yellow = []
 let fileCount = 0
 let checkCount = 0
+const seamViolationCounts = {}
+
+const toneLintPath = path.join(process.cwd(), 'ops', 'tone_lint.json')
+const ctaMapPath = path.join(process.cwd(), 'ops', 'cta-map.json')
+let ctaAllowlist = []
+let ctaBanlist = []
+let ctaKeys = new Set()
+if (fs.existsSync(toneLintPath)) {
+  try {
+    const toneConfig = JSON.parse(fs.readFileSync(toneLintPath, 'utf8'))
+    ctaAllowlist = (toneConfig.allowlist_cta || []).map(entry => entry.toLowerCase().trim())
+    ctaBanlist = (toneConfig.banlist_terms || []).map(entry => entry.toLowerCase().trim())
+  } catch (error) {
+    console.warn(`Warning: unable to parse ${toneLintPath}: ${error.message}`)
+  }
+}
+if (fs.existsSync(ctaMapPath)) {
+  try {
+    const ctaConfig = JSON.parse(fs.readFileSync(ctaMapPath, 'utf8'))
+    ctaKeys = new Set(Object.keys(ctaConfig || {}))
+  } catch (error) {
+    console.warn(`Warning: unable to parse ${ctaMapPath}: ${error.message}`)
+  }
+}
+
+function checkCtaLabel(filePath, labelType, value) {
+  if (!value || typeof value !== 'string') return
+  const trimmed = value.trim()
+  if (!trimmed) return
+  const lower = trimmed.toLowerCase()
+
+  if (ctaKeys.has(trimmed)) {
+    checkCount++
+    return
+  }
+
+  for (const banned of ctaBanlist) {
+    if (banned && lower.includes(banned)) {
+      red.push(
+        `${filePath}: CTA ${labelType} label "${trimmed}" contains banned term "${banned}" (blocking)`
+      )
+      checkCount++
+      return
+    }
+  }
+
+  if (ctaAllowlist.length && !ctaAllowlist.some(entry => entry && lower.startsWith(entry))) {
+    yellow.push(
+      `${filePath}: CTA ${labelType} label "${trimmed}" is not in the allowlist (nudge only)`
+    )
+    checkCount++
+  }
+}
 
 function checkFile(p) {
   fileCount++
   const raw = fs.readFileSync(p, 'utf8')
-  const { content } = matter(raw)
+  const { content, data } = matter(raw)
+  const redBefore = red.length
+  const yellowBefore = yellow.length
 
   // Skip VitePress config directory
   if (p.includes('.vitepress')) return
 
   // Check for forbidden patterns in content
+  // const segments = p.split(path.sep)
+  // const inDrafts = segments.includes('drafts')
+  // if (inDrafts) {
+  //   return
+  // }
   const forbiddenMatches = []
   for (const rx of forbidden) {
     const matches = content.match(rx)
@@ -145,6 +205,51 @@ function checkFile(p) {
     yellow.push(`${p}: External link to ${url} missing utm_source=northbook for analytics tracking`)
     checkCount++
   }
+
+  const receiptsLinkPattern = /\[See the receipts\]\(([^)]+)\)/gi
+  let receiptsMatch
+  while ((receiptsMatch = receiptsLinkPattern.exec(content)) !== null) {
+    const link = receiptsMatch[1]
+    const normalized = link.split('#')[0]
+    const receiptsRegex = /^((?:\.\.\/)+|\/)signals\/receipts\/v\d{4}\.\d{2}-[a-z0-9-]+(?:\.md)?$/i
+
+    if (!receiptsRegex.test(normalized)) {
+      red.push(
+        `${p}: Receipts link "${link}" must match /signals/receipts/vYYYY.MM-<seam>.md (blocking)`
+      )
+      checkCount++
+      continue
+    }
+
+    if (!normalized.startsWith('http')) {
+      let target
+      if (normalized.startsWith('/')) {
+        target = path.join(process.cwd(), normalized.replace(/^\//, ''))
+      } else {
+        target = path.resolve(path.dirname(p), normalized)
+      }
+      if (!fs.existsSync(target)) {
+        const altTarget = normalized.endsWith('.md') ? null : `${target}.md`
+        if (!altTarget || !fs.existsSync(altTarget)) {
+          red.push(`${p}: Receipts link target "${normalized}" not found on disk (blocking)`)
+          checkCount++
+        }
+      }
+    }
+  }
+
+  if (data) {
+    checkCtaLabel(p, 'primary', data.cta_primary_label)
+    checkCtaLabel(p, 'secondary', data.cta_secondary_label)
+
+    const seam = data.seam || 'unknown'
+    const key = data.guardrail_id ? `${seam}:${data.guardrail_id}` : seam
+    seamViolationCounts[key] = seamViolationCounts[key] || { red: 0, yellow: 0 }
+    const newRed = red.length - redBefore
+    const newYellow = yellow.length - yellowBefore
+    seamViolationCounts[key].red += newRed > 0 ? newRed : 0
+    seamViolationCounts[key].yellow += newYellow > 0 ? newYellow : 0
+  }
 }
 
 function walk(dir, withinDocs = false) {
@@ -200,7 +305,8 @@ const payload = {
   fileCount,
   checkCount,
   red,
-  yellow
+  yellow,
+  seamViolationCounts
 }
 
 // Persist yellow flags to reports/yellow-flags.json
@@ -241,6 +347,20 @@ if (JSON_MODE) {
   }
 
   console.log(`\n📝 Yellow flags persisted to reports/yellow-flags.json`)
+
+  const seamKeys = Object.keys(seamViolationCounts).filter(
+    key => seamViolationCounts[key].red || seamViolationCounts[key].yellow
+  )
+  if (seamKeys.length) {
+    console.log('\n📈 Guard violations by seam/guardrail:')
+    seamKeys.sort()
+    for (const key of seamKeys) {
+      const counts = seamViolationCounts[key]
+      console.log(
+        `- ${key}: ${counts.red} red, ${counts.yellow} yellow (add receipts under /signals/receipts/<tag>.md)`
+      )
+    }
+  }
 }
 
 if (status === 'red') {

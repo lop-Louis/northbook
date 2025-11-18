@@ -2,33 +2,61 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import matter from 'gray-matter'
 import prettier from 'prettier'
 
 const repoRoot = process.cwd()
 const docsDir = path.join(repoRoot, 'docs')
 const outputPath = path.join(docsDir, '.vitepress', 'navigation.generated.ts')
-const GROUP_ORDER = new Map([
-  ['Onboarding', 10],
-  ['Guides', 20],
-  ['Runbooks', 30],
-  ['Contributor Kit', 40],
-  ['Fix it fast', 50]
-])
+const FIXED_NAV = [{ text: 'Start here', link: '/start-here/' }]
+const SIDEBAR_BLUEPRINT = [
+  {
+    text: 'Navigate',
+    collapsed: false,
+    items: [
+      { text: 'Navigate overview', link: '/navigate/' },
+      { text: 'Frontend charter', link: '/navigate/frontend-charter' }
+    ]
+  },
+  {
+    text: 'Operate',
+    collapsed: false,
+    items: [
+      { text: 'Operate overview', link: '/operate/' },
+      { text: 'Defaults Meeting', link: '/operate/ops-defaults-meetings' },
+      { text: 'Steward roster', link: '/operate/stewards' }
+    ]
+  },
+  {
+    text: 'Learn',
+    collapsed: false,
+    items: [
+      { text: 'Learn overview', link: '/learn/' },
+      { text: 'Signals roster', link: '/learn/signals-roster' }
+    ]
+  },
+  {
+    text: 'Mitigate',
+    collapsed: false,
+    items: [
+      { text: 'Mitigate overview', link: '/mitigate/' },
+      { text: 'Cloud access blocks', link: '/mitigate/exception-cloud-access' }
+    ]
+  }
+]
 
 function collectMarkdownFiles(dir) {
   const results = []
 
   function walk(current) {
     const entries = fs.readdirSync(current, { withFileTypes: true })
-
     for (const entry of entries) {
       if (entry.name.startsWith('.')) continue
       if (entry.name === 'node_modules') continue
+      const fullPath = path.join(current, entry.name)
       if (entry.isDirectory()) {
-        walk(path.join(current, entry.name))
+        walk(fullPath)
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
-        results.push(path.join(current, entry.name))
+        results.push(fullPath)
       }
     }
   }
@@ -46,109 +74,84 @@ function routeFromFile(filePath) {
   return `/${relative.replace(/\.md$/, '')}`
 }
 
-function normalizeNavEntry(entry) {
-  if (!entry) return null
-  if (typeof entry === 'string') {
-    return { slot: entry }
-  }
-  if (typeof entry === 'object') {
-    const { slot, label, group, order } = entry
-    return { slot, label, group, order }
-  }
-  return null
+function isDraftPath(filePath) {
+  const relative = path.relative(docsDir, filePath)
+  return relative.split(path.sep).includes('drafts')
 }
 
-function deriveGroup(route) {
-  const clean = route.replace(/^\/+/, '')
-  const [segment] = clean.split('/')
-  switch (segment) {
-    case '':
-      return 'Onboarding'
-    case 'start-here':
-      return 'Onboarding'
-    case 'playbook':
-      return 'Guides'
-    case 'runbooks':
-      return 'Runbooks'
-    default:
-      return 'Guides'
-  }
-}
-
-function formatItems(items) {
-  return items
-    .sort((a, b) => a.order - b.order || a.text.localeCompare(b.text))
-    .map(({ text, link }) => ({ text, link }))
+function normalizeRoute(link) {
+  if (link === '/') return '/'
+  return link
 }
 
 function buildNavigation() {
   const files = collectMarkdownFiles(docsDir)
-  const mainNav = []
-  const sidebarGroups = new Map()
+  const publishableRoutes = new Set()
 
   for (const file of files) {
-    const raw = fs.readFileSync(file, 'utf8')
-    const { data } = matter(raw)
+    if (file.includes(`${path.sep}.vitepress${path.sep}`)) continue
+    if (isDraftPath(file)) continue
 
-    if (!data || !data.nav) continue
-
-    const entries = Array.isArray(data.nav) ? data.nav : [data.nav]
     const route = routeFromFile(file)
-    const defaultLabel = data.nav_label || data.short_title || data.title
-    const defaultGroup = data.nav_group
-    const defaultOrder =
-      typeof data.nav_order === 'number' && Number.isFinite(data.nav_order) ? data.nav_order : 1000
 
-    for (const rawEntry of entries) {
-      const entry = normalizeNavEntry(rawEntry)
-      if (!entry || entry.slot === 'none') continue
+    publishableRoutes.add(route)
+  }
 
-      const label = entry.label || defaultLabel
-      if (!label) continue
-      const order =
-        typeof entry.order === 'number' && Number.isFinite(entry.order) ? entry.order : defaultOrder
+  const nav = FIXED_NAV.map(item => {
+    const normalized = normalizeRoute(item.link)
+    if (!publishableRoutes.has(normalized)) {
+      throw new Error(`Nav entry ${normalized} is missing or not publishable`)
+    }
+    return item
+  })
 
-      if (entry.slot === 'main') {
-        mainNav.push({ text: label, link: route, order })
-      } else if (entry.slot === 'sidebar') {
-        const group = entry.group || defaultGroup || deriveGroup(route)
-        const key = group || 'Guides'
-        const existing = sidebarGroups.get(key) || {
-          text: key,
-          order,
-          items: []
+  const missingSidebar = new Set()
+  const sidebar = []
+
+  for (const group of SIDEBAR_BLUEPRINT) {
+    if (group.items) {
+      const items = group.items.filter(item => {
+        const normalized = normalizeRoute(item.link)
+        if (publishableRoutes.has(normalized)) {
+          return true
         }
-        const preferredGroupOrder = GROUP_ORDER.get(key)
-        if (typeof preferredGroupOrder === 'number') {
-          existing.order = preferredGroupOrder
-        } else {
-          existing.order = Math.min(existing.order, order)
-        }
-        existing.items.push({ text: label, link: route, order })
-        sidebarGroups.set(key, existing)
+        missingSidebar.add(normalized)
+        return false
+      })
+      if (items.length) {
+        sidebar.push({ text: group.text, collapsed: group.collapsed, items })
+      }
+    } else if (group.link && group.text) {
+      const normalized = normalizeRoute(group.link)
+      if (publishableRoutes.has(normalized)) {
+        sidebar.push({ text: group.text, link: group.link })
+      } else {
+        missingSidebar.add(normalized)
       }
     }
   }
 
-  const nav = formatItems(mainNav)
-  const sidebar = Array.from(sidebarGroups.values())
-    .sort((a, b) => a.order - b.order || a.text.localeCompare(b.text))
-    .map(group => ({
-      text: group.text,
-      collapsed: false,
-      items: formatItems(group.items)
-    }))
+  if (missingSidebar.size) {
+    console.warn(
+      'Sidebar items skipped (await opener/frontmatter fixes):',
+      Array.from(missingSidebar).join(', ')
+    )
+  }
 
   return { nav, sidebar }
 }
 
 async function writeNavigation(nav, sidebar) {
-  const banner = `// Auto-generated by scripts/sync-navigation.mjs\n// Do not edit manually.\n`
+  const banner = `import { DefaultTheme } from 'vitepress';\n\n// Auto-generated by scripts/sync-navigation.mjs\n// Do not edit manually.\n`
   const content = `${banner}export const generatedNav = ${JSON.stringify(
     nav,
     null,
     2
-  )} as const;\nexport const generatedSidebar = ${JSON.stringify(sidebar, null, 2)} as const;\n`
+  )} as DefaultTheme.NavItem[];\n\nexport const generatedSidebar = ${JSON.stringify(
+    sidebar,
+    null,
+    2
+  )} as DefaultTheme.Sidebar;\n`
   const formatted = await prettier.format(content, {
     parser: 'typescript',
     singleQuote: true,

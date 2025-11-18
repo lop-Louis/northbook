@@ -1,9 +1,13 @@
 {
-  "pass": 1,
+  "pass": 2,
   "fail": 0,
   "results": [
     {
       "lab": "link-drift.lab.json",
+      "ok": true
+    },
+    {
+      "lab": "versioning-and-releases.lab.json",
       "ok": true
     }
   ]

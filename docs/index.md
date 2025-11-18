@@ -1,5 +1,7 @@
 ---
 title: Northbook
+mode: pilot
+pilot_id: web_frontend_chapter_v1
 layout: home
 band: A
 owner: '@lop'
@@ -7,93 +9,130 @@ refresh_after_days: 120
 change_type: patch
 status: live
 last_reviewed: '2025-01-15'
-audience: Anyone looking for Northbook guidance and entry points
-tone: Plainspoken, candid, energetic
-narrative_goal: Orient newcomers to the core pillars and where to start
+audience: Anyone in the web frontend chapter looking for ops guidance and entry points
+tone: 'Plainspoken, calm, practical'
+narrative_goal: >-
+  Help people see where the chapter stands, who owns what, and what to do when
+  blocked
+release_tag: site-v2025.11
 hero:
   name: Northbook
-  text: Make the work predictable.
+  text: A small pilot for calmer chapter ops.
   image:
     src: /logo-symbol.png
     alt: Northbook logo
-  tagline: A visitor reaches the right doc and a runnable next action in under 60 seconds, for at least 80% of sessions.
+  tagline: >-
+    For this pilot, Northbook gives the web frontend chapter one place to see
+    where we are, who owns what, and how to handle blocks.
   actions:
     - theme: brand
-      text: Start now
-      link: /start-here/
+      text: See the chapter state
+      link: /changelog/state/web-frontend
     - theme: alt
-      text: See the philosophy
-      link: /playbook/north-star-guardrails#philosophy
+      text: See who owns what
+      link: /operate/stewards
 features:
-  - title: Direction beats speed
-    details: A one-line North Star turns scattered actions into progress. Clear guardrails reduce rework and keep creativity alive.
-    link: /playbook/north-star-guardrails
-    linkText: Read North Star & Guardrails
-  - title: Ship small, prove it
-    details: Single bet per cycle. Pilot first. Receipts prove outcomes every 14 days—pages touched, time-to-answer, lab pass rate.
-    link: /ops/quick-run
-    linkText: Run Quick-Run
-  - title: Keep receipts
-    details: Public state, named owners, and traceability prevent hidden work. Change → Decision → Guardrail → Page → Signal → Receipt.
-    link: /playbook/north-star-guardrails#visibility
-    linkText: See traceability
+  - title: See where the chapter stands
+    details: >-
+      Open the chapter state page to see a simple snapshot of what shipped
+      recently and which ops pages are in play for this pilot.
+    link: /changelog/state/web-frontend
+    linkText: Open chapter state
+  - title: Know who to tap
+    details: >-
+      Use the steward roster to see who currently looks after scope, signals,
+      and exceptions, plus their expected response window.
+    link: /operate/stewards
+    linkText: Open steward roster
+  - title: Watch the two health checks
+    details: >-
+      The signals roster tracks two things only: how fresh the chapter roster
+      is, and whether people leave sessions with a clear next step.
+    link: /learn/signals-roster
+    linkText: Open signals roster
+  - title: Handle cloud access blocks
+    details: >-
+      When cloud access gets in the way, the cloud-access stub helps you log the
+      blocker, name an owner, and use a safe temporary path.
+    link: /mitigate/exception-cloud-access
+    linkText: Open cloud-access stub
 nav:
   - none
+bucket: navigate
+north_star_id: ns-001
+guardrail_id: gr-101
+decision_id: dec-2025-11-chapter-ops-defaults
+leading_metric: m-nav-open
+lagging_metric: m-time-to-answer
+date: '2025-01-15'
 ---
 
-Find the answer. Act within 60 seconds. [Use the starting links](./start-here/) or [Read the North Star & Guardrails](./playbook/north-star-guardrails).
+For now, Northbook is a **small pilot** for the web frontend chapter.
 
-**Protect the North Star.** Every page has an owner, band, exit metric, and links to State and Receipts. Default deny outside the guardrails. Exceptions need owner, reason, expiry, rollback, and stop rule—but they're allowed.
+It does three things:
 
-If this didn't answer your question in 60 seconds, [tell us so we can fix it](https://github.com/lop-louis/northbook/issues/new?labels=kl,feedback&title=%5BFeedback%5D%20Homepage&body=Page:%20https://northbook.guide/).
+1. shows where the chapter stands
+2. shows who owns which part of ops
+3. gives a simple path when cloud access blocks work
 
-## Governance & Safety
+There is no full playbook here yet on purpose. What you see is what we are actually using.
 
-### Invariants enforced:
+## Start here
 
-1. **Default deny outside the guardrails** — If a change is not covered, it is out of scope.
-2. **Public Band-A content only** — No sensitive or internal-only information.
-3. **Runnable in 10 minutes** — Hard gate for ops annex labs.
-4. **Exceptions expire automatically** — No entry, no work.
-5. **One owner and date on every change** — Clear accountability.
-6. **Sanitize for public use before publish** — Privacy and safety first.
+Choose what matches your situation today.
 
-Automation enforces: frontmatter completeness, Band-A sanitization, secret scan, build integrity. See [North Star & Guardrails](./playbook/north-star-guardrails) for the full contract.
+### I want to see where the chapter stands
 
-## FAQ Highlights
+Go to the **chapter state** page:
 
-- New joiner? See [FAQ for New Joiners](./faq-new-joiners)
-- Making decisions? Start with [Decision Spine](./decision-spine)
-- Not sure if content belongs? Re-check [Band A](./band-a) examples
-- How does it work? Watch the [North Star & Guardrails walkthrough](./playbook/north-star-guardrails)
+- see the latest snapshot for this pilot
+- see which ops pages are currently in play
 
-## Philosophy
+> [Open chapter state](./changelog/state/web-frontend)
 
-1. **Direction first. Methods are free.** The North Star is fixed; the path to reach it is flexible.
-2. **Transparency builds trust.** Public state, receipts, and traceability prevent hidden work.
-3. **Defaults, not diktats.** Good defaults make the right behavior easy. Exceptions need owner, reason, expiry, rollback, and stop rule—but they're allowed.
-4. **Small bets, steady gains.** Single bet per cycle. Pilot first for wide changes. Stop if receipts are flat or negative beyond the stop rule.
-5. **Evidence over opinion.** Receipts › analytics › heuristic review › opinion. Clarity over chrome.
-6. **Runnable in 10 minutes.** Hard gate for ops annex labs. Keeps experiments lightweight and feedback fast.
+### I want to know who owns what in ops
 
-## Opening a PR
+Open the **steward roster**:
 
-Before submitting:
+- see who is on point for scope, signals, and exceptions
+- see who is backup and how fast they are expected to respond
 
-- `pnpm run docs:guard` — Enforces guardrails and Band-A sanitization
-- `pnpm run docs:build` — Verifies build integrity
-- Ensure no internal names, hard dates, or ticket IDs
-- One owner and date on every change
-- Keep scope aligned with declared `change_type`
+> [Open steward roster](./operate/stewards)
 
-**Stop rule:** If CI adds more than 15 minutes per day across two weeks, remove the last added check and reassess ROI.
+### I want to see the two health checks
 
-## Receipts & State
+Open the **signals roster**:
 
-### Tracked per 14-day cycle:
+- roster freshness: do we have a current picture of each person?
+- direction after sessions: do people leave knowing their next step?
 
-- **Adoption** — Pages touched and time to answer
-- **Quality** — Lab pass rate and broken link count
-- **Credibility** — State page freshness and exceptions resolved on time
+You do not have to touch metrics directly. Just use it to sense if we are drifting.
 
-Monthly release captures meaningful changes in [releases](./release.md). State page updated within 30 days.
+> [Open signals roster](./learn/signals-roster)
+
+### I am blocked by cloud access
+
+Use the **cloud-access stub**:
+
+- log the blocker with an owner and an expiry
+- use the agreed temporary path so work can keep moving safely
+
+> [Open cloud-access stub](./mitigate/exception-cloud-access)
+
+## If you help maintain this pilot
+
+If you are updating these pages or wiring automation around them, there is a separate ops contract that explains:
+
+- the few guardrails we keep
+- how releases and state are generated
+- how traceability works without cluttering these pages
+
+That contract is written for operators, not first-time visitors. Use it when you are working on the system, not when you just need an answer.
+
+## If this home page did not help
+
+If you could not find a useful page or a clear next step from here, tell us.
+
+We will treat it as a signal that the entrance is wrong, not that you are.
+
+> If you help maintain Northbook and need history or traceability, use the [Releases view](./changelog/releases/). It is written for operators and auditors, not for first-time visitors.

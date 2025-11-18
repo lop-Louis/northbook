@@ -25,10 +25,26 @@ const validate = ajv.compile(schema)
 const violations = []
 let fileCount = 0
 
+const remediationHints = {
+  bucket: "Add 'bucket: <navigate|operate|learn|mitigate>' to the frontmatter.",
+  north_star_id: "Add 'north_star_id: ns-001'. See docs/operate/north-star-guardrails.md.",
+  guardrail_id: "Add 'guardrail_id: gr-10x'. Guardrail list: docs/operate/guardrail-index.md.",
+  owner: "Add 'owner: '@handle''. Use the public owner handle.",
+  band: "Set 'band: A' to mark public readiness.",
+  date: "Add 'date: YYYY-MM-DD' (lowercase month names converted).",
+  cta_primary_label: "Add 'cta_primary_label: <cta_key>' (see ops/cta-map.json).",
+  cta_secondary_label: "Add 'cta_secondary_label: <cta_key>' (see ops/cta-map.json).",
+  leading_metric: "Add 'leading_metric: m-...' using ops/signal_registry_seed.csv.",
+  lagging_metric: "Add 'lagging_metric: m-...' using ops/signal_registry_seed.csv.",
+  list_label: "Add 'list_label: <short summary>' so release lists stay human-readable.",
+  tags: "Add a 'tags:' array (e.g., 'tags: [v2025.11-governance]') to link releases."
+}
+
 function lintFile(filePath) {
   const relPath = path.relative(process.cwd(), filePath).split(path.sep).join('/')
 
   if (relPath.includes('.vitepress/')) return
+  if (relPath.split('/').includes('drafts')) return
 
   const raw = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(raw)
@@ -49,9 +65,12 @@ function lintFile(filePath) {
 
 function formatError(error) {
   if (error.keyword === 'required') {
+    const missing = error.params.missingProperty
     return {
-      field: error.params.missingProperty,
-      message: `Missing required field "${error.params.missingProperty}"`
+      field: missing,
+      message: remediationHints[missing]
+        ? `Missing required field "${missing}". ${remediationHints[missing]}`
+        : `Missing required field "${missing}".`
     }
   }
 

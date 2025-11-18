@@ -98,6 +98,11 @@ jobs:
           mkdir -p public/v1 public/staging
           rsync -a --delete release/docs/.vitepress/dist/ public/v1/
           rsync -a --delete staging/docs/.vitepress/dist/ public/staging/
+          if [ -f release/docs/.vitepress/dist/404.html ]; then
+            cp release/docs/.vitepress/dist/404.html public/404.html
+          else
+            echo "⚠️ 404.html missing from release build"
+          fi
 
       - name: Create redirect + versions manifest
         env:
@@ -111,6 +116,16 @@ jobs:
           REDIRECT_TARGET: /v1/
         working-directory: release
         run: node scripts/generate-pages-assets.mjs
+
+      - name: Generate smoke targets
+        working-directory: release
+        run: node scripts/generate-smoke-targets.mjs --output ../smoke-targets.json
+
+      - name: Upload smoke targets
+        uses: actions/upload-artifact@v5
+        with:
+          name: smoke-targets
+          path: smoke-targets.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
@@ -128,6 +143,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Download smoke targets
+        uses: actions/download-artifact@v6
+        with:
+          name: smoke-targets
+          path: smoke
 
       - name: Smoke test production
         if: success()
@@ -147,11 +168,22 @@ jobs:
           }
           echo "✅ /staging/ responding"
 
-          curl -sf https://northbook.guide/v1/playbook/raci-by-seams | grep -q "RACI" || {
-            echo "❌ /v1/ RACI page failed"
+          SMOKE_FILE="smoke/smoke-targets.json"
+          if [ ! -f "$SMOKE_FILE" ]; then
+            echo "❌ smoke targets missing"
             exit 1
-          }
-          echo "✅ /v1/ RACI responding"
+          fi
+
+          for route in $(jq -r '.topNav[]' "$SMOKE_FILE"); do
+            for base in v1 staging; do
+              url="https://northbook.guide/${base}${route}"
+              curl -sf "$url" > /dev/null || {
+                echo "❌ ${url} failed smoke test"
+                exit 1
+              }
+              echo "✅ ${url} responding"
+            done
+          done
 
           curl -sf https://northbook.guide/v1/logo-lockup-light.png > /dev/null || {
             echo "❌ v1 light logo missing"
@@ -164,12 +196,6 @@ jobs:
             exit 1
           }
           echo "✅ v1 dark logo reachable"
-
-          curl -sf https://northbook.guide/staging/playbook/raci-by-seams | grep -q "RACI" || {
-            echo "❌ /staging/ RACI page failed"
-            exit 1
-          }
-          echo "✅ /staging/ RACI responding"
 
           curl -sf https://northbook.guide/versions.json | grep -q "\"latest\"" || {
             echo "❌ versions manifest missing"
