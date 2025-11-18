@@ -1,7 +1,6 @@
 ---
 title: Operate overview
-mode: pilot
-pilot_id: web_frontend_chapter_v1
+mode: platform
 owner: '@lop'
 band: A
 refresh_after_days: 60
@@ -23,7 +22,14 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
-list_label: Small set of ops pages in play for this pilot.
+list_label: Small set of ops pages in play for this platform.
+feedback_paths:
+  - label: Tag the steward roster contact
+    href: /operate/stewards
+  - label: Log blocker as exception
+    href: /mitigate/exception-cloud-access
+  - label: Open an ops feedback issue
+    href: https://github.com/lop-louis/northbook/issues/new?labels=feedback,kl,operate&title=%5BOperate%5D%20%2Foperate%2F&body=What%20needs%20change%3F%0A%0APage%3A%20%2Foperate%2F
 ---
 
 Use this when you are changing **how the chapter runs**—state, stewards, signals, or blockers. Everything else waits.
@@ -43,7 +49,7 @@ Use this when you are changing **how the chapter runs**—state, stewards, signa
 
 ## If you are changing the system itself
 
-The **ops contract** explains guardrails, exceptions, and receipts for this pilot.  
+The **ops contract** explains guardrails, exceptions, and receipts for this platform slice.  
 Read it when you are working **on** Northbook, not just using it.  
 → [Open ops contract](./ops-contract)
 

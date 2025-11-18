@@ -1,7 +1,6 @@
 ---
 title: Navigate overview
-mode: pilot
-pilot_id: web_frontend_chapter_v1
+mode: platform
 owner: '@lop'
 band: A
 refresh_after_days: 120
@@ -23,10 +22,15 @@ release_tag: site-v2025.11
 nav:
   - none
 search: false
-list_label: Quick routes for the pilot; go elsewhere only if it is not in play here.
+list_label: Quick routes for the platform; keep nav small and clear.
+feedback_paths:
+  - label: Tag the steward roster contact
+    href: /operate/stewards
+  - label: Open a navigation feedback issue
+    href: https://github.com/lop-louis/northbook/issues/new?labels=feedback,kl,navigate&title=%5BNavigate%5D%20%2Fnavigate%2F&body=What%20felt%20off%3F%0A%0APage%3A%20%2Fnavigate%2F
 ---
 
-Find the one page you need for the web frontend pilot. Everything else is out of scope for now.
+Find the one page you need to move forward. Everything else stays out of the way.
 
 <PageCTA />
 
@@ -58,4 +62,4 @@ Open **signals roster** to see roster freshness and “do people leave with a ne
 
 ## If you are still unsure
 
-Pick the closest page and flag the mismatch. The pilot surface is intentionally small.
+Pick the closest page and flag the mismatch. The surface stays intentionally small.

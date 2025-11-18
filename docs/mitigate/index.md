@@ -1,12 +1,11 @@
 ---
 title: Mitigate overview
-mode: pilot
-pilot_id: web_frontend_chapter_v1
+mode: platform
 owner: '@lop'
 band: A
 refresh_after_days: 60
 change_type: patch
-status: pilot
+status: live
 audience: People facing blockers and wanting to handle them in the open
 tone: 'Plainspoken, calm, practical'
 narrative_goal: Help people log serious blocks and use the cloud-access stub without drama
@@ -24,8 +23,14 @@ nav:
   - none
 search: false
 list_label: >
-  Where we park the ugly stuff for this pilot: blocks, exceptions, and how we decide what to do
-  about them.
+  Where we park the ugly stuff: blocks, exceptions, and how we decide what to do about them.
+feedback_paths:
+  - label: Log a cloud-access exception
+    href: /mitigate/exception-cloud-access
+  - label: Tag the steward roster contact
+    href: /operate/stewards
+  - label: Open a Mitigate feedback issue
+    href: https://github.com/lop-louis/northbook/issues/new?labels=feedback,kl,mitigate&title=%5BMitigate%5D%20%2Fmitigate%2F&body=What%20felt%20off%3F%0A%0APage%3A%20%2Fmitigate%2F
 ---
 
 Use this when work is **blocked** and you need an open, safe path forward.
