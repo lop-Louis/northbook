@@ -2,7 +2,7 @@
 title: Mitigate overview
 mode: pilot
 pilot_id: web_frontend_chapter_v1
-owner: '@louis'
+owner: '@lop'
 band: A
 refresh_after_days: 60
 change_type: patch

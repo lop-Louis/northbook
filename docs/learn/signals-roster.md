@@ -2,7 +2,7 @@
 title: Signals roster
 mode: pilot
 pilot_id: web_frontend_chapter_v1
-owner: '@louis'
+owner: '@lop'
 band: A
 refresh_after_days: 30
 change_type: minor
