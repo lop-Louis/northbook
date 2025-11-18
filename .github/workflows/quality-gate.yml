@@ -62,7 +62,7 @@ jobs:
       # New: crawl built site for broken links → L4 if internal links fail
       - name: 🔴 Check internal links (dist crawl)
         id: link_check_internal
-        uses: lycheeverse/lychee-action@v1.10.0
+        uses: lycheeverse/lychee-action@v2.7.0
         with:
           args: >-
             --base "${{ env.DIST_DIR }}"
@@ -111,7 +111,7 @@ jobs:
       # Optional: external link check as advisory (keeps flakes out)
       - name: 🟡 Check external links (advisory)
         id: link_check_external
-        uses: lycheeverse/lychee-action@v1.10.0
+        uses: lycheeverse/lychee-action@v2.7.0
         with:
           args: >-
             --no-progress
