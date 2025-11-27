@@ -61,9 +61,9 @@ These are the only live documents currently "in play." Review these before makin
 
 Complete this 3-point check before entering a Chapter Ops session:
 
-- [ ] **Reality Check:** Do the Steward roles listed above match the actual work being done?
-- [ ] **Health Review:** Are the Roster and "Next Step" signals green?
-- [ ] **Blocker Scan:** Are there open Cloud Access exceptions affecting the roadmap?
+- **Reality Check:** Do the Steward roles listed above match the actual work being done?
+- **Health Review:** Are the Roster and "Next Step" signals green?
+- **Blocker Scan:** Are there open Cloud Access exceptions affecting the roadmap?
 
 **Note:** Bring specific examples of friction ("where you had to improvise"), not just the metrics.
 

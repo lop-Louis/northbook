@@ -51,7 +51,7 @@ function goBack() {
           </Badge>
         </div>
       </div>
-      <h1 v-if="pageTitle" class="nb-page-title">
+      <h1 v-if="pageTitle">
         {{ pageTitle }}
       </h1>
       <div
