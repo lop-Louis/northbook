@@ -96,7 +96,7 @@
     "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.5.0",
     "gray-matter": "^4.0.3",
-    "happy-dom": "^20.0.10",
+    "happy-dom": "^20.0.11",
     "husky": "^9.1.7",
     "lighthouse": "^13.0.1",
     "lint-staged": "^16.2.6",
