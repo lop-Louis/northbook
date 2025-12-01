@@ -30,19 +30,19 @@ jobs:
       GA_ID: ${{ secrets.GA_ID || 'G-511628512' }}
     steps:
       - name: Checkout root (tooling)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout main (release)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: main
           path: release
           fetch-depth: 0
 
       - name: Checkout development (staging)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: development
           path: staging
